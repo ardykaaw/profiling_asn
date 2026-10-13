@@ -17,7 +17,8 @@ import {
     Sparkles, 
     Users, 
     X, 
-    Zap 
+    Zap,
+    Compass
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 import AppLogoIcon from '@/components/app-logo-icon';
@@ -416,14 +417,14 @@ export default function Welcome() {
                             Literasi Digital
                         </button>
                         <button
-                            onClick={() => setActiveTab('emerging')}
+                            onClick={() => setActiveTab('karir')}
                             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-                                activeTab === 'emerging'
+                                activeTab === 'karir'
                                     ? 'bg-emerald-800 text-white shadow-md'
                                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
                             }`}
                         >
-                            Emerging Skills
+                            Preferensi Karir
                         </button>
                         <button
                             onClick={() => setActiveTab('potensi')}

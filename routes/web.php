@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::inertia('/', 'welcome')->name('home');
 
 // Member Routes
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'active'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('tryout', [TryoutController::class, 'index'])->name('tryout');
     Route::post('tryout', [TryoutController::class, 'store'])->name('tryout.store');
