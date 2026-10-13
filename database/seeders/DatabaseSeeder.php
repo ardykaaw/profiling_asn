@@ -8,20 +8,19 @@ use App\Models\Question;
 use App\Models\TryoutSession;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the application's database for Profiling ASN.
      */
     public function run(): void
     {
-        // 1. Create Users (Admin and Member)
+        // 1. Create Users
         $admin = User::updateOrCreate(
             ['email' => 'admin@example.com'],
             [
-                'name' => 'Administrator SiapCPNS',
+                'name' => 'Administrator ProASN',
                 'password' => bcrypt('password'),
                 'role' => 'admin',
                 'phone' => '081299998888',
@@ -33,382 +32,517 @@ class DatabaseSeeder extends Seeder
         $user = User::updateOrCreate(
             ['email' => 'user@example.com'],
             [
-                'name' => 'Budi Santoso',
+                'name' => 'Andi Pratama, S.STP, M.Tr.IP',
                 'password' => bcrypt('password'),
                 'role' => 'user',
                 'phone' => '081234567890',
-                'lynk_order_id' => 'LNK-88291',
+                'lynk_order_id' => 'ASN-88291',
                 'is_active' => true,
                 'email_verified_at' => now(),
             ]
         );
 
         User::updateOrCreate(
-            ['email' => 'dewi.rahayu@example.com'],
+            ['email' => 'dewi.lestari@example.com'],
             [
-                'name' => 'Dewi Rahayu, S.Stat',
+                'name' => 'Dewi Lestari, S.Psi, M.M',
                 'password' => bcrypt('password'),
                 'role' => 'user',
                 'phone' => '085211223344',
-                'lynk_order_id' => 'LNK-99412',
+                'lynk_order_id' => 'ASN-99412',
                 'is_active' => true,
                 'email_verified_at' => now(),
             ]
         );
 
-        User::updateOrCreate(
-            ['email' => 'siti.nurhaliza@example.com'],
+        // 2. Create Categories for Profiling ASN
+        $catManajerial = Category::updateOrCreate(
+            ['code' => 'MANAJERIAL'],
             [
-                'name' => 'Siti Nurhaliza',
-                'password' => bcrypt('password'),
-                'role' => 'user',
-                'phone' => '087812345678',
-                'lynk_order_id' => 'LNK-10294',
-                'is_active' => false,
-                'email_verified_at' => now(),
-            ]
-        );
-
-        // 2. Create Categories according to standard BKN SKD & SKB
-        $catTWK = Category::updateOrCreate(
-            ['code' => 'TWK'],
-            [
-                'name' => 'Tes Wawasan Kebangsaan (TWK)',
-                'passing_grade' => 65,
+                'name' => 'Kompetensi Manajerial & Sosio-Kultural',
+                'passing_grade' => 75,
                 'question_count' => 30,
                 'max_score' => 150,
-                'description' => 'Menguji penguasaan pengetahuan dan kemampuan mengimplementasikan nilai-nilai 4 Pilar Kebangsaan Indonesia: Pancasila, UUD 1945, NKRI, dan Bhinneka Tunggal Ika.',
-                'color' => '#F0A500',
+                'description' => 'Mengukur 8 dimensi kompetensi manajerial MenPAN-RB (Integritas, Kerjasama, Komunikasi, Orientasi Hasil, Pelayanan Publik, Pengembangan Diri, Mengelola Perubahan, Pengambilan Keputusan) dan Perekat Bangsa.',
+                'color' => '#059669', // Emerald
                 'order' => 1,
             ]
         );
 
-        $catTIU = Category::updateOrCreate(
-            ['code' => 'TIU'],
+        $catDigital = Category::updateOrCreate(
+            ['code' => 'DIGITAL'],
             [
-                'name' => 'Tes Intelejensi Umum (TIU)',
-                'passing_grade' => 80,
-                'question_count' => 35,
-                'max_score' => 175,
-                'description' => 'Menguji kemampuan verbal (analogi, silogisme), kemampuan numerik (berhitung, deret angka, perbandingan), serta kemampuan figural (analogi gambar, serial).',
-                'color' => '#06B6D4',
+                'name' => 'Literasi & Keamanan Digital ASN',
+                'passing_grade' => 70,
+                'question_count' => 25,
+                'max_score' => 125,
+                'description' => 'Menguji 4 pilar literasi digital nasional: Digital Skills (Kecakapan), Digital Safety (Keamanan Data & Privasi), Digital Ethics (Etika Komunikasi Publik), dan Digital Culture.',
+                'color' => '#7C3AED', // Purple
                 'order' => 2,
             ]
         );
 
-        $catTKP = Category::updateOrCreate(
-            ['code' => 'TKP'],
+        $catEmerging = Category::updateOrCreate(
+            ['code' => 'EMERGING'],
             [
-                'name' => 'Tes Karakteristik Pribadi (TKP)',
-                'passing_grade' => 166,
-                'question_count' => 45,
-                'max_score' => 225,
-                'description' => 'Menguji perilaku kerja, integritas, profesionalisme, pelayanan publik, jejaring kerja, sosial budaya, teknologi informasi, serta anti-radikalisme ASN.',
-                'color' => '#8B5CF6',
+                'name' => 'Emerging Skills & Analytical Thinking',
+                'passing_grade' => 75,
+                'question_count' => 25,
+                'max_score' => 125,
+                'description' => 'Menilai ketajaman berpikir analitis, pemecahan masalah birokrasi kompleks, adaptabilitas teknologi, data-driven decision making, dan inovasi pelayanan publik.',
+                'color' => '#D97706', // Amber Gold
                 'order' => 3,
             ]
         );
 
-        $catSKB = Category::updateOrCreate(
-            ['code' => 'SKB'],
+        $catPotensi = Category::updateOrCreate(
+            ['code' => 'POTENSI'],
             [
-                'name' => 'Seleksi Kompetensi Bidang (SKB)',
-                'passing_grade' => 0,
-                'question_count' => 100,
-                'max_score' => 500,
-                'description' => 'Ujian kompetensi teknis sesuai jabatan formasi kementerian, lembaga, maupun pemerintah daerah yang dilamar.',
-                'color' => '#10B981',
+                'name' => 'Tes Potensi Kognitif & Figural',
+                'passing_grade' => 70,
+                'question_count' => 25,
+                'max_score' => 125,
+                'description' => 'Mengukur kapasitas dasar kognitif, logika silogisme, penalaran analitis, deret keteraturan, serta kemampuan spasial dan matriks figural.',
+                'color' => '#2563EB', // Sapphire Blue
                 'order' => 4,
             ]
         );
 
-        // 3. Seed Standard Authentic Questions
+        // 3. Clear existing questions and seed authentic Profiling ASN questions
+        Question::truncate();
+
         $questionsData = [
-            // TWK Questions
+            // ==================== MANAJERIAL & SOSIO-KULTURAL ====================
             [
-                'category_id' => $catTWK->id,
-                'sub_category' => 'Pilar Negara (Pancasila)',
-                'question' => 'Sidang BPUPKI pertama yang secara khusus membahas usulan dasar negara Republik Indonesia berlangsung pada tanggal...',
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Integritas & Anti-Gratifikasi',
+                'question' => 'Setelah rapat evaluasi anggaran proyek perangkat lunak keuangan negara, vendor mitra memberikan Anda sebuah jam tangan mewah sebagai tanda apresiasi atas kerjasama yang sukses. Anda mengetahui terdapat regulasi internal instansi mengenai penerimaan cinderamata. Sikap Anda adalah...',
                 'options' => [
-                    '29 Mei - 1 Juni 1945',
-                    '10 - 16 Juli 1945',
-                    '17 Agustus 1945',
-                    '18 Agustus 1945',
-                    '22 Juni 1945',
+                    'Menerima jam tangan tersebut untuk mempererat hubungan kemitraan kedinasan.',
+                    'Menolaknya dengan sopan dan menjelaskan bahwa penerimaan hadiah melanggar integritas serta kode etik instansi.',
+                    'Menerima karena menganggap nilainya wajar dan tidak akan memengaruhi objektivitas kerja Anda.',
+                    'Menerima secara diam-diam tanpa memberitahukan siapa pun agar tidak menimbulkan kegaduhan.',
+                    'Menyuruh staf Anda untuk menerimanya atas nama pribadi agar Anda terbebas dari sanksi.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 2, 1, 1],
+                'explanation' => 'Integritas menuntut ASN menolak segala bentuk gratifikasi dari pihak ketiga yang berpotensi menimbulkan konflik kepentingan dan menurunkan objektivitas tata kelola pemerintahan (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Integritas & Penegakan Etika',
+                'question' => 'Sebagai analis kebijakan pengadaan, Anda mengetahui rekan kerja satu tim menerima tiket pesawat kelas bisnis dari salah satu vendor tender yang sedang bernegosiasi dengan kementerian Anda. Sikap yang paling tepat adalah...',
+                'options' => [
+                    'Mendiamkan saja karena itu urusan pribadi rekan kerja tersebut.',
+                    'Melaporkan dugaan pelanggaran kode etik tersebut kepada atasan langsung atau Unit Kepatuhan Internal (Whistleblowing System).',
+                    'Menegur rekan kerja tersebut di grup WhatsApp kantor agar jera di depan publik.',
+                    'Meminta rekan kerja tersebut membelikan tiket yang sama untuk Anda agar adil.',
+                    'Menyebarkan kabar tersebut kepada media sosial tanpa bukti dokumen resmi.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [2, 5, 2, 1, 1],
+                'explanation' => 'Pelanggaran etika oleh rekan kerja wajib ditindaklanjuti secara proporsional melalui jalur resmi pengawasan internal untuk melindungi marwah institusi (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Pelayanan Publik Berkelanjutan',
+                'question' => 'Menjelang jam pelayanan terpadu satu pintu ditutup pada hari Jumat, seorang warga lansia datang dari daerah terpencil dengan dokumen yang masih kurang satu lembar fotokopi identitas. Sikap Anda sebagai petugas adalah...',
+                'options' => [
+                    'Menolak permohonan tersebut secara tegas dan memintanya kembali pada hari Senin berikutnya.',
+                    'Membantu memfotokopikan dokumen yang kurang di ruang kerja dan menyelesaikan berkasnya tuntas sebelum pulang.',
+                    'Menyuruh pemohon tersebut mencari tempat fotokopi di luar kantor meskipun lokasinya jauh dan kantor segera tutup.',
+                    'Menerima berkas apa adanya tanpa verifikasi untuk mempercepat kepulangan Anda.',
+                    'Meminta biaya administrasi tambahan sebagai kompensasi lembur pelayanan.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 2, 2, 1],
+                'explanation' => 'Orientasi pelayanan publik mengutamakan empati, kepekaan terhadap kaum rentan, dan solusi responsif tanpa mengabaikan akuntabilitas administrasi (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Kerjasama & Kolaborasi Tim',
+                'question' => 'Dua staf senior di unit kerja Anda berselisih paham mengenai metode pelaporan digital yang baru diperkenalkan, sehingga menghambat progres penyusunan LAKIP tahunan. Tindakan Anda sebagai koordinator tim adalah...',
+                'options' => [
+                    'Memihak staf yang paling senior karena pengalamannya lebih lama.',
+                    'Membiarkan keduanya berdebat hingga salah satu menyerah dengan sendirinya.',
+                    'Mengadakan sesi mediasi bersama untuk mengevaluasi kelebihan masing-masing metode dan menyepakati alur kerja terpadu.',
+                    'Mengambil alih seluruh pekerjaan seorang diri tanpa melibatkan mereka lagi.',
+                    'Mengusulkan mutasi bagi kedua staf tersebut ke instansi lain.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 1, 5, 2, 1],
+                'explanation' => 'Kompetensi kerjasama menuntut kemampuan memfasilitasi rekonsiliasi perbedaan pandangan kerja demi mencapai tujuan bersama organisasi (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Pengambilan Keputusan Berbasis Risiko',
+                'question' => 'Di tengah keadaan darurat bencana daerah, sistem server database bantuan logistik mengalami crash. Anda dihadapkan pada pilihan menyalurkan bantuan manual dengan risiko pencatatan ganda atau menunggu perbaikan server selama 12 jam. Anda akan...',
+                'options' => [
+                    'Menunggu perbaikan server selesai sepenuhnya tanpa menyalurkan bantuan apapun.',
+                    'Segera mendistribusikan bantuan kebutuhan primer menggunakan format logbook manual terverifikasi KTP, seraya menyiapkan rekonsiliasi data digital susulan.',
+                    'Membagikan bantuan tanpa identitas apapun secara bebas di lapangan.',
+                    'Menolak bertanggung jawab dan melimpahkan keputusan kepada staf lapangan junior.',
+                    'Menunda kegiatan sampai atasan tertinggi tiba di lokasi bencana.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 2, 1, 1],
+                'explanation' => 'Pengambilan keputusan ASN di situasi krisis menuntut pertimbangan mitigasi risiko kemanusiaan utama dengan tetap menjaga kontrol akuntabilitas minimum (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Sosio-Kultural & Perekat Bangsa',
+                'question' => 'Saat memimpin penugasan tim verifikasi di wilayah yang memiliki tradisi adat istiadat setempat yang kental, beberapa anggota tim Anda merasa canggung dan enggan mengikuti musyawarah adat pembuka. Sikap Anda adalah...',
+                'options' => [
+                    'Memaksa warga adat meninggalkan tradisi mereka demi kecepatan birokrasi kedinasan.',
+                    'Memberikan edukasi kepada tim mengenai pentingnya menghargai kearifan lokal, serta memimpin langsung keikutsertaan dalam prosesi musyawarah sebagai bentuk penghormatan.',
+                    'Membatalkan seluruh penugasan dan kembali ke kantor pusat.',
+                    'Mengabaikan warga adat dan langsung bekerja secara sepihak di lapangan.',
+                    'Menertawakan kebiasaan masyarakat adat di media sosial pribadi.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 2, 1],
+                'explanation' => 'Kompetensi sosio-kultural menuntut kepekaan budaya, kemampuan membangun keterbukaan, serta menjadi perekat bangsa dalam keberagaman Indonesia (Skor 5).',
+                'is_active' => true,
+            ],
+
+            // ==================== LITERASI DIGITAL ASN ====================
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Skill (Kolaborasi Cloud)',
+                'question' => 'Instansi Anda mulai mengadopsi perangkat lunak dokumen berbasis cloud untuk memfasilitasi kerja lintas deputi secara real-time. Kesimpulan utama dari transformasi kerja digital ini adalah...',
+                'options' => [
+                    'Bekerja di lokasi fisik terpusat selalu lebih hemat biaya dibanding sistem daring.',
+                    'Teknologi digital mempermudah kolaborasi tim lintas unit dengan mengatasi hambatan jarak dan efisiensi waktu kerja.',
+                    'Penggunaan cloud storage membuat waktu penyelesaian arsip negara menjadi 3 kali lebih lambat.',
+                    'Bekerja secara daring menghilangkan sepenuhnya kebutuhan pengawasan kepemimpinan.',
+                    'Teknologi cloud hanya boleh digunakan untuk tugas-tugas non-pemerintahan.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Pemanfaatan komputasi awan di instansi publik meningkatkan interoperabilitas, transparansi versi dokumen, serta percepatan alur birokrasi pemerintahan (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Safety (Phishing & Domain Spoofing)',
+                'question' => 'Anda menerima sebuah email yang mengatasnamakan Bank Himbara mitra gaji ASN, menyatakan bahwa akun Anda dibekukan dan meminta verifikasi via tautan link: "b4nk-mand1ri-asn-verif.net". Tindakan paling aman dan tepat adalah...',
+                'options' => [
+                    'Segera mengklik tautan tersebut dan memasukkan username serta PIN untuk keamanan akun.',
+                    'Membuka tautan tersebut melalui mode Incognito karena dijamin 100% aman dari virus.',
+                    'Memeriksa URL dengan teliti, mengidentifikasi ciri phishing domain palsu, tidak mengklik tautan, dan melaporkannya ke tim CSIRT instansi.',
+                    'Mengunduh lampiran file zip yang ada di email terlebih dahulu untuk memastikan keaslian.',
+                    'Meneruskan email mencurigakan tersebut ke seluruh kontak email kantor tanpa peringatan.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 2, 5, 1, 1],
+                'explanation' => 'Domain yang menyerupai institusi resmi dengan modifikasi huruf/karakter adalah indikasi nyata spear-phishing. ASN wajib waspada terhadap rekayasa sosial siber (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Ethics & Netiquette ASN',
+                'question' => 'Dalam sebuah diskusi panas di media sosial terkait kebijakan baru pemerintah, seorang rekan ASN mengunggah komentar bernada provokatif dan membocorkan draf surat edaran kementerian yang belum diteken menteri. Pandangan Anda berdasarkan etika digital ASN adalah...',
+                'options' => [
+                    'Hal tersebut sah karena setiap ASN memiliki kebebasan berekspresi tanpa batas di ranah daring.',
+                    'Tindakan tersebut melanggar netralitas dan kewajiban menjaga kerahasiaan dokumen kedinasan sesuai UU ASN dan PP Manajemen ASN.',
+                    'Bagus untuk meningkatkan engagement dan popularitas akun pribadi rekan tersebut.',
+                    'Boleh asalkan unggahan tersebut dihapus setelah 1 jam.',
+                    'Tidak masalah selama menggunakan nama samaran (alter account).'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Etika digital ASN mencakup prinsip kehati-hatian, netralitas, serta larangan keras membocorkan rahasia jabatan dan dokumen negara ke ranah publik tanpa wewenang (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Technostress & Digital Wellbeing',
+                'question' => 'Sebuah tim kerja digital birokrasi mengeluhkan kelelahan kerja ekstrem (technostress) akibat notifikasi pesan kedinasan yang masuk di berbagai aplikasi pada larut malam. Solusi manajerial digital yang paling proporsional adalah...',
+                'options' => [
+                    'Menghapus seluruh penggunaan gawai pintar dan kembali ke sistem memo kertas fisik.',
+                    'Menyusun SOP jam komunikasi digital kedinasan yang tegas dan memberikan pelatihan manajemen waktu serta literasi digital produktif.',
+                    'Memaksa pegawai tetap siaga 24 jam penuh di seluruh grup pesan tanpa kompensasi.',
+                    'Mengganti seluruh staf dengan aplikasi bot otomasi.',
+                    'Mengabaikan keluhan karena lembur digital adalah kewajiban mutlak tanpa batas.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Digital wellbeing dan pengelolaan technostress merupakan bagian integral pilar literasi digital agar adopsi teknologi mendukung produktivitas berkelanjutan (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Keamanan Data Pribadi (UU PDP)',
+                'question' => 'Anda ditugaskan mengelola database calon penerima beasiswa dinas yang memuat data NIK, riwayat kesehatan, dan nomor rekening. Kebijakan tata kelola data yang wajib diterapkan adalah...',
+                'options' => [
+                    'Mengunggah berkas Excel database tersebut ke forum publik agar masyarakat bisa memeriksa sendiri.',
+                    'Menerapkan enkripsi data, membatasi hak akses (role-based access), dan tidak membagikan data sensitif tanpa protokol keamanan PDP.',
+                    'Menyimpan file di komputer umum tanpa kata sandi agar mudah dibuka staf lain.',
+                    'Menjual data tersebut kepada pihak ketiga untuk pemasukan non-pajak instansi.',
+                    'Menghapus backup database agar kapasitas harddisk server hemat.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Pilar Digital Safety menuntut kepatuhan terhadap regulasi pelindungan data pribadi (UU PDP) dengan menerapkan enkripsi dan kontrol otorisasi ketat pada data publik (Skor 5).',
+                'is_active' => true,
+            ],
+
+            // ==================== EMERGING SKILLS & ANALYTICAL THINKING ====================
+            [
+                'category_id' => $catEmerging->id,
+                'sub_category' => 'Berpikir Analitis & Pemecahan Masalah Kompleks',
+                'question' => 'Laporan kinerja triwulanan menunjukkan penurunan efisiensi proses perizinan sebesar 15% pada unit Anda tanpa indikasi penyebab tunggal. Langkah analitis pertama yang paling tepat adalah...',
+                'options' => [
+                    'Menginstruksikan seluruh staf untuk bekerja lembur tiap hari tanpa evaluasi proses.',
+                    'Langsung menyalahkan sistem server IT dan menuntut penggantian vendor.',
+                    'Mengidentifikasi variabel-variabel kunci pada alur perizinan dan mengumpulkan data kuantitatif komparatif sebelum dan sesudah penurunan performa.',
+                    'Mengadakan rapat darurat untuk mencari siapa yang paling bersalah.',
+                    'Mengabaikannya karena penurunan 15% dianggap fluktuasi wajar.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 1, 5, 1, 1],
+                'explanation' => 'Berpikir analitis dimulai dengan dekonstruksi masalah ke variabel-variabel pembentuknya, didukung data komparatif empiris sebelum menarik kesimpulan (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catEmerging->id,
+                'sub_category' => 'Triangulasi Data & Kebijakan Multisektor',
+                'question' => 'Dalam merancang kebijakan tata ruang baru, Anda menerima data kependudukan dan pemukiman dari tiga unit kerja dinas yang saling bertentangan secara signifikan. Sebagai koordinator analis, Anda akan...',
+                'options' => [
+                    'Memilih data dari dinas yang pimpinannya paling akrab dengan Anda.',
+                    'Mengembalikan seluruh berkas dan menolak mengerjakan kebijakan tersebut.',
+                    'Melakukan triangulasi data dengan memverifikasi data citra satelit independen dan mengadakan lokakarya penyamaan definisi operasional antar-unit.',
+                    'Membuat angka perkiraan sendiri tanpa dasar data apapun.',
+                    'Mengambil rata-rata sederhana dari ketiga angka yang bertentangan tanpa memeriksa metodologinya.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 1, 5, 1, 2],
+                'explanation' => 'Metode triangulasi dan penyelarasan definisi operasional adalah standar pemecahan masalah data kompleks dalam perumusan kebijakan publik berbasis bukti (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catEmerging->id,
+                'sub_category' => 'Perencanaan Skenario Risiko (Scenario Planning)',
+                'question' => 'Dalam penyusunan proyeksi anggaran pengadaan bahan baku instansi tahun mendatang, tren historis menunjukkan kenaikan biaya 7%/tahun, namun terdapat potensi regulasi tarif impor baru yang berisiko menaikkan biaya hingga 18%. Langkah terbaik Anda adalah...',
+                'options' => [
+                    'Menggunakan angka historis 7% saja karena paling aman dan mudah disetujui.',
+                    'Langsung menetapkan angka 18% tanpa memberikan alternatif penjelasan mitigasi.',
+                    'Menyusun model skenario: Best Case (7%), Worst Case (18%), dan Most Likely Case berbasis analisis dampak regulasi beserta opsi mitigasi kontinjensinya.',
+                    'Menolak menyusun proyeksi sampai regulasi tersebut sah disahkan DPR.',
+                    'Mengurangi separuh pengadaan barang tanpa analisis dampak layanan publik.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [2, 2, 5, 1, 1],
+                'explanation' => 'Analytical thinking pada manajemen strategis menuntut pembuatan scenario planning terstruktur untuk mengantisipasi ketidakpastian regulasi dan ekonomi makro (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catEmerging->id,
+                'sub_category' => 'Pengolahan Umpan Balik Publik (Feedback Analysis)',
+                'question' => 'Survei kepuasan masyarakat menghasilkan ribuan keluhan abstrak bernada "Pelayanan Kantor Lambat". Untuk memecahkan problem ini secara sistemik, langkah analitis Anda adalah...',
+                'options' => [
+                    'Menghapus kolom survei bebas karena dianggap tidak konstruktif.',
+                    'Membuat kuis berhadiah untuk masyarakat yang memberikan ulasan bintang lima.',
+                    'Mengelompokkan keluhan berdasarkan titik layanan (touchpoint), tahapan alur berkas, dan waktu proses (cycle time) guna menemukan bottleneck spesifik.',
+                    'Memarahi petugas loket baris depan di hadapan pengunjung.',
+                    'Membantah seluruh keluhan di media massa.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 1, 5, 1, 1],
+                'explanation' => 'Pemecahan masalah sistemik membedah umpan balik kualitatif menjadi data kategorikal berdasar touchpoints dan waktu siklus untuk mengidentifikasi bottleneck utama (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catEmerging->id,
+                'sub_category' => 'Adaptabilitas & AI Readiness',
+                'question' => 'Instansi Anda berencana mengimplementasikan model kecerdasan buatan (AI) untuk mempercepat perankingan berkas usulan kenaikan pangkat. Sebagai ASN yang adaptif terhadap emerging tech, Anda harus...',
+                'options' => [
+                    'Menolak penggunaan AI karena khawatir seluruh posisi ASN akan dihapus.',
+                    'Menerima hasil otomatisasi AI 100% tanpa verifikasi manusia sama sekali.',
+                    'Mempelajari prinsip kerja AI, memastikan adanya human-in-the-loop (pengawasan manusia), serta menguji potensi bias algoritma terhadap data pegawai.',
+                    'Menyerahkan seluruh username dan password admin kementerian kepada vendor penyedia AI.',
+                    'Menyebarkan hoaks bahwa AI berbahaya bagi kepegawaian.'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 2, 5, 1, 1],
+                'explanation' => 'Kesiapan teknologi baru (AI readiness) menuntut pemahaman etika AI, mitigasi bias data, dan prinsip pengawasan manusia (human-in-the-loop) dalam tata kelola birokrasi (Skor 5).',
+                'is_active' => true,
+            ],
+
+            // ==================== POTENSI KOGNITIF & FIGURAL ====================
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Silogisme Logika Analitis',
+                'question' => 'Semua pegawai yang lulus uji asesmen kompetensi berhak diusulkan masuk ke dalam Talent Pool Nasional. Beberapa analis kebijakan muda lulus uji asesmen kompetensi. Kesimpulan yang sah dan logis adalah...',
+                'options' => [
+                    'Semua analis kebijakan muda masuk ke dalam Talent Pool Nasional.',
+                    'Sebagian analis kebijakan muda berhak diusulkan masuk ke dalam Talent Pool Nasional.',
+                    'Tidak ada analis kebijakan muda yang berhak masuk Talent Pool Nasional.',
+                    'Semua yang masuk Talent Pool Nasional adalah analis kebijakan muda.',
+                    'Pegawai yang tidak lulus uji asesmen tetap berhak masuk Talent Pool Nasional.'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Premis mayor: Semua yang lulus uji berhak diusulkan. Premis minor: Sebagian analis kebijakan muda lulus. Maka kesimpulannya: Sebagian analis kebijakan muda tersebut berhak diusulkan (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Deret Angka & Pola Keteraturan',
+                'question' => 'Perhatikan deret pola angka berikut: 4, 9, 19, 39, 79, ... Angka berikutnya yang tepat adalah...',
+                'options' => [
+                    '119',
+                    '139',
+                    '159',
+                    '169',
+                    '179'
+                ],
+                'correct_answer' => 2,
+                'scores' => [1, 1, 5, 1, 1],
+                'explanation' => 'Pola deret: suku ke-n = (suku sebelumnya × 2) + 1. (4×2)+1=9; (9×2)+1=19; (19×2)+1=39; (39×2)+1=79; maka (79×2)+1 = 158 + 1 = 159 (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Analogi Hubungan Konsep',
+                'question' => 'REGULASI : KEBIJAKAN = INTEGRITAS : ...',
+                'options' => [
+                    'Hukum',
+                    'Karakter',
+                    'Jabatan',
+                    'Kekuasaan',
+                    'Anggaran'
+                ],
+                'correct_answer' => 1,
+                'scores' => [1, 5, 1, 1, 1],
+                'explanation' => 'Regulasi merupakan landasan dasar bagi terwujudnya Kebijakan, sebagaimana Integritas merupakan landasan dasar bagi terbentuknya Karakter moral seorang aparatur (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Penalaran Figural Spasial (Pola Rotasi)',
+                'question' => 'Sebuah bangun geometris segitiga sama sisi memiliki tanda lingkaran hitam di sudut puncaknya. Jika bangun tersebut dirotasikan 90 derajat searah jarum jam sebanyak 3 kali berturut-turut, posisi lingkaran hitam tersebut akan sama dengan...',
+                'options' => [
+                    'Rotasi 90 derajat berlawanan arah jarum jam sebanyak 1 kali.',
+                    'Rotasi 180 derajat searah jarum jam.',
+                    'Posisi awal mula bangun sebelum diputar.',
+                    'Rotasi 360 derajat penuh.',
+                    'Pencerminan vertikal terhadap sumbu X.'
                 ],
                 'correct_answer' => 0,
-                'scores' => null,
-                'explanation' => 'Sidang pertama BPUPKI berlangsung dari tanggal 29 Mei sampai 1 Juni 1945 untuk merumuskan dasar negara Indonesia merdeka, di mana Ir. Soekarno menyampaikan pidato Pancasila pada 1 Juni 1945.',
+                'scores' => [5, 1, 1, 1, 1],
+                'explanation' => 'Rotasi 90° searah jarum jam sebanyak 3 kali setara dengan putaran 270° searah jarum jam, yang ekuivalen posisinya dengan rotasi 90° berlawanan arah jarum jam (Skor 5).',
+                'is_active' => true,
             ],
             [
-                'category_id' => $catTWK->id,
-                'sub_category' => 'UUD 1945 & Konstitusi',
-                'question' => 'Menurut Pasal 23A UUD 1945 hasil amandemen, segala bentuk pajak dan pungutan lain yang bersifat memaksa untuk keperluan negara diatur dengan...',
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Analisis Perbandingan Kuat Relatif',
+                'question' => 'Dalam simulasi alokasi kerja: Kecepatan analisis Pegawai A lebih tinggi dari B. Pegawai C lebih cepat dari A. Pegawai D lebih lambat dari B namun lebih cepat dari E. Urutan pegawai dari yang paling cepat menyelesaikan analisis adalah...',
                 'options' => [
-                    'Peraturan Pemerintah',
-                    'Undang-Undang',
-                    'Keputusan Presiden',
-                    'Peraturan Daerah',
-                    'Peraturan Menteri Keuangan',
+                    'C - A - B - D - E',
+                    'C - B - A - D - E',
+                    'A - C - B - E - D',
+                    'E - D - B - A - C',
+                    'B - A - C - D - E'
                 ],
-                'correct_answer' => 1,
-                'scores' => null,
-                'explanation' => 'Pasal 23A UUD 1945 secara tegas menyatakan bahwa: "Pajak dan pungutan lain yang bersifat memaksa untuk keperluan negara diatur dengan undang-undang."',
-            ],
-            [
-                'category_id' => $catTWK->id,
-                'sub_category' => 'Bhinneka Tunggal Ika',
-                'question' => 'Semboyan Bhinneka Tunggal Ika pertama kali ditemukan dalam kitab Kakawin Sutasoma karangan Mpu Tantular pada masa kejayaan kerajaan...',
-                'options' => [
-                    'Singasari',
-                    'Sriwijaya',
-                    'Majapahit',
-                    'Mataram Kuno',
-                    'Tarumanegara',
-                ],
-                'correct_answer' => 2,
-                'scores' => null,
-                'explanation' => 'Frasa "Bhinneka Tunggal Ika Tan Hana Dharma Mangrwa" termaktub dalam pupuh 139 bait 5 Kakawin Sutasoma karya Mpu Tantular yang ditulis pada masa pemerintahan Raja Hayam Wuruk di Kerajaan Majapahit abad ke-14.',
-            ],
-            [
-                'category_id' => $catTWK->id,
-                'sub_category' => 'Nasionalisme & Bela Negara',
-                'question' => 'Berdasarkan UU No. 23 Tahun 2019 tentang Pengelolaan Sumber Daya Nasional untuk Pertahanan Negara, keikutsertaan warga negara dalam usaha bela negara dapat diselenggarakan melalui...',
-                'options' => [
-                    'Hanya melalui wajib militer bagi seluruh pemuda',
-                    'Pendidikan kewarganegaraan, pelatihan dasar kemiliteran secara wajib, pengabdian sebagai prajurit TNI, dan pengabdian sesuai dengan profesi',
-                    'Pembayaran pajak khusus pertahanan negara',
-                    'Wajib mendaftar partai politik pendukung pemerintah',
-                    'Partisipasi dalam demonstrasi kenegaraan',
-                ],
-                'correct_answer' => 1,
-                'scores' => null,
-                'explanation' => 'Pasal 6 ayat (2) UU No. 23 Tahun 2019 mengatur bahwa keikutsertaan warga negara dalam upaya bela negara diselenggarakan melalui: pendidikan kewarganegaraan, pelatihan dasar kemiliteran wajib, pengabdian sebagai prajurit TNI secara sukarela/wajib, serta pengabdian sesuai profesi.',
-            ],
-
-            // TIU Questions
-            [
-                'category_id' => $catTIU->id,
-                'sub_category' => 'Numerik (Perbandingan Berbalik Nilai)',
-                'question' => 'Sebuah proyek renovasi gedung direncanakan selesai dalam 30 hari oleh 12 orang pekerja. Jika proyek tersebut harus dipercepat agar selesai dalam 20 hari, berapa tambahan pekerja yang harus didatangkan?',
-                'options' => [
-                    '4 orang',
-                    '6 orang',
-                    '8 orang',
-                    '10 orang',
-                    '18 orang',
-                ],
-                'correct_answer' => 1,
-                'scores' => null,
-                'explanation' => 'Total beban kerja = 30 hari × 12 pekerja = 360 orang-hari. Target baru = 20 hari. Pekerja yang dibutuhkan = 360 ÷ 20 = 18 orang. Tambahan pekerja yang harus didatangkan = 18 - 12 = 6 orang.',
-            ],
-            [
-                'category_id' => $catTIU->id,
-                'sub_category' => 'Deret Angka & Logika Pola',
-                'question' => 'Tentukan dua angka lanjutan dari barisan deret berikut: 4, 7, 12, 19, 28, ..., ...',
-                'options' => [
-                    '37, 48',
-                    '39, 52',
-                    '38, 50',
-                    '40, 54',
-                    '36, 49',
-                ],
-                'correct_answer' => 1,
-                'scores' => null,
-                'explanation' => 'Pola selisih antar suku adalah bilangan ganjil bertingkat: 7-4 = +3; 12-7 = +5; 19-12 = +7; 28-19 = +9; selanjutnya +11 -> 28 + 11 = 39; selanjutnya +13 -> 39 + 13 = 52. Maka jawabannya 39 dan 52.',
-            ],
-            [
-                'category_id' => $catTIU->id,
-                'sub_category' => 'Logika Silogisme',
-                'question' => 'Semua pegawai negeri sipil (PNS) menerima gaji ke-13. Sebagian warga komplek Melati adalah PNS. Kesimpulan yang paling tepat dan sah adalah...',
-                'options' => [
-                    'Semua warga komplek Melati menerima gaji ke-13',
-                    'Sebagian warga komplek Melati menerima gaji ke-13',
-                    'Tidak ada warga komplek Melati yang menerima gaji ke-13',
-                    'Semua yang menerima gaji ke-13 bertempat tinggal di komplek Melati',
-                    'Warga komplek Melati yang bukan PNS tidak menerima penghasilan apa pun',
-                ],
-                'correct_answer' => 1,
-                'scores' => null,
-                'explanation' => 'Premis mayor: Semua A adalah B (Semua PNS menerima gaji ke-13). Premis minor: Sebagian C adalah A (Sebagian warga komplek Melati adalah PNS). Maka kesimpulan sah: Sebagian C adalah B (Sebagian warga komplek Melati menerima gaji ke-13).',
-            ],
-            [
-                'category_id' => $catTIU->id,
-                'sub_category' => 'Verbal (Analogi Hubungan Kata)',
-                'question' => 'KUMAN : PENYAKIT = API : ...',
-                'options' => [
-                    'Abu',
-                    'Panas',
-                    'Kebakaran',
-                    'Kayu',
-                    'Asap',
-                ],
-                'correct_answer' => 2,
-                'scores' => null,
-                'explanation' => 'Hubungan sebab-akibat: KUMAN yang tidak terkendali menyebabkan timbulnya PENYAKIT. Begitu pula API yang tidak terkendali menyebabkan peristiwa KEBAKARAN.',
-            ],
-
-            // TKP Questions (Tiered Scoring 1 to 5 per BKN standard)
-            [
-                'category_id' => $catTKP->id,
-                'sub_category' => 'Integritas & Anti-Korupsi',
-                'question' => 'Anda adalah staf bagian pengadaan barang dan jasa. Seorang rekanan kontraktor yang sedang mengikuti tender datang ke rumah Anda di luar jam kerja dengan membawa parsel barang elektronik mewah sebagai bentuk perkenalan. Tindakan Anda adalah...',
-                'options' => [
-                    'Menolak dengan sopan dan tegas pemberian tersebut serta menegaskan bahwa seluruh proses tender transparan sesuai prosedur resmi',
-                    'Menerima pemberian tersebut agar menjaga hubungan silaturahmi tetapi tetap objektif dalam menilai tender',
-                    'Menolak pemberian dan melaporkan kontraktor tersebut kepada atasan atau Unit Pengendalian Gratifikasi (UPG) dengan bukti dokumentasi',
-                    'Meminta rekanan membawa parsel tersebut ke kantor saja agar diketahui staf lain',
-                    'Menyarankan agar parsel diserahkan kepada pimpinan instansi Anda',
-                ],
-                'correct_answer' => 2, // Highest score option index
-                'scores' => [4, 1, 5, 2, 1], // Scores for options 0, 1, 2, 3, 4
-                'explanation' => 'Skor 5 untuk opsi C karena menunjukkan integritas tertinggi: menolak sekaligus proaktif melaporkan indikasi gratifikasi ke unit pengawasan resmi (UPG) demi menjaga akuntabilitas birokrasi.',
-            ],
-            [
-                'category_id' => $catTKP->id,
-                'sub_category' => 'Pelayanan Publik & Empati',
-                'question' => 'Saat jam istirahat kantor baru saja dimulai, seorang lansia dari desa terpencil datang terengah-engah ingin mengurus dokumen kependudukan yang sangat mendesak untuk pengobatan BPJS cucunya. Sikap Anda adalah...',
-                'options' => [
-                    'Memintanya menunggu di ruang tunggu sampai jam istirahat kantor selesai tepat pukul 13.00',
-                    'Mempersilakan duduk, memberinya air minum, lalu melayani berkasnya terlebih dahulu sebelum saya beristirahat',
-                    'Menyuruh staf piket lain melayani karena saya memiliki jadwal makan siang di luar kantor',
-                    'Memberitahu bahwa sistem komputer sedang istirahat dan mati otomatis',
-                    'Melayani setengah hati sambil mengeluh jam istirahat terganggu',
-                ],
-                'correct_answer' => 1,
-                'scores' => [2, 5, 3, 1, 1],
-                'explanation' => 'Skor 5 untuk opsi B karena mengutamakan pelayanan prima berorientasi empati kemanusiaan dalam situasi darurat masyarakat tanpa mengabaikan keramahan ASN.',
-            ],
-            [
-                'category_id' => $catTKP->id,
-                'sub_category' => 'Teknologi Informasi & Adaptasi',
-                'question' => 'Instansi Anda beralih dari pengarsipan manual berbasis kertas ke aplikasi cloud terintegrasi. Sebagian rekan kerja senior mengeluh dan enggan menggunakannya karena dianggap rumit. Sikap Anda adalah...',
-                'options' => [
-                    'Fokus mempelajari aplikasi tersebut untuk pekerjaan saya sendiri tanpa mencampuri urusan rekan lain',
-                    'Ikut mengeluh kepada pimpinan agar sistem manual tetap dipertahankan',
-                    'Mempelajari sistem baru hingga mahir, lalu secara proaktif membuat panduan ringkas dan membimbing rekan-rekan senior dengan sabar',
-                    'Menunggu pelatihan resmi dari vendor penyedia software',
-                    'Mengerjakan semua pekerjaan rekan senior agar mereka tidak terbebani sistem baru',
-                ],
-                'correct_answer' => 2,
-                'scores' => [3, 1, 5, 2, 2],
-                'explanation' => 'Skor 5 untuk opsi C karena menunjukkan adaptabilitas digital yang tinggi sekaligus jiwa kepemimpinan suportif dan kolaborasi tim.',
-            ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 1, 1, 1],
+                'explanation' => 'Dari data: A > B, C > A (maka C > A > B), dan D < B tetapi D > E (maka B > D > E). Menggabungkan relasi: C > A > B > D > E (Skor 5).',
+                'is_active' => true,
+            ]
         ];
 
-        foreach ($questionsData as $qData) {
-            Question::create($qData);
+        foreach ($questionsData as $q) {
+            Question::create($q);
         }
 
-        // 4. Seed Learning Modules (Materials)
-        $materialsData = [
-            [
-                'category_id' => $catTWK->id,
-                'title' => 'Pilar Negara: Nilai-Nilai Pancasila dalam Kehidupan Berbangsa',
-                'slug' => 'pilar-negara-nilai-pancasila',
-                'type' => 'video',
-                'level' => 'Dasar',
-                'duration' => '24 min',
-                'summary' => 'Memahami butir-butir pengamalan sila ke-1 hingga ke-5 dan implementasinya dalam kasus soal TWK penalaran BKN terkini.',
-                'content' => "## Pengamalan Sila Pancasila dalam Kehidupan Bernegara\n\nSoal TWK BKN saat ini tidak lagi sekadar hafalan butir-butir sila, melainkan berupa narasi studi kasus implementasi.\n\n### 1. Sila Pertama: Ketuhanan Yang Maha Esa\n- Menghormati kebebasan beribadah pemeluk agama lain.\n- Tidak memaksakan agama/kepercayaan kepada orang lain.\n- Kerukunan hidup antarumat beragama.\n\n### 2. Sila Kedua: Kemanusiaan yang Adil dan Beradab\n- Mengakui persamaan derajat, hak, dan kewajiban asasi setiap manusia.\n- Menjunjung tinggi nilai-nilai kemanusiaan dan gemar melakukan kegiatan kemanusiaan.\n- Berani membela kebenaran dan keadilan.\n\n### 3. Sila Ketiga: Persatuan Indonesia\n- Menempatkan persatuan, kesatuan, serta kepentingan dan keselamatan bangsa di atas kepentingan pribadi/golongan.\n- Rela berkorban untuk kepentingan negara.\n- Bangga berkebangsaan dan bertanah air Indonesia.",
-                'file_path' => null,
-                'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                'is_published' => true,
-                'is_free' => true,
-            ],
-            [
-                'category_id' => $catTWK->id,
-                'title' => 'UUD 1945: Pasal Kunci Lembaga Negara & Amandemen I - IV',
-                'slug' => 'uud-1945-pasal-kunci-amandemen',
-                'type' => 'pdf',
-                'level' => 'Menengah',
-                'duration' => '18 min',
-                'summary' => 'Rangkuman pasal-pasal kewenangan Presiden, DPR, DPD, MPR, MK, MA, dan KY serta hak asasi manusia yang sering keluar di BKN.',
-                'content' => "## Amandemen UUD 1945 (1999 - 2002)\n\n### Kronologi 4 Kali Amandemen:\n1. **Amandemen I (1999):** Pembatasan masa jabatan presiden (maksimal 2 periode).\n2. **Amandemen II (2000):** Otonomi daerah, HAM (Pasal 28A-28J), DPR, dan lagu kebangsaan.\n3. **Amandemen III (2001):** Bentuk kedaulatan rakyat, pemilu langsung, DPD, MK, BPK, KY.\n4. **Amandemen IV (2002):** Penghapusan DPA, aturan BI, pendidikan 20% APBN, aturan perubahan UUD.",
-                'file_path' => null,
-                'video_url' => null,
-                'is_published' => true,
-                'is_free' => false,
-            ],
-            [
-                'category_id' => $catTIU->id,
-                'title' => 'Kemampuan Numerik: Aritmatika & Aljabar Cepat Tanpa Kalkulator',
-                'slug' => 'numerik-aritmatika-aljabar-cepat',
-                'type' => 'video',
-                'level' => 'Dasar',
-                'duration' => '28 min',
-                'summary' => 'Trik berhitung pecahan, desimal, persentase, dan perbandingan senilai/berbalik nilai dalam waktu di bawah 45 detik per soal.',
-                'content' => "## Trik Cepat Aritmatika TIU\n\n### 1. Perbandingan Berbalik Nilai (Pekerja & Waktu)\nRumus utama:\nP1 x W1 = P2 x W2\n\nJika pekerja bertambah, maka waktu yang dibutuhkan akan berkurang secara proporsional.\n\n### 2. Trik Persentase Khusus:\n- 12.5% = 1/8\n- 33.3% = 1/3\n- 16.67% = 1/6",
-                'file_path' => null,
-                'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                'is_published' => true,
-                'is_free' => true,
-            ],
-            [
-                'category_id' => $catTIU->id,
-                'title' => 'Logika Silogisme & Penarikan Kesimpulan Sah',
-                'slug' => 'logika-silogisme-penarikan-kesimpulan',
-                'type' => 'ringkasan',
-                'level' => 'Menengah',
-                'duration' => '15 min',
-                'summary' => 'Memahami diagram venn, premis mayor-minor, kuantor universal (Semua) dan partikular (Sebagian/Beberapa).',
-                'content' => "## Kaidah Silogisme Baku BKN\n\n1. Jika satu premis partikular (Ada/Sebagian/Beberapa), maka kesimpulan **wajib partikular**.\n2. Jika satu premis negatif (Tidak/Bukan), maka kesimpulan **wajib negatif**.\n3. Dari dua premis partikular, **tidak dapat ditarik kesimpulan sah**.\n4. Dari dua premis negatif, **tidak dapat ditarik kesimpulan sah**.",
-                'file_path' => null,
-                'video_url' => null,
-                'is_published' => true,
-                'is_free' => false,
-            ],
-            [
-                'category_id' => $catTKP->id,
-                'title' => 'Integritas & Nilai Core Values ASN Ber-AKHLAK',
-                'slug' => 'integritas-core-values-berakhlak',
-                'type' => 'video',
-                'level' => 'Dasar',
-                'duration' => '20 min',
-                'summary' => 'Panduan pola pikir ASN dalam menolak gratifikasi, nepotisme, dan menjaga kerahasiaan jabatan untuk meraih skor maksimal 5 di setiap butir TKP.',
-                'content' => "## 7 Nilai Dasar ASN Ber-AKHLAK\n\n1. **Berorientasi Pelayanan:** Memahami dan memenuhi kebutuhan masyarakat.\n2. **Akuntabel:** Bertanggung jawab atas kepercayaan yang diberikan.\n3. **Kompeten:** Terus belajar dan mengembangkan kapabilitas.\n4. **Harmonis:** Saling peduli dan menghargai perbedaan.\n5. **Loyal:** Berdedikasi dan mengutamakan kepentingan bangsa.\n6. **Adaptif:** Terus berinovasi dan antusias menghadapi perubahan.\n7. **Kolaboratif:** Membangun kerja sama yang sinergis.",
-                'file_path' => null,
-                'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                'is_published' => true,
-                'is_free' => true,
-            ],
-        ];
+        // 4. Create Materials for Profiling ASN
+        Material::truncate();
 
-        foreach ($materialsData as $mData) {
-            Material::updateOrCreate(['slug' => $mData['slug']], $mData);
-        }
+        Material::create([
+            'category_id' => $catManajerial->id,
+            'title' => 'Panduan Standar Kompetensi Manajerial ASN (PermenPAN-RB No. 38/2017)',
+            'slug' => 'panduan-kompetensi-manajerial-asn',
+            'type' => 'Modul PDF & Teori',
+            'level' => 'Madya & Pratama',
+            'duration' => '30 Menit',
+            'summary' => 'Rangkuman lengkap 8 kompetensi manajerial (Integritas, Kerjasama, Komunikasi, Orientasi pada Hasil, Pelayanan Publik, Pengembangan Diri, Mengelola Perubahan, Pengambilan Keputusan) dan indikator perilaku level 1-5.',
+            'content' => 'Standar Kompetensi Manajerial ASN merupakan pedoman pokok dalam pemetaan talent pool dan seleksi terbuka jabatan pimpinan tinggi (JPT) maupun fungsional ahli. Pahami kata kunci indikator perilaku dan situasi dilematis etika birokrasi.',
+            'is_published' => true,
+            'is_free' => true,
+        ]);
 
-        // 5. Seed Historical Tryout Session for User
+        Material::create([
+            'category_id' => $catDigital->id,
+            'title' => 'Literasi Digital ASN: 4 Pilar Indonesia Makin Cakap Digital',
+            'slug' => 'literasi-digital-asn-4-pilar',
+            'type' => 'Panduan Komprehensif',
+            'level' => 'Semua Jenjang Jabatan',
+            'duration' => '25 Menit',
+            'summary' => 'Kupas tuntas Digital Skills, Digital Culture, Digital Ethics, dan Digital Safety untuk ASN di era Satu Data Indonesia dan Sistem Pemerintahan Berbasis Elektronik (SPBE).',
+            'content' => 'Literasi digital bukan sekadar kemampuan mengoperasikan komputer, melainkan kesadaran etika bermedia sosial, kepatuhan pelindungan data pribadi (UU PDP), dan pencegahan rekayasa sosial di lingkungan birokrasi.',
+            'is_published' => true,
+            'is_free' => true,
+        ]);
+
+        Material::create([
+            'category_id' => $catEmerging->id,
+            'title' => 'Emerging Skills & Analytical Thinking: Kunci Menembus Box 9 Talent Pool',
+            'slug' => 'emerging-skills-analytical-thinking-asn',
+            'type' => 'Studi Kasus & Analisis',
+            'level' => 'Lanjutan (Advanced)',
+            'duration' => '40 Menit',
+            'summary' => 'Metode membedah masalah publik kompleks, teknik triangulasi data silang, pembuatan scenario planning anggaran, serta adopsi AI dan otomasi dalam tata kelola pelayanan publik.',
+            'content' => 'Emerging Skills menuntut aparatur memiliki analytical mindset. Pelajari cara mengidentifikasi bottleneck proses kerja, merumuskan hipotesis perbaikan, dan menyusun rekomendasi kebijakan berbasis bukti kuantitatif.',
+            'is_published' => true,
+            'is_free' => false,
+        ]);
+
+        Material::create([
+            'category_id' => $catPotensi->id,
+            'title' => 'Mastery Penalaran Figural, Logika Silogisme & Tes Potensi ASN',
+            'slug' => 'mastery-penalaran-figural-dan-potensi',
+            'type' => 'Drill Soal & Pembahasan',
+            'level' => 'Semua Jenjang',
+            'duration' => '35 Menit',
+            'summary' => 'Trik cepat membaca rotasi pola gambar spasial, keteraturan matriks bangun, penalaran analitis hubungan berantai, serta silogisme kategorik.',
+            'content' => 'Tes potensi kognitif dan figural menilai ketahanan mental dan kecepatan berpikir kritis. Kuasai rumus eliminasi opsi dan identifikasi pola rotasi 90/180/270 derajat.',
+            'is_published' => true,
+            'is_free' => true,
+        ]);
+
+        // 5. Seed Example Tryout Sessions with ASN Profiling Scores
+        TryoutSession::truncate();
+
         TryoutSession::create([
             'user_id' => $user->id,
-            'title' => 'Simulasi SKD Nasional #11',
-            'twk_score' => 108,
-            'tiu_score' => 137,
-            'tkp_score' => 167,
-            'total_score' => 412,
+            'title' => 'Simulasi Profiling & Asesmen Kompetensi ASN #1',
+            'twk_score' => 88,
+            'tiu_score' => 85,
+            'tkp_score' => 90,
+            'total_score' => 355,
+            'category_scores' => [
+                'MANAJERIAL' => 92,
+                'DIGITAL' => 86,
+                'EMERGING' => 90,
+                'POTENSI' => 87,
+            ],
+            'competency_levels' => [
+                'Integritas & Etika' => 'Sangat Baik (Level 4)',
+                'Literasi Digital' => 'Mahir (Level 4)',
+                'Berpikir Analitis' => 'Optimal (Level 4)',
+                'Kognitif & Figural' => 'Tinggi (Level 4)',
+            ],
+            'talent_quadrant' => 'Bintang / Box 9 (High Potential & High Performance)',
             'is_passed' => true,
-            'answers' => [0 => 0, 1 => 1, 2 => 2, 3 => 1, 4 => 1, 5 => 1, 6 => 1, 7 => 2, 8 => 2, 9 => 1],
-            'time_spent_seconds' => 4820,
-            'completed_at' => now()->subDays(3),
-        ]);
-
-        TryoutSession::create([
-            'user_id' => $user->id,
-            'title' => 'Simulasi SKD Mandiri #10',
-            'twk_score' => 62,
-            'tiu_score' => 125,
-            'tkp_score' => 170,
-            'total_score' => 357,
-            'is_passed' => false, // TWK < 65
-            'answers' => [0 => 2, 1 => 0],
-            'time_spent_seconds' => 5200,
-            'completed_at' => now()->subDays(6),
-        ]);
-
-        // Call dedicated seeders for 21 modules and 110 full national exam questions
-        $this->call([
-            SkdPackageSeeder::class,
-            FullSkd110QuestionsSeeder::class,
+            'answers' => [1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 1],
+            'time_spent_seconds' => 4200,
+            'completed_at' => now()->subDays(2),
         ]);
     }
 }

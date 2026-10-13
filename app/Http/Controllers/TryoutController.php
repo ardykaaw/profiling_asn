@@ -22,7 +22,7 @@ class TryoutController extends Controller
             ->map(function ($q) {
                 return [
                     'id' => $q->id,
-                    'kategori' => $q->category->code ?? 'TWK',
+                    'kategori' => $q->category->code ?? 'MANAJERIAL',
                     'category_name' => $q->category->name ?? '',
                     'subkategori' => $q->sub_category,
                     'soal' => $q->question,
@@ -59,54 +59,92 @@ class TryoutController extends Controller
         $user = $request->user();
         $answers = $validated['answers'];
 
-        $twkScore = 0;
-        $tiuScore = 0;
-        $tkpScore = 0;
-
         $questions = Question::with('category')->where('is_active', true)->get();
+        $categories = Category::all()->keyBy('code');
+
+        $catScores = [
+            'MANAJERIAL' => 0,
+            'DIGITAL' => 0,
+            'EMERGING' => 0,
+            'POTENSI' => 0,
+        ];
+        $catMax = [
+            'MANAJERIAL' => 0,
+            'DIGITAL' => 0,
+            'EMERGING' => 0,
+            'POTENSI' => 0,
+        ];
 
         foreach ($questions as $index => $q) {
-            $catCode = $q->category->code ?? 'TWK';
-            // User answer can be keyed by question ID or index
+            $catCode = $q->category->code ?? 'MANAJERIAL';
+            if (!isset($catScores[$catCode])) {
+                $catScores[$catCode] = 0;
+                $catMax[$catCode] = 0;
+            }
+
+            $catMax[$catCode] += 5; // Each question max 5 points
+
             $selected = $answers[$q->id] ?? ($answers[$index] ?? null);
 
             if ($selected !== null) {
                 $selected = (int) $selected;
-                if ($catCode === 'TWK') {
+                if (!empty($q->scores) && is_array($q->scores) && isset($q->scores[$selected])) {
+                    $catScores[$catCode] += (int) $q->scores[$selected];
+                } else {
                     if ($selected === (int) $q->correct_answer) {
-                        $twkScore += 5;
+                        $catScores[$catCode] += 5;
                     }
-                } elseif ($catCode === 'TIU') {
-                    if ($selected === (int) $q->correct_answer) {
-                        $tiuScore += 5;
-                    }
-                } elseif ($catCode === 'TKP') {
-                    // TKP tiered score (1-5)
-                    $scoresArray = $q->scores ?: [5, 4, 3, 2, 1];
-                    $point = isset($scoresArray[$selected]) ? (int) $scoresArray[$selected] : 3;
-                    $tkpScore += $point;
                 }
             }
         }
 
-        $totalScore = $twkScore + $tiuScore + $tkpScore;
-        $isPassed = ($twkScore >= 65) && ($tiuScore >= 80) && ($tkpScore >= 166);
+        // Calculate normalized scores (percentage 0-100)
+        $normalizedScores = [];
+        foreach ($catScores as $code => $score) {
+            $max = $catMax[$code] > 0 ? $catMax[$code] : 25;
+            $normalizedScores[$code] = round(($score / $max) * 100);
+        }
+
+        $totalScore = array_sum($catScores);
+        $avgPercentage = round(array_sum($normalizedScores) / max(count($normalizedScores), 1));
+
+        // Determine 9-Box Talent Grid
+        $talentQuadrant = 'Memenuhi Syarat (Optimum)';
+        if ($avgPercentage >= 85) {
+            $talentQuadrant = 'Bintang / Box 9 (High Potential & High Performance)';
+        } elseif ($avgPercentage >= 75) {
+            $talentQuadrant = 'Penampil Unggul / Box 8 (High Performance)';
+        } elseif ($avgPercentage >= 65) {
+            $talentQuadrant = 'Potensi Berkembang / Box 7 (Medium Potential)';
+        } else {
+            $talentQuadrant = 'Perlu Peningkatan / Box 4 (Need Development)';
+        }
+
+        $competencyLevels = [
+            'Manajerial & Sosio-Kultural' => $normalizedScores['MANAJERIAL'] >= 80 ? 'Level 4 (Mahir)' : 'Level 3 (Mampu)',
+            'Literasi Digital ASN' => $normalizedScores['DIGITAL'] >= 80 ? 'Level 4 (Mahir)' : 'Level 3 (Mampu)',
+            'Emerging Skills & Analitis' => $normalizedScores['EMERGING'] >= 80 ? 'Level 4 (Optimal)' : 'Level 3 (Berkembang)',
+            'Potensi Kognitif & Figural' => $normalizedScores['POTENSI'] >= 80 ? 'Level 4 (Tinggi)' : 'Level 3 (Sedang)',
+        ];
 
         $session = TryoutSession::create([
             'user_id' => $user->id,
-            'title' => $validated['title'] ?? 'Simulasi SKD Mandiri #'.(TryoutSession::where('user_id', $user->id)->count() + 1),
-            'twk_score' => $twkScore,
-            'tiu_score' => $tiuScore,
-            'tkp_score' => $tkpScore,
+            'title' => $validated['title'] ?? 'Asesmen Profiling Mandiri #'.(TryoutSession::where('user_id', $user->id)->count() + 1),
+            'twk_score' => $normalizedScores['POTENSI'],
+            'tiu_score' => $normalizedScores['MANAJERIAL'],
+            'tkp_score' => $normalizedScores['DIGITAL'],
             'total_score' => $totalScore,
-            'is_passed' => $isPassed,
+            'category_scores' => $normalizedScores,
+            'competency_levels' => $competencyLevels,
+            'talent_quadrant' => $talentQuadrant,
+            'is_passed' => $avgPercentage >= 70,
             'answers' => $answers,
             'time_spent_seconds' => $validated['time_spent'] ?? 3600,
             'completed_at' => now(),
         ]);
 
         return back()->with([
-            'success' => 'Simulasi berhasil disimpan!',
+            'success' => 'Hasil asesmen profiling berhasil diproses!',
             'session' => $session,
         ]);
     }

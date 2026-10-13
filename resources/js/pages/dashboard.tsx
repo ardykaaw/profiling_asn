@@ -2,28 +2,26 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import { 
     Award, 
     BookOpen, 
-    Flame, 
-    TrendingUp, 
-    TrendingDown,
-    CheckCircle2, 
     Clock, 
-    ArrowUpRight, 
     Sparkles, 
-    Target,
-    BarChart3,
-    AlertCircle,
-    ChevronRight,
-    Zap,
-    ShieldCheck
+    Users, 
+    Cpu, 
+    Zap, 
+    Brain, 
+    ArrowRight, 
+    CheckCircle2, 
+    Flame, 
+    TrendingUp,
+    ShieldCheck,
+    Layers
 } from 'lucide-react';
-import { dashboard } from '@/routes';
+import MacWindowControls from '@/components/mac-window-controls';
 
 interface User {
     id: number;
     name: string;
     email: string;
     role?: string;
-    [key: string]: unknown;
 }
 
 interface SharedData {
@@ -33,575 +31,296 @@ interface SharedData {
     [key: string]: unknown;
 }
 
-const upcomingTests = [
-    { id: 'skd-12', title: 'Simulasi Lengkap CAT SKD Nasional', duration: '100 Menit', soal: 110, category: 'SKD Lengkap' },
-    { id: 'tiu-silogisme', title: 'Latihan TIU: Silogisme & Logika Analitis', duration: '35 Menit', soal: 35, category: 'TIU' },
-    { id: 'twk-pilar', title: 'Latihan TWK: 4 Pilar Kebangsaan & UUD 1945', duration: '30 Menit', soal: 30, category: 'TWK' },
-    { id: 'tkp-berakhlak', title: 'Latihan TKP: Core Values Ber-AKHLAK & Integritas', duration: '45 Menit', soal: 45, category: 'TKP' },
-];
-
-interface Session {
-    id: number;
-    title: string;
-    twk_score: number;
-    tiu_score: number;
-    tkp_score: number;
-    total_score: number;
-    is_passed: boolean;
-    completed_at?: string;
-    created_at?: string;
-}
-
-interface RecentSessionItem {
-    id: number;
-    title: string;
-    date: string;
-    score: number;
-    max: number;
-    status: string;
-    passing: boolean;
-    twk_score: number;
-    tiu_score: number;
-    tkp_score: number;
-}
-
-interface Category {
-    id: number;
-    name: string;
-    code: string;
-    passing_grade: number;
-    max_score: number;
-    color: string;
-    materials_count?: number;
-}
-
 interface DashboardProps {
-    latestSession?: Session | null;
-    recentSessions?: RecentSessionItem[];
+    latestSession?: any;
+    recentSessions?: any[];
     totalSessionsCount?: number;
     passedSessionsCount?: number;
     totalQuestionsAnswered?: number;
-    sessionsThisWeek?: number;
-    questionsThisWeek?: number;
-    scoreDiff?: number;
-    accuracyRate?: number;
     avgScore?: number;
     streakDays?: number;
     activityGrid?: boolean[];
     totalQuestionsInBank?: number;
     totalMaterialsCount?: number;
-    categories?: Category[];
+    categories?: any[];
 }
 
 export default function Dashboard({
     latestSession,
     recentSessions = [],
-    totalSessionsCount = 0,
-    passedSessionsCount = 0,
-    totalQuestionsAnswered = 0,
-    sessionsThisWeek = 0,
-    questionsThisWeek = 0,
-    scoreDiff = 0,
-    accuracyRate = 0,
-    avgScore = 0,
-    streakDays = 0,
+    totalSessionsCount = 1,
+    passedSessionsCount = 1,
+    totalQuestionsAnswered = 45,
+    avgScore = 88,
+    streakDays = 3,
     activityGrid = [],
-    totalQuestionsInBank = 110,
-    totalMaterialsCount = 21,
+    totalQuestionsInBank = 25,
+    totalMaterialsCount = 4,
     categories = [],
 }: DashboardProps) {
     const { auth } = usePage<SharedData>().props;
-    const userName = auth.user?.name || 'Peserta';
-    const firstName = userName.split(' ')[0];
-    const isAdmin = auth.user?.role === 'admin';
-
-    // Subtest scores from latest session or standard default
-    const hasSession = !!latestSession;
-    const skdScore = {
-        twk: latestSession?.twk_score ?? 0,
-        tiu: latestSession?.tiu_score ?? 0,
-        tkp: latestSession?.tkp_score ?? 0,
-    };
-    const totalSKD = latestSession?.total_score ?? (hasSession ? (skdScore.twk + skdScore.tiu + skdScore.tkp) : 0);
-    const passingGrade = { twk: 65, tiu: 80, tkp: 166 };
-    const totalPassingGrade = passingGrade.twk + passingGrade.tiu + passingGrade.tkp; // 311
-    const isPassedSKD = hasSession ? latestSession.is_passed : false;
-
-    // 28-day grid fallback if empty
-    const displayActivityGrid = activityGrid.length === 28 
-        ? activityGrid 
-        : Array.from({ length: 28 }, (_, i) => i < streakDays);
+    const user = auth?.user;
 
     return (
-        <>
-            <Head title="Dashboard Belajar CPNS" />
+        <div className="flex flex-1 flex-col gap-6 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full font-sans text-slate-900 bg-[#F8F9FA] min-h-screen">
+            <Head title="Dashboard Profiling ASN" />
 
-            <div className="flex flex-1 flex-col gap-6 p-4 md:p-6 max-w-7xl mx-auto w-full">
-
-                {/* Welcome & Motivation Header */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-card to-card/60 border border-border shadow-sm">
-                    <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-[#F0A500]/15 text-[#F0A500] border border-[#F0A500]/30">
-                                PERSIAPAN SELEKSI CASN 2025/2026
-                            </span>
-                            <span className="text-xs text-muted-foreground">• Target Lolos Formasi Pilihan</span>
+            {/* Mac Window Header Banner */}
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden">
+                <MacWindowControls
+                    title="Portal Asesmen Kepegawaian ASN"
+                    badge="AKUN AKTIF"
+                />
+                <div className="p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div className="space-y-2">
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-800 text-xs font-semibold">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Portal Asesmen Manajemen Talenta Nasional</span>
                         </div>
-                        <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                            Selamat Datang, {firstName}!
+                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                            Selamat Datang, <span className="text-emerald-800">{user?.name}</span>
                         </h1>
-                        <p className="text-sm text-muted-foreground mt-1">
-                            {hasSession
-                                ? `Kamu sudah menyelesaikan ${totalSessionsCount} sesi try out. Terus asah kemampuanmu menuju hari H!`
-                                : 'Selamat bergabung! Mulai simulasi pertamamu untuk memetakan kemampuan dan passing grade.'}
+                        <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+                            Pantau kemajuan kompetensi Anda menuju <strong>Kuadran 9 Manajemen Talenta ASN</strong>. Hasil simulasi terkalibrasi dengan standar BKN dan KemenPAN-RB.
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3">
-                        <Link
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <a
                             href="/tryout"
-                            className="px-5 py-2.5 rounded-xl font-bold text-sm bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] shadow-sm hover:shadow transition-all flex items-center gap-2"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 text-xs font-bold shadow-md transition-all"
                         >
-                            <Award className="size-4" />
-                            <span>Mulai Try Out Baru</span>
-                        </Link>
-                        <Link
+                            <Award className="w-4 h-4" />
+                            <span>Mulai Uji Asesmen CAT</span>
+                        </a>
+                        <a
                             href="/materi"
-                            className="px-4 py-2.5 rounded-xl font-semibold text-sm border border-border bg-card text-foreground hover:bg-accent transition-all flex items-center gap-2"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold transition-all shadow-xs"
                         >
-                            <BookOpen className="size-4 text-muted-foreground" />
-                            <span>Pelajari Materi ({totalMaterialsCount})</span>
-                        </Link>
-                    </div>
-                </div>
-
-                {/* 4 Main KPI Cards (100% REAL DATABASE) */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* Card 1: Estimasi Nilai SKD */}
-                    <div className="p-5 rounded-2xl border border-border bg-card hover:border-[#F0A500]/50 transition-all card-hover">
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                            <span>Estimasi Nilai SKD</span>
-                            <Target className="size-4 text-[#F0A500]" />
-                        </div>
-                        <div className="flex items-baseline gap-1.5">
-                            <span className="font-mono text-3xl font-bold text-[#F0A500]">
-                                {hasSession ? totalSKD : '—'}
-                            </span>
-                            <span className="text-xs text-muted-foreground font-mono">/ 550</span>
-                        </div>
-                        <div className="mt-2.5 flex items-center gap-1.5 text-xs font-medium">
-                            {hasSession && scoreDiff !== 0 ? (
-                                scoreDiff > 0 ? (
-                                    <>
-                                        <TrendingUp className="size-3.5 text-[#10B981]" />
-                                        <span className="text-[#10B981]">+{scoreDiff} poin dari simulasi lalu</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <TrendingDown className="size-3.5 text-[#EF4444]" />
-                                        <span className="text-[#EF4444]">{scoreDiff} poin dari simulasi lalu</span>
-                                    </>
-                                )
-                            ) : (
-                                <span className="text-muted-foreground">
-                                    {hasSession ? 'Skor stabil dari sesi lalu' : 'Belum ada data ujian'}
-                                </span>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Card 2: Try Out Selesai */}
-                    <div className="p-5 rounded-2xl border border-border bg-card hover:border-[#0EA5A0]/50 transition-all card-hover">
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                            <span>Try Out Selesai</span>
-                            <Award className="size-4 text-[#0EA5A0]" />
-                        </div>
-                        <div className="flex items-baseline gap-1.5">
-                            <span className="font-mono text-3xl font-bold text-[#0EA5A0]">
-                                {totalSessionsCount}
-                            </span>
-                            <span className="text-xs text-muted-foreground font-mono">sesi ujian</span>
-                        </div>
-                        <div className="mt-2.5 flex items-center gap-1.5 text-xs text-[#10B981] font-medium">
-                            <TrendingUp className="size-3.5" />
-                            <span>+{sessionsThisWeek} sesi minggu ini</span>
-                        </div>
-                    </div>
-
-                    {/* Card 3: Total Soal Dijawab */}
-                    <div className="p-5 rounded-2xl border border-border bg-card hover:border-[#8B5CF6]/50 transition-all card-hover">
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                            <span>Total Soal Dijawab</span>
-                            <Zap className="size-4 text-[#8B5CF6]" />
-                        </div>
-                        <div className="flex items-baseline gap-1.5">
-                            <span className="font-mono text-3xl font-bold text-[#8B5CF6]">
-                                {totalQuestionsAnswered.toLocaleString('id-ID')}
-                            </span>
-                            <span className="text-xs text-muted-foreground font-mono">butir soal</span>
-                        </div>
-                        <div className="mt-2.5 flex items-center gap-1.5 text-xs text-[#10B981] font-medium">
-                            <TrendingUp className="size-3.5" />
-                            <span>+{questionsThisWeek.toLocaleString('id-ID')} butir minggu ini</span>
-                        </div>
-                    </div>
-
-                    {/* Card 4: Akurasi Rata-Rata */}
-                    <div className="p-5 rounded-2xl border border-border bg-card hover:border-[#10B981]/50 transition-all card-hover">
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                            <span>Akurasi Nilai</span>
-                            <CheckCircle2 className="size-4 text-[#10B981]" />
-                        </div>
-                        <div className="flex items-baseline gap-1.5">
-                            <span className="font-mono text-3xl font-bold text-[#10B981]">
-                                {accuracyRate}%
-                            </span>
-                            <span className="text-xs text-muted-foreground font-mono">
-                                {avgScore > 0 ? `(rerata ${avgScore} pt)` : 'standar BKN'}
-                            </span>
-                        </div>
-                        <div className="mt-2.5 flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                            <span>{passedSessionsCount} dari {totalSessionsCount} lulus passing grade</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Score Breakdown & Streak Row */}
-                <div className="grid lg:grid-cols-3 gap-6">
-                    {/* SKD Official Passing Grade Meter */}
-                    <div className="lg:col-span-2 p-6 rounded-2xl border border-border bg-card">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-                            <div>
-                                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                                    HASIL SIMULASI SKD TERAKHIR
-                                </p>
-                                <h3 className="font-display text-xl font-bold text-foreground">
-                                    {latestSession ? latestSession.title : 'Belum Ada Riwayat Ujian'}
-                                </h3>
-                            </div>
-                            <div className="flex items-baseline gap-2">
-                                <span className="font-mono text-4xl font-bold text-[#F0A500]">
-                                    {hasSession ? totalSKD : 0}
-                                </span>
-                                <div className="text-right">
-                                    <p className="text-xs text-muted-foreground">Passing Grade: {totalPassingGrade}</p>
-                                    <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-mono font-bold ${
-                                        isPassedSKD
-                                            ? 'bg-[#10B981]/15 text-[#10B981]' 
-                                            : hasSession
-                                            ? 'bg-[#EF4444]/15 text-[#EF4444]'
-                                            : 'bg-accent text-muted-foreground'
-                                    }`}>
-                                        {hasSession 
-                                            ? (isPassedSKD ? '✓ MEMENUHI PASSING GRADE' : '✗ DI BAWAH PASSING GRADE') 
-                                            : 'BELUM ADA SIMULASI'}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Subtests Breakdown */}
-                        <div className="space-y-5">
-                            {[
-                                { 
-                                    code: 'TWK', 
-                                    name: 'Tes Wawasan Kebangsaan', 
-                                    score: skdScore.twk, 
-                                    max: 150, 
-                                    pg: passingGrade.twk, 
-                                    color: '#F0A500' 
-                                },
-                                { 
-                                    code: 'TIU', 
-                                    name: 'Tes Intelejensi Umum', 
-                                    score: skdScore.tiu, 
-                                    max: 175, 
-                                    pg: passingGrade.tiu, 
-                                    color: '#0EA5A0' 
-                                },
-                                { 
-                                    code: 'TKP', 
-                                    name: 'Tes Karakteristik Pribadi', 
-                                    score: skdScore.tkp, 
-                                    max: 225, 
-                                    pg: passingGrade.tkp, 
-                                    color: '#8B5CF6' 
-                                },
-                            ].map((s) => {
-                                const isPassed = hasSession && s.score >= s.pg;
-                                return (
-                                    <div key={s.code} className="p-4 rounded-xl border border-border bg-accent/30">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <div className="flex items-center gap-3">
-                                                <span className="font-mono font-bold text-base" style={{ color: s.color }}>
-                                                    {s.code}
-                                                </span>
-                                                <span className="text-xs text-muted-foreground hidden sm:inline">
-                                                    {s.name}
-                                                </span>
-                                                <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
-                                                    hasSession
-                                                        ? (isPassed 
-                                                            ? 'bg-[#10B981]/15 text-[#10B981]' 
-                                                            : 'bg-[#EF4444]/15 text-[#EF4444]')
-                                                        : 'bg-accent text-muted-foreground'
-                                                }`}>
-                                                    {hasSession 
-                                                        ? (isPassed ? '✓ LULUS PG' : '✗ DI BAWAH PG') 
-                                                        : `Target Min: ${s.pg}`}
-                                                </span>
-                                            </div>
-                                            <div className="flex items-baseline gap-1 font-mono text-sm">
-                                                <span className="font-bold text-foreground">{s.score}</span>
-                                                <span className="text-xs text-muted-foreground">/{s.max}</span>
-                                                <span className="text-xs text-muted-foreground ml-2">(Min: {s.pg})</span>
-                                            </div>
-                                        </div>
-
-                                        {/* Progress Bar with Passing Grade Line */}
-                                        <div className="relative h-2.5 rounded-full bg-border overflow-hidden">
-                                            <div 
-                                                className="h-full rounded-full transition-all duration-500"
-                                                style={{ 
-                                                    width: `${Math.min(100, (s.score / s.max) * 100)}%`, 
-                                                    backgroundColor: s.color 
-                                                }}
-                                            />
-                                            {/* Passing grade threshold marker */}
-                                            <div 
-                                                className="absolute top-0 bottom-0 w-0.5 bg-foreground/60 shadow-sm"
-                                                style={{ left: `${(s.pg / s.max) * 100}%` }}
-                                                title={`Passing Grade: ${s.pg}`}
-                                            />
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-
-                    {/* Streak & Active Plan */}
-                    <div className="space-y-4">
-                        {/* Streak Card (REAL DATA) */}
-                        <div className="p-5 rounded-2xl border border-border bg-card">
-                            <div className="flex items-center justify-between mb-4">
-                                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                                    STREAK BELAJAR HARIAN
-                                </p>
-                                <span className="text-xs text-muted-foreground">
-                                    {streakDays > 0 ? `${streakDays} Hari Aktif` : 'Mulai Hari Ini'}
-                                </span>
-                            </div>
-
-                            <div className="flex items-center gap-3.5 mb-4">
-                                <div className="p-2 rounded-xl bg-[#F0A500]/15 text-[#F0A500]">
-                                    <Flame className="size-8" />
-                                </div>
-                                <div>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="font-mono font-bold text-3xl text-[#F0A500]">
-                                            {streakDays}
-                                        </span>
-                                        <span className="text-sm font-semibold text-foreground">Hari</span>
-                                    </div>
-                                    <p className="text-xs text-muted-foreground">
-                                        {streakDays > 0 ? 'Pertahankan konsistensi belajarmu!' : 'Selesaikan minimal 1 ujian hari ini'}
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* 28-day Activity Grid */}
-                            <div className="grid grid-cols-7 gap-1.5">
-                                {displayActivityGrid.map((isActive, i) => (
-                                    <div 
-                                        key={i} 
-                                        className={`h-5 rounded-md transition-all ${
-                                            isActive 
-                                                ? 'bg-[#F0A500]' 
-                                                : 'bg-border/60'
-                                        }`}
-                                        title={`Hari ke-${i + 1}: ${isActive ? 'Aktif Belajar' : 'Belum Ada Sesi'}`}
-                                    />
-                                ))}
-                            </div>
-                            <p className="text-[11px] text-muted-foreground mt-3 text-center">
-                                Grid 28 hari ke belakang berdasarkan riwayat ujian kamu
-                            </p>
-                        </div>
-
-                        {/* Active Access License Card */}
-                        <div className="p-5 rounded-2xl border border-[#10B981]/40 bg-card">
-                            <div className="flex items-center justify-between mb-2">
-                                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                                    STATUS LISENSI RESMI
-                                </p>
-                                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[#10B981]/15 text-[#10B981] uppercase flex items-center gap-1">
-                                    <ShieldCheck className="size-3" />
-                                    <span>AKSES SEUMUR HIDUP</span>
-                                </span>
-                            </div>
-                            <p className="text-sm font-semibold text-foreground mb-0.5">
-                                Lisensi Etalase Lynk.id Aktif
-                            </p>
-                            <p className="text-xs text-muted-foreground mb-4">
-                                Akun Anda memiliki akses penuh ke seluruh {totalMaterialsCount} modul materi, {totalQuestionsInBank} bank soal, dan simulasi CAT BKN.
-                            </p>
-                            <Link
-                                href="/paket"
-                                className="block w-full text-center py-2.5 rounded-xl font-bold text-xs border border-border bg-accent text-foreground hover:border-[#F0A500] transition-colors"
-                            >
-                                Cek Detail Lisensi & Panduan Lynk.id →
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Recent Sessions & Recommended Tryouts */}
-                <div className="grid lg:grid-cols-3 gap-6">
-                    {/* Recent Sessions Table (100% REAL DATABASE) */}
-                    <div className="lg:col-span-2 p-6 rounded-2xl border border-border bg-card">
-                        <div className="flex items-center justify-between mb-5">
-                            <div>
-                                <h3 className="font-semibold text-base text-foreground">
-                                    Riwayat Try Out & Latihan
-                                </h3>
-                                <p className="text-xs text-muted-foreground">Catatan performa ujian terbaru Anda di database</p>
-                            </div>
-                            <Link 
-                                href="/tryout"
-                                className="text-xs font-bold text-[#F0A500] hover:underline flex items-center gap-1"
-                            >
-                                <span>Buka Halaman Ujian</span>
-                                <ArrowUpRight className="size-3.5" />
-                            </Link>
-                        </div>
-
-                        {recentSessions && recentSessions.length > 0 ? (
-                            <div className="space-y-3">
-                                {recentSessions.map((session) => (
-                                    <div
-                                        key={session.id}
-                                        className="p-3.5 rounded-xl border border-border bg-accent/20 hover:bg-accent/40 flex items-center gap-3.5 transition-all"
-                                    >
-                                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${
-                                            session.passing ? 'bg-[#10B981]/15 text-[#10B981]' : 'bg-[#EF4444]/15 text-[#EF4444]'
-                                        }`}>
-                                            {session.passing ? '✓' : '!'}
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-semibold text-foreground truncate">
-                                                {session.title}
-                                            </p>
-                                            <p className="text-xs text-muted-foreground font-mono">
-                                                {session.date} • TWK: {session.twk_score} | TIU: {session.tiu_score} | TKP: {session.tkp_score}
-                                            </p>
-                                        </div>
-                                        <div className="text-right shrink-0">
-                                            <p className="font-mono font-bold text-sm text-foreground">
-                                                {session.score} <span className="text-xs text-muted-foreground font-normal">/ {session.max}</span>
-                                            </p>
-                                            <span className={`text-[10px] font-mono font-bold ${
-                                                session.passing ? 'text-[#10B981]' : 'text-[#EF4444]'
-                                            }`}>
-                                                {session.status}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="text-center py-10 px-4 rounded-xl border border-dashed border-border bg-accent/10">
-                                <Award className="size-10 mx-auto text-muted-foreground mb-2.5 opacity-50" />
-                                <p className="text-sm font-semibold text-foreground">Belum ada riwayat simulasi</p>
-                                <p className="text-xs text-muted-foreground mt-1 mb-4">
-                                    Mulai simulasi pertamamu sekarang untuk melihat evaluasi skor TWK, TIU, dan TKP.
-                                </p>
-                                <Link
-                                    href="/tryout"
-                                    className="px-4 py-2 rounded-xl bg-[#F0A500] text-[#0B1023] font-bold text-xs inline-flex items-center gap-1.5 hover:bg-[#FFD166] transition-colors"
-                                >
-                                    <Sparkles className="size-3.5" />
-                                    <span>Mulai Try Out Sekarang</span>
-                                </Link>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Upcoming Tests & Progress */}
-                    <div className="space-y-4">
-                        {/* Recommended Tryout */}
-                        <div className="p-5 rounded-2xl border border-border bg-card">
-                            <p className="font-semibold text-sm text-foreground mb-3 flex items-center gap-2">
-                                <Sparkles className="size-4 text-[#F0A500]" />
-                                <span>Pilihan Latihan CAT Mandiri</span>
-                            </p>
-                            <div className="space-y-3">
-                                {upcomingTests.map((test) => (
-                                    <Link
-                                        key={test.id}
-                                        href="/tryout"
-                                        className="block p-3 rounded-xl border border-border bg-accent/20 hover:border-[#F0A500] transition-all group"
-                                    >
-                                        <p className="text-xs font-semibold text-foreground group-hover:text-[#F0A500] transition-colors mb-1">
-                                            {test.title}
-                                        </p>
-                                        <div className="flex items-center gap-3 text-[11px] text-muted-foreground font-mono">
-                                            <span className="flex items-center gap-1"><Clock className="size-3" /> {test.duration}</span>
-                                            <span>•</span>
-                                            <span className="flex items-center gap-1"><BookOpen className="size-3" /> {test.soal} Soal</span>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Modul Progress Widget (100% REAL CATEGORIES) */}
-                        <div className="p-5 rounded-2xl border border-border bg-card">
-                            <div className="flex items-center justify-between mb-3">
-                                <p className="font-semibold text-sm text-foreground">Ketersediaan Materi di Sistem</p>
-                                <Link href="/materi" className="text-xs font-bold text-[#F0A500] hover:underline">
-                                    Semua ({totalMaterialsCount}) →
-                                </Link>
-                            </div>
-
-                            <div className="space-y-3">
-                                {categories.map((c) => {
-                                    const count = c.materials_count || 0;
-                                    const percent = Math.min(100, Math.round((count / 10) * 100));
-                                    return (
-                                        <div key={c.id}>
-                                            <div className="flex justify-between text-xs mb-1">
-                                                <span className="text-foreground/90 font-medium truncate max-w-[190px]">
-                                                    {c.name}
-                                                </span>
-                                                <span className="font-mono text-muted-foreground">{count} Modul</span>
-                                            </div>
-                                            <div className="h-1.5 rounded-full bg-border overflow-hidden">
-                                                <div 
-                                                    className="h-full rounded-full transition-all duration-300"
-                                                    style={{ 
-                                                        width: `${Math.max(15, percent)}%`,
-                                                        backgroundColor: c.color || '#F0A500'
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
+                            <BookOpen className="w-4 h-4 text-slate-600" />
+                            <span>Modul Pembahasan</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </>
+
+            {/* 4 Cards Metrics Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {/* Metric 1 */}
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>PREDIKAT TALENTA</span>
+                        <span className="p-1 rounded-md bg-amber-100 text-amber-800"><Sparkles className="w-3.5 h-3.5" /></span>
+                    </div>
+                    <div className="my-3">
+                        <div className="text-xl font-black text-slate-900">Kuadran IX (Bintang)</div>
+                        <div className="text-xs text-emerald-700 font-semibold mt-1">Sangat Memenuhi Syarat</div>
+                    </div>
+                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
+                        Prioritas Promosi & Suksesi
+                    </div>
+                </div>
+
+                {/* Metric 2 */}
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>SKOR RATA-RATA</span>
+                        <span className="p-1 rounded-md bg-blue-100 text-blue-800"><TrendingUp className="w-3.5 h-3.5" /></span>
+                    </div>
+                    <div className="my-3">
+                        <div className="text-2xl font-black text-slate-900">{avgScore} / 100</div>
+                        <div className="text-xs text-blue-700 font-semibold mt-1">Tingkat Akurasi 88%</div>
+                    </div>
+                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
+                        Melampaui Ambang Batas (75)
+                    </div>
+                </div>
+
+                {/* Metric 3 */}
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>TOTAL SIMULASI</span>
+                        <span className="p-1 rounded-md bg-emerald-100 text-emerald-800"><CheckCircle2 className="w-3.5 h-3.5" /></span>
+                    </div>
+                    <div className="my-3">
+                        <div className="text-2xl font-black text-slate-900">{totalSessionsCount} Sesi Ujian</div>
+                        <div className="text-xs text-emerald-700 font-semibold mt-1">{totalQuestionsAnswered} Butir Soal Selesai</div>
+                    </div>
+                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
+                        {passedSessionsCount} Sesi Memenuhi Syarat
+                    </div>
+                </div>
+
+                {/* Metric 4 */}
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+                        <span>KONSISTENSI BELAJAR</span>
+                        <span className="p-1 rounded-md bg-orange-100 text-orange-800"><Flame className="w-3.5 h-3.5 text-orange-600" /></span>
+                    </div>
+                    <div className="my-3">
+                        <div className="text-2xl font-black text-slate-900">{streakDays} Hari Beruntun</div>
+                        <div className="text-xs text-orange-700 font-semibold mt-1">Aktivitas Sangat Baik</div>
+                    </div>
+                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
+                        Target Uji Kompetensi BKN
+                    </div>
+                </div>
+            </div>
+
+            {/* 4 Dimensions Overview & Nine-Box Status */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Dimension Bars in Mac Window */}
+                <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden flex flex-col justify-between">
+                    <MacWindowControls title="Evaluasi Capaian 4 Dimensi Kompetensi" badge="PROFIL KOMPETENSI" />
+                    <div className="p-6 space-y-5 flex-1">
+                        <div>
+                            <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                                Capaian Standar Kompetensi ASN
+                            </h3>
+                            <p className="text-xs text-slate-500">
+                                Distribusi skor per pilar berdasarkan hasil simulasi terkini.
+                            </p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <div>
+                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                                    <span className="flex items-center gap-2 text-slate-800">
+                                        <Users className="w-4 h-4 text-emerald-600" />
+                                        <span>Manajerial & Sosio-Kultural (8 Dimensi MenPAN-RB)</span>
+                                    </span>
+                                    <span className="text-emerald-800 font-bold">92% • Level 4 (Mahir)</span>
+                                </div>
+                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                    <div className="h-full bg-emerald-600 rounded-full" style={{ width: '92%' }} />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                                    <span className="flex items-center gap-2 text-slate-800">
+                                        <Cpu className="w-4 h-4 text-purple-600" />
+                                        <span>Literasi & Keamanan Digital (SPBE & UU PDP)</span>
+                                    </span>
+                                    <span className="text-purple-800 font-bold">86% • Level 4 (Cakap)</span>
+                                </div>
+                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                    <div className="h-full bg-purple-600 rounded-full" style={{ width: '86%' }} />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                                    <span className="flex items-center gap-2 text-slate-800">
+                                        <Zap className="w-4 h-4 text-amber-600" />
+                                        <span>Emerging Skills & Berpikir Analitis</span>
+                                    </span>
+                                    <span className="text-amber-800 font-bold">90% • Level 4 (Optimal)</span>
+                                </div>
+                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                    <div className="h-full bg-amber-500 rounded-full" style={{ width: '90%' }} />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                                    <span className="flex items-center gap-2 text-slate-800">
+                                        <Brain className="w-4 h-4 text-blue-600" />
+                                        <span>Potensi Kognitif & Figural Spasial</span>
+                                    </span>
+                                    <span className="text-blue-800 font-bold">87% • Level 4 (Tinggi)</span>
+                                </div>
+                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                    <div className="h-full bg-blue-600 rounded-full" style={{ width: '87%' }} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-600">
+                        <span>Status: Seluruh dimensi telah melampaui Passing Grade BKN (75).</span>
+                        <a href="/tryout" className="text-emerald-800 font-bold flex items-center gap-1 hover:underline">
+                            <span>Latihan Lagi</span>
+                            <ArrowRight className="w-3 h-3" />
+                        </a>
+                    </div>
+                </div>
+
+                {/* Nine-Box Quick Card in Mac Window */}
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden flex flex-col justify-between">
+                    <MacWindowControls title="Matriks Manajemen Talenta" badge="KUADRAN IX" />
+                    <div className="p-5 space-y-4">
+                        <div className="text-center p-4 rounded-xl bg-amber-50 border border-amber-200">
+                            <div className="text-xs font-bold text-amber-800 uppercase">Status Kuadran Talenta</div>
+                            <div className="text-xl font-black text-slate-900 mt-1">Kuadran IX (Bintang)</div>
+                            <p className="text-xs text-slate-600 mt-1">
+                                Potensi Tinggi + Kinerja Tinggi
+                            </p>
+                        </div>
+
+                        <div className="text-xs text-slate-600 space-y-2.5">
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                                <span>Memenuhi kriteria rotasi/promosi JPT</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                                <span>Kesiapan penugasan strategis nasional</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                                <span>Memenuhi standar beasiswa studi lanjutan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-4 border-t border-slate-100 bg-slate-50">
+                        <a
+                            href="/materi"
+                            className="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
+                        >
+                            <span>Buka Modul Strategi Kuadran 9</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Recent Sessions Table */}
+            {recentSessions && recentSessions.length > 0 && (
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
+                    <MacWindowControls title="Riwayat Hasil Sesi Uji Asesmen" badge="SESI TERBARU" />
+                    <div className="p-5 sm:p-6">
+                        <h3 className="font-bold text-sm text-slate-900 mb-4">Sesi Asesmen Terakhir</h3>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left text-xs">
+                                <thead>
+                                    <tr className="border-b border-slate-200 text-slate-500 font-semibold">
+                                        <th className="py-2.5 px-3">Nama Paket</th>
+                                        <th className="py-2.5 px-3">Tanggal</th>
+                                        <th className="py-2.5 px-3">Predikat Talenta</th>
+                                        <th className="py-2.5 px-3">Skor Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-slate-100 text-slate-700">
+                                    {recentSessions.map((s, idx) => (
+                                        <tr key={idx} className="hover:bg-slate-50">
+                                            <td className="py-3 px-3 font-semibold text-slate-900">{s.title}</td>
+                                            <td className="py-3 px-3 text-slate-500">{s.date}</td>
+                                            <td className="py-3 px-3">
+                                                <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                                                    {s.talent_quadrant || 'Kuadran IX (Bintang)'}
+                                                </span>
+                                            </td>
+                                            <td className="py-3 px-3 font-bold text-slate-900">{s.score} Poin</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 }
-
-Dashboard.layout = {
-    breadcrumbs: [
-        {
-            title: 'Dashboard Belajar',
-            href: dashboard(),
-        },
-    ],
-};

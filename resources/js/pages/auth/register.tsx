@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import { login } from '@/routes';
 import { store } from '@/routes/register';
 
 type Props = {
@@ -17,15 +16,15 @@ type Props = {
 export default function Register({ passwordRules }: Props) {
     return (
         <>
-            <Head title="Aktivasi Akun — SiapCPNS" />
+            <Head title="Pendaftaran Akun — ProASN" />
 
             {/* Lynk.id Sync Notice */}
-            <div className="mb-2 p-3.5 rounded-xl border border-[#10B981]/30 bg-[#10B981]/10 text-xs flex items-start gap-3">
-                <Sparkles className="size-4 shrink-0 text-[#10B981] mt-0.5" />
+            <div className="mb-4 p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/70 text-xs flex items-start gap-3">
+                <Sparkles className="size-4 shrink-0 text-emerald-600 mt-0.5" />
                 <div>
-                    <p className="font-semibold text-[#EDF0FF]">Aktivasi Pembelian Lynk.id</p>
-                    <p className="text-[11px] text-[#94A3C4] mt-0.5 leading-normal">
-                        Gunakan <strong className="text-[#EDF0FF]">Nama</strong> dan <strong className="text-[#EDF0FF]">Email</strong> yang sama dengan data saat checkout di etalase Lynk.id agar akun Anda langsung terverifikasi secara instan.
+                    <p className="font-semibold text-emerald-950">Aktivasi Akun Asesmen ASN</p>
+                    <p className="text-[11px] text-emerald-800 mt-0.5 leading-normal">
+                        Pastikan mengisi <strong className="text-emerald-950">Nama Lengkap</strong> dan <strong className="text-emerald-950">Email</strong> resmi Anda untuk sinkronisasi bukti akses dan pencetakan rapor profil kompetensi.
                     </p>
                 </div>
             </div>
@@ -40,8 +39,8 @@ export default function Register({ passwordRules }: Props) {
                     <>
                         <div className="grid gap-3.5">
                             <div className="grid gap-1.5">
-                                <Label htmlFor="name" className="text-xs font-semibold text-[#CBD5E1]">
-                                    Nama Lengkap <span className="text-[#F0A500]">*</span>
+                                <Label htmlFor="name" className="text-xs font-semibold text-slate-700">
+                                    Nama Lengkap & Gelar <span className="text-emerald-600">*</span>
                                 </Label>
                                 <Input
                                     id="name"
@@ -51,138 +50,93 @@ export default function Register({ passwordRules }: Props) {
                                     tabIndex={1}
                                     autoComplete="name"
                                     name="name"
-                                    placeholder="Nama sesuai data checkout Lynk.id"
-                                    className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs"
+                                    placeholder="Contoh: Budi Santoso, S.STP"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
                                 />
-                                <InputError
-                                    message={errors.name}
-                                    className="mt-1"
-                                />
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div className="grid gap-1.5">
-                                    <Label htmlFor="email" className="text-xs font-semibold text-[#CBD5E1]">
-                                        Alamat Email <span className="text-[#F0A500]">*</span>
-                                    </Label>
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        required
-                                        tabIndex={2}
-                                        autoComplete="email"
-                                        name="email"
-                                        placeholder="Email akun Lynk.id"
-                                        className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs"
-                                    />
-                                    <InputError message={errors.email} className="mt-1" />
-                                </div>
-
-                                <div className="grid gap-1.5">
-                                    <Label htmlFor="phone" className="text-xs font-semibold text-[#CBD5E1]">
-                                        No. WhatsApp / Telepon
-                                    </Label>
-                                    <Input
-                                        id="phone"
-                                        type="tel"
-                                        tabIndex={3}
-                                        autoComplete="tel"
-                                        name="phone"
-                                        placeholder="08xxxxxxxxxx"
-                                        className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs"
-                                    />
-                                    <InputError message={errors.phone} className="mt-1" />
-                                </div>
+                                <InputError message={errors.name} />
                             </div>
 
                             <div className="grid gap-1.5">
-                                <div className="flex items-center justify-between">
-                                    <Label htmlFor="lynk_order_id" className="text-xs font-semibold text-[#CBD5E1]">
-                                        No. Invoice / Order ID Lynk.id
-                                    </Label>
-                                    <span className="text-[10px] text-[#6B7BA4] font-mono">Opsional</span>
-                                </div>
+                                <Label htmlFor="email" className="text-xs font-semibold text-slate-700">
+                                    Alamat Email Aktif <span className="text-emerald-600">*</span>
+                                </Label>
                                 <Input
-                                    id="lynk_order_id"
-                                    type="text"
-                                    tabIndex={4}
-                                    name="lynk_order_id"
-                                    placeholder="Contoh: LNK-99201"
-                                    className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs font-mono"
+                                    id="email"
+                                    type="email"
+                                    required
+                                    tabIndex={2}
+                                    autoComplete="email"
+                                    name="email"
+                                    placeholder="nama@instansi.go.id"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
                                 />
-                                <InputError message={errors.lynk_order_id} className="mt-1" />
+                                <InputError message={errors.email} />
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div className="grid gap-1.5">
-                                    <Label htmlFor="password" className="text-xs font-semibold text-[#CBD5E1]">
-                                        Kata Sandi <span className="text-[#F0A500]">*</span>
-                                    </Label>
-                                    <PasswordInput
-                                        id="password"
-                                        required
-                                        tabIndex={5}
-                                        autoComplete="new-password"
-                                        name="password"
-                                        placeholder="Min. 8 karakter"
-                                        passwordrules={passwordRules}
-                                        className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs"
-                                    />
-                                    <InputError message={errors.password} className="mt-1" />
-                                </div>
+                            <div className="grid gap-1.5">
+                                <Label htmlFor="phone" className="text-xs font-semibold text-slate-700">
+                                    Nomor WhatsApp / HP
+                                </Label>
+                                <Input
+                                    id="phone"
+                                    type="tel"
+                                    tabIndex={3}
+                                    autoComplete="tel"
+                                    name="phone"
+                                    placeholder="081234567890"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
+                                />
+                                <InputError message={errors.phone} />
+                            </div>
 
-                                <div className="grid gap-1.5">
-                                    <Label htmlFor="password_confirmation" className="text-xs font-semibold text-[#CBD5E1]">
-                                        Konfirmasi Sandi <span className="text-[#F0A500]">*</span>
-                                    </Label>
-                                    <PasswordInput
-                                        id="password_confirmation"
-                                        required
-                                        tabIndex={6}
-                                        autoComplete="new-password"
-                                        name="password_confirmation"
-                                        placeholder="Ulangi sandi"
-                                        passwordrules={passwordRules}
-                                        className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl text-xs"
-                                    />
-                                    <InputError
-                                        message={errors.password_confirmation}
-                                        className="mt-1"
-                                    />
-                                </div>
+                            <div className="grid gap-1.5">
+                                <Label htmlFor="password" className="text-xs font-semibold text-slate-700">
+                                    Kata Sandi <span className="text-emerald-600">*</span>
+                                </Label>
+                                <PasswordInput
+                                    id="password"
+                                    required
+                                    tabIndex={4}
+                                    autoComplete="new-password"
+                                    name="password"
+                                    placeholder="Minimal 8 karakter"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
+                                />
+                                <InputError message={errors.password} />
+                            </div>
+
+                            <div className="grid gap-1.5">
+                                <Label htmlFor="password_confirmation" className="text-xs font-semibold text-slate-700">
+                                    Konfirmasi Kata Sandi <span className="text-emerald-600">*</span>
+                                </Label>
+                                <PasswordInput
+                                    id="password_confirmation"
+                                    required
+                                    tabIndex={5}
+                                    autoComplete="new-password"
+                                    name="password_confirmation"
+                                    placeholder="Ulangi kata sandi"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
+                                />
+                                <InputError message={errors.password_confirmation} />
                             </div>
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full h-11 rounded-xl bg-[#F0A500] text-[#0B1023] font-bold text-xs hover:bg-[#FFD166] transition-all shadow-[0_4px_20px_rgba(240,165,0,0.2)] flex items-center justify-center gap-2"
-                                tabIndex={7}
-                                data-test="register-user-button"
+                                className="mt-2 w-full h-11 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm transition-all shadow-md"
+                                tabIndex={6}
                                 disabled={processing}
                             >
-                                {processing ? <Spinner className="text-[#0B1023]" /> : <ShieldCheck className="size-4" />}
-                                <span>Aktivasi Akun & Mulai Latihan</span>
+                                {processing && <Spinner className="text-white" />}
+                                Daftarkan Akun Saya
                             </Button>
                         </div>
 
-                        <div className="pt-2 border-t border-[#1E2C4A]/80 flex flex-col gap-2 text-center text-xs text-[#8FA0C0]">
-                            <div>
-                                Sudah memiliki akun?{' '}
-                                <TextLink href={login()} tabIndex={8} className="font-semibold text-[#F0A500] hover:underline">
-                                    Masuk sekarang
-                                </TextLink>
-                            </div>
-                            <div className="text-[11px] text-[#6B7BA4]">
-                                Belum checkout akses?{' '}
-                                <a
-                                    href="https://lynk.id"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-[#10B981] hover:underline inline-flex items-center gap-1 font-medium"
-                                >
-                                    <span>Beli akses di Etalase Lynk.id</span>
-                                    <ExternalLink className="size-3" />
-                                </a>
-                            </div>
+                        <div className="text-center text-xs text-slate-600 mt-2">
+                            Sudah memiliki akun ProASN?{' '}
+                            <a href="/login" tabIndex={7} className="font-semibold text-emerald-700 hover:underline">
+                                Masuk ke akun
+                            </a>
                         </div>
                     </>
                 )}
@@ -192,6 +146,6 @@ export default function Register({ passwordRules }: Props) {
 }
 
 Register.layout = {
-    title: 'Aktivasi Akun SiapCPNS',
-    description: 'Daftarkan akun Anda sesuai data pembelian di Lynk.id untuk akses seumur hidup.',
+    title: 'Daftar Akun Baru ProASN',
+    description: 'Akses instan modul uji kompetensi dan simulasi asesmen manajemen talenta.',
 };

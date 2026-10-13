@@ -16,6 +16,9 @@ class TryoutSession extends Model
         'tiu_score',
         'tkp_score',
         'total_score',
+        'category_scores',
+        'competency_levels',
+        'talent_quadrant',
         'is_passed',
         'answers',
         'time_spent_seconds',
@@ -25,6 +28,8 @@ class TryoutSession extends Model
     protected function casts(): array
     {
         return [
+            'category_scores' => 'array',
+            'competency_levels' => 'array',
             'answers' => 'array',
             'is_passed' => 'boolean',
             'completed_at' => 'datetime',

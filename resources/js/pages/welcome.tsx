@@ -1,40 +1,30 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useState } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { 
-    Check, 
-    ChevronDown, 
-    Sparkles, 
-    ArrowRight, 
-    ShieldCheck, 
-    Smartphone, 
-    RotateCcw, 
-    GraduationCap, 
-    Clock, 
-    TrendingUp, 
-    Brain, 
-    Target, 
+    Award, 
     BookOpen, 
+    Brain, 
+    Check, 
     CheckCircle2, 
+    ChevronRight, 
+    Clock, 
+    Cpu, 
+    Layers, 
+    Lock, 
     Menu, 
-    X,
-    CreditCard,
-    Zap,
-    BarChart3,
-    Trophy,
-    Bot,
-    Crosshair,
-    Monitor,
-    Rocket,
-    ExternalLink,
-    KeyRound
+    Rocket, 
+    ShieldCheck, 
+    Sparkles, 
+    Users, 
+    X, 
+    Zap 
 } from 'lucide-react';
-import { dashboard, login, register } from '@/routes';
+import MacWindowControls from '@/components/mac-window-controls';
 
 interface User {
     id: number;
     name: string;
     email: string;
-    [key: string]: unknown;
 }
 
 interface SharedData {
@@ -44,1262 +34,609 @@ interface SharedData {
     [key: string]: unknown;
 }
 
-const stats = [
-    { value: '47.000+', label: 'Peserta Aktif' },
-    { value: '12.500+', label: 'Soal Try Out' },
-    { value: '94%', label: 'Tingkat Kelulusan' },
-    { value: '380+', label: 'Modul Materi' },
-];
-
-const features: { icon: ReactNode; title: string; desc: string }[] = [
-    {
-        icon: <Zap className="size-5" />,
-        title: 'Try Out Adaptif BKN',
-        desc: 'Sistem soal adaptif berbasis CAT resmi BKN yang menyesuaikan tingkat kesulitan dengan kemampuan kamu secara real-time.',
-    },
-    {
-        icon: <BarChart3 className="size-5" />,
-        title: 'Analisis Mendalam & PG',
-        desc: 'Laporan performa detail per subtes (TWK, TIU, TKP) lengkap dengan perbandingan passing grade resmi BKN.',
-    },
-    {
-        icon: <BookOpen className="size-5" />,
-        title: 'Materi Lengkap SKD & SKB',
-        desc: 'Ribuan modul TWK, TIU, TKP, dan bidang teknis SKB dalam format video high-definition, PDF, dan ringkasan rumus cepat.',
-    },
-    {
-        icon: <Monitor className="size-5" />,
-        title: 'Simulasi CAT Real-Time',
-        desc: 'Tampilan antarmuka ujian persis tes CASN resmi BKN dengan navigasi nomor soal, countdown timer, dan sistem penilaian akurat.',
-    },
-    {
-        icon: <Bot className="size-5" />,
-        title: 'Asisten AI 24/7',
-        desc: 'Tanya jawab pembahasan soal tanpa batas dengan AI tutor yang menguasai seluruh materi dan kisi-kisi MenPAN-RB.',
-    },
-    {
-        icon: <Crosshair className="size-5" />,
-        title: 'Prediksi Kelulusan Formasi',
-        desc: 'Algoritma machine learning memprediksi peluang lolos berdasarkan tren nilai formasi kementerian pilihanmu.',
-    },
-];
-
-const sampleQuestions = [
-    {
-        kategori: 'TIU',
-        sub: 'Kemampuan Numerik (Perbandingan)',
-        soal: 'Sebuah proyek membutuhkan 8 pekerja untuk diselesaikan dalam 15 hari. Jika proyek harus selesai dalam 10 hari karena percepatan jadwal dinas, berapa pekerja tambahan yang diperlukan?',
-        pilihan: [
-            { text: '8 pekerja', correct: false },
-            { text: '4 pekerja', correct: true },
-            { text: '6 pekerja', correct: false },
-            { text: '12 pekerja', correct: false },
-        ],
-        pembahasan: 'Perbandingan berbalik nilai: (8 pekerja × 15 hari) / 10 hari = 12 pekerja total. Pekerja tambahan yang diperlukan = 12 - 8 = 4 pekerja.',
-    },
-    {
-        kategori: 'TWK',
-        sub: 'Pilar Negara (UUD 1945)',
-        soal: 'Berdasarkan Pasal 1 Ayat 3 Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, bentuk negara Indonesia ditegaskan sebagai...',
-        pilihan: [
-            { text: 'Negara Demokrasi Kerakyatan', correct: false },
-            { text: 'Negara Hukum', correct: true },
-            { text: 'Negara Kesatuan Presidensial', correct: false },
-            { text: 'Negara Federasi Republik', correct: false },
-        ],
-        pembahasan: 'Pasal 1 Ayat (3) UUD 1945 secara tegas menyatakan bahwa: "Negara Indonesia adalah negara hukum." Perubahan ini disahkan pada Amandemen Ketiga tahun 2001.',
-    },
-    {
-        kategori: 'TKP',
-        sub: 'Jejaring Kerja & Integritas',
-        soal: 'Anda dipindahtugaskan ke unit kerja baru yang memiliki beban kerja tinggi dan budaya komunikasi yang berbeda. Sikap terbaik Anda adalah...',
-        pilihan: [
-            { text: 'Segera beradaptasi, mempelajari SOP unit, dan berinisiatif membantu rekan tim kerja', correct: true },
-            { text: 'Bekerja sesuai instruksi minimum sambil menunggu arahan detail dari pimpinan', correct: false },
-            { text: 'Mengajukan permohonan mutasi kembali ke unit sebelumnya karena tidak cocok', correct: false },
-            { text: 'Mengerjakan tugas mandiri tanpa banyak berkomunikasi dengan rekan lain', correct: false },
-        ],
-        pembahasan: 'Aspek kemampuan beradaptasi dan jejaring kerja menuntut calon ASN proaktif dalam menyesuaikan diri dengan tim baru demi kelancaran pelayanan publik (Skor 5).',
-    },
-];
-
-const skdSubtests = [
-    {
-        code: 'TWK',
-        name: 'Tes Wawasan Kebangsaan',
-        pg: 65,
-        maxScore: 150,
-        soalCount: 30,
-        color: '#F0A500',
-        topics: ['Pancasila', 'UUD 1945', 'NKRI', 'Bhineka Tunggal Ika', 'Bela Negara', 'Bahasa Indonesia'],
-    },
-    {
-        code: 'TIU',
-        name: 'Tes Intelejensi Umum',
-        pg: 80,
-        maxScore: 175,
-        soalCount: 35,
-        color: '#0EA5A0',
-        topics: ['Analogi', 'Silogisme', 'Analitis', 'Berhitung', 'Deret Angka', 'Perbandingan', 'Figural'],
-    },
-    {
-        code: 'TKP',
-        name: 'Tes Karakteristik Pribadi',
-        pg: 166,
-        maxScore: 225,
-        soalCount: 45,
-        color: '#8B5CF6',
-        topics: ['Pelayanan Publik', 'Jejaring Kerja', 'Sosial Budaya', 'TIK', 'Profesionalisme', 'Anti Radikalisme'],
-    },
-];
-
-const testimonials = [
-    {
-        name: 'Rizky Amalia, S.Tr.Ak',
-        role: 'Lulus CPNS Kemenkeu 2024 (Peringkat 2)',
-        avatar: 'RA',
-        text: 'Berkat SiapCPNS saya lulus SKD dengan skor total 432, jauh melampaui passing grade. Sistem simulasi CAT-nya benar-benar 99% persis dengan ujian asli BKN!',
-        score: '432 / 550',
-    },
-    {
-        name: 'Budi Santoso, S.Kom',
-        role: 'Lulus CPNS Kemendikbud 2024',
-        avatar: 'BS',
-        text: 'Fitur analisis kelemahan AI sangat membantu saya mendongkrak subtes TIU yang sebelumnya momok. Akhirnya tembus nilai TIU 145!',
-        score: '418 / 550',
-    },
-    {
-        name: 'Dewi Rahayu, S.Stat',
-        role: 'Lulus CPNS BPS RI 2024 (Peringkat 1)',
-        avatar: 'DR',
-        text: 'Materi TWK dan pembahasannya sangat komprehensif tanpa hafalan membosankan. Belajar terstruktur 2 bulan sudah pede ikut ujian.',
-        score: '441 / 550',
-    },
-];
-
-// URL etalase resmi toko Lynk.id (dapat disesuaikan tautan resminya nanti)
-const LYNK_ID_STORE_URL = 'https://lynk.id';
-
-const plans = [
-    {
-        id: 'free',
-        name: 'Demo Gratis',
-        desc: 'Untuk mencoba format ujian CAT BKN dan simulasi awal.',
-        badge: null,
-        color: '#6B7BA4',
-        features: [
-            { text: '5x Sesi Try Out Simulasi SKD', ok: true },
-            { text: '10 Modul Materi Dasar BKN', ok: true },
-            { text: 'Kunci Jawaban & Skor BKN', ok: true },
-            { text: 'Pembahasan Video Lengkap', ok: false },
-            { text: 'Analisis AI & Prediksi Kelulusan', ok: false },
-            { text: 'Akses Bank Soal Lengkap SKB', ok: false },
-        ],
-    },
-    {
-        id: 'basic',
-        name: 'Akses Mandiri SKD',
-        desc: 'Fondasi penting pejuang CPNS mandiri dengan bank soal lengkap.',
-        badge: null,
-        color: '#0EA5A0',
-        features: [
-            { text: 'Try Out SKD Standar BKN Tak Terbatas', ok: true },
-            { text: '120 Modul Materi Lengkap', ok: true },
-            { text: 'Pembahasan Soal Teks Detail', ok: true },
-            { text: 'Ranking Nasional Real-Time', ok: true },
-            { text: 'Analisis AI & Prediksi Skor', ok: false },
-            { text: 'Mentoring Tatap Muka Online', ok: false },
-        ],
-    },
-    {
-        id: 'pro',
-        name: 'Akses Komplit SKD & SKB',
-        desc: 'Pilihan paling populer dengan fitur terlengkap kisi-kisi BKN.',
-        badge: 'REKOMENDASI TERBAIK',
-        color: '#F0A500',
-        features: [
-            { text: 'Try Out SKD & SKB Tak Terbatas', ok: true },
-            { text: '380+ Modul Video & PDF Super Lengkap', ok: true },
-            { text: 'Pembahasan Video oleh Alumni CPNS', ok: true },
-            { text: 'Analisis AI Kelemahan & Rekomendasi Soal', ok: true },
-            { text: 'Prediksi Kelulusan Formasi Instansi', ok: true },
-            { text: 'Akses Grup Diskusi Komunitas Telegram', ok: true },
-        ],
-    },
-    {
-        id: 'premium',
-        name: 'Akses VIP Mentoring',
-        desc: 'Bimbingan intensif tatap muka daring sampai pengumuman NIP resmi.',
-        badge: 'VIP BUNDLE',
-        color: '#8B5CF6',
-        features: [
-            { text: 'Semua Fitur Paket Komplit', ok: true },
-            { text: 'Mentoring Interaktif Live 2x Seminggu', ok: true },
-            { text: 'Konsultasi 1-on-1 Pemilihan Formasi BKN', ok: true },
-            { text: 'Simulasi Wawancara & Psikotes SKB', ok: true },
-            { text: 'Akses Bank Soal VIP 15.000+ Butir', ok: true },
-            { text: 'Garansi Uang Kembali 30 Hari', ok: true },
-        ],
-    },
-];
-
-const faqs = [
-    {
-        q: 'Apakah tampilan try out mirip dengan ujian CAT resmi BKN?',
-        a: 'Ya, sistem simulasi SiapCPNS dirancang meniru 100% sistem CAT (Computer Assisted Test) Badan Kepegawaian Negara (BKN), lengkap dengan batas waktu otomatis, navigasi daftar soal, tombol ragu-ragu, serta format perhitungan skor TWK, TIU, dan TKP sesuai PermenPAN-RB terbaru.',
-    },
-    {
-        q: 'Bagaimana sistem pembayaran SiapCPNS? Apakah ada biaya langganan bulanan?',
-        a: 'Tidak ada biaya langganan bulanan maupun tahunan. SiapCPNS menggunakan sistem sekali bayar (One-Time Purchase) melalui etalase resmi kami di Lynk.id. Cukup bayar satu kali, Anda mendapatkan lisensi akses selamanya.',
-    },
-    {
-        q: 'Bagaimana cara akun saya aktif setelah checkout di Lynk.id?',
-        a: 'Saat checkout di Lynk.id, pastikan Anda menggunakan email yang aktif. Setelah transaksi berhasil, daftarkan akun di SiapCPNS dengan nama dan email yang sama. Sistem akan memverifikasi dan akun Anda langsung aktif tanpa perlu konfirmasi berbelit-belit.',
-    },
-    {
-        q: 'Metode pembayaran apa saja yang didukung di Lynk.id?',
-        a: 'Lynk.id mendukung seluruh metode pembayaran terpopuler di Indonesia: QRIS instan dari semua e-wallet (GoPay, OVO, Dana, ShopeePay), Transfer Virtual Account semua bank nasional (BCA, Mandiri, BRI, BNI), serta kartu debit/kredit.',
-    },
-    {
-        q: 'Apakah soal dan materi diperbarui?',
-        a: 'Ya, materi pembelajaran serta bank soal ujian nasional terus diperbarui secara berkala oleh tim pengajar kami sesuai kisi-kisi dan passing grade BKN teranyar tanpa dikenakan biaya tambahan apa pun.',
-    },
-];
-
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
-    const [mobileOpen, setMobileOpen] = useState(false);
-    const [annual, setAnnual] = useState(false);
-    const [activeFaq, setActiveFaq] = useState<number | null>(0);
-    const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);
-    const [selectedOption, setSelectedOption] = useState<number | null>(null);
-    const [showExplanation, setShowExplanation] = useState(false);
-    const [selectedPlanModal, setSelectedPlanModal] = useState<string | null>(null);
-    const [timeSec, setTimeSec] = useState(2843); // 47m 23s
+    const user = auth?.user;
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState<'manajerial' | 'digital' | 'emerging' | 'potensi'>('manajerial');
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeSec((prev) => (prev > 0 ? prev - 1 : 3600));
-        }, 1000);
-        return () => clearInterval(timer);
-    }, []);
-
-    const formatTimer = (sec: number) => {
-        const m = Math.floor(sec / 60);
-        const s = sec % 60;
-        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    const sampleQuestions = {
+        manajerial: {
+            title: 'Studi Kasus: Integritas & Anti-Gratifikasi Birokrasi',
+            windowTitle: 'Kasus Manajerial — Dilema Integritas Kedinasan',
+            tag: '8 Dimensi MenPAN-RB',
+            soal: 'Setelah penandatanganan Berita Acara Pemeriksaan (BAP) proyek pengadaan sistem kepegawaian, pimpinan vendor menyerahkan cinderamata personal berupa jam tangan bernilai tinggi sebagai ucapan terima kasih kemitraan. Anda menyadari adanya ketentuan kode etik instansi. Tindakan Anda adalah...',
+            pilihan: [
+                'Menerima hadiah tersebut demi menjaga relasi baik dan keharmonisan kemitraan.',
+                'Menolak secara tegas dan santun dengan menjelaskan bahwa penerimaan hadiah melanggar integritas serta kode etik kedinasan.',
+                'Menerima hadiah namun menyimpannya secara rahasia agar tidak menimbulkan kecurigaan staf lain.',
+                'Menyuruh staf honorer menerima hadiah tersebut atas nama pribadi.'
+            ],
+            kunci: 'Opsi B (Skor 5 — Sangat Kompeten)',
+            pembahasan: 'Integritas menuntut ASN berani menolak segala bentuk gratifikasi yang berpotensi memicu konflik kepentingan dan mencederai objektivitas tata kelola birokrasi pemerintahan.'
+        },
+        digital: {
+            title: 'Studi Kasus: Keamanan Informasi & Pencegahan Phishing ASN',
+            windowTitle: 'Kasus Digital — Keamanan Data & Etika SPBE',
+            tag: 'Pilar Digital Safety',
+            soal: 'Anda menerima email kedinasan dengan subjek mendesak "Verifikasi Data Gaji ASN" yang meminta klik tautan mencurigakan untuk menghindari penundaan gaji. Format tautan memiliki kejanggalan karakter domain. Tindakan paling tepat adalah...',
+            pilihan: [
+                'Segera memasukkan identitas NIK dan PIN rekening agar hak keuangan tidak tertunda.',
+                'Membuka tautan pada mode penyamaran (Incognito) karena dianggap aman.',
+                'Mengabaikan link, tidak mengklik tautan, dan segera berkoordinasi dengan Tim Keamanan Informasi / CSIRT Instansi.',
+                'Mengunduh lampiran file zip untuk memeriksa keaslian formulir.'
+            ],
+            kunci: 'Opsi C (Skor 5 — Sangat Kompeten)',
+            pembahasan: 'Domain tiruan adalah indikasi nyata spear-phishing. ASN wajib menjaga kehati-hatian digital, melindungi data sensitif kedinasan, dan melapor ke unit pengelola TIK instansi.'
+        },
+        emerging: {
+            title: 'Studi Kasus: Berpikir Analitis & Pemecahan Masalah Publik',
+            windowTitle: 'Kasus Analitis — Penyelesaian Masalah Kompleks',
+            tag: 'Analytical Thinking',
+            soal: 'Laporan kepuasan layanan publik terpadu tiba-tiba mengalami penurunan 15% pada triwulan berjalan tanpa indikasi kendala sistem tunggal. Langkah analitis pertama yang paling tepat adalah...',
+            pilihan: [
+                'Menginstruksikan seluruh staf loket untuk lembur tanpa evaluasi pola masalah.',
+                'Melakukan dekonstruksi alur proses, memetakan waktu layanan di setiap titik kontak, dan membandingkan data empiris sebelum terjadi penurunan.',
+                'Mengabaikan laporan karena menganggap penurunan 15% merupakan fluktuasi acak.',
+                'Menyalahkan unit IT dan meminta perombakan sistem aplikasi seketika.'
+            ],
+            kunci: 'Opsi B (Skor 5 — Sangat Kompeten)',
+            pembahasan: 'Kemampuan berpikir analitis menuntut dekonstruksi persoalan kompleks ke dalam variabel data terukur guna menemukan akar masalah (root-cause) secara objektif dan sistematis.'
+        },
+        potensi: {
+            title: 'Studi Kasus: Penalaran Logis & Silogisme Kebijakan',
+            windowTitle: 'Kasus Kognitif — Penalaran Logika Analitis',
+            tag: 'Logika & Kognitif',
+            soal: 'Semua aparatur yang memenuhi standar uji kompetensi berhak diusulkan masuk ke dalam Manajemen Talenta Nasional. Sebagian pranata komputer muda memenuhi standar uji kompetensi. Kesimpulan yang sah dan logis adalah...',
+            pilihan: [
+                'Semua pranata komputer muda otomatis masuk ke Manajemen Talenta Nasional.',
+                'Sebagian pranata komputer muda berhak diusulkan masuk ke Manajemen Talenta Nasional.',
+                'Tidak ada pranata komputer yang berhak diusulkan masuk Manajemen Talenta.',
+                'Aparatur yang tidak memenuhi standar uji kompetensi tetap berhak masuk Manajemen Talenta.'
+            ],
+            kunci: 'Opsi B (Skor 5 — Sangat Kompeten)',
+            pembahasan: 'Kombinasi premis universal afirmatif dan partikular afirmatif menghasilkan kesimpulan partikular yang sah: Sebagian pranata komputer tersebut berhak diusulkan.'
+        }
     };
 
-    const currentQ = sampleQuestions[activeQuestionIdx];
-
-    const handleSelectOption = (idx: number) => {
-        setSelectedOption(idx);
-        setShowExplanation(true);
-    };
-
-    const switchQuestion = (idx: number) => {
-        setActiveQuestionIdx(idx);
-        setSelectedOption(null);
-        setShowExplanation(false);
-    };
+    const currentQ = sampleQuestions[activeTab];
 
     return (
-        <div className="min-h-screen bg-[#0B1023] text-[#EDF0FF] selection:bg-[#F0A500] selection:text-[#0B1023] font-sans antialiased">
-            <Head title="SiapCPNS — Platform Persiapan Try Out & Materi CPNS Terbaik" />
+        <div className="min-h-screen bg-[#F8F9FA] text-slate-900 font-sans selection:bg-emerald-600 selection:text-white">
+            <Head title="ProASN — Portal Uji Asesmen & Pemetaan Kompetensi ASN Nasional" />
 
-            {/* Navigation Bar */}
-            <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#1E2C4A]/80 bg-[#0B1023]/90 backdrop-blur-md transition-all">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                    {/* Brand Logo */}
-                    <Link href="/" className="flex items-center gap-2.5 group">
-                        <div className="w-8 h-8 rounded-lg bg-[#F0A500] flex items-center justify-center font-mono font-bold text-sm text-[#0B1023] shadow-md group-hover:scale-105 transition-transform">
-                            CP
+            {/* Subtle Executive Ambient Glow */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+                <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-b from-emerald-100/40 via-slate-100/30 to-transparent blur-3xl opacity-70" />
+                <div className="absolute top-1/3 -right-32 w-80 h-80 bg-amber-50/60 rounded-full blur-3xl" />
+            </div>
+
+            {/* Navigation Header */}
+            <header className="relative z-20 border-b border-slate-200/90 bg-white/90 backdrop-blur-md sticky top-0 shadow-xs">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-xl bg-emerald-800 text-amber-300 font-mono font-black text-sm flex items-center justify-center shadow-xs border border-emerald-900">
+                            ASN
                         </div>
-                        <span className="font-display text-xl font-bold text-[#EDF0FF] tracking-tight">
-                            SiapCPNS<span className="text-[#F0A500]">.</span>
-                        </span>
-                    </Link>
-
-                    {/* Desktop Navigation Links */}
-                    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#94A3C4]">
-                        <a href="#fitur" className="hover:text-[#F0A500] transition-colors">Fitur Unggulan</a>
-                        <a href="#simulasi" className="hover:text-[#F0A500] transition-colors">Simulasi CAT</a>
-                        <a href="#materi" className="hover:text-[#F0A500] transition-colors">Kisi-Kisi SKD</a>
-                        <a href="#paket" className="hover:text-[#F0A500] transition-colors">Akses Lynk.id</a>
-                        <a href="#testimoni" className="hover:text-[#F0A500] transition-colors">Testimoni</a>
-                        <a href="#faq" className="hover:text-[#F0A500] transition-colors">FAQ</a>
+                        <div>
+                            <span className="font-extrabold text-base tracking-tight text-slate-900">
+                                ProASN<span className="text-emerald-700">.</span>
+                            </span>
+                            <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
+                                Portal Asesmen & Manajemen Talenta
+                            </span>
+                        </div>
                     </div>
+
+                    {/* Desktop Navigation */}
+                    <nav className="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-600">
+                        <a href="#dimensi" className="hover:text-emerald-800 transition-colors">
+                            4 Dimensi Penilaian
+                        </a>
+                        <a href="#simulasi" className="hover:text-emerald-800 transition-colors">
+                            Bedah Kasus & Pembahasan
+                        </a>
+                        <a href="#ninebox" className="hover:text-emerald-800 transition-colors">
+                            Matriks Nine-Box Grid
+                        </a>
+                        <a href="/materi" className="hover:text-emerald-800 transition-colors">
+                            Modul Kisi-Kisi BKN
+                        </a>
+                    </nav>
 
                     {/* Auth CTA Actions */}
                     <div className="hidden md:flex items-center gap-3">
-                        {auth.user ? (
+                        {user ? (
                             <div className="flex items-center gap-3">
-                                <Link
-                                    href={dashboard()}
-                                    className="flex items-center gap-2.5 px-4 py-2 rounded-lg bg-[#141B2D] border border-[#1E2C4A] hover:border-[#F0A500] transition-all"
+                                <div className="text-right hidden lg:block">
+                                    <div className="text-xs font-bold text-slate-900 leading-none">{user.name}</div>
+                                    <div className="text-[10px] text-emerald-700 font-medium mt-0.5">Akun Pegawai Terverifikasi</div>
+                                </div>
+                                <a
+                                    href="/dashboard"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 text-xs font-bold shadow-md transition-all"
                                 >
-                                    <div className="w-6 h-6 rounded-full bg-[#F0A500] text-[#0B1023] font-bold text-xs flex items-center justify-center">
-                                        {auth.user.name.charAt(0).toUpperCase()}
-                                    </div>
-                                    <span className="text-sm font-semibold text-[#EDF0FF]">
-                                        Dashboard
-                                    </span>
-                                </Link>
+                                    <Rocket className="w-3.5 h-3.5" />
+                                    <span>Buka Dashboard</span>
+                                </a>
                             </div>
                         ) : (
                             <>
-                                <Link
-                                    href={login()}
-                                    className="text-sm font-medium px-4 py-2 text-[#94A3C4] hover:text-[#EDF0FF] transition-colors"
+                                <a
+                                    href="/login"
+                                    className="px-4 py-2 rounded-xl text-slate-700 hover:text-slate-950 text-xs font-semibold hover:bg-slate-100 transition-colors"
                                 >
-                                    Masuk
-                                </Link>
-                                <Link
-                                    href={register()}
-                                    className="text-sm font-semibold px-5 py-2 rounded-lg bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] hover:shadow-[0_0_20px_rgba(240,165,0,0.3)] transition-all"
+                                    Masuk Portal
+                                </a>
+                                <a
+                                    href="/register"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 text-xs font-bold shadow-md transition-all"
                                 >
-                                    Mulai Gratis
-                                </Link>
+                                    <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                                    <span>Mulai Asesmen</span>
+                                </a>
                             </>
                         )}
                     </div>
 
-                    {/* Mobile Hamburger Button */}
+                    {/* Mobile Menu Button */}
                     <button
-                        onClick={() => setMobileOpen(!mobileOpen)}
-                        className="md:hidden p-2 text-[#94A3C4] hover:text-[#EDF0FF] focus:outline-none"
-                        aria-label="Toggle menu"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
-                        {mobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
 
-                {/* Mobile Drawer */}
-                {mobileOpen && (
-                    <div className="md:hidden border-b border-[#1E2C4A] bg-[#0B1023] px-6 py-5 space-y-4 animate-fade-up">
-                        <a 
-                            href="#fitur" 
-                            onClick={() => setMobileOpen(false)}
-                            className="block text-sm font-medium text-[#94A3C4] hover:text-[#F0A500]"
-                        >
-                            Fitur Unggulan
+                {/* Mobile Menu Dropdown */}
+                {mobileMenuOpen && (
+                    <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 text-xs">
+                        <a href="#dimensi" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 font-medium">
+                            4 Dimensi Penilaian
                         </a>
-                        <a 
-                            href="#simulasi" 
-                            onClick={() => setMobileOpen(false)}
-                            className="block text-sm font-medium text-[#94A3C4] hover:text-[#F0A500]"
-                        >
-                            Simulasi CAT
+                        <a href="#simulasi" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 font-medium">
+                            Bedah Kasus & Pembahasan
                         </a>
-                        <a 
-                            href="#materi" 
-                            onClick={() => setMobileOpen(false)}
-                            className="block text-sm font-medium text-[#94A3C4] hover:text-[#F0A500]"
-                        >
-                            Kisi-Kisi SKD
+                        <a href="#ninebox" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 font-medium">
+                            Matriks Nine-Box Grid
                         </a>
-                        <a 
-                            href="#paket" 
-                            onClick={() => setMobileOpen(false)}
-                            className="block text-sm font-medium text-[#94A3C4] hover:text-[#F0A500]"
-                        >
-                            Akses Lynk.id
-                        </a>
-                        <a 
-                            href="#faq" 
-                            onClick={() => setMobileOpen(false)}
-                            className="block text-sm font-medium text-[#94A3C4] hover:text-[#F0A500]"
-                        >
-                            FAQ
-                        </a>
-
-                        <div className="pt-3 border-t border-[#1E2C4A] flex flex-col gap-2">
-                            {auth.user ? (
-                                <Link
-                                    href={dashboard()}
-                                    className="w-full text-center py-2.5 rounded-lg bg-[#F0A500] text-[#0B1023] font-semibold text-sm"
-                                >
-                                    Buka Dashboard ({auth.user.name})
-                                </Link>
+                        <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                            {user ? (
+                                <a href="/dashboard" className="w-full py-2.5 rounded-xl bg-emerald-800 text-white font-bold text-center">
+                                    Buka Dashboard ({user.name})
+                                </a>
                             ) : (
                                 <>
-                                    <Link
-                                        href={login()}
-                                        className="w-full text-center py-2 rounded-lg border border-[#1E2C4A] text-sm font-medium text-[#EDF0FF]"
-                                    >
-                                        Masuk ke Akun
-                                    </Link>
-                                    <Link
-                                        href={register()}
-                                        className="w-full text-center py-2.5 rounded-lg bg-[#F0A500] text-[#0B1023] font-semibold text-sm"
-                                    >
-                                        Daftar Gratis Sekarang
-                                    </Link>
+                                    <a href="/login" className="w-full py-2 text-center font-semibold text-slate-700 border border-slate-200 rounded-xl">
+                                        Masuk Portal
+                                    </a>
+                                    <a href="/register" className="w-full py-2.5 rounded-xl bg-emerald-800 text-white font-bold text-center">
+                                        Daftar Akun Baru
+                                    </a>
                                 </>
                             )}
                         </div>
                     </div>
                 )}
-            </nav>
-
-            {/* HERO SECTION */}
-            <header className="relative pt-32 pb-20 overflow-hidden">
-                <div 
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212,160,23,0.12), transparent)' }}
-                />
-
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
-                        {/* Notification Pill */}
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#F0A500]/30 bg-[#F0A500]/10 mb-8 animate-fade-up">
-                            <span className="w-2 h-2 rounded-full bg-[#F0A500] animate-pulse" />
-                            <span className="font-mono text-xs font-semibold text-[#F0A500] tracking-wide">
-                                CPNS 2025/2026 — Pendaftaran & Formasi Resmi Dibuka
-                            </span>
-                        </div>
-
-                        {/* Title Display */}
-                        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-tight font-normal mb-6 tracking-tight animate-fade-up">
-                            Lolos CPNS<br />
-                            <span className="gold-shimmer font-bold">Bukan Keberuntungan</span>
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="text-lg md:text-xl text-[#94A3C4] leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up-delay">
-                            Platform persiapan tes CPNS terlengkap dengan 12.500+ soal try out berbasis CAT resmi BKN, modul komprehensif, dan analisis AI — dirancang untuk membawa kamu lolos di percobaan pertama.
-                        </p>
-
-                        {/* Action Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up-delay-2">
-                            <Link
-                                href={auth.user ? dashboard() : register()}
-                                className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] hover:scale-105 shadow-[0_10px_30px_rgba(240,165,0,0.25)] transition-all flex items-center justify-center gap-2"
-                            >
-                                <span>{auth.user ? 'Buka Dashboard Saya' : 'Mulai Belajar Gratis'}</span>
-                                <ArrowRight className="size-4" />
-                            </Link>
-                            <a
-                                href="#simulasi"
-                                className="w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-base border border-[#1E2C4A] text-[#EDF0FF] hover:border-[#F0A500] hover:bg-[#141B2D] transition-all"
-                            >
-                                Coba Simulasi Soal ↓
-                            </a>
-                        </div>
-
-                        <p className="mt-5 text-xs text-[#6B7BA4] flex items-center justify-center gap-3">
-                            <span className="flex items-center gap-1"><Check className="size-3 text-[#10B981]" /> Akses gratis 7 hari</span>
-                            <span className="text-[#1E2C4A]">•</span>
-                            <span className="flex items-center gap-1"><Check className="size-3 text-[#10B981]" /> Tanpa kartu kredit</span>
-                            <span className="text-[#1E2C4A]">•</span>
-                            <span className="flex items-center gap-1"><Check className="size-3 text-[#10B981]" /> Standar resmi BKN</span>
-                        </p>
-                    </div>
-
-                    {/* LIVE INTERACTIVE TRYOUT PREVIEW CARD */}
-                    <div id="simulasi" className="mt-16 rounded-2xl border border-[#1E2C4A] overflow-hidden shadow-2xl bg-[#141B2D] card-hover">
-                        {/* Window Header */}
-                        <div className="border-b border-[#1E2C4A] px-6 py-3.5 bg-[#0B1023]/60 flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <div className="w-3 h-3 rounded-full bg-[#EF4444]" />
-                                <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
-                                <div className="w-3 h-3 rounded-full bg-[#10B981]" />
-                                <span className="ml-3 font-mono text-xs text-[#6B7BA4] hidden sm:inline">
-                                    Simulasi Try Out CAT SKD — Live Demo
-                                </span>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0B1023] border border-[#1E2C4A]">
-                                    <Clock className="size-3.5 text-[#F0A500]" />
-                                    <span className="font-mono text-xs font-bold text-[#F0A500]">
-                                        {formatTimer(timeSec)}
-                                    </span>
-                                </div>
-                                <span className="font-mono text-xs text-[#10B981] bg-[#10B981]/15 px-2 py-0.5 rounded flex items-center gap-1.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                                    Server BKN Aktif
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Interactive CAT Window Body */}
-                        <div className="p-6 md:p-8 grid md:grid-cols-3 gap-8">
-                            {/* Question and Options Area */}
-                            <div className="md:col-span-2 space-y-6">
-                                {/* Subtest selector tabs */}
-                                <div className="flex flex-wrap items-center gap-2">
-                                    {sampleQuestions.map((q, idx) => (
-                                        <button
-                                            key={q.kategori}
-                                            onClick={() => switchQuestion(idx)}
-                                            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all ${
-                                                activeQuestionIdx === idx
-                                                    ? 'bg-[#F0A500] text-[#0B1023]'
-                                                    : 'bg-[#0B1023] text-[#94A3C4] border border-[#1E2C4A] hover:border-[#F0A500]'
-                                            }`}
-                                        >
-                                            {q.kategori} ({q.sub})
-                                        </button>
-                                    ))}
-                                </div>
-
-                                <div className="flex items-center justify-between pt-1">
-                                    <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#0EA5A0]/15 text-[#0EA5A0] font-bold">
-                                        SUBTES {currentQ.kategori} — SOAL #{activeQuestionIdx + 1} DARI 110
-                                    </span>
-                                    <span className="text-xs text-[#6B7BA4]">Klik salah satu pilihan untuk cek jawaban</span>
-                                </div>
-
-                                <p className="text-base md:text-lg leading-relaxed text-[#EDF0FF] font-medium">
-                                    {currentQ.soal}
-                                </p>
-
-                                {/* Multiple Choice ABCD */}
-                                <div className="space-y-3">
-                                    {currentQ.pilihan.map((opt, i) => {
-                                        const isSelected = selectedOption === i;
-                                        const showResult = showExplanation;
-                                        const isCorrect = opt.correct;
-
-                                        let borderStyle = 'border-[#1E2C4A] bg-[#0B1023]';
-                                        let letterBg = 'border-[#1E2C4A] text-[#6B7BA4]';
-
-                                        if (isSelected) {
-                                            borderStyle = 'border-[#F0A500] bg-[#F0A500]/10 shadow-[0_0_15px_rgba(240,165,0,0.15)]';
-                                            letterBg = 'border-[#F0A500] bg-[#F0A500] text-[#0B1023] font-bold';
-                                        }
-
-                                        if (showResult && isCorrect) {
-                                            borderStyle = 'border-[#10B981] bg-[#10B981]/15';
-                                            letterBg = 'border-[#10B981] bg-[#10B981] text-[#0B1023] font-bold';
-                                        } else if (showResult && isSelected && !isCorrect) {
-                                            borderStyle = 'border-[#EF4444] bg-[#EF4444]/15';
-                                            letterBg = 'border-[#EF4444] bg-[#EF4444] text-white font-bold';
-                                        }
-
-                                        return (
-                                            <div
-                                                key={i}
-                                                onClick={() => handleSelectOption(i)}
-                                                className={`answer-option p-3.5 rounded-xl border flex items-center gap-3.5 transition-all cursor-pointer ${borderStyle}`}
-                                            >
-                                                <div className={`w-7 h-7 rounded-lg border flex items-center justify-center text-xs font-mono shrink-0 ${letterBg}`}>
-                                                    {String.fromCharCode(65 + i)}
-                                                </div>
-                                                <span className={`text-sm md:text-base ${isSelected ? 'text-[#EDF0FF] font-medium' : 'text-[#94A3C4]'}`}>
-                                                    {opt.text}
-                                                </span>
-                                                {showResult && isCorrect && (
-                                                    <span className="ml-auto text-xs font-bold text-[#10B981] px-2 py-0.5 rounded bg-[#10B981]/20">
-                                                        ✓ Benar
-                                                    </span>
-                                                )}
-                                                {showResult && isSelected && !isCorrect && (
-                                                    <span className="ml-auto text-xs font-bold text-[#EF4444] px-2 py-0.5 rounded bg-[#EF4444]/20">
-                                                        ✗ Salah
-                                                    </span>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-
-                                {/* Explanation Box */}
-                                {showExplanation && (
-                                    <div className="p-4 rounded-xl bg-[#0B1023] border border-[#F0A500]/30 animate-fade-up">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <Sparkles className="size-4 text-[#F0A500]" />
-                                            <span className="font-mono text-xs font-bold text-[#F0A500] uppercase tracking-wider">
-                                                Pembahasan Resmi & Trik Cepat
-                                            </span>
-                                        </div>
-                                        <p className="text-sm text-[#94A3C4] leading-relaxed">
-                                            {currentQ.pembahasan}
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Sidebar Progress & Score Card */}
-                            <div className="space-y-4">
-                                <div className="p-5 rounded-xl border border-[#1E2C4A] bg-[#0B1023]">
-                                    <p className="text-xs font-mono font-bold text-[#6B7BA4] uppercase tracking-wider mb-4">
-                                        PROGRES SUBTES SKD
-                                    </p>
-                                    <div className="space-y-4">
-                                        <div>
-                                            <div className="flex justify-between text-xs mb-1.5 font-mono">
-                                                <span className="text-[#EDF0FF]">TWK (Passing Grade: 65)</span>
-                                                <span className="text-[#10B981] font-bold">30/30 (Selesai)</span>
-                                            </div>
-                                            <div className="h-2 rounded-full bg-[#1E2C4A] overflow-hidden">
-                                                <div className="h-full rounded-full bg-[#10B981] w-full" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="flex justify-between text-xs mb-1.5 font-mono">
-                                                <span className="text-[#EDF0FF]">TIU (Passing Grade: 80)</span>
-                                                <span className="text-[#F0A500] font-bold">23/35</span>
-                                            </div>
-                                            <div className="h-2 rounded-full bg-[#1E2C4A] overflow-hidden">
-                                                <div className="h-full rounded-full bg-[#F0A500] w-[65%]" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="flex justify-between text-xs mb-1.5 font-mono">
-                                                <span className="text-[#EDF0FF]">TKP (Passing Grade: 166)</span>
-                                                <span className="text-[#6B7BA4]">0/45</span>
-                                            </div>
-                                            <div className="h-2 rounded-full bg-[#1E2C4A] overflow-hidden">
-                                                <div className="h-full rounded-full bg-[#8B5CF6] w-[15%]" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-3">
-                                    <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#0B1023] text-center">
-                                        <p className="font-mono text-2xl font-bold text-[#F0A500]">388</p>
-                                        <p className="text-xs text-[#6B7BA4] mt-0.5">Estimasi Skor SKD</p>
-                                        <span className="inline-block mt-2 text-[10px] font-mono px-2 py-0.5 rounded bg-[#10B981]/15 text-[#10B981]">
-                                            ✓ Lolos PG
-                                        </span>
-                                    </div>
-                                    <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#0B1023] text-center">
-                                        <p className="font-mono text-2xl font-bold text-[#10B981]">#14</p>
-                                        <p className="text-xs text-[#6B7BA4] mt-0.5">Ranking Nasional</p>
-                                        <span className="inline-block mt-2 text-[10px] font-mono px-2 py-0.5 rounded bg-[#0EA5A0]/15 text-[#0EA5A0]">
-                                            Top 1%
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div className="p-4 rounded-xl border border-[#F0A500]/20 bg-[#F0A500]/5 text-center">
-                                    <p className="text-xs text-[#EDF0FF] font-medium mb-2">
-                                        Ingin mencoba simulasi 110 soal penuh?
-                                    </p>
-                                    <Link
-                                        href={auth.user ? '/tryout' : register()}
-                                        className="inline-block w-full py-2 rounded-lg bg-[#F0A500] text-[#0B1023] font-bold text-xs hover:bg-[#FFD166] transition-colors"
-                                    >
-                                        Buka Simulasi Lengkap →
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </header>
 
-            {/* STATS STRIP */}
-            <section className="py-14 border-y border-[#1E2C4A] bg-[#0B1023]/60">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        {stats.map((s) => (
-                            <div key={s.label} className="text-center">
-                                <p className="font-display text-4xl sm:text-5xl font-bold text-[#F0A500] mb-1.5">
-                                    {s.value}
-                                </p>
-                                <p className="text-sm font-medium text-[#94A3C4]">{s.label}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* FEATURES SECTION */}
-            <section id="fitur" className="py-24">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="max-w-2xl mb-16">
-                        <p className="font-mono text-xs uppercase tracking-widest text-[#F0A500] font-bold mb-3">
-                            Fitur Unggulan SiapCPNS
-                        </p>
-                        <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF] mb-4">
-                            Semua yang kamu butuhkan<br />
-                            <span className="text-[#6B7BA4]">dalam satu ekosistem modern</span>
-                        </h2>
-                        <p className="text-base text-[#94A3C4] leading-relaxed">
-                            Dirancang oleh alumni peraih skor tertinggi dan tim ahli tes psikometri CASN, platform ini membimbing kamu langkah demi langkah dari nol hingga pengumuman kelulusan.
-                        </p>
+            {/* HERO SECTION */}
+            <main className="relative z-10">
+                <section className="pt-14 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-200 bg-emerald-50/80 text-emerald-900 text-xs font-semibold mb-6 shadow-2xs">
+                        <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                        <span>Standar Penilaian Kompetensi BKN & PermenPAN-RB No. 38/2017</span>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {features.map((f) => (
-                            <div
-                                key={f.title}
-                                className="p-7 rounded-2xl border border-[#1E2C4A] bg-[#141B2D] card-hover group"
-                            >
-                                <div className="mb-4 p-3 w-fit rounded-xl bg-[#0B1023] border border-[#1E2C4A] text-[#F0A500] group-hover:scale-110 transition-transform">
-                                    {f.icon}
-                                </div>
-                                <h3 className="font-semibold text-lg text-[#EDF0FF] mb-2 group-hover:text-[#F0A500] transition-colors">
-                                    {f.title}
-                                </h3>
-                                <p className="text-sm text-[#94A3C4] leading-relaxed">
-                                    {f.desc}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 max-w-4xl mx-auto leading-[1.18]">
+                        Persiapan Uji Asesmen Profiling ASN,{' '}
+                        <span className="text-emerald-800 underline decoration-amber-400 decoration-wavy decoration-2">
+                            Menuju Kuadran 9 Manajemen Talenta
+                        </span>
+                    </h1>
 
-            {/* SKD OVERVIEW SECTION */}
-            <section id="materi" className="py-24 border-t border-[#1E2C4A] bg-[#141B2D]/30">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <p className="font-mono text-xs uppercase tracking-widest text-[#0EA5A0] font-bold mb-3">
-                                Standar Resmi BKN & MenPAN-RB
-                            </p>
-                            <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF] mb-6">
-                                Kuasai setiap<br />komponen ujian SKD
-                            </h2>
-                            <p className="text-base text-[#94A3C4] leading-relaxed mb-8">
-                                Seleksi Kompetensi Dasar (SKD) memiliki 3 subtes dengan karakteristik, sistem bobot skor, dan passing grade yang berbeda. Jika gagal satu subtes saja meski total nilai tinggi, peserta tetap dinyatakan gugur.
-                            </p>
+                    <p className="mt-5 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                        Platform simulasi Situational Judgement Test (SJT) dan pemetaan kompetensi terpadu: membedah Kompetensi Manajerial, Literasi Digital SPBE, Emerging Skills, dan Potensi Kognitif.
+                    </p>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-start gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#10B981]/20 text-[#10B981] flex items-center justify-center mt-0.5">
-                                        <Check className="size-3" />
-                                    </div>
-                                    <p className="text-sm text-[#94A3C4]">
-                                        <strong className="text-[#EDF0FF]">TWK (30 Soal):</strong> Penilaian benar +5, salah 0. Fokus pada wawasan kebangsaan, integritas, dan bela negara.
-                                    </p>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#10B981]/20 text-[#10B981] flex items-center justify-center mt-0.5">
-                                        <Check className="size-3" />
-                                    </div>
-                                    <p className="text-sm text-[#94A3C4]">
-                                        <strong className="text-[#EDF0FF]">TIU (35 Soal):</strong> Penilaian benar +5, salah 0. Menghafal rumus cepat logika silogisme, perbandingan, dan figural.
-                                    </p>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#10B981]/20 text-[#10B981] flex items-center justify-center mt-0.5">
-                                        <Check className="size-3" />
-                                    </div>
-                                    <p className="text-sm text-[#94A3C4]">
-                                        <strong className="text-[#EDF0FF]">TKP (45 Soal):</strong> Nilai berjenjang 1 sampai 5. Tidak ada jawaban salah, butuh strategi memilih opsi skor 5.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <Link
-                                href={auth.user ? '/materi' : register()}
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all shadow-md"
-                            >
-                                <span>Jelajahi Modul Materi Lengkap</span>
-                                <ArrowRight className="size-4" />
-                            </Link>
-                        </div>
-
-                        {/* Breakdown Cards */}
-                        <div className="space-y-4">
-                            {skdSubtests.map((sub) => (
-                                <div
-                                    key={sub.code}
-                                    className="p-6 rounded-2xl border border-[#1E2C4A] bg-[#141B2D] card-hover"
-                                >
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <div className="flex items-center gap-2.5">
-                                                <span className="font-mono font-bold text-xl" style={{ color: sub.color }}>
-                                                    {sub.code}
-                                                </span>
-                                                <span className="text-xs px-2 py-0.5 rounded font-mono bg-[#0B1023] border border-[#1E2C4A] text-[#94A3C4]">
-                                                    {sub.soalCount} Soal • Maks {sub.maxScore}
-                                                </span>
-                                            </div>
-                                            <p className="text-sm text-[#EDF0FF] font-medium mt-1">
-                                                {sub.name}
-                                            </p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="font-mono text-[11px] text-[#6B7BA4] uppercase">Passing Grade</p>
-                                            <p className="font-mono font-bold text-2xl" style={{ color: sub.color }}>
-                                                {sub.pg}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {sub.topics.map((t) => (
-                                            <span
-                                                key={t}
-                                                className="text-xs px-2.5 py-1 rounded-md bg-[#0B1023] border border-[#1E2C4A] text-[#94A3C4]"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ETALASE LYNK.ID & ACCESS SECTION */}
-            <section id="paket" className="py-24 border-t border-[#1E2C4A]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto mb-14">
-                        <p className="font-mono text-xs uppercase tracking-widest text-[#F0A500] font-bold mb-3 flex items-center justify-center gap-1.5">
-                            <Sparkles className="size-3.5" />
-                            <span>BELI SEKALI • AKSES SELAMANYA</span>
-                        </p>
-                        <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF] mb-4">
-                            Dapatkan Akses SiapCPNS via Etalase Lynk.id
-                        </h2>
-                        <p className="text-base text-[#94A3C4] leading-relaxed mb-6">
-                            Tanpa iuran atau biaya langganan bulanan. Cukup satu kali checkout di etalase resmi Lynk.id, akun Anda langsung mendapatkan hak akses penuh seumur hidup untuk seluruh simulasi CAT BKN, materi PDF, dan bank soal terupdate.
-                        </p>
-
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[#10B981]/40 bg-[#10B981]/10 text-xs text-[#10B981] font-semibold">
-                            <ShieldCheck className="size-4" />
-                            <span>Pembayaran Aman & Instan via QRIS, E-Wallet, & Virtual Account Bank di Lynk.id</span>
-                        </div>
-                    </div>
-
-                    {/* 3 Step Visual Activation Flow */}
-                    <div className="mb-16 p-6 md:p-8 rounded-2xl border border-[#1E2C4A] bg-[#141B2D]">
-                        <p className="font-mono text-xs uppercase tracking-widest text-[#F0A500] font-bold mb-2 text-center">
-                            CARA KERJA AKTIVASI AKSES
-                        </p>
-                        <h3 className="font-display text-xl text-center text-[#EDF0FF] font-bold mb-8">
-                            3 Langkah Mudah Mulai Belajar & Try Out
-                        </h3>
-
-                        <div className="grid md:grid-cols-3 gap-6">
-                            <div className="p-5 rounded-xl border border-[#1E2C4A] bg-[#0B1023] flex flex-col items-center text-center">
-                                <div className="w-10 h-10 rounded-full bg-[#F0A500] text-[#0B1023] font-bold flex items-center justify-center font-mono mb-3 shadow-md">
-                                    1
-                                </div>
-                                <h4 className="font-semibold text-sm text-[#EDF0FF] mb-1">
-                                    Checkout di Lynk.id
-                                </h4>
-                                <p className="text-xs text-[#94A3C4] leading-relaxed">
-                                    Pilih produk akses SiapCPNS di etalase Lynk.id resmi. Bayar praktis dengan QRIS atau Virtual Account bank.
-                                </p>
-                            </div>
-
-                            <div className="p-5 rounded-xl border border-[#1E2C4A] bg-[#0B1023] flex flex-col items-center text-center">
-                                <div className="w-10 h-10 rounded-full bg-[#0EA5A0] text-[#0B1023] font-bold flex items-center justify-center font-mono mb-3 shadow-md">
-                                    2
-                                </div>
-                                <h4 className="font-semibold text-sm text-[#EDF0FF] mb-1">
-                                    Daftarkan Akun SiapCPNS
-                                </h4>
-                                <p className="text-xs text-[#94A3C4] leading-relaxed">
-                                    Buka menu pendaftaran dan gunakan Nama serta Email yang sama dengan data pembelian saat di Lynk.id.
-                                </p>
-                            </div>
-
-                            <div className="p-5 rounded-xl border border-[#1E2C4A] bg-[#0B1023] flex flex-col items-center text-center">
-                                <div className="w-10 h-10 rounded-full bg-[#10B981] text-[#0B1023] font-bold flex items-center justify-center font-mono mb-3 shadow-md">
-                                    3
-                                </div>
-                                <h4 className="font-semibold text-sm text-[#EDF0FF] mb-1">
-                                    Akses Langsung Terbuka
-                                </h4>
-                                <p className="text-xs text-[#94A3C4] leading-relaxed">
-                                    Masuk ke akun Anda dan nikmati seluruh ribuan butir bank soal CAT BKN dan modul pembahasan selamanya!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Access Products Cards Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                        {plans.map((plan) => {
-                            const isPro = plan.id === 'pro';
-
-                            return (
-                                <div
-                                    key={plan.id}
-                                    className={`relative rounded-2xl border p-6 flex flex-col transition-all bg-[#141B2D] ${
-                                        isPro
-                                            ? 'border-[#F0A500] shadow-[0_0_35px_rgba(240,165,0,0.15)] ring-1 ring-[#F0A500]'
-                                            : 'border-[#1E2C4A] hover:border-[#F0A500]/50'
-                                    }`}
-                                >
-                                    {plan.badge && (
-                                        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full font-mono text-[10px] font-bold bg-[#F0A500] text-[#0B1023] tracking-wider uppercase shadow-md">
-                                            {plan.badge}
-                                        </div>
-                                    )}
-
-                                    <div className="mb-5">
-                                        <h3 className="font-display text-2xl text-[#EDF0FF] mb-1">
-                                            {plan.name}
-                                        </h3>
-                                        <p className="text-xs text-[#6B7BA4] min-h-[32px]">
-                                            {plan.desc}
-                                        </p>
-                                    </div>
-
-                                    {/* Lynk.id Price & Access Notice */}
-                                    <div className="mb-6 p-4 rounded-xl bg-[#0B1023] border border-[#1E2C4A]">
-                                        <div className="flex items-center justify-between mb-1">
-                                            <span className="text-[11px] font-mono text-[#F0A500] font-bold uppercase tracking-wider">
-                                                Etalase Lynk.id
-                                            </span>
-                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#10B981]/15 text-[#10B981] font-bold">
-                                                {plan.id === 'free' ? 'Gratis' : 'One-Time'}
-                                            </span>
-                                        </div>
-                                        <p className="text-xs text-[#EDF0FF] font-semibold">
-                                            {plan.id === 'free' ? 'Akses Uji Coba Terbuka' : 'Cek Harga & Promo Resmi'}
-                                        </p>
-                                        <p className="text-[11px] text-[#6B7BA4] mt-0.5">
-                                            {plan.id === 'free' ? 'Daftar dan coba langsung' : 'Pembayaran & aktivasi instan di Lynk.id'}
-                                        </p>
-                                    </div>
-
-                                    {/* Features Checklist */}
-                                    <div className="space-y-3 mb-8 flex-1">
-                                        {plan.features.map((f, i) => (
-                                            <div key={i} className="flex items-start gap-2.5">
-                                                <span className={`text-xs mt-0.5 shrink-0 ${f.ok ? 'text-[#10B981]' : 'text-[#3B4666]'}`}>
-                                                    {f.ok ? '✓' : '×'}
-                                                </span>
-                                                <span className={`text-xs leading-normal ${f.ok ? 'text-[#94A3C4]' : 'text-[#3B4666]'}`}>
-                                                    {f.text}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {plan.id === 'free' ? (
-                                        <Link
-                                            href={auth.user ? '/dashboard' : register()}
-                                            className="w-full py-3 rounded-xl font-semibold text-xs transition-all border border-[#1E2C4A] bg-[#0B1023] text-[#EDF0FF] hover:border-[#F0A500] text-center"
-                                        >
-                                            Coba Demo Gratis
-                                        </Link>
-                                    ) : (
-                                        <a
-                                            href={LYNK_ID_STORE_URL}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={`w-full py-3 rounded-xl font-bold text-xs text-center transition-all flex items-center justify-center gap-1.5 ${
-                                                isPro
-                                                    ? 'bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] shadow-md'
-                                                    : 'border border-[#1E2C4A] bg-[#0B1023] text-[#EDF0FF] hover:border-[#F0A500]'
-                                            }`}
-                                        >
-                                            <span>Lihat di Etalase Lynk.id →</span>
-                                            <ExternalLink className="size-3.5" />
-                                        </a>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Quick Activation Bar */}
-                    <div className="mb-20 p-5 rounded-2xl border border-[#F0A500]/30 bg-gradient-to-r from-[#F0A500]/10 via-[#141B2D] to-[#141B2D] flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#F0A500]/20 text-[#F0A500] flex items-center justify-center shrink-0">
-                                <KeyRound className="size-5" />
-                            </div>
-                            <div>
-                                <p className="text-xs font-bold text-[#EDF0FF]">
-                                    Sudah berhasil menyelesaikan checkout di etalase Lynk.id?
-                                </p>
-                                <p className="text-[11px] text-[#94A3C4]">
-                                    Segera daftarkan akun SiapCPNS Anda dengan email pembelian yang sama untuk membuka seluruh akses.
-                                </p>
-                            </div>
-                        </div>
-
-                        <Link
-                            href={auth.user ? '/dashboard' : register()}
-                            className="px-5 py-2.5 rounded-xl font-bold text-xs bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all whitespace-nowrap"
+                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <a
+                            href="/tryout"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 text-xs sm:text-sm font-bold shadow-lg shadow-emerald-900/10 transition-all"
                         >
-                            Aktivasi / Buat Akun Sekarang →
-                        </Link>
+                            <Sparkles className="w-4 h-4 text-amber-300" />
+                            <span>Mulai Simulasi Uji Asesmen</span>
+                        </a>
+                        <a
+                            href="/materi"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold transition-all shadow-xs"
+                        >
+                            <BookOpen className="w-4 h-4 text-slate-600" />
+                            <span>Pelajari Modul & Kisi-Kisi</span>
+                        </a>
                     </div>
 
-                    {/* Comparison Table */}
-                    <div className="mb-20">
-                        <h3 className="font-display text-3xl text-center text-[#EDF0FF] mb-8">
-                            Tabel Perbandingan Hak Akses Fitur
-                        </h3>
-                        <div className="rounded-2xl border border-[#1E2C4A] overflow-x-auto bg-[#141B2D]">
-                            <table className="w-full text-left text-sm border-collapse min-w-[640px]">
-                                <thead>
-                                    <tr className="border-b border-[#1E2C4A] bg-[#0B1023]/60">
-                                        <th className="p-4 font-medium text-[#94A3C4] w-2/5">Fitur Lengkap</th>
-                                        <th className="p-4 font-mono font-bold text-center text-[#6B7BA4]">Gratis</th>
-                                        <th className="p-4 font-mono font-bold text-center text-[#0EA5A0]">Mandiri SKD</th>
-                                        <th className="p-4 font-mono font-bold text-center text-[#F0A500] bg-[#F0A500]/5">Komplit SKD+SKB</th>
-                                        <th className="p-4 font-mono font-bold text-center text-[#8B5CF6]">Premium VIP</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-[#1E2C4A]">
-                                    {[
-                                        { name: 'Jumlah Sesi Simulasi Try Out CAT', val: ['5x Sesi', 'Tak Terbatas', 'Tak Terbatas', 'Tak Terbatas'] },
-                                        { name: 'Bank Soal SKD & SKB', val: ['500 Soal', '3.500 Soal', '12.500+ Soal', '15.000+ Soal VIP'] },
-                                        { name: 'Modul Video & PDF', val: ['10 Modul', '120 Modul', '380+ Modul', '380+ Modul'] },
-                                        { name: 'Sistem CAT Standar BKN', val: ['✓', '✓', '✓', '✓'] },
-                                        { name: 'Pembahasan Video Alumni', val: ['✗', '✗', '✓', '✓'] },
-                                        { name: 'Analisis AI & Prediksi Lolos', val: ['✗', '✗', '✓', '✓'] },
-                                        { name: 'Komunitas Belajar Telegram', val: ['✗', '✗', '✓', '✓'] },
-                                        { name: 'Mentoring Tatap Muka Online', val: ['✗', '✗', '✗', '2x Seminggu'] },
-                                        { name: 'Garansi Uang Kembali 30 Hari', val: ['—', '—', '✓', '✓'] },
-                                    ].map((row, ri) => (
-                                        <tr key={ri} className="hover:bg-[#0B1023]/40 transition-colors">
-                                            <td className="p-4 text-[#EDF0FF] text-xs font-medium">{row.name}</td>
-                                            {row.val.map((v, i) => (
-                                                <td
-                                                    key={i}
-                                                    className={`p-4 text-center font-mono text-xs ${
-                                                        i === 2 ? 'bg-[#F0A500]/5 font-semibold text-[#F0A500]' : 'text-[#94A3C4]'
-                                                    } ${v === '✓' ? 'text-[#10B981]' : v === '✗' ? 'text-[#4B5680]' : ''}`}
-                                                >
-                                                    {v}
-                                                </td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                    {/* Window Container with Mac Controls: Executive Summary */}
+                    <div className="mt-12 max-w-3xl mx-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden text-left">
+                        <MacWindowControls
+                            title="Ringkasan Standar Uji Asesmen ASN"
+                            badge="STANDAR NASIONAL"
+                        />
+                        <div className="p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+                            <div className="px-2 pt-2 sm:pt-0">
+                                <div className="text-[11px] font-semibold text-slate-500 uppercase">Dimensi Asesmen</div>
+                                <div className="text-xl font-black text-slate-900 mt-1">4 Dimensi</div>
+                                <div className="text-xs text-slate-600 mt-0.5">Manajerial, Digital, Analitis</div>
+                            </div>
+                            <div className="px-2 pt-2 sm:pt-0 sm:pl-4">
+                                <div className="text-[11px] font-semibold text-slate-500 uppercase">Standar Evaluasi</div>
+                                <div className="text-xl font-black text-slate-900 mt-1">Nine-Box</div>
+                                <div className="text-xs text-slate-600 mt-0.5">Pemetaan Karier BKN</div>
+                            </div>
+                            <div className="px-2 pt-2 sm:pt-0 sm:pl-4">
+                                <div className="text-[11px] font-semibold text-slate-500 uppercase">Tipe Pengujian</div>
+                                <div className="text-xl font-black text-slate-900 mt-1">SJT & Kasus</div>
+                                <div className="text-xs text-slate-600 mt-0.5">Situational Dilemma</div>
+                            </div>
+                            <div className="px-2 pt-2 sm:pt-0 sm:pl-4">
+                                <div className="text-[11px] font-semibold text-slate-500 uppercase">Output Rapor</div>
+                                <div className="text-xl font-black text-slate-900 mt-1">Radar Profil</div>
+                                <div className="text-xs text-slate-600 mt-0.5">Evaluasi Level 1-5</div>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    {/* Trust Badges */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-[#1E2C4A] text-center">
-                        <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#141B2D]">
-                            <ShieldCheck className="size-8 mx-auto mb-2 text-[#F0A500]" />
-                            <p className="font-semibold text-sm text-[#EDF0FF] mb-0.5">Pembayaran Aman</p>
-                            <p className="text-xs text-[#6B7BA4]">Terenkripsi SSL 256-bit</p>
-                        </div>
-                        <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#141B2D]">
-                            <RotateCcw className="size-8 mx-auto mb-2 text-[#10B981]" />
-                            <p className="font-semibold text-sm text-[#EDF0FF] mb-0.5">Garansi 30 Hari</p>
-                            <p className="text-xs text-[#6B7BA4]">Uang kembali jika tidak puas</p>
-                        </div>
-                        <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#141B2D]">
-                            <Smartphone className="size-8 mx-auto mb-2 text-[#0EA5A0]" />
-                            <p className="font-semibold text-sm text-[#EDF0FF] mb-0.5">Multi-Platform</p>
-                            <p className="text-xs text-[#6B7BA4]">Laptop, tablet & smartphone</p>
-                        </div>
-                        <div className="p-4 rounded-xl border border-[#1E2C4A] bg-[#141B2D]">
-                            <GraduationCap className="size-8 mx-auto mb-2 text-[#8B5CF6]" />
-                            <p className="font-semibold text-sm text-[#EDF0FF] mb-0.5">47.000+ Alumni</p>
-                            <p className="text-xs text-[#6B7BA4]">Tersebar di kementerian RI</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* TESTIMONIALS SECTION */}
-            <section id="testimoni" className="py-24 border-t border-[#1E2C4A] bg-[#141B2D]/20">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <p className="font-mono text-xs uppercase tracking-widest text-[#F0A500] font-bold mb-3">
-                            Kisah Sukses Pejuang NIP
-                        </p>
-                        <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF]">
-                            Mereka sudah membuktikannya
+                {/* 4 DIMENSI ASESMEN SECTION */}
+                <section id="dimensi" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="text-center max-w-2xl mx-auto mb-12">
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+                            Kurikulum Lengkap
+                        </span>
+                        <h2 className="text-2xl sm:text-4xl font-black text-slate-900 mt-1.5">
+                            4 Dimensi Penilaian Uji Kompetensi ASN
                         </h2>
+                        <p className="text-xs sm:text-sm text-slate-600 mt-2.5">
+                            Disusun secara cermat mengacu pada standar BKN dan KemenPAN-RB untuk pemetaan talenta dan seleksi terbuka jabatan.
+                        </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {testimonials.map((t) => (
-                            <div
-                                key={t.name}
-                                className="p-7 rounded-2xl border border-[#1E2C4A] bg-[#141B2D] card-hover flex flex-col justify-between"
-                            >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {/* Card 1 */}
+                        <div className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-emerald-300 transition-all flex flex-col overflow-hidden">
+                            <MacWindowControls title="Dimensi 1 — Manajerial" badge="8 DIMENSI" />
+                            <div className="p-5 flex-1 flex flex-col justify-between">
                                 <div>
-                                    <div className="flex items-center gap-3.5 mb-5">
-                                        <div className="w-11 h-11 rounded-full bg-[#F0A500] text-[#0B1023] font-bold text-sm flex items-center justify-center shadow-md">
-                                            {t.avatar}
-                                        </div>
-                                        <div>
-                                            <p className="font-semibold text-sm text-[#EDF0FF]">{t.name}</p>
-                                            <p className="text-xs text-[#6B7BA4]">{t.role}</p>
-                                        </div>
-                                        <div className="ml-auto px-2.5 py-1 rounded-md font-mono text-xs font-bold bg-[#10B981]/15 text-[#10B981]">
-                                            {t.score}
-                                        </div>
+                                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
+                                        <Users className="w-5 h-5" />
                                     </div>
-                                    <div className="text-[#F0A500] text-sm tracking-wider mb-3">
-                                        ★★★★★
+                                    <h3 className="font-bold text-base text-slate-900">Manajerial & Sosio-Kultural</h3>
+                                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                        Mengukur 8 kompetensi inti: Integritas, Kerjasama, Komunikasi, Orientasi Hasil, Pelayanan Publik, Pengembangan Diri, Mengelola Perubahan, dan Pengambilan Keputusan.
+                                    </p>
+                                </div>
+                                <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-800">
+                                    Passing Grade: ≥ 75 Poin
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-purple-300 transition-all flex flex-col overflow-hidden">
+                            <MacWindowControls title="Dimensi 2 — Literasi Digital" badge="4 PILAR SPBE" />
+                            <div className="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center mb-4">
+                                        <Cpu className="w-5 h-5" />
                                     </div>
-                                    <p className="text-sm text-[#94A3C4] leading-relaxed italic">
-                                        "{t.text}"
+                                    <h3 className="font-bold text-base text-slate-900">Literasi & Keamanan Digital</h3>
+                                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                        Mengukur 4 pilar kecakapan digital: Digital Skills, Digital Ethics, Digital Culture, dan Digital Safety (keamanan data SPBE & kepatuhan UU Pelindungan Data Pribadi).
+                                    </p>
+                                </div>
+                                <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-purple-800">
+                                    Passing Grade: ≥ 70 Poin
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-amber-300 transition-all flex flex-col overflow-hidden">
+                            <MacWindowControls title="Dimensi 3 — Emerging Skills" badge="BERPIKIR KRITIS" />
+                            <div className="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-4">
+                                        <Zap className="w-5 h-5" />
+                                    </div>
+                                    <h3 className="font-bold text-base text-slate-900">Emerging Skills & Analitis</h3>
+                                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                        Ketajaman berpikir analitis, pemecahan masalah birokrasi kompleks, perumusan skenario risiko, adaptabilitas teknologi, dan perumusan kebijakan publik berbasis data.
+                                    </p>
+                                </div>
+                                <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-800">
+                                    Passing Grade: ≥ 75 Poin
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Card 4 */}
+                        <div className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-blue-300 transition-all flex flex-col overflow-hidden">
+                            <MacWindowControls title="Dimensi 4 — Potensi Kognitif" badge="LOGIKA & SPASIAL" />
+                            <div className="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center mb-4">
+                                        <Brain className="w-5 h-5" />
+                                    </div>
+                                    <h3 className="font-bold text-base text-slate-900">Potensi Kognitif & Figural</h3>
+                                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                        Evaluasi kapasitas berpikir dasar: silogisme logika kebijakan, deret keteraturan data, penalaran analitis hubungan berantai, serta tes spasial pola gambar figural.
+                                    </p>
+                                </div>
+                                <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-blue-800">
+                                    Passing Grade: ≥ 70 Poin
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* BEDAH KASUS INTERAKTIF (WINDOW MAC UNTUK PENJELASAN) */}
+                <section id="simulasi" className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+                    <div className="text-center max-w-2xl mx-auto mb-10">
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+                            Studi Kasus Asesmen
+                        </span>
+                        <h2 className="text-2xl sm:text-4xl font-black text-slate-900 mt-1.5">
+                            Bedah Kasus & Pembahasan Jawaban
+                        </h2>
+                        <p className="text-xs sm:text-sm text-slate-600 mt-2.5">
+                            Pahami cara berpikir penguji asesmen melalui analisis situasi dilematis dan rasionalisasi pembobotan nilai BKN.
+                        </p>
+                    </div>
+
+                    {/* Tabs */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+                        <button
+                            onClick={() => setActiveTab('manajerial')}
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                                activeTab === 'manajerial'
+                                    ? 'bg-emerald-800 text-white shadow-md'
+                                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+                            }`}
+                        >
+                            Manajerial ASN
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('digital')}
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                                activeTab === 'digital'
+                                    ? 'bg-emerald-800 text-white shadow-md'
+                                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+                            }`}
+                        >
+                            Literasi Digital
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('emerging')}
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                                activeTab === 'emerging'
+                                    ? 'bg-emerald-800 text-white shadow-md'
+                                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+                            }`}
+                        >
+                            Emerging Skills
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('potensi')}
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                                activeTab === 'potensi'
+                                    ? 'bg-emerald-800 text-white shadow-md'
+                                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+                            }`}
+                        >
+                            Potensi Kognitif
+                        </button>
+                    </div>
+
+                    {/* Window Container: Question with Mac Controls */}
+                    <div className="rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden">
+                        <MacWindowControls
+                            title={currentQ.windowTitle}
+                            badge={currentQ.tag}
+                        />
+
+                        <div className="p-6 sm:p-8 space-y-6">
+                            <div>
+                                <span className="inline-block text-xs font-bold text-emerald-800 mb-1.5">
+                                    {currentQ.title}
+                                </span>
+                                <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                                    {currentQ.soal}
+                                </h3>
+                            </div>
+
+                            {/* Options */}
+                            <div className="space-y-2.5">
+                                {currentQ.pilihan.map((pil, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={`p-3.5 rounded-xl border text-xs sm:text-sm flex items-start gap-3 transition-colors ${
+                                            idx === 1
+                                                ? 'border-emerald-300 bg-emerald-50/70 text-slate-900 font-medium'
+                                                : 'border-slate-200 bg-slate-50/60 text-slate-700'
+                                        }`}
+                                    >
+                                        <span className={`w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold shrink-0 ${
+                                            idx === 1 ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
+                                        }`}>
+                                            {String.fromCharCode(65 + idx)}
+                                        </span>
+                                        <span className="flex-1">{pil}</span>
+                                        {idx === 1 && (
+                                            <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full shrink-0">
+                                                Bobot Nilai 5
+                                            </span>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Mac Window Inside Window for Explanation */}
+                            <div className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden shadow-xs">
+                                <MacWindowControls
+                                    title="Pembahasan & Rasionalisasi Jawaban BKN"
+                                    badge="KUNCI UNGGUL"
+                                />
+                                <div className="p-4 sm:p-5 text-xs text-slate-700 space-y-2">
+                                    <div className="font-bold text-slate-900 flex items-center gap-2">
+                                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                                        <span>Rekomendasi Jawaban: {currentQ.kunci}</span>
+                                    </div>
+                                    <p className="leading-relaxed">
+                                        {currentQ.pembahasan}
                                     </p>
                                 </div>
                             </div>
-                        ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* FAQ SECTION */}
-            <section id="faq" className="py-24 border-t border-[#1E2C4A]">
-                <div className="max-w-3xl mx-auto px-6">
-                    <div className="text-center mb-14">
-                        <p className="font-mono text-xs uppercase tracking-widest text-[#0EA5A0] font-bold mb-3">
-                            Pertanyaan Umum
-                        </p>
-                        <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF]">
-                            Hal yang sering ditanyakan
-                        </h2>
-                    </div>
+                {/* NINE-BOX TALENT GRID SECTION */}
+                <section id="ninebox" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-12 shadow-lg shadow-slate-900/5">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+                                    Manajemen Talenta Nasional
+                                </span>
+                                <h2 className="text-2xl sm:text-4xl font-black text-slate-900 mt-2 leading-tight">
+                                    Memahami Matriks Nine-Box Grid BKN
+                                </h2>
+                                <p className="text-xs sm:text-sm text-slate-600 mt-4 leading-relaxed">
+                                    Instansi pemerintah memetakan aparatur sipil negara ke dalam 9 kuadran berdasarkan perpaduan antara <strong>Potensi</strong> (Kognitif, Digital, Emerging Skills) dan <strong>Kinerja / Kompetensi</strong> (Manajerial & Sosio-Kultural).
+                                </p>
 
-                    <div className="space-y-4">
-                        {faqs.map((faq, i) => {
-                            const isOpen = activeFaq === i;
-                            return (
-                                <div
-                                    key={i}
-                                    className="rounded-xl border border-[#1E2C4A] bg-[#141B2D] overflow-hidden transition-all"
-                                >
-                                    <button
-                                        onClick={() => setActiveFaq(isOpen ? null : i)}
-                                        className="w-full p-5 flex items-center justify-between text-left text-sm font-semibold text-[#EDF0FF] hover:text-[#F0A500] transition-colors"
-                                    >
-                                        <span>{faq.q}</span>
-                                        <span
-                                            className={`text-xl font-mono text-[#F0A500] transition-transform duration-200 shrink-0 ml-4 ${
-                                                isOpen ? 'rotate-45' : 'rotate-0'
-                                            }`}
-                                        >
-                                            +
-                                        </span>
-                                    </button>
-                                    {isOpen && (
-                                        <div className="px-5 pb-5 text-sm text-[#94A3C4] leading-relaxed border-t border-[#1E2C4A]/40 pt-3 animate-fade-up">
-                                            {faq.a}
+                                <div className="mt-6 space-y-3">
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                            9
                                         </div>
-                                    )}
+                                        <div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 9: Bintang (High Potential & High Performance)</div>
+                                            <div className="text-xs text-slate-500">Prioritas utama promosi terbuka JPT, penugasan strategis, dan suksesi kepemimpinan.</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                            8
+                                        </div>
+                                        <div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 8: Penampil Unggul (High Performance)</div>
+                                            <div className="text-xs text-slate-500">Kinerja konsisten di atas rata-rata dengan kesiapan penguatan kompetensi manajerial lanjutan.</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-6 h-6 rounded-md bg-blue-100 text-blue-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                            7
+                                        </div>
+                                        <div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 7: Potensi Berkembang (High Potential)</div>
+                                            <div className="text-xs text-slate-500">Kapasitas kognitif dan adaptabilitas tinggi yang siap diarahkan menuju performa puncak.</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
 
-            {/* HIGH-CONVERTING CTA BANNER */}
-            <section className="py-20 border-t border-[#1E2C4A] bg-radial from-[#F0A500]/10 to-transparent">
-                <div className="max-w-4xl mx-auto px-6 text-center">
-                    <div className="p-10 sm:p-14 rounded-3xl border border-[#F0A500]/40 bg-[#141B2D] relative overflow-hidden shadow-2xl">
-                        <div className="relative z-10">
-                            <h2 className="font-display text-4xl sm:text-5xl text-[#EDF0FF] mb-4">
-                                Mulai perjalananmu menjadi<br />
-                                <span className="gold-shimmer font-bold">Aparatur Sipil Negara 2025</span>
-                            </h2>
-                            <p className="text-base sm:text-lg text-[#94A3C4] max-w-xl mx-auto mb-8">
-                                Gabung bersama 47.000+ peserta lain. Persiapkan dirimu lebih awal agar tidak kaget saat hari H ujian BKN.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link
-                                    href={auth.user ? dashboard() : register()}
-                                    className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] hover:scale-105 shadow-[0_10px_30px_rgba(240,165,0,0.3)] transition-all"
-                                >
-                                    Daftar Sekarang — Gratis 7 Hari
-                                </Link>
-                                <Link
-                                    href={auth.user ? dashboard() : login()}
-                                    className="w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-base border border-[#1E2C4A] text-[#EDF0FF] hover:border-[#F0A500] hover:bg-[#0B1023] transition-all"
-                                >
-                                    {auth.user ? 'Buka Dashboard' : 'Masuk ke Akun'}
-                                </Link>
+                                <div className="mt-8">
+                                    <a
+                                        href="/tryout"
+                                        className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-800 text-white font-bold text-xs hover:bg-emerald-900 transition-all shadow-md"
+                                    >
+                                        <span>Cek Kuadran Talenta Anda</span>
+                                        <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Nine-Box Visual Grid in Mac Window */}
+                            <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden">
+                                <MacWindowControls title="Matriks Manajemen Talenta BKN" badge="KUADRAN 3X3" />
+                                <div className="p-5">
+                                    <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
+                                            <div className="font-bold">Box 3</div>
+                                            Kinerja Baik, Potensi Rendah
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800">
+                                            <div className="font-bold">Box 6</div>
+                                            Kinerja Baik, Potensi Sedang
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-amber-100 border border-amber-300 text-amber-900 font-bold shadow-xs ring-2 ring-amber-400">
+                                            <div className="font-bold">Box 9 ★</div>
+                                            Bintang / High Talent
+                                        </div>
+
+                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
+                                            <div className="font-bold">Box 2</div>
+                                            Kinerja Cukup, Potensi Rendah
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
+                                            <div className="font-bold">Box 5</div>
+                                            Kinerja Sedang, Potensi Sedang
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800">
+                                            <div className="font-bold">Box 8</div>
+                                            Penampil Unggul
+                                        </div>
+
+                                        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700">
+                                            <div className="font-bold">Box 1</div>
+                                            Perlu Peningkatan
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
+                                            <div className="font-bold">Box 4</div>
+                                            Potensi Cukup
+                                        </div>
+                                        <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-800">
+                                            <div className="font-bold">Box 7</div>
+                                            Potensi Berkembang
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 text-center text-[11px] text-slate-500 font-medium">
+                                        Sumbu Horizontal: Potensi Kognitif & Digital • Sumbu Vertikal: Kinerja & Manajerial
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
             {/* FOOTER */}
-            <footer className="py-12 border-t border-[#1E2C4A] bg-[#0B1023]">
-                <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-lg bg-[#F0A500] flex items-center justify-center font-mono font-bold text-xs text-[#0B1023]">
-                            CP
+            <footer className="relative z-10 border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-600">
+                    <div className="flex items-center gap-3">
+                        <div className="h-8 w-8 rounded-lg bg-emerald-800 text-amber-300 font-mono font-black text-xs flex items-center justify-center">
+                            ASN
                         </div>
-                        <span className="font-display text-lg font-bold text-[#EDF0FF]">
-                            SiapCPNS<span className="text-[#F0A500]">.</span>
-                        </span>
-                        <span className="text-xs text-[#6B7BA4] ml-2">
-                            © 2025 SiapCPNS Indonesia. Hak cipta dilindungi undang-undang.
-                        </span>
+                        <div>
+                            <span className="font-bold text-slate-900">ProASN Portal</span>
+                            <span className="block text-[10px] text-slate-500">Platform Uji Asesmen & Pemetaan Kompetensi ASN</span>
+                        </div>
                     </div>
 
-                    <div className="flex gap-6 text-xs text-[#6B7BA4]">
-                        <a href="#fitur" className="hover:text-[#F0A500] transition-colors">Fitur</a>
-                        <a href="#materi" className="hover:text-[#F0A500] transition-colors">Kisi-kisi</a>
-                        <a href="#paket" className="hover:text-[#F0A500] transition-colors">Akses Lynk.id</a>
-                        <a href="#faq" className="hover:text-[#F0A500] transition-colors">Bantuan</a>
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-slate-600 font-medium">
+                        <a href="/tryout" className="hover:text-slate-900">Simulasi CAT</a>
+                        <a href="/materi" className="hover:text-slate-900">Modul Kisi-Kisi</a>
+                        <a href="/paket" className="hover:text-slate-900">Paket Akses</a>
+                        <a href="/login" className="hover:text-slate-900">Masuk Akun</a>
+                    </div>
+
+                    <div className="text-[11px] text-slate-500">
+                        © {new Date().getFullYear()} ProASN. Mengacu pada Standar Penilaian Kompetensi BKN.
                     </div>
                 </div>
             </footer>
-
-            {/* PAYMENT METHODS DEMO MODAL */}
-            {selectedPlanModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-up">
-                    <div className="w-full max-w-md rounded-2xl border border-[#1E2C4A] bg-[#141B2D] p-6 sm:p-8 shadow-2xl relative">
-                        <button
-                            onClick={() => setSelectedPlanModal(null)}
-                            className="absolute top-4 right-4 text-[#6B7BA4] hover:text-[#EDF0FF] p-1"
-                        >
-                            <X className="size-5" />
-                        </button>
-
-                        <div className="text-center mb-6">
-                            <div className="w-14 h-14 rounded-2xl bg-[#F0A500]/15 flex items-center justify-center mx-auto mb-3 text-2xl">
-                                🚀
-                            </div>
-                            <h3 className="font-display text-2xl text-[#EDF0FF] mb-1">
-                                Aktifkan Paket {selectedPlanModal}
-                            </h3>
-                            <p className="text-xs text-[#94A3C4]">
-                                Pilih metode pembayaran otomatis untuk aktivasi instan
-                            </p>
-                        </div>
-
-                        <div className="space-y-2.5 mb-6">
-                            {[
-                                { name: 'Transfer Virtual Account (BCA, Mandiri, BRI, BNI)', tag: 'Otomatis' },
-                                { name: 'QRIS (GoPay, OVO, ShopeePay, DANA, LinkAja)', tag: 'Instan' },
-                                { name: 'Kartu Kredit / Debit Visa & Mastercard', tag: 'Aman' },
-                            ].map((method) => (
-                                <div
-                                    key={method.name}
-                                    className="p-3.5 rounded-xl border border-[#1E2C4A] bg-[#0B1023] hover:border-[#F0A500] cursor-pointer flex items-center justify-between transition-all"
-                                >
-                                    <div className="flex items-center gap-2.5">
-                                        <div className="w-2 h-2 rounded-full bg-[#F0A500]" />
-                                        <span className="text-xs text-[#EDF0FF] font-medium">{method.name}</span>
-                                    </div>
-                                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
-                                        {method.tag}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="flex gap-3">
-                            <Link
-                                href={auth.user ? '/paket' : register()}
-                                className="flex-1 py-3 rounded-xl font-bold text-xs bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] text-center transition-all"
-                            >
-                                Lanjutkan Pembayaran →
-                            </Link>
-                            <button
-                                onClick={() => setSelectedPlanModal(null)}
-                                className="px-5 py-3 rounded-xl border border-[#1E2C4A] text-xs font-semibold text-[#94A3C4] hover:text-[#EDF0FF] transition-colors"
-                            >
-                                Batal
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
