@@ -57,21 +57,30 @@ interface CareerBreakdown {
 const packages = [
     { 
         id: 'profiling-full', 
-        title: 'Simulasi Lengkap Profiling ASN (4 Subtes Standar BKN)', 
+        title: 'Simulasi Lengkap Profiling ASN (Standar BKN)', 
         cat: 'SEMUA', 
-        soal: 24, 
-        durasi: 45, 
-        badge: '4 Subtes Terpadu',
-        desc: 'Uji lengkap seluruh 4 pilar asesmen resmi: Tes Potensi, Manajerial & Sosio Kultural, Literasi Digital, dan Preferensi Tripatha Karir.'
+        soal: 29, 
+        durasi: 50, 
+        badge: '4 Subtes Penuh',
+        desc: 'Simulasi menyeluruh mencakup 4 subtes resmi: Tes Potensi, Manajerial & Sosio Kultural, Literasi Digital, dan Preferensi Tripatha Karir.'
     },
     { 
         id: 'potensi-drill', 
         title: 'Drill Subtes 1: Tes Potensi Kognitif & Figural', 
         cat: 'POTENSI', 
-        soal: 6, 
+        soal: 11, 
+        durasi: 20, 
+        badge: 'Kognitif & Figural',
+        desc: 'Latihan nalar silogisme kebijakan, deret keteraturan numerik, analogi konsep, penalaran spasial, dan analitis data.'
+    },
+    { 
+        id: 'emerging-drill', 
+        title: 'Drill Khusus: Emerging Skills & Analytical Thinking', 
+        cat: 'EMERGING', 
+        soal: 5, 
         durasi: 15, 
-        badge: 'Silogisme & Spasial',
-        desc: 'Latihan nalar silogisme kebijakan, deret keteraturan numerik, analogi konsep, dan penalaran spasial matriks.'
+        badge: 'Problem Solving',
+        desc: 'Ketajaman berpikir analitis, scenario planning risiko, adaptabilitas AI di birokrasi, dan triangulasi data kebijakan publik.'
     },
     { 
         id: 'manajerial-drill', 
@@ -89,7 +98,7 @@ const packages = [
         soal: 6, 
         durasi: 15, 
         badge: 'SPBE & UU PDP',
-        desc: 'Uji kecakapan kolaborasi cloud, mitigasi phishing siber kedinasan, pelindungan data pribadi, dan budaya digital.'
+        desc: 'Uji kecakapan kolaborasi cloud, mitigasi phishing siber kedinasan, pelindungan data pribadi (UU PDP), dan budaya digital.'
     },
     { 
         id: 'karir-drill', 
@@ -145,6 +154,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [] }: TryOutPa
         let filtered: Question[] = [];
         if (pkg.cat === 'SEMUA') {
             filtered = rawBank;
+        } else if (pkg.cat === 'EMERGING') {
+            filtered = rawBank.filter((q) => q.subkategori && q.subkategori.includes('Emerging Skills'));
         } else {
             filtered = rawBank.filter((q) => q.kategori === pkg.cat);
         }
@@ -286,6 +297,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [] }: TryOutPa
     // Filter questions during full test if requested
     const displayedQuestions = categoryFilter === 'SEMUA' 
         ? activeQuestions 
+        : categoryFilter === 'EMERGING'
+        ? activeQuestions.filter(q => q.subkategori && q.subkategori.includes('Emerging Skills'))
         : activeQuestions.filter(q => q.kategori === categoryFilter);
 
     return (

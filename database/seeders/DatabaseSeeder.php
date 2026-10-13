@@ -214,6 +214,87 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ],
 
+            // ==================== EMERGING SKILLS (TERINTEGRASI DI TES POTENSI) ====================
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Emerging Skills: Berpikir Analitis & Problem Solving',
+                'question' => 'Laporan kinerja triwulanan menunjukkan penurunan efisiensi proses perizinan sebesar 15% pada unit Anda tanpa indikasi penyebab tunggal yang jelas. Berdasarkan pendekatan analytical thinking, langkah analitis pertama yang paling tepat adalah...',
+                'options' => [
+                    'Melakukan dekonstruksi alur proses, memetakan waktu layanan di setiap titik kontak (touchpoint), dan membandingkan data empiris periode ini dengan periode sebelumnya.',
+                    'Menginstruksikan seluruh staf loket pelayanan untuk lembur setiap hari tanpa evaluasi pola data.',
+                    'Mengabaikan penurunan tersebut karena menganggap fluktuasi 15% adalah hal yang wajar dalam pelayanan publik.',
+                    'Menyalahkan unit sistem informasi IT dan mendesak perombakan server seketika.',
+                    'Meminta pimpinan menurunkan target standar pelayanan operasional agar target tetap tercapai.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 1, 1, 1],
+                'explanation' => 'Emerging Skills menuntut dekonstruksi persoalan kompleks ke dalam variabel data terukur guna menemukan akar masalah (root-cause) secara objektif dan sistematis sebelum mengambil tindakan korektif.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Emerging Skills: Scenario Planning & Mitigasi Risiko',
+                'question' => 'Instansi Anda merencanakan program bantuan logistik pangan daerah di tengah ketidakpastian cuaca ekstrem dan lonjakan harga pasar. Metode perumusan kebijakan yang paling tepat menggunakan prinsip scenario planning adalah...',
+                'options' => [
+                    'Menyusun minimal tiga skenario proyeksi (optimis, moderat, dan pesimis) dengan indikator pemicu (trigger events) serta rencana kontinjensi anggaran yang fleksibel.',
+                    'Hanya menyiapkan satu rencana tunggal berdasarkan rata-rata anggaran tahun lalu agar proses administrasi lebih cepat.',
+                    'Menunda pelaksanaan program hingga cuaca dan harga pasar kembali normal sepenuhnya.',
+                    'Menyerahkan seluruh risiko pengadaan kepada pihak rekanan penyedia tanpa klausul keadaan kahar.',
+                    'Menyalurkan seluruh anggaran di awal tahun sekaligus tanpa mempertimbangkan dinamika stok pangan.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 1, 0, 1],
+                'explanation' => 'Scenario Planning mengantisipasi ketidakpastian lingkungan strategis melalui pemodelan multi-skenario dan rencana kontinjensi adaptif, bukan mengandalkan perencanaan linier tunggal.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Emerging Skills: Triangulasi Data Multisektor',
+                'question' => 'Dalam mengevaluasi efektivitas program pengentasan kemiskinan ekstrem di suatu wilayah, data dari BPS, Dinas Sosial, dan laporan lapangan aparat desa menunjukkan angka penerima manfaat yang berbeda-beda. Sikap analitis Anda adalah...',
+                'options' => [
+                    'Melakukan triangulasi data dengan mencocokkan parameter indikator kemiskinan antar-instansi, memverifikasi sampel anomali di lapangan, dan merumuskan data tunggal terpadu berbasis NIK.',
+                    'Langsung menggunakan data BPS saja dan mengabaikan data dari instansi lainnya.',
+                    'Mengambil nilai rata-rata dari ketiga sumber data tanpa memeriksa perbedaan definisi operasional.',
+                    'Mengembalikan seluruh data ke instansi masing-masing dan meminta mereka bermusyawarah sendiri.',
+                    'Memilih data yang menunjukkan angka kemiskinan terendah agar citra instansi terlihat baik.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 2, 1, 0],
+                'explanation' => 'Triangulasi data kebijakan memerlukan integrasi metodologis, verifikasi silang parameter, dan validasi lapangan untuk menghasilkan Single Source of Truth yang akurat.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Emerging Skills: Adaptabilitas AI di Birokrasi',
+                'question' => 'Pimpinan instansi menginstruksikan penggunaan alat kecerdasan buatan generatif (Generative AI) untuk membantu penyusunan draf awal kajian telaahan staf. Sikap profesional aparatur yang mencerminkan AI readiness adalah...',
+                'options' => [
+                    'Memanfaatkan AI sebagai akselerator riset referensi, namun tetap melakukan verifikasi ketat terhadap validitas data, menjaga kerahasiaan data negara, dan menuliskan sintesis analisis akhir secara mandiri.',
+                    'Menolak menggunakan teknologi AI karena khawatir menggantikan peran aparatur sipil negara.',
+                    'Menyalin mentah-mentah seluruh keluaran teks AI dan menyerahkannya langsung kepada pimpinan tanpa telaah ulang.',
+                    'Mengunggah dokumen rahasia negara ke dalam platform AI publik gratisan agar hasil analisis lebih lengkap.',
+                    'Melarang seluruh rekan kerja menggunakan teknologi AI di lingkungan kantor.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 1, 0, 1],
+                'explanation' => 'Kesiapan adopsi AI (AI Readiness) aparatur menuntut literasi etis: memanfaatkan AI sebagai asisten produktivitas sembari menjaga kedaulatan data dan akurasi analisis manusia (human-in-the-loop).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Emerging Skills: Analisis Sentimen & Feedback Publik',
+                'question' => 'Kanal aduan SP4N-LAPOR! instansi Anda menerima ribuan keluhan warga per bulan. Unit Anda bertugas memetakan tren masalah utama secara cepat dan akurat. Langkah pemanfaatan data modern yang paling efektif adalah...',
+                'options' => [
+                    'Mengelompokkan aduan berdasarkan klaster topik, menganalisis frekuensi dan sentimen keluhan, serta menyusun peta panas (heat map) unit pelayanan yang memerlukan intervensi mendesak.',
+                    'Membaca keluhan satu per satu secara acak dan membuat ringkasan berdasarkan ingatan subjektif.',
+                    'Hanya menanggapi aduan yang menggunakan bahasa sopan dan menghapus aduan bernada keras.',
+                    'Menutup sementara kanal aduan online saat volume keluhan meningkat drastis.',
+                    'Menyerahkan rekapitulasi keluhan kepada staf magang tanpa panduan kategorisasi baku.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 0, 0, 1],
+                'explanation' => 'Data-driven feedback analysis mengubah keluhan publik yang tidak terstruktur menjadi wawasan aksi strategis (actionable insights) melalui pengelompokan tematik dan pemetaan prioritas intervensi.',
+                'is_active' => true,
+            ],
             // =========================================================================
             // 2. MANAJERIAL & SOSIO-KULTURAL (SJT SKALA 1-5, PERMENPAN-RB 38/2017)
             // =========================================================================
