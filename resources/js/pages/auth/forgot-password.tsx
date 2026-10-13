@@ -1,4 +1,3 @@
-// Components
 import { Form, Head } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import InputError from '@/components/input-error';
@@ -6,61 +5,57 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { login } from '@/routes';
 import { email } from '@/routes/password';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     return (
         <>
-            <Head title="Lupa Kata Sandi" />
+            <Head title="Lupa Kata Sandi — ProASN" />
 
             {status && (
-                <div className="mb-4 p-3 rounded-xl bg-[#10B981]/15 border border-[#10B981]/30 text-center text-xs font-medium text-[#10B981]">
+                <div className="mb-4 text-center text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 p-3 rounded-xl">
                     {status}
                 </div>
             )}
 
-            <div className="space-y-5">
+            <div className="space-y-6">
                 <Form {...email.form()}>
                     {({ processing, errors }) => (
                         <>
                             <div className="grid gap-2">
-                                <Label htmlFor="email" className="text-xs font-semibold text-[#CBD5E1]">
+                                <Label htmlFor="email" className="text-xs font-semibold text-slate-700">
                                     Alamat Email Terdaftar
                                 </Label>
                                 <Input
                                     id="email"
                                     type="email"
                                     name="email"
-                                    autoComplete="off"
                                     autoFocus
-                                    placeholder="nama@email.com"
-                                    className="bg-[#0B1023]/80 border-[#1E2C4A] text-[#EDF0FF] placeholder:text-[#8FA0C0]/50 focus-visible:ring-[#F0A500] h-10 rounded-xl"
+                                    placeholder="nama@instansi.go.id"
+                                    className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-700 h-10 rounded-xl"
                                 />
-
                                 <InputError message={errors.email} />
                             </div>
 
-                            <div className="my-5 flex items-center justify-start">
+                            <div className="my-6 flex items-center justify-start">
                                 <Button
-                                    className="w-full h-11 rounded-xl bg-[#F0A500] text-[#0B1023] font-bold text-sm hover:bg-[#FFD166] transition-all shadow-[0_4px_20px_rgba(240,165,0,0.2)]"
+                                    className="w-full h-11 rounded-xl bg-emerald-800 text-white font-bold text-sm hover:bg-emerald-900 transition-all shadow-md"
                                     disabled={processing}
-                                    data-test="email-password-reset-link-button"
                                 >
                                     {processing && (
-                                        <LoaderCircle className="h-4 w-4 animate-spin text-[#0B1023]" />
+                                        <LoaderCircle className="h-4 w-4 animate-spin text-white" />
                                     )}
-                                    Kirim Tautan Reset Sandi
+                                    Kirim Tautan Pemulihan Kata Sandi
                                 </Button>
                             </div>
                         </>
                     )}
                 </Form>
 
-                <div className="text-center text-xs text-[#8FA0C0]">
-                    <span>Sudah ingat kata sandi? </span>
-                    <TextLink href={login()} className="font-semibold text-[#F0A500] hover:underline">
-                        Kembali masuk
+                <div className="text-center text-xs text-slate-600">
+                    Ingat kata sandi akun Anda?{' '}
+                    <TextLink href="/login" className="font-semibold text-emerald-800 hover:underline">
+                        Masuk kembali
                     </TextLink>
                 </div>
             </div>
@@ -69,7 +64,6 @@ export default function ForgotPassword({ status }: { status?: string }) {
 }
 
 ForgotPassword.layout = {
-    title: 'Lupa Kata Sandi?',
-    description: 'Masukkan email akun Anda. Kami akan mengirimkan tautan untuk membuat kata sandi baru.',
+    title: 'Lupa Kata Sandi',
+    description: 'Masukkan email kepegawaian Anda untuk menerima tautan pemulihan kata sandi portal ProASN.',
 };
-

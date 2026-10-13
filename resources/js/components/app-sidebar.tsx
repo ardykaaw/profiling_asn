@@ -8,11 +8,9 @@ import {
     FolderKanban, 
     Layers, 
     SlidersHorizontal,
-    Users,
-    ShieldCheck
+    Users
 } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
-import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import {
@@ -26,13 +24,12 @@ import {
     SidebarGroup,
     SidebarGroupLabel,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
 import type { NavItem, SharedData } from '@/types';
 
 const userNavItems: NavItem[] = [
     {
         title: 'Dashboard Profiling',
-        href: dashboard(),
+        href: '/dashboard',
         icon: LayoutGrid,
     },
     {
@@ -86,12 +83,12 @@ export function AppSidebar() {
     const isAdmin = user?.role === 'admin';
 
     return (
-        <Sidebar collapsible="icon" variant="inset" className="border-r border-stone-200/80 bg-[#F4EFE6]/70">
-            <SidebarHeader className="border-b border-stone-200/70 p-4">
+        <Sidebar collapsible="icon" variant="inset" className="border-r border-slate-200/90 bg-white">
+            <SidebarHeader className="border-b border-slate-200/80 p-4">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()}>
+                            <Link href="/dashboard">
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
@@ -104,7 +101,7 @@ export function AppSidebar() {
 
                 {isAdmin && (
                     <SidebarGroup className="mt-4">
-                        <SidebarGroupLabel className="text-[11px] font-mono uppercase text-stone-500 tracking-wider">
+                        <SidebarGroupLabel className="text-[11px] font-mono uppercase text-slate-500 tracking-wider">
                             Administrator Panel
                         </SidebarGroupLabel>
                         <NavMain items={adminNavItems} />
@@ -112,7 +109,7 @@ export function AppSidebar() {
                 )}
             </SidebarContent>
 
-            <SidebarFooter className="border-t border-stone-200/70 p-3">
+            <SidebarFooter className="border-t border-slate-200/80 p-3">
                 <NavUser />
             </SidebarFooter>
         </Sidebar>

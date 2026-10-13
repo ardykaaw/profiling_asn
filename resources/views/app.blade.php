@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {{-- Force dark class for unified CPNS navy theme --}}
         <script>
             (function() {
-                document.documentElement.classList.add('dark');
-                document.documentElement.style.colorScheme = 'dark';
+                // Ensure light theme for executive civil service portal
+                document.documentElement.classList.remove('dark');
+                document.documentElement.style.colorScheme = 'light';
             })();
         </script>
 
         <style>
-            html { background-color: #0c1222; }
+            html {
+                background-color: #F8F9FA;
+            }
         </style>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
@@ -31,7 +33,7 @@
             <title>{{ config('app.name', 'Laravel') }}</title>
         </x-inertia::head>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-[#F8F9FA] text-slate-900">
         <x-inertia::app />
     </body>
 </html>

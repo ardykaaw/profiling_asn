@@ -60,20 +60,27 @@ class TryoutController extends Controller
         $answers = $validated['answers'];
 
         $questions = Question::with('category')->where('is_active', true)->get();
-        $categories = Category::all()->keyBy('code');
 
         $catScores = [
+            'POTENSI' => 0,
             'MANAJERIAL' => 0,
             'DIGITAL' => 0,
-            'EMERGING' => 0,
-            'POTENSI' => 0,
+            'KARIR' => 0,
         ];
         $catMax = [
+            'POTENSI' => 0,
             'MANAJERIAL' => 0,
             'DIGITAL' => 0,
-            'EMERGING' => 0,
-            'POTENSI' => 0,
+            'KARIR' => 0,
         ];
+
+        // Tripatha Karir tally
+        $karirTally = [
+            'STRUKTURAL' => 0,
+            'FUNGSIONAL' => 0,
+            'OPERASIONAL' => 0,
+        ];
+        $karirCount = 0;
 
         foreach ($questions as $index => $q) {
             $catCode = $q->category->code ?? 'MANAJERIAL';
@@ -82,69 +89,139 @@ class TryoutController extends Controller
                 $catMax[$catCode] = 0;
             }
 
-            $catMax[$catCode] += 5; // Each question max 5 points
+            $catMax[$catCode] += 5; // standard base 5 points per question
 
             $selected = $answers[$q->id] ?? ($answers[$index] ?? null);
 
             if ($selected !== null) {
                 $selected = (int) $selected;
-                if (!empty($q->scores) && is_array($q->scores) && isset($q->scores[$selected])) {
-                    $catScores[$catCode] += (int) $q->scores[$selected];
+
+                if ($catCode === 'KARIR') {
+                    $karirCount++;
+                    // Map option index: 0 => STRUKTURAL, 1 => FUNGSIONAL, 2 => OPERASIONAL
+                    if ($selected === 0) {
+                        $karirTally['STRUKTURAL']++;
+                    } elseif ($selected === 1) {
+                        $karirTally['FUNGSIONAL']++;
+                    } elseif ($selected === 2) {
+                        $karirTally['OPERASIONAL']++;
+                    } else {
+                        $karirTally['FUNGSIONAL']++;
+                    }
+                    $catScores['KARIR'] += 5;
                 } else {
-                    if ($selected === (int) $q->correct_answer) {
-                        $catScores[$catCode] += 5;
+                    if (!empty($q->scores) && is_array($q->scores) && isset($q->scores[$selected])) {
+                        $catScores[$catCode] += (int) $q->scores[$selected];
+                    } else {
+                        if ($selected === (int) $q->correct_answer) {
+                            $catScores[$catCode] += 5;
+                        }
                     }
                 }
             }
         }
 
-        // Calculate normalized scores (percentage 0-100)
+        // Calculate normalized scores (percentage 0-100) for standard dimensions
         $normalizedScores = [];
-        foreach ($catScores as $code => $score) {
-            $max = $catMax[$code] > 0 ? $catMax[$code] : 25;
-            $normalizedScores[$code] = round(($score / $max) * 100);
+        foreach (['POTENSI', 'MANAJERIAL', 'DIGITAL'] as $code) {
+            $max = $catMax[$code] > 0 ? $catMax[$code] : 30;
+            $normalizedScores[$code] = round(($catScores[$code] / $max) * 100);
         }
 
-        $totalScore = array_sum($catScores);
-        $avgPercentage = round(array_sum($normalizedScores) / max(count($normalizedScores), 1));
+        // Calculate Tripatha Career breakdown percentages
+        $totalKarirVotes = max($karirCount, 1);
+        $strukturalPct = round(($karirTally['STRUKTURAL'] / $totalKarirVotes) * 100);
+        $fungsionalPct = round(($karirTally['FUNGSIONAL'] / $totalKarirVotes) * 100);
+        $operasionalPct = round(($karirTally['OPERASIONAL'] / $totalKarirVotes) * 100);
 
-        // Determine 9-Box Talent Grid
-        $talentQuadrant = 'Memenuhi Syarat (Optimum)';
-        if ($avgPercentage >= 85) {
-            $talentQuadrant = 'Bintang / Box 9 (High Potential & High Performance)';
-        } elseif ($avgPercentage >= 75) {
-            $talentQuadrant = 'Penampil Unggul / Box 8 (High Performance)';
-        } elseif ($avgPercentage >= 65) {
-            $talentQuadrant = 'Potensi Berkembang / Box 7 (Medium Potential)';
+        // Determine dominant career recommendation
+        $dominant = 'FUNGSIONAL';
+        $maxVotes = $karirTally['FUNGSIONAL'];
+
+        if ($karirTally['STRUKTURAL'] > $maxVotes) {
+            $dominant = 'STRUKTURAL';
+            $maxVotes = $karirTally['STRUKTURAL'];
+        }
+        if ($karirTally['OPERASIONAL'] > $maxVotes) {
+            $dominant = 'OPERASIONAL';
+        }
+
+        $careerRecommendation = 'Jalur Fungsional Keahlian & Riset Kebijakan';
+        if ($dominant === 'STRUKTURAL') {
+            $careerRecommendation = 'Jalur Kepemimpinan & Manajerial (Struktural / JPT)';
+        } elseif ($dominant === 'OPERASIONAL') {
+            $careerRecommendation = 'Jalur Pelayanan & Keterampilan Teknis (Operasional Prosedural)';
+        }
+
+        $careerBreakdown = [
+            'dominant' => $dominant,
+            'recommendation' => $careerRecommendation,
+            'tally' => $karirTally,
+            'percentages' => [
+                'struktural' => $strukturalPct,
+                'fungsional' => $fungsionalPct,
+                'operasional' => $operasionalPct,
+            ],
+            'roles' => [
+                'STRUKTURAL' => ['Pejabat Pimpinan Tinggi (JPT)', 'Administrator Eselon III', 'Pengawas Strategis'],
+                'FUNGSIONAL' => ['Analis Kebijakan Ahli', 'Perencana Ahli', 'Pranata Komputer Ahli', 'Peneliti Kebijakan'],
+                'OPERASIONAL' => ['Pengelola Layanan Operasional', 'Arsiparis', 'Verifikator Keuangan', 'Pranata Humas'],
+            ],
+        ];
+
+        // Nine-Box Talent Grid BKN
+        // Axis X: Potensi Kognitif & Digital
+        $axisX = round(($normalizedScores['POTENSI'] * 0.5) + ($normalizedScores['DIGITAL'] * 0.5));
+        // Axis Y: Kompetensi Manajerial & Integritas
+        $axisY = $normalizedScores['MANAJERIAL'];
+
+        $talentQuadrant = 'Box 5 (Penampil Tangguh / Solid Performer)';
+        if ($axisX >= 80 && $axisY >= 80) {
+            $talentQuadrant = 'Box 9 (Bintang / High Potential & High Performance)';
+        } elseif ($axisX >= 70 && $axisY >= 80) {
+            $talentQuadrant = 'Box 8 (Penampil Unggul / High Performance)';
+        } elseif ($axisX >= 80 && $axisY >= 70) {
+            $talentQuadrant = 'Box 7 (Potensi Berkembang Cepat / High Potential)';
+        } elseif ($axisX >= 70 && $axisY >= 70) {
+            $talentQuadrant = 'Box 5 (Penampil Tangguh / Solid Performer)';
+        } elseif ($axisX < 70 && $axisY >= 80) {
+            $talentQuadrant = 'Box 6 (Penampil Mantap / Specialist)';
+        } elseif ($axisX >= 80 && $axisY < 70) {
+            $talentQuadrant = 'Box 4 (Bakat Belum Teredukasi / Emerging Talent)';
         } else {
-            $talentQuadrant = 'Perlu Peningkatan / Box 4 (Need Development)';
+            $talentQuadrant = 'Box 1 (Perlu Peningkatan / Need Development)';
         }
 
         $competencyLevels = [
-            'Manajerial & Sosio-Kultural' => $normalizedScores['MANAJERIAL'] >= 80 ? 'Level 4 (Mahir)' : 'Level 3 (Mampu)',
-            'Literasi Digital ASN' => $normalizedScores['DIGITAL'] >= 80 ? 'Level 4 (Mahir)' : 'Level 3 (Mampu)',
-            'Emerging Skills & Analitis' => $normalizedScores['EMERGING'] >= 80 ? 'Level 4 (Optimal)' : 'Level 3 (Berkembang)',
-            'Potensi Kognitif & Figural' => $normalizedScores['POTENSI'] >= 80 ? 'Level 4 (Tinggi)' : 'Level 3 (Sedang)',
+            'Tes Potensi Kognitif' => $normalizedScores['POTENSI'] >= 80 ? 'Level 4 (Tinggi)' : ($normalizedScores['POTENSI'] >= 65 ? 'Level 3 (Sedang)' : 'Level 2 (Dasar)'),
+            'Manajerial & Sosio-Kultural' => $normalizedScores['MANAJERIAL'] >= 80 ? 'Level 4 (Mahir)' : ($normalizedScores['MANAJERIAL'] >= 65 ? 'Level 3 (Mampu)' : 'Level 2 (Dasar)'),
+            'Literasi Digital ASN' => $normalizedScores['DIGITAL'] >= 80 ? 'Level 4 (Mahir & Cakap SPBE)' : ($normalizedScores['DIGITAL'] >= 65 ? 'Level 3 (Mampu)' : 'Level 2 (Dasar)'),
+            'Preferensi Karir Utama' => $careerRecommendation,
         ];
+
+        $totalScore = $catScores['POTENSI'] + $catScores['MANAJERIAL'] + $catScores['DIGITAL'] + $catScores['KARIR'];
+        $avgScore = round(($normalizedScores['POTENSI'] + $normalizedScores['MANAJERIAL'] + $normalizedScores['DIGITAL']) / 3);
 
         $session = TryoutSession::create([
             'user_id' => $user->id,
-            'title' => $validated['title'] ?? 'Asesmen Profiling Mandiri #'.(TryoutSession::where('user_id', $user->id)->count() + 1),
+            'title' => $validated['title'] ?? 'Simulasi Profiling 4 Subtes #' . (TryoutSession::where('user_id', $user->id)->count() + 1),
             'twk_score' => $normalizedScores['POTENSI'],
             'tiu_score' => $normalizedScores['MANAJERIAL'],
             'tkp_score' => $normalizedScores['DIGITAL'],
             'total_score' => $totalScore,
-            'category_scores' => $normalizedScores,
+            'category_scores' => array_merge($normalizedScores, ['KARIR' => 100]),
             'competency_levels' => $competencyLevels,
             'talent_quadrant' => $talentQuadrant,
-            'is_passed' => $avgPercentage >= 70,
+            'career_recommendation' => $careerRecommendation,
+            'career_breakdown' => $careerBreakdown,
+            'is_passed' => $avgScore >= 70,
             'answers' => $answers,
             'time_spent_seconds' => $validated['time_spent'] ?? 3600,
             'completed_at' => now(),
         ]);
 
         return back()->with([
-            'success' => 'Hasil asesmen profiling berhasil diproses!',
+            'success' => 'Hasil asesmen profiling dan pemetaan Tripatha Karir berhasil diproses!',
             'session' => $session,
         ]);
     }

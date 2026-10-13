@@ -179,7 +179,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-card border border-border">
                     <div>
                         <div className="flex items-center gap-2 mb-1.5">
-                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
+                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                                 BANK SOAL CAT BKN
                             </span>
                             <span className="text-xs text-muted-foreground">• Total {questions.total} Butir Soal Terdaftar</span>
@@ -203,7 +203,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                         </Button>
                         <Button
                             onClick={openCreateModal}
-                            className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all shadow-sm"
+                            className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 transition-all shadow-sm"
                         >
                             <Plus className="size-4 mr-1.5" />
                             + Input Soal Baru
@@ -219,7 +219,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                             onClick={() => handleCategoryFilter('')}
                             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                 selectedCategory === ''
-                                    ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
+                                    ? 'bg-emerald-800 text-white shadow-sm'
                                     : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                             }`}
                         >
@@ -231,7 +231,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                 onClick={() => handleCategoryFilter(String(c.id))}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                     selectedCategory === String(c.id)
-                                        ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
+                                        ? 'bg-emerald-800 text-white shadow-sm'
                                         : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                                 }`}
                             >
@@ -289,7 +289,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                     {(questions.current_page - 1) * questions.per_page + idx + 1}
                                                 </td>
                                                 <td className="py-3 px-4">
-                                                    <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
+                                                    <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                                                         {q.category?.code ?? 'TWK'}
                                                     </span>
                                                 </td>
@@ -384,7 +384,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
             {/* CREATE / EDIT QUESTION MODAL */}
             {isCreateModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <div>
                                 <h2 className="font-display text-xl font-bold text-foreground">
@@ -409,7 +409,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     <select
                                         value={data.category_id}
                                         onChange={(e) => setData('category_id', Number(e.target.value))}
-                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-[#F0A500]"
+                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-emerald-700"
                                     >
                                         {categories.map((c) => (
                                             <option key={c.id} value={c.id}>
@@ -440,7 +440,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     onChange={(e) => setData('question', e.target.value)}
                                     rows={3}
                                     placeholder="Tuliskan butir soal lengkap di sini..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-[#F0A500]"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-emerald-700"
                                     required
                                 />
                                 {errors.question && <p className="text-destructive text-[11px]">{errors.question}</p>}
@@ -464,7 +464,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                 name="correct_answer_radio"
                                                 checked={data.correct_answer === optIndex}
                                                 onChange={() => setData('correct_answer', optIndex)}
-                                                className="size-4 text-[#F0A500] focus:ring-[#F0A500]"
+                                                className="size-4 text-emerald-700 focus:ring-emerald-700"
                                                 title={`Tandai Opsi ${letter} sebagai Kunci Jawaban`}
                                             />
                                         ) : (
@@ -485,7 +485,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                             </div>
                                         )}
 
-                                        <span className="font-mono font-bold w-4 text-center text-[#F0A500]">
+                                        <span className="font-mono font-bold w-4 text-center text-emerald-700">
                                             {letter}
                                         </span>
 
@@ -512,7 +512,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     onChange={(e) => setData('explanation', e.target.value)}
                                     rows={3}
                                     placeholder="Jelaskan alasan kunci jawaban dan trik cepat penyelesaiannya..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-[#F0A500]"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-emerald-700"
                                 />
                             </div>
 
@@ -529,7 +529,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
+                                    className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900"
                                 >
                                     {editingQuestion ? 'Simpan Perubahan' : 'Tambahkan ke Bank Soal'}
                                 </Button>
@@ -542,7 +542,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
             {/* IMPORT MODAL */}
             {isImportModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-lg p-6 space-y-4 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-white w-full max-w-lg p-6 space-y-4 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <h3 className="font-display text-lg font-bold text-foreground">
                                 Import Soal Massal
@@ -563,7 +563,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                             </p>
                             <Button
                                 onClick={handleQuickSampleImport}
-                                className="w-full mt-2 text-xs font-bold bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
+                                className="w-full mt-2 text-xs font-bold bg-emerald-800 text-white hover:bg-emerald-900"
                             >
                                 Import 2 Soal Contoh Sekarang
                             </Button>

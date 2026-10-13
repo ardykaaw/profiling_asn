@@ -80,7 +80,7 @@ const rightNavItems: NavItem[] = [
 ];
 
 const activeItemStyles =
-    'text-[#F0A500] font-semibold bg-[#F0A500]/10';
+    'text-emerald-800 font-semibold bg-emerald-50';
 
 export function AppHeader({ breadcrumbs = [] }: Props) {
     const page = usePage();
@@ -189,7 +189,7 @@ export function AppHeader({ breadcrumbs = [] }: Props) {
                                             {item.title}
                                         </Link>
                                         {isCurrentUrl(item.href) && (
-                                            <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-[#F0A500]"></div>
+                                            <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-emerald-700"></div>
                                         )}
                                     </NavigationMenuItem>
                                 ))}

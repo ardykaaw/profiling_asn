@@ -31,7 +31,7 @@ export default function AdminCategories({ categories }: Props) {
         question_count: 30,
         max_score: 150,
         description: '',
-        color: '#F0A500',
+        color: '#059669',
     });
 
     const openEdit = (c: Category) => {
@@ -66,7 +66,7 @@ export default function AdminCategories({ categories }: Props) {
                 {/* Header */}
                 <div className="p-6 rounded-2xl bg-card border border-border">
                     <div className="flex items-center gap-2 mb-1.5">
-                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
+                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                             STANDAR RESMI BKN
                         </span>
                         <span className="text-xs text-muted-foreground">• Regulasi KepmenPAN-RB SKD CPNS</span>
@@ -113,7 +113,7 @@ export default function AdminCategories({ categories }: Props) {
                             <div className="pt-3 border-t border-border grid grid-cols-3 gap-2 text-xs font-mono">
                                 <div className="p-2.5 rounded-xl bg-accent/20 text-center">
                                     <p className="text-[10px] text-muted-foreground">Passing Grade</p>
-                                    <p className="text-base font-bold text-[#F0A500] mt-0.5">{c.passing_grade}</p>
+                                    <p className="text-base font-bold text-emerald-800 mt-0.5">{c.passing_grade}</p>
                                 </div>
                                 <div className="p-2.5 rounded-xl bg-accent/20 text-center">
                                     <p className="text-[10px] text-muted-foreground">Jumlah Soal</p>
@@ -132,7 +132,7 @@ export default function AdminCategories({ categories }: Props) {
             {/* EDIT CATEGORY MODAL */}
             {editingCategory && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-md p-6 space-y-4 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-white w-full max-w-md p-6 space-y-4 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <h2 className="font-display text-lg font-bold text-foreground">
                                 Edit Standar {editingCategory.code}
@@ -208,7 +208,7 @@ export default function AdminCategories({ categories }: Props) {
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
+                                    className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900"
                                 >
                                     Simpan Standar
                                 </Button>

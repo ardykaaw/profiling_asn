@@ -20,6 +20,7 @@ import {
     Zap 
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
+import AppLogoIcon from '@/components/app-logo-icon';
 
 interface User {
     id: number;
@@ -38,7 +39,7 @@ export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
     const user = auth?.user;
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState<'manajerial' | 'digital' | 'emerging' | 'potensi'>('manajerial');
+    const [activeTab, setActiveTab] = useState<'potensi' | 'manajerial' | 'digital' | 'karir'>('manajerial');
 
     const sampleQuestions = {
         manajerial: {
@@ -69,19 +70,18 @@ export default function Welcome() {
             kunci: 'Opsi C (Skor 5 — Sangat Kompeten)',
             pembahasan: 'Domain tiruan adalah indikasi nyata spear-phishing. ASN wajib menjaga kehati-hatian digital, melindungi data sensitif kedinasan, dan melapor ke unit pengelola TIK instansi.'
         },
-        emerging: {
-            title: 'Studi Kasus: Berpikir Analitis & Pemecahan Masalah Publik',
-            windowTitle: 'Kasus Analitis — Penyelesaian Masalah Kompleks',
-            tag: 'Analytical Thinking',
-            soal: 'Laporan kepuasan layanan publik terpadu tiba-tiba mengalami penurunan 15% pada triwulan berjalan tanpa indikasi kendala sistem tunggal. Langkah analitis pertama yang paling tepat adalah...',
+        karir: {
+            title: 'Studi Kasus: Pemetaan Tripatha Karir & Peran Strategis ASN',
+            windowTitle: 'Kasus Karir — Orientasi Peran Tripatha ASN',
+            tag: 'Tripatha Karir BKN',
+            soal: 'Ketika instansi Anda mengadakan reformasi birokrasi dan modernisasi pelayanan terpadu, peran manakah yang paling membangkitkan motivasi kerja dan antusiasme Anda?',
             pilihan: [
-                'Menginstruksikan seluruh staf loket untuk lembur tanpa evaluasi pola masalah.',
-                'Melakukan dekonstruksi alur proses, memetakan waktu layanan di setiap titik kontak, dan membandingkan data empiris sebelum terjadi penurunan.',
-                'Mengabaikan laporan karena menganggap penurunan 15% merupakan fluktuasi acak.',
-                'Menyalahkan unit IT dan meminta perombakan sistem aplikasi seketika.'
+                'A. Menjadi koordinator tim strategis yang mengarahkan pembagian tugas, memimpin rapat diplomasi, dan bertanggung jawab atas pencapaian target (Jalur Kepemimpinan & Manajerial).',
+                'B. Menjadi analis keahlian yang meneliti data empiris, merancang inovasi model layanan, dan menyusun dokumen telaahan kebijakan serta regulasi teknis (Jalur Fungsional Keahlian).',
+                'C. Menjadi penanggung jawab operasional yang memastikan SOP administrasi terlaksana tertib, memverifikasi berkas, dan melayani langsung masyarakat (Jalur Pelayanan & Operasional Teknis).'
             ],
-            kunci: 'Opsi B (Skor 5 — Sangat Kompeten)',
-            pembahasan: 'Kemampuan berpikir analitis menuntut dekonstruksi persoalan kompleks ke dalam variabel data terukur guna menemukan akar masalah (root-cause) secara objektif dan sistematis.'
+            kunci: 'Opsi B (Dominan Fungsional Keahlian / Analis Kebijakan)',
+            pembahasan: 'Pemetaan Tripatha Karir menganalisis kecocokan profil psikometrik aparatur terhadap 3 jalur karir utama ASN Sistem Merit: Struktural/Manajerial, Fungsional Keahlian, dan Pelayanan/Operasional.'
         },
         potensi: {
             title: 'Studi Kasus: Penalaran Logis & Silogisme Kebijakan',
@@ -115,15 +115,13 @@ export default function Welcome() {
             <header className="relative z-20 border-b border-slate-200/90 bg-white/90 backdrop-blur-md sticky top-0 shadow-xs">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-emerald-800 text-amber-300 font-mono font-black text-sm flex items-center justify-center shadow-xs border border-emerald-900">
-                            ASN
-                        </div>
+                        <AppLogoIcon className="size-9 shrink-0" />
                         <div>
-                            <span className="font-extrabold text-base tracking-tight text-slate-900">
-                                ProASN<span className="text-emerald-700">.</span>
+                            <span className="font-black text-base tracking-tight text-slate-900 font-sans">
+                                ProASN<span className="text-emerald-600">.</span>
                             </span>
                             <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
-                                Portal Asesmen & Manajemen Talenta
+                                Talent Assessment Platform
                             </span>
                         </div>
                     </div>
@@ -341,21 +339,21 @@ export default function Welcome() {
                             </div>
                         </div>
 
-                        {/* Card 3 */}
+                        {/* Card 4 */}
                         <div className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-amber-300 transition-all flex flex-col overflow-hidden">
-                            <MacWindowControls title="Dimensi 3 — Emerging Skills" badge="BERPIKIR KRITIS" />
+                            <MacWindowControls title="Subtes 4 — Preferensi Karir" badge="TRIPATHA BKN" />
                             <div className="p-5 flex-1 flex flex-col justify-between">
                                 <div>
                                     <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-4">
-                                        <Zap className="w-5 h-5" />
+                                        <Compass className="w-5 h-5" />
                                     </div>
-                                    <h3 className="font-bold text-base text-slate-900">Emerging Skills & Analitis</h3>
+                                    <h3 className="font-bold text-base text-slate-900">Preferensi Karir (Tripatha Karir)</h3>
                                     <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                                        Ketajaman berpikir analitis, pemecahan masalah birokrasi kompleks, perumusan skenario risiko, adaptabilitas teknologi, dan perumusan kebijakan publik berbasis data.
+                                        Pemetaan psikometrik minat kerja dan gaya pemecahan masalah ke dalam 3 jalur karir ASN: Jalur Kepemimpinan/Struktural, Fungsional Keahlian & Riset, serta Pelayanan/Operasional.
                                     </p>
                                 </div>
                                 <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-800">
-                                    Passing Grade: ≥ 75 Poin
+                                    Pemetaan Minat: 3 Rumpun Jabatan
                                 </div>
                             </div>
                         </div>
@@ -616,12 +614,10 @@ export default function Welcome() {
             <footer className="relative z-10 border-t border-slate-200 bg-white py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-600">
                     <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-lg bg-emerald-800 text-amber-300 font-mono font-black text-xs flex items-center justify-center">
-                            ASN
-                        </div>
+                        <AppLogoIcon className="size-8 shrink-0" />
                         <div>
-                            <span className="font-bold text-slate-900">ProASN Portal</span>
-                            <span className="block text-[10px] text-slate-500">Platform Uji Asesmen & Pemetaan Kompetensi ASN</span>
+                            <span className="font-black text-slate-900">ProASN<span className="text-emerald-600">.</span></span>
+                            <span className="block text-[10px] text-slate-500">Civil Service Talent Assessment Platform</span>
                         </div>
                     </div>
 

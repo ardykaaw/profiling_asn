@@ -98,7 +98,7 @@ export default function Login({ status, canResetPassword }: Props) {
                                     </Label>
                                     {canResetPassword && (
                                         <TextLink
-                                            href={request()}
+                                            href="/forgot-password"
                                             className="text-xs text-slate-500 hover:text-emerald-700 transition-colors"
                                             tabIndex={5}
                                         >

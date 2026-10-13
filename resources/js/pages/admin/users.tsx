@@ -101,14 +101,14 @@ export default function AdminUsers({ users, filters, stats }: Props) {
 
     return (
         <>
-            <Head title="Verifikasi Pengguna Lynk.id — SiapCPNS Admin" />
+            <Head title="Verifikasi Pengguna Lynk.id — ProASN Admin" />
 
             <div className="flex flex-1 flex-col gap-6 p-4 md:p-6 max-w-7xl mx-auto w-full">
                 {/* Header Section */}
-                <div className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-card via-card/90 to-[#141D33] border border-[#1E2C4A] shadow-md flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="p-6 md:p-8 rounded-2xl bg-white border border-slate-200 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[#F0A500]/15 text-[#F0A500] border border-[#F0A500]/30 flex items-center gap-1.5">
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1.5">
                                 <Users className="size-3.5" />
                                 <span>VERIFIKASI PENGGUNA</span>
                             </span>
@@ -125,7 +125,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setIsAddModalOpen(true)}
-                            className="px-4 py-2.5 rounded-xl font-bold text-xs bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all shadow-sm flex items-center gap-2"
+                            className="px-4 py-2.5 rounded-xl font-bold text-xs bg-emerald-800 text-white hover:bg-emerald-900 transition-all shadow-sm flex items-center gap-2"
                         >
                             <Plus className="size-4" />
                             <span>Tambah Pengguna Manual</span>
@@ -141,7 +141,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                             <Users className="size-4 text-[#8B5CF6]" />
                         </div>
                         <p className="font-mono text-3xl font-bold text-foreground">{stats.total}</p>
-                        <p className="text-[11px] text-muted-foreground mt-1">Registrasi via Web SiapCPNS</p>
+                        <p className="text-[11px] text-muted-foreground mt-1">Registrasi via Portal ProASN</p>
                     </div>
 
                     <div className="p-5 rounded-2xl border border-border bg-card">
@@ -156,9 +156,9 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                     <div className="p-5 rounded-2xl border border-border bg-card">
                         <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
                             <span>Menunggu Verifikasi</span>
-                            <Clock className="size-4 text-[#F0A500]" />
+                            <Clock className="size-4 text-emerald-800" />
                         </div>
-                        <p className="font-mono text-3xl font-bold text-[#F0A500]">{stats.pending}</p>
+                        <p className="font-mono text-3xl font-bold text-emerald-800">{stats.pending}</p>
                         <p className="text-[11px] text-muted-foreground mt-1">Belum diaktifkan / verifikasi</p>
                     </div>
                 </div>
@@ -172,7 +172,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Cari nama, email, no WA, invoice..."
-                            className="w-full pl-10 pr-4 py-2 rounded-xl text-xs bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[#F0A500]"
+                            className="w-full pl-10 pr-4 py-2 rounded-xl text-xs bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-emerald-700"
                         />
                     </form>
 
@@ -188,7 +188,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                 onClick={() => handleFilterStatus(item.id)}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                                     statusFilter === item.id
-                                        ? 'bg-[#F0A500] text-[#0B1023]'
+                                        ? 'bg-emerald-800 text-white'
                                         : 'bg-background border border-border text-muted-foreground hover:text-foreground'
                                 }`}
                             >
@@ -228,7 +228,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                             <tr key={u.id} className="hover:bg-accent/30 transition-colors">
                                                 <td className="p-4">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-8 h-8 rounded-full bg-[#1E2C4A] text-[#F0A500] font-bold flex items-center justify-center font-mono text-xs">
+                                                        <div className="w-8 h-8 rounded-full bg-slate-100 text-emerald-800 font-bold flex items-center justify-center font-mono text-xs">
                                                             {u.name.charAt(0).toUpperCase()}
                                                         </div>
                                                         <div>
@@ -259,7 +259,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                                 </td>
                                                 <td className="p-4">
                                                     {u.lynk_order_id ? (
-                                                        <span className="font-mono px-2 py-0.5 rounded bg-accent text-[#F0A500] border border-border">
+                                                        <span className="font-mono px-2 py-0.5 rounded bg-accent text-emerald-800 border border-border">
                                                             #{u.lynk_order_id}
                                                         </span>
                                                     ) : (
@@ -273,7 +273,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                                     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[10px] font-bold ${
                                                         u.is_active
                                                             ? 'bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30'
-                                                            : 'bg-[#F0A500]/15 text-[#F0A500] border border-[#F0A500]/30'
+                                                            : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                                                     }`}>
                                                         {u.is_active ? (
                                                             <>
@@ -295,7 +295,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                                             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                                                                 u.is_active
                                                                     ? 'bg-accent border border-border text-muted-foreground hover:text-foreground'
-                                                                    : 'bg-[#10B981] text-[#0B1023] hover:bg-[#34D399] font-bold'
+                                                                    : 'bg-emerald-800 text-white hover:bg-emerald-900 font-bold'
                                                             }`}
                                                         >
                                                             {u.is_active ? 'Nonaktifkan' : 'Aktifkan Akses ✓'}
@@ -331,7 +331,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                         </button>
 
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="p-2.5 rounded-xl bg-[#F0A500]/15 text-[#F0A500]">
+                            <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800">
                                 <Users className="size-5" />
                             </div>
                             <div>
@@ -355,7 +355,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     placeholder="Contoh: Budi Santoso"
-                                    className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-[#F0A500]"
+                                    className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-emerald-700"
                                 />
                             </div>
 
@@ -370,7 +370,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         placeholder="nama@email.com"
-                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-[#F0A500]"
+                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-emerald-700"
                                     />
                                 </div>
                                 <div>
@@ -382,7 +382,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         placeholder="08123456789"
-                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-[#F0A500]"
+                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-emerald-700"
                                     />
                                 </div>
                             </div>
@@ -397,7 +397,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                         value={formData.lynk_order_id}
                                         onChange={(e) => setFormData({ ...formData, lynk_order_id: e.target.value })}
                                         placeholder="Contoh: LNK-99210"
-                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-[#F0A500]"
+                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-emerald-700"
                                     />
                                 </div>
                                 <div>
@@ -409,7 +409,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                         required
                                         value={formData.password}
                                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-[#F0A500]"
+                                        className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:border-emerald-700"
                                     />
                                 </div>
                             </div>
@@ -423,14 +423,14 @@ export default function AdminUsers({ users, filters, stats }: Props) {
                                     type="checkbox"
                                     checked={formData.is_active}
                                     onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                                    className="w-4 h-4 rounded text-[#F0A500] focus:ring-[#F0A500]"
+                                    className="w-4 h-4 rounded text-emerald-800 focus:ring-emerald-700"
                                 />
                             </div>
 
                             <div className="flex gap-3 pt-2">
                                 <button
                                     type="submit"
-                                    className="flex-1 py-2.5 rounded-xl font-bold text-xs bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all"
+                                    className="flex-1 py-2.5 rounded-xl font-bold text-xs bg-emerald-800 text-white hover:bg-emerald-900 transition-all"
                                 >
                                     Simpan & Beri Hak Akses
                                 </button>
@@ -453,7 +453,7 @@ export default function AdminUsers({ users, filters, stats }: Props) {
 AdminUsers.layout = {
     breadcrumbs: [
         {
-            title: 'Panel Admin SiapCPNS',
+            title: 'Panel Admin ProASN',
             href: '/admin',
         },
         {

@@ -44,11 +44,13 @@ class DashboardController extends Controller
                 'status' => $s->talent_quadrant ?? ($s->is_passed ? 'MEMENUHI SYARAT' : 'PERLU PENINGKATAN'),
                 'passing' => (bool) $s->is_passed,
                 'category_scores' => $s->category_scores ?? [
-                    'MANAJERIAL' => $s->tiu_score ?? 85,
-                    'DIGITAL' => $s->tkp_score ?? 80,
-                    'EMERGING' => 88,
-                    'POTENSI' => $s->twk_score ?? 82,
+                    'POTENSI' => $s->twk_score ?? 85,
+                    'MANAJERIAL' => $s->tiu_score ?? 88,
+                    'DIGITAL' => $s->tkp_score ?? 82,
+                    'KARIR' => 100,
                 ],
+                'career_recommendation' => $s->career_recommendation ?? 'Jalur Fungsional Keahlian & Riset Kebijakan',
+                'career_breakdown' => $s->career_breakdown,
                 'competency_levels' => $s->competency_levels ?? [],
                 'talent_quadrant' => $s->talent_quadrant ?? 'Bintang (Box 9)',
             ];

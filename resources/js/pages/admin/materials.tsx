@@ -185,7 +185,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
 
                     <Button
                         onClick={openCreateModal}
-                        className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all shadow-sm flex items-center gap-1.5"
+                        className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 transition-all shadow-sm flex items-center gap-1.5"
                     >
                         <Upload className="size-4" />
                         <span>Upload Modul Baru</span>
@@ -199,7 +199,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                             onClick={() => handleCategoryFilter('')}
                             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                 selectedCategory === ''
-                                    ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
+                                    ? 'bg-emerald-800 text-white shadow-sm'
                                     : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                             }`}
                         >
@@ -211,7 +211,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                 onClick={() => handleCategoryFilter(String(c.id))}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                     selectedCategory === String(c.id)
-                                        ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
+                                        ? 'bg-emerald-800 text-white shadow-sm'
                                         : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                                 }`}
                             >
@@ -244,7 +244,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                         </div>
                     ) : (
                         materials.data.map((m) => (
-                            <div key={m.id} className="p-5 rounded-2xl border border-border bg-card flex flex-col justify-between space-y-4 hover:border-[#F0A500]/40 transition-all card-hover">
+                            <div key={m.id} className="p-5 rounded-2xl border border-border bg-card flex flex-col justify-between space-y-4 hover:border-emerald-300 transition-all card-hover">
                                 <div className="space-y-2.5">
                                     <div className="flex items-center justify-between text-xs">
                                         <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-[#06B6D4]/15 text-[#06B6D4] uppercase">
@@ -277,7 +277,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                             {m.type === 'video' ? '🎥 Video' : '📄 PDF/Bacaan'}
                                         </span>
                                         <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
-                                            m.is_free ? 'bg-[#10B981]/15 text-[#10B981]' : 'bg-[#F0A500]/15 text-[#F0A500]'
+                                            m.is_free ? 'bg-[#10B981]/15 text-[#10B981]' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                                         }`}>
                                             {m.is_free ? 'Gratis' : 'VIP'}
                                         </span>
@@ -309,7 +309,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
             {/* CREATE / EDIT MATERIAL MODAL */}
             {isCreateModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <div>
                                 <h2 className="font-display text-xl font-bold text-foreground">
@@ -343,7 +343,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                     <select
                                         value={data.category_id}
                                         onChange={(e) => setData('category_id', Number(e.target.value))}
-                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-[#F0A500]"
+                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-emerald-700"
                                     >
                                         {categories.map((c) => (
                                             <option key={c.id} value={c.id}>
@@ -358,7 +358,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                     <select
                                         value={data.type}
                                         onChange={(e) => setData('type', e.target.value as any)}
-                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-[#F0A500]"
+                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-emerald-700"
                                     >
                                         <option value="video">Video Pembahasan</option>
                                         <option value="pdf">Dokumen PDF / File</option>
@@ -371,7 +371,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                     <select
                                         value={data.level}
                                         onChange={(e) => setData('level', e.target.value as any)}
-                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-[#F0A500]"
+                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-emerald-700"
                                     >
                                         <option value="Dasar">Dasar (Pemula)</option>
                                         <option value="Menengah">Menengah</option>
@@ -418,7 +418,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                         htmlFor="material_file"
                                         className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-foreground hover:bg-accent/80 text-xs font-medium"
                                     >
-                                        <FileUp className="size-4 text-[#F0A500]" />
+                                        <FileUp className="size-4 text-emerald-700" />
                                         <span>{data.file ? data.file.name : 'Pilih File PDF dari Komputer'}</span>
                                     </label>
                                     <p className="text-[11px] text-muted-foreground mt-2">
@@ -435,7 +435,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                     onChange={(e) => setData('summary', e.target.value)}
                                     rows={2}
                                     placeholder="Jelaskan ringkasan isi modul yang akan dipelajari peserta..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-[#F0A500]"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-emerald-700"
                                     required
                                 />
                             </div>
@@ -448,7 +448,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                     onChange={(e) => setData('content', e.target.value)}
                                     rows={4}
                                     placeholder="Tuliskan materi pembelajaran lengkap (mendukung format markdown)..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs font-mono focus:ring-[#F0A500]"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs font-mono focus:ring-emerald-700"
                                 />
                             </div>
 
@@ -459,7 +459,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                         type="checkbox"
                                         checked={data.is_free}
                                         onChange={(e) => setData('is_free', e.target.checked)}
-                                        className="size-4 text-[#F0A500] rounded focus:ring-[#F0A500]"
+                                        className="size-4 text-emerald-700 rounded focus:ring-emerald-700"
                                     />
                                     <span className="text-xs text-foreground">Bisa diakses Gratis (Member Free)</span>
                                 </label>
@@ -469,7 +469,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                         type="checkbox"
                                         checked={data.is_published}
                                         onChange={(e) => setData('is_published', e.target.checked)}
-                                        className="size-4 text-[#F0A500] rounded focus:ring-[#F0A500]"
+                                        className="size-4 text-emerald-700 rounded focus:ring-emerald-700"
                                     />
                                     <span className="text-xs text-foreground">Publikasikan Langsung ke Peserta</span>
                                 </label>
@@ -488,7 +488,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
+                                    className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900"
                                 >
                                     {editingMaterial ? 'Simpan Perubahan' : 'Upload & Terbitkan Modul'}
                                 </Button>

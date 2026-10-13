@@ -1,19 +1,15 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { 
     Award, 
-    BookOpen, 
-    Clock, 
     Sparkles, 
     Users, 
     Cpu, 
-    Zap, 
     Brain, 
     ArrowRight, 
-    CheckCircle2, 
-    Flame, 
     TrendingUp,
-    ShieldCheck,
-    Layers
+    FileText,
+    Compass,
+    CheckCircle2
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -39,7 +35,6 @@ interface DashboardProps {
     totalQuestionsAnswered?: number;
     avgScore?: number;
     streakDays?: number;
-    activityGrid?: boolean[];
     totalQuestionsInBank?: number;
     totalMaterialsCount?: number;
     categories?: any[];
@@ -50,269 +45,250 @@ export default function Dashboard({
     recentSessions = [],
     totalSessionsCount = 1,
     passedSessionsCount = 1,
-    totalQuestionsAnswered = 45,
+    totalQuestionsAnswered = 24,
     avgScore = 88,
     streakDays = 3,
-    activityGrid = [],
-    totalQuestionsInBank = 25,
-    totalMaterialsCount = 4,
+    totalQuestionsInBank = 24,
+    totalMaterialsCount = 9,
     categories = [],
 }: DashboardProps) {
     const { auth } = usePage<SharedData>().props;
     const user = auth?.user;
 
+    const latestCareer = latestSession?.career_recommendation || recentSessions[0]?.career_recommendation || 'Jalur Fungsional Keahlian & Riset Kebijakan';
+
     return (
         <div className="flex flex-1 flex-col gap-6 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full font-sans text-slate-900 bg-[#F8F9FA] min-h-screen">
-            <Head title="Dashboard Profiling ASN" />
+            <Head title="Dashboard Profiling ASN - 4 Subtes BKN" />
 
-            {/* Mac Window Header Banner */}
-            <div className="rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden">
-                <MacWindowControls
-                    title="Portal Asesmen Kepegawaian ASN"
-                    badge="AKUN AKTIF"
-                />
-                <div className="p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="space-y-2">
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-800 text-xs font-semibold">
-                            <Sparkles className="w-3.5 h-3.5" />
-                            <span>Portal Asesmen Manajemen Talenta Nasional</span>
-                        </div>
-                        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                            Selamat Datang, <span className="text-emerald-800">{user?.name}</span>
-                        </h1>
-                        <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-                            Pantau kemajuan kompetensi Anda menuju <strong>Kuadran 9 Manajemen Talenta ASN</strong>. Hasil simulasi terkalibrasi dengan standar BKN dan KemenPAN-RB.
-                        </p>
+            {/* Lean Executive Greeting & Quick Actions */}
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-xs p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                            AKUN PEGAWAI AKTIF
+                        </span>
+                        <span className="text-xs text-slate-400">• Standar 4 Subtes BKN</span>
                     </div>
+                    <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                        Selamat Datang, {user?.name}
+                    </h1>
+                </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-                        <a
-                            href="/tryout"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 text-xs font-bold shadow-md transition-all"
-                        >
-                            <Award className="w-4 h-4" />
-                            <span>Mulai Uji Asesmen CAT</span>
-                        </a>
-                        <a
-                            href="/materi"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs font-semibold transition-all shadow-xs"
-                        >
-                            <BookOpen className="w-4 h-4 text-slate-600" />
-                            <span>Modul Pembahasan</span>
-                        </a>
-                    </div>
+                <div className="flex items-center gap-2.5">
+                    <a
+                        href="/tryout"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold transition-all shadow-xs"
+                    >
+                        <Award className="w-4 h-4" />
+                        <span>Mulai Simulasi 4 Subtes</span>
+                    </a>
+                    <a
+                        href="/materi"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-bold transition-all shadow-xs"
+                    >
+                        <FileText className="w-4 h-4 text-slate-500" />
+                        <span>Modul PDF ({totalMaterialsCount})</span>
+                    </a>
                 </div>
             </div>
 
-            {/* 4 Cards Metrics Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {/* Metric 1 */}
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
-                        <span>PREDIKAT TALENTA</span>
-                        <span className="p-1 rounded-md bg-amber-100 text-amber-800"><Sparkles className="w-3.5 h-3.5" /></span>
+            {/* 4 Clean Metric Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs">
+                    <div className="flex items-center justify-between text-xs text-slate-500">
+                        <span className="font-semibold text-[11px] uppercase tracking-wider">Kuadran Talenta</span>
+                        <span className="p-1 rounded-md bg-amber-50 text-amber-700"><Sparkles className="w-3.5 h-3.5" /></span>
                     </div>
-                    <div className="my-3">
-                        <div className="text-xl font-black text-slate-900">Kuadran IX (Bintang)</div>
-                        <div className="text-xs text-emerald-700 font-semibold mt-1">Sangat Memenuhi Syarat</div>
-                    </div>
-                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
-                        Prioritas Promosi & Suksesi
-                    </div>
+                    <div className="text-lg sm:text-xl font-black text-slate-900 mt-2">Box 9 (Bintang)</div>
+                    <div className="text-[11px] font-semibold text-emerald-700 mt-0.5">High Potential & Performance</div>
                 </div>
 
-                {/* Metric 2 */}
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
-                        <span>SKOR RATA-RATA</span>
-                        <span className="p-1 rounded-md bg-blue-100 text-blue-800"><TrendingUp className="w-3.5 h-3.5" /></span>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs">
+                    <div className="flex items-center justify-between text-xs text-slate-500">
+                        <span className="font-semibold text-[11px] uppercase tracking-wider">Rata-Rata Skor</span>
+                        <span className="p-1 rounded-md bg-emerald-50 text-emerald-700"><TrendingUp className="w-3.5 h-3.5" /></span>
                     </div>
-                    <div className="my-3">
-                        <div className="text-2xl font-black text-slate-900">{avgScore} / 100</div>
-                        <div className="text-xs text-blue-700 font-semibold mt-1">Tingkat Akurasi 88%</div>
-                    </div>
-                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
-                        Melampaui Ambang Batas (75)
-                    </div>
+                    <div className="text-lg sm:text-xl font-black text-slate-900 mt-2">{avgScore} / 100</div>
+                    <div className="text-[11px] font-semibold text-emerald-700 mt-0.5">+13 Poin di atas Passing Grade</div>
                 </div>
 
-                {/* Metric 3 */}
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
-                        <span>TOTAL SIMULASI</span>
-                        <span className="p-1 rounded-md bg-emerald-100 text-emerald-800"><CheckCircle2 className="w-3.5 h-3.5" /></span>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs">
+                    <div className="flex items-center justify-between text-xs text-slate-500">
+                        <span className="font-semibold text-[11px] uppercase tracking-wider">Arah Tripatha Karir</span>
+                        <span className="p-1 rounded-md bg-blue-50 text-blue-700"><Compass className="w-3.5 h-3.5" /></span>
                     </div>
-                    <div className="my-3">
-                        <div className="text-2xl font-black text-slate-900">{totalSessionsCount} Sesi Ujian</div>
-                        <div className="text-xs text-emerald-700 font-semibold mt-1">{totalQuestionsAnswered} Butir Soal Selesai</div>
+                    <div className="text-sm sm:text-base font-black text-slate-900 mt-2 line-clamp-1">
+                        {latestCareer.split('(')[0].trim()}
                     </div>
-                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
-                        {passedSessionsCount} Sesi Memenuhi Syarat
-                    </div>
+                    <div className="text-[11px] font-semibold text-blue-700 mt-0.5">Rekomendasi Jabatan ASN</div>
                 </div>
 
-                {/* Metric 4 */}
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md p-5 flex flex-col justify-between">
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
-                        <span>KONSISTENSI BELAJAR</span>
-                        <span className="p-1 rounded-md bg-orange-100 text-orange-800"><Flame className="w-3.5 h-3.5 text-orange-600" /></span>
+                <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs">
+                    <div className="flex items-center justify-between text-xs text-slate-500">
+                        <span className="font-semibold text-[11px] uppercase tracking-wider">Modul & Bank Soal</span>
+                        <span className="p-1 rounded-md bg-purple-50 text-purple-700"><FileText className="w-3.5 h-3.5" /></span>
                     </div>
-                    <div className="my-3">
-                        <div className="text-2xl font-black text-slate-900">{streakDays} Hari Beruntun</div>
-                        <div className="text-xs text-orange-700 font-semibold mt-1">Aktivitas Sangat Baik</div>
-                    </div>
-                    <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
-                        Target Uji Kompetensi BKN
-                    </div>
+                    <div className="text-lg sm:text-xl font-black text-slate-900 mt-2">{totalQuestionsInBank} Soal</div>
+                    <div className="text-[11px] font-semibold text-purple-700 mt-0.5">4 Subtes + 9 Buku Panduan</div>
                 </div>
             </div>
 
-            {/* 4 Dimensions Overview & Nine-Box Status */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Dimension Bars in Mac Window */}
-                <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden flex flex-col justify-between">
-                    <MacWindowControls title="Evaluasi Capaian 4 Dimensi Kompetensi" badge="PROFIL KOMPETENSI" />
-                    <div className="p-6 space-y-5 flex-1">
+            {/* Main Interactive Grid: 4 Pillars Progress + Nine-Box Visual */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                {/* 4 Pillars Progress (7 cols) */}
+                <div className="lg:col-span-7 rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden flex flex-col justify-between">
+                    <MacWindowControls title="Evaluasi Capaian 4 Subtes Asesmen Profiling" badge="4 SUBTES RESMI" />
+                    <div className="p-5 sm:p-6 space-y-4">
                         <div>
-                            <h3 className="font-bold text-sm sm:text-base text-slate-900">
-                                Capaian Standar Kompetensi ASN
-                            </h3>
-                            <p className="text-xs text-slate-500">
-                                Distribusi skor per pilar berdasarkan hasil simulasi terkini.
-                            </p>
+                            <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                                <span className="flex items-center gap-2">
+                                    <Brain className="w-4 h-4 text-blue-600" />
+                                    <span>Subtes 1: Tes Potensi (Kognitif & Figural Spasial)</span>
+                                </span>
+                                <span className="text-blue-800 font-mono">88%</span>
+                            </div>
+                            <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full bg-blue-600 rounded-full" style={{ width: '88%' }} />
+                            </div>
                         </div>
 
-                        <div className="space-y-4">
-                            <div>
-                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                                    <span className="flex items-center gap-2 text-slate-800">
-                                        <Users className="w-4 h-4 text-emerald-600" />
-                                        <span>Manajerial & Sosio-Kultural (8 Dimensi MenPAN-RB)</span>
-                                    </span>
-                                    <span className="text-emerald-800 font-bold">92% • Level 4 (Mahir)</span>
-                                </div>
-                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-                                    <div className="h-full bg-emerald-600 rounded-full" style={{ width: '92%' }} />
-                                </div>
+                        <div>
+                            <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                                <span className="flex items-center gap-2">
+                                    <Users className="w-4 h-4 text-emerald-600" />
+                                    <span>Subtes 2: Manajerial & Sosio-Kultural (8 Dimensi PermenPAN-RB)</span>
+                                </span>
+                                <span className="text-emerald-800 font-mono">92%</span>
                             </div>
-
-                            <div>
-                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                                    <span className="flex items-center gap-2 text-slate-800">
-                                        <Cpu className="w-4 h-4 text-purple-600" />
-                                        <span>Literasi & Keamanan Digital (SPBE & UU PDP)</span>
-                                    </span>
-                                    <span className="text-purple-800 font-bold">86% • Level 4 (Cakap)</span>
-                                </div>
-                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-                                    <div className="h-full bg-purple-600 rounded-full" style={{ width: '86%' }} />
-                                </div>
+                            <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full bg-emerald-600 rounded-full" style={{ width: '92%' }} />
                             </div>
+                        </div>
 
-                            <div>
-                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                                    <span className="flex items-center gap-2 text-slate-800">
-                                        <Zap className="w-4 h-4 text-amber-600" />
-                                        <span>Emerging Skills & Berpikir Analitis</span>
-                                    </span>
-                                    <span className="text-amber-800 font-bold">90% • Level 4 (Optimal)</span>
-                                </div>
-                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-                                    <div className="h-full bg-amber-500 rounded-full" style={{ width: '90%' }} />
-                                </div>
+                        <div>
+                            <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                                <span className="flex items-center gap-2">
+                                    <Cpu className="w-4 h-4 text-purple-600" />
+                                    <span>Subtes 3: Literasi Digital (SPBE & UU PDP No. 27/2022)</span>
+                                </span>
+                                <span className="text-purple-800 font-mono">85%</span>
                             </div>
+                            <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full bg-purple-600 rounded-full" style={{ width: '85%' }} />
+                            </div>
+                        </div>
 
-                            <div>
-                                <div className="flex items-center justify-between text-xs font-semibold mb-1">
-                                    <span className="flex items-center gap-2 text-slate-800">
-                                        <Brain className="w-4 h-4 text-blue-600" />
-                                        <span>Potensi Kognitif & Figural Spasial</span>
-                                    </span>
-                                    <span className="text-blue-800 font-bold">87% • Level 4 (Tinggi)</span>
-                                </div>
-                                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-                                    <div className="h-full bg-blue-600 rounded-full" style={{ width: '87%' }} />
-                                </div>
+                        <div>
+                            <div className="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                                <span className="flex items-center gap-2">
+                                    <Compass className="w-4 h-4 text-amber-600" />
+                                    <span>Subtes 4: Preferensi Karir (Tripatha Karir ASN)</span>
+                                </span>
+                                <span className="text-amber-800 font-mono font-bold">Fungsional Keahlian</span>
+                            </div>
+                            <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                <div className="h-full bg-amber-500 rounded-full" style={{ width: '95%' }} />
                             </div>
                         </div>
                     </div>
 
-                    <div className="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-600">
-                        <span>Status: Seluruh dimensi telah melampaui Passing Grade BKN (75).</span>
-                        <a href="/tryout" className="text-emerald-800 font-bold flex items-center gap-1 hover:underline">
-                            <span>Latihan Lagi</span>
-                            <ArrowRight className="w-3 h-3" />
-                        </a>
-                    </div>
-                </div>
-
-                {/* Nine-Box Quick Card in Mac Window */}
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden flex flex-col justify-between">
-                    <MacWindowControls title="Matriks Manajemen Talenta" badge="KUADRAN IX" />
-                    <div className="p-5 space-y-4">
-                        <div className="text-center p-4 rounded-xl bg-amber-50 border border-amber-200">
-                            <div className="text-xs font-bold text-amber-800 uppercase">Status Kuadran Talenta</div>
-                            <div className="text-xl font-black text-slate-900 mt-1">Kuadran IX (Bintang)</div>
-                            <p className="text-xs text-slate-600 mt-1">
-                                Potensi Tinggi + Kinerja Tinggi
-                            </p>
-                        </div>
-
-                        <div className="text-xs text-slate-600 space-y-2.5">
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                                <span>Memenuhi kriteria rotasi/promosi JPT</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                                <span>Kesiapan penugasan strategis nasional</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                                <span>Memenuhi standar beasiswa studi lanjutan</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="p-4 border-t border-slate-100 bg-slate-50">
-                        <a
-                            href="/materi"
-                            className="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
-                        >
-                            <span>Buka Modul Strategi Kuadran 9</span>
+                    <div className="px-5 py-3 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs">
+                        <span className="text-slate-500 font-medium">Standar Evaluasi: BKN & MenPAN-RB</span>
+                        <a href="/tryout" className="text-emerald-800 font-bold hover:underline flex items-center gap-1">
+                            <span>Buka Ruang Uji CAT</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                         </a>
+                    </div>
+                </div>
+
+                {/* Visual Mini 3x3 Nine-Box Grid & Career Pill (5 cols) */}
+                <div className="lg:col-span-5 rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden flex flex-col justify-between">
+                    <MacWindowControls title="Matriks Manajemen Talenta BKN" badge="NINE-BOX" />
+                    <div className="p-5 flex-1 flex flex-col justify-center space-y-3">
+                        <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold">
+                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
+                                Box 3
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                Box 6
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-300 ring-2 ring-amber-400 font-black shadow-xs">
+                                Box 9 ★
+                            </div>
+
+                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
+                                Box 2
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-600 border border-slate-200">
+                                Box 5
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                Box 8
+                            </div>
+
+                            <div className="p-2.5 rounded-lg bg-red-50 text-red-700 border border-red-200">
+                                Box 1
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
+                                Box 4
+                            </div>
+                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
+                                Box 7
+                            </div>
+                        </div>
+
+                        <div className="text-center space-y-1.5">
+                            <div>
+                                <span className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
+                                    Posisi Anda: Box 9 (High Potential & Performance)
+                                </span>
+                            </div>
+                            <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-semibold text-center line-clamp-1">
+                                🧭 {latestCareer}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="px-5 py-3 border-t border-slate-100 bg-slate-50 text-center">
+                        <span className="text-[11px] text-slate-500 font-medium">
+                            Sumbu X: Potensi & Digital • Sumbu Y: Manajerial & Kinerja
+                        </span>
                     </div>
                 </div>
             </div>
 
             {/* Recent Sessions Table */}
             {recentSessions && recentSessions.length > 0 && (
-                <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
-                    <MacWindowControls title="Riwayat Hasil Sesi Uji Asesmen" badge="SESI TERBARU" />
+                <div className="rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden">
+                    <MacWindowControls title="Riwayat Hasil Evaluasi Asesmen" badge="RIWAYAT" />
                     <div className="p-5 sm:p-6">
-                        <h3 className="font-bold text-sm text-slate-900 mb-4">Sesi Asesmen Terakhir</h3>
                         <div className="overflow-x-auto">
                             <table className="w-full text-left text-xs">
                                 <thead>
                                     <tr className="border-b border-slate-200 text-slate-500 font-semibold">
-                                        <th className="py-2.5 px-3">Nama Paket</th>
+                                        <th className="py-2.5 px-3">Nama Paket Evaluasi</th>
                                         <th className="py-2.5 px-3">Tanggal</th>
                                         <th className="py-2.5 px-3">Predikat Talenta</th>
-                                        <th className="py-2.5 px-3">Skor Total</th>
+                                        <th className="py-2.5 px-3">Arah Tripatha Karir</th>
+                                        <th className="py-2.5 px-3 text-right">Skor Total</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100 text-slate-700">
                                     {recentSessions.map((s, idx) => (
-                                        <tr key={idx} className="hover:bg-slate-50">
+                                        <tr key={idx} className="hover:bg-slate-50 transition-colors">
                                             <td className="py-3 px-3 font-semibold text-slate-900">{s.title}</td>
-                                            <td className="py-3 px-3 text-slate-500">{s.date}</td>
+                                            <td className="py-3 px-3 text-slate-500 font-mono">{s.date}</td>
                                             <td className="py-3 px-3">
-                                                <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                                                    {s.talent_quadrant || 'Kuadran IX (Bintang)'}
+                                                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                                    {s.talent_quadrant || 'Box 9 (Bintang)'}
                                                 </span>
                                             </td>
-                                            <td className="py-3 px-3 font-bold text-slate-900">{s.score} Poin</td>
+                                            <td className="py-3 px-3 font-semibold text-slate-800">
+                                                {s.career_recommendation || 'Jalur Fungsional Keahlian'}
+                                            </td>
+                                            <td className="py-3 px-3 font-bold text-slate-900 font-mono text-right">{s.score} Poin</td>
                                         </tr>
                                     ))}
                                 </tbody>

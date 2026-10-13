@@ -19,6 +19,8 @@ class TryoutSession extends Model
         'category_scores',
         'competency_levels',
         'talent_quadrant',
+        'career_recommendation',
+        'career_breakdown',
         'is_passed',
         'answers',
         'time_spent_seconds',
@@ -30,6 +32,7 @@ class TryoutSession extends Model
         return [
             'category_scores' => 'array',
             'competency_levels' => 'array',
+            'career_breakdown' => 'array',
             'answers' => 'array',
             'is_passed' => 'boolean',
             'completed_at' => 'datetime',

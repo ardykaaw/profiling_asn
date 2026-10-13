@@ -55,7 +55,22 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Create Categories for Profiling ASN
+        // 2. Clean up & Create 4 Official Categories for Profiling ASN
+        Category::whereNotIn('code', ['POTENSI', 'MANAJERIAL', 'DIGITAL', 'KARIR'])->delete();
+
+        $catPotensi = Category::updateOrCreate(
+            ['code' => 'POTENSI'],
+            [
+                'name' => 'Tes Potensi Kognitif & Figural',
+                'passing_grade' => 70,
+                'question_count' => 25,
+                'max_score' => 125,
+                'description' => 'Mengukur kapasitas dasar kognitif, logika analitis, deret keteraturan, pemahaman data kuantitatif, serta penalaran spasial & figural.',
+                'color' => '#2563EB', // Sapphire Blue
+                'order' => 1,
+            ]
+        );
+
         $catManajerial = Category::updateOrCreate(
             ['code' => 'MANAJERIAL'],
             [
@@ -65,7 +80,7 @@ class DatabaseSeeder extends Seeder
                 'max_score' => 150,
                 'description' => 'Mengukur 8 dimensi kompetensi manajerial MenPAN-RB (Integritas, Kerjasama, Komunikasi, Orientasi Hasil, Pelayanan Publik, Pengembangan Diri, Mengelola Perubahan, Pengambilan Keputusan) dan Perekat Bangsa.',
                 'color' => '#059669', // Emerald
-                'order' => 1,
+                'order' => 2,
             ]
         );
 
@@ -76,473 +91,423 @@ class DatabaseSeeder extends Seeder
                 'passing_grade' => 70,
                 'question_count' => 25,
                 'max_score' => 125,
-                'description' => 'Menguji 4 pilar literasi digital nasional: Digital Skills (Kecakapan), Digital Safety (Keamanan Data & Privasi), Digital Ethics (Etika Komunikasi Publik), dan Digital Culture.',
+                'description' => 'Menguji 4 pilar literasi digital nasional: Digital Skills (Kecakapan), Digital Safety (Keamanan Data & Privasi UU PDP), Digital Ethics, dan Digital Culture dalam kerangka SPBE.',
                 'color' => '#7C3AED', // Purple
-                'order' => 2,
-            ]
-        );
-
-        $catEmerging = Category::updateOrCreate(
-            ['code' => 'EMERGING'],
-            [
-                'name' => 'Emerging Skills & Analytical Thinking',
-                'passing_grade' => 75,
-                'question_count' => 25,
-                'max_score' => 125,
-                'description' => 'Menilai ketajaman berpikir analitis, pemecahan masalah birokrasi kompleks, adaptabilitas teknologi, data-driven decision making, dan inovasi pelayanan publik.',
-                'color' => '#D97706', // Amber Gold
                 'order' => 3,
             ]
         );
 
-        $catPotensi = Category::updateOrCreate(
-            ['code' => 'POTENSI'],
+        $catKarir = Category::updateOrCreate(
+            ['code' => 'KARIR'],
             [
-                'name' => 'Tes Potensi Kognitif & Figural',
-                'passing_grade' => 70,
-                'question_count' => 25,
-                'max_score' => 125,
-                'description' => 'Mengukur kapasitas dasar kognitif, logika silogisme, penalaran analitis, deret keteraturan, serta kemampuan spasial dan matriks figural.',
-                'color' => '#2563EB', // Sapphire Blue
+                'name' => 'Preferensi Karir (Tripatha Karir ASN)',
+                'passing_grade' => 0,
+                'question_count' => 20,
+                'max_score' => 100,
+                'description' => 'Pemetaan psikometrik minat kerja, gaya pemecahan masalah, dan orientasi peran ASN ke dalam 3 Tripatha Karir: Kepemimpinan/Struktural, Fungsional Keahlian, dan Pelayanan/Operasional.',
+                'color' => '#D97706', // Amber Gold
                 'order' => 4,
             ]
         );
 
-        // 3. Clear existing questions and seed authentic Profiling ASN questions
+        // 3. Clear questions and seed comprehensive questions for all 4 tests
         Question::truncate();
 
         $questionsData = [
-            // ==================== MANAJERIAL & SOSIO-KULTURAL ====================
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Integritas & Anti-Gratifikasi',
-                'question' => 'Setelah rapat evaluasi anggaran proyek perangkat lunak keuangan negara, vendor mitra memberikan Anda sebuah jam tangan mewah sebagai tanda apresiasi atas kerjasama yang sukses. Anda mengetahui terdapat regulasi internal instansi mengenai penerimaan cinderamata. Sikap Anda adalah...',
-                'options' => [
-                    'Menerima jam tangan tersebut untuk mempererat hubungan kemitraan kedinasan.',
-                    'Menolaknya dengan sopan dan menjelaskan bahwa penerimaan hadiah melanggar integritas serta kode etik instansi.',
-                    'Menerima karena menganggap nilainya wajar dan tidak akan memengaruhi objektivitas kerja Anda.',
-                    'Menerima secara diam-diam tanpa memberitahukan siapa pun agar tidak menimbulkan kegaduhan.',
-                    'Menyuruh staf Anda untuk menerimanya atas nama pribadi agar Anda terbebas dari sanksi.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 2, 1, 1],
-                'explanation' => 'Integritas menuntut ASN menolak segala bentuk gratifikasi dari pihak ketiga yang berpotensi menimbulkan konflik kepentingan dan menurunkan objektivitas tata kelola pemerintahan (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Integritas & Penegakan Etika',
-                'question' => 'Sebagai analis kebijakan pengadaan, Anda mengetahui rekan kerja satu tim menerima tiket pesawat kelas bisnis dari salah satu vendor tender yang sedang bernegosiasi dengan kementerian Anda. Sikap yang paling tepat adalah...',
-                'options' => [
-                    'Mendiamkan saja karena itu urusan pribadi rekan kerja tersebut.',
-                    'Melaporkan dugaan pelanggaran kode etik tersebut kepada atasan langsung atau Unit Kepatuhan Internal (Whistleblowing System).',
-                    'Menegur rekan kerja tersebut di grup WhatsApp kantor agar jera di depan publik.',
-                    'Meminta rekan kerja tersebut membelikan tiket yang sama untuk Anda agar adil.',
-                    'Menyebarkan kabar tersebut kepada media sosial tanpa bukti dokumen resmi.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [2, 5, 2, 1, 1],
-                'explanation' => 'Pelanggaran etika oleh rekan kerja wajib ditindaklanjuti secara proporsional melalui jalur resmi pengawasan internal untuk melindungi marwah institusi (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Pelayanan Publik Berkelanjutan',
-                'question' => 'Menjelang jam pelayanan terpadu satu pintu ditutup pada hari Jumat, seorang warga lansia datang dari daerah terpencil dengan dokumen yang masih kurang satu lembar fotokopi identitas. Sikap Anda sebagai petugas adalah...',
-                'options' => [
-                    'Menolak permohonan tersebut secara tegas dan memintanya kembali pada hari Senin berikutnya.',
-                    'Membantu memfotokopikan dokumen yang kurang di ruang kerja dan menyelesaikan berkasnya tuntas sebelum pulang.',
-                    'Menyuruh pemohon tersebut mencari tempat fotokopi di luar kantor meskipun lokasinya jauh dan kantor segera tutup.',
-                    'Menerima berkas apa adanya tanpa verifikasi untuk mempercepat kepulangan Anda.',
-                    'Meminta biaya administrasi tambahan sebagai kompensasi lembur pelayanan.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 2, 2, 1],
-                'explanation' => 'Orientasi pelayanan publik mengutamakan empati, kepekaan terhadap kaum rentan, dan solusi responsif tanpa mengabaikan akuntabilitas administrasi (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Kerjasama & Kolaborasi Tim',
-                'question' => 'Dua staf senior di unit kerja Anda berselisih paham mengenai metode pelaporan digital yang baru diperkenalkan, sehingga menghambat progres penyusunan LAKIP tahunan. Tindakan Anda sebagai koordinator tim adalah...',
-                'options' => [
-                    'Memihak staf yang paling senior karena pengalamannya lebih lama.',
-                    'Membiarkan keduanya berdebat hingga salah satu menyerah dengan sendirinya.',
-                    'Mengadakan sesi mediasi bersama untuk mengevaluasi kelebihan masing-masing metode dan menyepakati alur kerja terpadu.',
-                    'Mengambil alih seluruh pekerjaan seorang diri tanpa melibatkan mereka lagi.',
-                    'Mengusulkan mutasi bagi kedua staf tersebut ke instansi lain.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 1, 5, 2, 1],
-                'explanation' => 'Kompetensi kerjasama menuntut kemampuan memfasilitasi rekonsiliasi perbedaan pandangan kerja demi mencapai tujuan bersama organisasi (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Pengambilan Keputusan Berbasis Risiko',
-                'question' => 'Di tengah keadaan darurat bencana daerah, sistem server database bantuan logistik mengalami crash. Anda dihadapkan pada pilihan menyalurkan bantuan manual dengan risiko pencatatan ganda atau menunggu perbaikan server selama 12 jam. Anda akan...',
-                'options' => [
-                    'Menunggu perbaikan server selesai sepenuhnya tanpa menyalurkan bantuan apapun.',
-                    'Segera mendistribusikan bantuan kebutuhan primer menggunakan format logbook manual terverifikasi KTP, seraya menyiapkan rekonsiliasi data digital susulan.',
-                    'Membagikan bantuan tanpa identitas apapun secara bebas di lapangan.',
-                    'Menolak bertanggung jawab dan melimpahkan keputusan kepada staf lapangan junior.',
-                    'Menunda kegiatan sampai atasan tertinggi tiba di lokasi bencana.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 2, 1, 1],
-                'explanation' => 'Pengambilan keputusan ASN di situasi krisis menuntut pertimbangan mitigasi risiko kemanusiaan utama dengan tetap menjaga kontrol akuntabilitas minimum (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catManajerial->id,
-                'sub_category' => 'Sosio-Kultural & Perekat Bangsa',
-                'question' => 'Saat memimpin penugasan tim verifikasi di wilayah yang memiliki tradisi adat istiadat setempat yang kental, beberapa anggota tim Anda merasa canggung dan enggan mengikuti musyawarah adat pembuka. Sikap Anda adalah...',
-                'options' => [
-                    'Memaksa warga adat meninggalkan tradisi mereka demi kecepatan birokrasi kedinasan.',
-                    'Memberikan edukasi kepada tim mengenai pentingnya menghargai kearifan lokal, serta memimpin langsung keikutsertaan dalam prosesi musyawarah sebagai bentuk penghormatan.',
-                    'Membatalkan seluruh penugasan dan kembali ke kantor pusat.',
-                    'Mengabaikan warga adat dan langsung bekerja secara sepihak di lapangan.',
-                    'Menertawakan kebiasaan masyarakat adat di media sosial pribadi.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 2, 1],
-                'explanation' => 'Kompetensi sosio-kultural menuntut kepekaan budaya, kemampuan membangun keterbukaan, serta menjadi perekat bangsa dalam keberagaman Indonesia (Skor 5).',
-                'is_active' => true,
-            ],
-
-            // ==================== LITERASI DIGITAL ASN ====================
-            [
-                'category_id' => $catDigital->id,
-                'sub_category' => 'Digital Skill (Kolaborasi Cloud)',
-                'question' => 'Instansi Anda mulai mengadopsi perangkat lunak dokumen berbasis cloud untuk memfasilitasi kerja lintas deputi secara real-time. Kesimpulan utama dari transformasi kerja digital ini adalah...',
-                'options' => [
-                    'Bekerja di lokasi fisik terpusat selalu lebih hemat biaya dibanding sistem daring.',
-                    'Teknologi digital mempermudah kolaborasi tim lintas unit dengan mengatasi hambatan jarak dan efisiensi waktu kerja.',
-                    'Penggunaan cloud storage membuat waktu penyelesaian arsip negara menjadi 3 kali lebih lambat.',
-                    'Bekerja secara daring menghilangkan sepenuhnya kebutuhan pengawasan kepemimpinan.',
-                    'Teknologi cloud hanya boleh digunakan untuk tugas-tugas non-pemerintahan.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Pemanfaatan komputasi awan di instansi publik meningkatkan interoperabilitas, transparansi versi dokumen, serta percepatan alur birokrasi pemerintahan (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catDigital->id,
-                'sub_category' => 'Digital Safety (Phishing & Domain Spoofing)',
-                'question' => 'Anda menerima sebuah email yang mengatasnamakan Bank Himbara mitra gaji ASN, menyatakan bahwa akun Anda dibekukan dan meminta verifikasi via tautan link: "b4nk-mand1ri-asn-verif.net". Tindakan paling aman dan tepat adalah...',
-                'options' => [
-                    'Segera mengklik tautan tersebut dan memasukkan username serta PIN untuk keamanan akun.',
-                    'Membuka tautan tersebut melalui mode Incognito karena dijamin 100% aman dari virus.',
-                    'Memeriksa URL dengan teliti, mengidentifikasi ciri phishing domain palsu, tidak mengklik tautan, dan melaporkannya ke tim CSIRT instansi.',
-                    'Mengunduh lampiran file zip yang ada di email terlebih dahulu untuk memastikan keaslian.',
-                    'Meneruskan email mencurigakan tersebut ke seluruh kontak email kantor tanpa peringatan.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 2, 5, 1, 1],
-                'explanation' => 'Domain yang menyerupai institusi resmi dengan modifikasi huruf/karakter adalah indikasi nyata spear-phishing. ASN wajib waspada terhadap rekayasa sosial siber (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catDigital->id,
-                'sub_category' => 'Digital Ethics & Netiquette ASN',
-                'question' => 'Dalam sebuah diskusi panas di media sosial terkait kebijakan baru pemerintah, seorang rekan ASN mengunggah komentar bernada provokatif dan membocorkan draf surat edaran kementerian yang belum diteken menteri. Pandangan Anda berdasarkan etika digital ASN adalah...',
-                'options' => [
-                    'Hal tersebut sah karena setiap ASN memiliki kebebasan berekspresi tanpa batas di ranah daring.',
-                    'Tindakan tersebut melanggar netralitas dan kewajiban menjaga kerahasiaan dokumen kedinasan sesuai UU ASN dan PP Manajemen ASN.',
-                    'Bagus untuk meningkatkan engagement dan popularitas akun pribadi rekan tersebut.',
-                    'Boleh asalkan unggahan tersebut dihapus setelah 1 jam.',
-                    'Tidak masalah selama menggunakan nama samaran (alter account).'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Etika digital ASN mencakup prinsip kehati-hatian, netralitas, serta larangan keras membocorkan rahasia jabatan dan dokumen negara ke ranah publik tanpa wewenang (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catDigital->id,
-                'sub_category' => 'Technostress & Digital Wellbeing',
-                'question' => 'Sebuah tim kerja digital birokrasi mengeluhkan kelelahan kerja ekstrem (technostress) akibat notifikasi pesan kedinasan yang masuk di berbagai aplikasi pada larut malam. Solusi manajerial digital yang paling proporsional adalah...',
-                'options' => [
-                    'Menghapus seluruh penggunaan gawai pintar dan kembali ke sistem memo kertas fisik.',
-                    'Menyusun SOP jam komunikasi digital kedinasan yang tegas dan memberikan pelatihan manajemen waktu serta literasi digital produktif.',
-                    'Memaksa pegawai tetap siaga 24 jam penuh di seluruh grup pesan tanpa kompensasi.',
-                    'Mengganti seluruh staf dengan aplikasi bot otomasi.',
-                    'Mengabaikan keluhan karena lembur digital adalah kewajiban mutlak tanpa batas.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Digital wellbeing dan pengelolaan technostress merupakan bagian integral pilar literasi digital agar adopsi teknologi mendukung produktivitas berkelanjutan (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catDigital->id,
-                'sub_category' => 'Keamanan Data Pribadi (UU PDP)',
-                'question' => 'Anda ditugaskan mengelola database calon penerima beasiswa dinas yang memuat data NIK, riwayat kesehatan, dan nomor rekening. Kebijakan tata kelola data yang wajib diterapkan adalah...',
-                'options' => [
-                    'Mengunggah berkas Excel database tersebut ke forum publik agar masyarakat bisa memeriksa sendiri.',
-                    'Menerapkan enkripsi data, membatasi hak akses (role-based access), dan tidak membagikan data sensitif tanpa protokol keamanan PDP.',
-                    'Menyimpan file di komputer umum tanpa kata sandi agar mudah dibuka staf lain.',
-                    'Menjual data tersebut kepada pihak ketiga untuk pemasukan non-pajak instansi.',
-                    'Menghapus backup database agar kapasitas harddisk server hemat.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Pilar Digital Safety menuntut kepatuhan terhadap regulasi pelindungan data pribadi (UU PDP) dengan menerapkan enkripsi dan kontrol otorisasi ketat pada data publik (Skor 5).',
-                'is_active' => true,
-            ],
-
-            // ==================== EMERGING SKILLS & ANALYTICAL THINKING ====================
-            [
-                'category_id' => $catEmerging->id,
-                'sub_category' => 'Berpikir Analitis & Pemecahan Masalah Kompleks',
-                'question' => 'Laporan kinerja triwulanan menunjukkan penurunan efisiensi proses perizinan sebesar 15% pada unit Anda tanpa indikasi penyebab tunggal. Langkah analitis pertama yang paling tepat adalah...',
-                'options' => [
-                    'Menginstruksikan seluruh staf untuk bekerja lembur tiap hari tanpa evaluasi proses.',
-                    'Langsung menyalahkan sistem server IT dan menuntut penggantian vendor.',
-                    'Mengidentifikasi variabel-variabel kunci pada alur perizinan dan mengumpulkan data kuantitatif komparatif sebelum dan sesudah penurunan performa.',
-                    'Mengadakan rapat darurat untuk mencari siapa yang paling bersalah.',
-                    'Mengabaikannya karena penurunan 15% dianggap fluktuasi wajar.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 1, 5, 1, 1],
-                'explanation' => 'Berpikir analitis dimulai dengan dekonstruksi masalah ke variabel-variabel pembentuknya, didukung data komparatif empiris sebelum menarik kesimpulan (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catEmerging->id,
-                'sub_category' => 'Triangulasi Data & Kebijakan Multisektor',
-                'question' => 'Dalam merancang kebijakan tata ruang baru, Anda menerima data kependudukan dan pemukiman dari tiga unit kerja dinas yang saling bertentangan secara signifikan. Sebagai koordinator analis, Anda akan...',
-                'options' => [
-                    'Memilih data dari dinas yang pimpinannya paling akrab dengan Anda.',
-                    'Mengembalikan seluruh berkas dan menolak mengerjakan kebijakan tersebut.',
-                    'Melakukan triangulasi data dengan memverifikasi data citra satelit independen dan mengadakan lokakarya penyamaan definisi operasional antar-unit.',
-                    'Membuat angka perkiraan sendiri tanpa dasar data apapun.',
-                    'Mengambil rata-rata sederhana dari ketiga angka yang bertentangan tanpa memeriksa metodologinya.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 1, 5, 1, 2],
-                'explanation' => 'Metode triangulasi dan penyelarasan definisi operasional adalah standar pemecahan masalah data kompleks dalam perumusan kebijakan publik berbasis bukti (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catEmerging->id,
-                'sub_category' => 'Perencanaan Skenario Risiko (Scenario Planning)',
-                'question' => 'Dalam penyusunan proyeksi anggaran pengadaan bahan baku instansi tahun mendatang, tren historis menunjukkan kenaikan biaya 7%/tahun, namun terdapat potensi regulasi tarif impor baru yang berisiko menaikkan biaya hingga 18%. Langkah terbaik Anda adalah...',
-                'options' => [
-                    'Menggunakan angka historis 7% saja karena paling aman dan mudah disetujui.',
-                    'Langsung menetapkan angka 18% tanpa memberikan alternatif penjelasan mitigasi.',
-                    'Menyusun model skenario: Best Case (7%), Worst Case (18%), dan Most Likely Case berbasis analisis dampak regulasi beserta opsi mitigasi kontinjensinya.',
-                    'Menolak menyusun proyeksi sampai regulasi tersebut sah disahkan DPR.',
-                    'Mengurangi separuh pengadaan barang tanpa analisis dampak layanan publik.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [2, 2, 5, 1, 1],
-                'explanation' => 'Analytical thinking pada manajemen strategis menuntut pembuatan scenario planning terstruktur untuk mengantisipasi ketidakpastian regulasi dan ekonomi makro (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catEmerging->id,
-                'sub_category' => 'Pengolahan Umpan Balik Publik (Feedback Analysis)',
-                'question' => 'Survei kepuasan masyarakat menghasilkan ribuan keluhan abstrak bernada "Pelayanan Kantor Lambat". Untuk memecahkan problem ini secara sistemik, langkah analitis Anda adalah...',
-                'options' => [
-                    'Menghapus kolom survei bebas karena dianggap tidak konstruktif.',
-                    'Membuat kuis berhadiah untuk masyarakat yang memberikan ulasan bintang lima.',
-                    'Mengelompokkan keluhan berdasarkan titik layanan (touchpoint), tahapan alur berkas, dan waktu proses (cycle time) guna menemukan bottleneck spesifik.',
-                    'Memarahi petugas loket baris depan di hadapan pengunjung.',
-                    'Membantah seluruh keluhan di media massa.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 1, 5, 1, 1],
-                'explanation' => 'Pemecahan masalah sistemik membedah umpan balik kualitatif menjadi data kategorikal berdasar touchpoints dan waktu siklus untuk mengidentifikasi bottleneck utama (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catEmerging->id,
-                'sub_category' => 'Adaptabilitas & AI Readiness',
-                'question' => 'Instansi Anda berencana mengimplementasikan model kecerdasan buatan (AI) untuk mempercepat perankingan berkas usulan kenaikan pangkat. Sebagai ASN yang adaptif terhadap emerging tech, Anda harus...',
-                'options' => [
-                    'Menolak penggunaan AI karena khawatir seluruh posisi ASN akan dihapus.',
-                    'Menerima hasil otomatisasi AI 100% tanpa verifikasi manusia sama sekali.',
-                    'Mempelajari prinsip kerja AI, memastikan adanya human-in-the-loop (pengawasan manusia), serta menguji potensi bias algoritma terhadap data pegawai.',
-                    'Menyerahkan seluruh username dan password admin kementerian kepada vendor penyedia AI.',
-                    'Menyebarkan hoaks bahwa AI berbahaya bagi kepegawaian.'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 2, 5, 1, 1],
-                'explanation' => 'Kesiapan teknologi baru (AI readiness) menuntut pemahaman etika AI, mitigasi bias data, dan prinsip pengawasan manusia (human-in-the-loop) dalam tata kelola birokrasi (Skor 5).',
-                'is_active' => true,
-            ],
-
-            // ==================== POTENSI KOGNITIF & FIGURAL ====================
+            // =========================================================================
+            // 1. TES POTENSI (KOGNITIF, LOGIKA SILOGISME, FIGURAL SPASIAL, ANALITIS)
+            // =========================================================================
             [
                 'category_id' => $catPotensi->id,
                 'sub_category' => 'Silogisme Logika Analitis',
-                'question' => 'Semua pegawai yang lulus uji asesmen kompetensi berhak diusulkan masuk ke dalam Talent Pool Nasional. Beberapa analis kebijakan muda lulus uji asesmen kompetensi. Kesimpulan yang sah dan logis adalah...',
+                'question' => 'Semua aparatur sipil negara yang menduduki jabatan struktural wajib mengikuti asesmen kompetensi manajerial. Beberapa pejabat struktural di instansi X belum menyelesaikan sertifikasi tata kelola digital. Kesimpulan yang paling tepat adalah...',
                 'options' => [
-                    'Semua analis kebijakan muda masuk ke dalam Talent Pool Nasional.',
-                    'Sebagian analis kebijakan muda berhak diusulkan masuk ke dalam Talent Pool Nasional.',
-                    'Tidak ada analis kebijakan muda yang berhak masuk Talent Pool Nasional.',
-                    'Semua yang masuk Talent Pool Nasional adalah analis kebijakan muda.',
-                    'Pegawai yang tidak lulus uji asesmen tetap berhak masuk Talent Pool Nasional.'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Premis mayor: Semua yang lulus uji berhak diusulkan. Premis minor: Sebagian analis kebijakan muda lulus. Maka kesimpulannya: Sebagian analis kebijakan muda tersebut berhak diusulkan (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catPotensi->id,
-                'sub_category' => 'Deret Angka & Pola Keteraturan',
-                'question' => 'Perhatikan deret pola angka berikut: 4, 9, 19, 39, 79, ... Angka berikutnya yang tepat adalah...',
-                'options' => [
-                    '119',
-                    '139',
-                    '159',
-                    '169',
-                    '179'
-                ],
-                'correct_answer' => 2,
-                'scores' => [1, 1, 5, 1, 1],
-                'explanation' => 'Pola deret: suku ke-n = (suku sebelumnya × 2) + 1. (4×2)+1=9; (9×2)+1=19; (19×2)+1=39; (39×2)+1=79; maka (79×2)+1 = 158 + 1 = 159 (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catPotensi->id,
-                'sub_category' => 'Analogi Hubungan Konsep',
-                'question' => 'REGULASI : KEBIJAKAN = INTEGRITAS : ...',
-                'options' => [
-                    'Hukum',
-                    'Karakter',
-                    'Jabatan',
-                    'Kekuasaan',
-                    'Anggaran'
-                ],
-                'correct_answer' => 1,
-                'scores' => [1, 5, 1, 1, 1],
-                'explanation' => 'Regulasi merupakan landasan dasar bagi terwujudnya Kebijakan, sebagaimana Integritas merupakan landasan dasar bagi terbentuknya Karakter moral seorang aparatur (Skor 5).',
-                'is_active' => true,
-            ],
-            [
-                'category_id' => $catPotensi->id,
-                'sub_category' => 'Penalaran Figural Spasial (Pola Rotasi)',
-                'question' => 'Sebuah bangun geometris segitiga sama sisi memiliki tanda lingkaran hitam di sudut puncaknya. Jika bangun tersebut dirotasikan 90 derajat searah jarum jam sebanyak 3 kali berturut-turut, posisi lingkaran hitam tersebut akan sama dengan...',
-                'options' => [
-                    'Rotasi 90 derajat berlawanan arah jarum jam sebanyak 1 kali.',
-                    'Rotasi 180 derajat searah jarum jam.',
-                    'Posisi awal mula bangun sebelum diputar.',
-                    'Rotasi 360 derajat penuh.',
-                    'Pencerminan vertikal terhadap sumbu X.'
+                    'Beberapa aparatur sipil negara yang wajib mengikuti asesmen kompetensi manajerial belum menyelesaikan sertifikasi tata kelola digital.',
+                    'Semua pejabat struktural di instansi X belum wajib mengikuti asesmen kompetensi manajerial.',
+                    'Pejabat struktural yang belum bersertifikasi digital tidak boleh mengikuti asesmen manajerial.',
+                    'Sertifikasi digital merupakan prasyarat mutlak sebelum mengikuti asesmen manajerial.',
+                    'Seluruh aparatur di instansi X telah lulus asesmen kompetensi manajerial.'
                 ],
                 'correct_answer' => 0,
-                'scores' => [5, 1, 1, 1, 1],
-                'explanation' => 'Rotasi 90° searah jarum jam sebanyak 3 kali setara dengan putaran 270° searah jarum jam, yang ekuivalen posisinya dengan rotasi 90° berlawanan arah jarum jam (Skor 5).',
+                'scores' => [5, 0, 0, 0, 0],
+                'explanation' => 'Pernyataan premis mayor: Semua pejabat struktural wajib asesmen manajerial. Premis minor: Beberapa pejabat struktural belum sertifikasi digital. Karena "beberapa pejabat struktural" adalah himpunan bagian dari yang wajib asesmen manajerial, maka beberapa ASN yang wajib asesmen manajerial belum menyelesaikan sertifikasi digital.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Silogisme Bersyarat & Kebijakan',
+                'question' => 'Jika sistem layanan SPBE diterapkan terintegrasi penuh, maka durasi pemrosesan dokumen perizinan berkurang minimal 50%. Jika durasi pemrosesan dokumen berkurang minimal 50%, indeks kepuasan masyarakat (IKM) unit layanan meningkat signifikan. Berdasarkan audit triwulan II, indeks kepuasan masyarakat unit layanan Y belum meningkat secara signifikan. Kesimpulan yang sah adalah...',
+                'options' => [
+                    'Sistem layanan SPBE di unit layanan Y belum diterapkan secara terintegrasi penuh.',
+                    'Durasi pemrosesan dokumen perizinan di unit layanan Y sudah berkurang 50%.',
+                    'Masyarakat belum mengetahui adanya penerapan sistem layanan SPBE.',
+                    'Unit layanan Y memerlukan penambahan aparatur loket fisik.',
+                    'Indeks kepuasan masyarakat tidak memiliki hubungan kausal dengan SPBE.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 0, 0, 0],
+                'explanation' => 'Menggunakan aturan Modus Tollens: P -> Q dan Q -> R, maka P -> R. Jika ingkaran akibat (~R) terjadi yaitu IKM belum meningkat signifikan, maka ingkaran sebab (~P) pasti benar, yaitu sistem layanan SPBE belum diterapkan terintegrasi penuh.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Deret Pola Keteraturan Numerik',
+                'question' => 'Perhatikan tren capaian digitalisasi administrasi berkas dinas (dalam ribuan berkas) per periode: 12, 16, 24, 40, 72, ... Berapakah target capaian berkas pada periode berikutnya jika mengikuti laju percepatan deret tersebut?',
+                'options' => [
+                    '104',
+                    '120',
+                    '136',
+                    '144',
+                    '152'
+                ],
+                'correct_answer' => 2,
+                'scores' => [0, 0, 5, 0, 0],
+                'explanation' => 'Selisih antar suku berturut-turut adalah: 16-12 = +4; 24-16 = +8; 40-24 = +16; 72-40 = +32. Pola selisih berlipat ganda dua kali lipat (4, 8, 16, 32). Selisih berikutnya adalah 32 * 2 = +64. Maka suku berikutnya: 72 + 64 = 136.',
                 'is_active' => true,
             ],
             [
                 'category_id' => $catPotensi->id,
                 'sub_category' => 'Analisis Perbandingan Kuat Relatif',
-                'question' => 'Dalam simulasi alokasi kerja: Kecepatan analisis Pegawai A lebih tinggi dari B. Pegawai C lebih cepat dari A. Pegawai D lebih lambat dari B namun lebih cepat dari E. Urutan pegawai dari yang paling cepat menyelesaikan analisis adalah...',
+                'question' => 'Dalam evaluasi kinerja akuntabilitas lima unit kerja (A, B, C, D, E): Unit A memiliki skor kepatuhan lebih tinggi dari B tetapi lebih rendah dari C. Unit D memiliki skor lebih tinggi dari C. Unit E memiliki skor lebih rendah dari B. Unit manakah yang memiliki skor kepatuhan tertinggi dan terendah?',
                 'options' => [
-                    'C - A - B - D - E',
-                    'C - B - A - D - E',
-                    'A - C - B - E - D',
-                    'E - D - B - A - C',
-                    'B - A - C - D - E'
+                    'Tertinggi Unit D, Terendah Unit E',
+                    'Tertinggi Unit C, Terendah Unit B',
+                    'Tertinggi Unit D, Terendah Unit B',
+                    'Tertinggi Unit A, Terendah Unit E',
+                    'Tertinggi Unit C, Terendah Unit E'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 0, 0, 0],
+                'explanation' => 'Dari premis: B < A < C. Unit D > C, sehingga B < A < C < D. Unit E < B, sehingga urutan lengkap dari terendah ke tertinggi adalah: E < B < A < C < D. Jadi skor tertinggi adalah D dan terendah adalah E.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Penalaran Figural Spasial (Pola Rotasi & Matriks)',
+                'question' => 'Sebuah bangun geometris diagram kebijakan dalam tes figural mengalami transformasi berantai: diputar 90 derajat searah jarum jam, kemudian dicerminkan secara vertikal terhadap sumbu horizontal, dan diarsir pada sudut puncak. Transformasi ekuivalen tunggal yang menghasilkan orientasi arah hadap yang sama adalah...',
+                'options' => [
+                    'Pencerminan diagonal 45 derajat',
+                    'Rotasi 180 derajat terbalik',
+                    'Pencerminan terhadap sumbu vertikal diikuti rotasi 90 derajat berlawanan jarum jam',
+                    'Translasi linier horizontal',
+                    'Rotasi 270 derajat searah jarum jam murni'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 0, 0, 0],
+                'explanation' => 'Rotasi 90 derajat searah jarum jam kemudian dicerminkan terhadap sumbu horizontal menghasilkan matriks transformasi yang ekuivalen dengan refleksi terhadap garis diagonal y = x (cermin diagonal 45 derajat).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catPotensi->id,
+                'sub_category' => 'Analogi Hubungan Konsep Birokrasi',
+                'question' => 'ANALISIS KEBIJAKAN : REGULASI = DIAGNOSTIK MEDIS : ...',
+                'options' => [
+                    'Pengobatan (Terapi Medis)',
+                    'Rumah Sakit',
+                    'Stetoskop',
+                    'Tenaga Laboratorium',
+                    'Pasien Rawat Inap'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 0, 0, 0],
+                'explanation' => 'Analisis kebijakan adalah proses investigasi profesional yang menghasilkan produk berupa regulasi/kebijakan. Demikian pula diagnostik medis adalah proses investigasi klinis yang menghasilkan rencana tindakan berupa pengobatan/terapi medis.',
+                'is_active' => true,
+            ],
+
+            // =========================================================================
+            // 2. MANAJERIAL & SOSIO-KULTURAL (SJT SKALA 1-5, PERMENPAN-RB 38/2017)
+            // =========================================================================
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Integritas & Anti-Gratifikasi',
+                'question' => 'Setelah rapat evaluasi anggaran proyek sistem informasi tata kelola keuangan, pihak rekanan swasta memberikan Anda sebuah cinderamata jam tangan mewah bermerek sebagai wujud terima kasih atas kemitraan. Anda mengetahui terdapat kode etik dan aturan benturan kepentingan. Sikap Anda adalah...',
+                'options' => [
+                    'Menolak pemberian secara santun, menjelaskan kebijakan instansi dan regulasi KPK terkait larangan penerimaan barang yang berpotensi gratifikasi.',
+                    'Menerima pemberian tersebut di depan forum agar tidak menyinggung perasaan rekanan, lalu melaporkannya secara tertulis kepada Unit Pengendalian Gratifikasi (UPG) dalam waktu 30 hari.',
+                    'Menerima cinderamata tersebut karena diberikan secara tulus atas keberhasilan proyek bersama, kemudian menyimpannya di ruang kerja.',
+                    'Menyarankan agar cinderamata tersebut diubah menjadi potongan harga resmi dalam dokumen kontrak pengadaan berikutnya.',
+                    'Menerimanya secara diam-diam dan tidak memberitahukan kepada siapa pun demi menjaga keharmonisan kemitraan dinas.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 4, 2, 3, 1],
+                'explanation' => 'Berdasarkan PermenPAN-RB No. 38/2017 indikator Integritas Level 4, pejabat publik harus secara proaktif menolak segala bentuk pemberian yang berpotensi menimbulkan benturan kepentingan di awal (Skor 5). Melaporkan ke UPG jika terpaksa menerima berbobot 4.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Kerjasama & Manajemen Tim',
+                'question' => 'Unit kerja Anda diberi mandat menyelesaikan laporan akuntabilitas kinerja instansi pemerintah (SAKIP) dengan tenggat waktu ketat. Dua orang rekan kerja inti mengalami kendala darurat sehingga progres tim terancam tertunda. Tindakan yang Anda ambil adalah...',
+                'options' => [
+                    'Mengambil inisiatif mengkoordinasikan anggota tim yang tersisa, memetakan ulang beban kerja secara proporsional sesuai prioritas, dan saling mendukung lembur bersama agar target tetap tercapai.',
+                    'Menyelesaikan sendiri seluruh beban kerja rekan yang berhalangan hingga larut malam tanpa memberitahu rekan lainnya.',
+                    'Meminta pimpinan memperpanjang tenggat waktu penyerahan laporan SAKIP dengan melampirkan surat kendala.',
+                    'Menunggu rekan tersebut kembali masuk bekerja dan meminta mereka mempercepat pengerjaan secara mandiri.',
+                    'Melaporkan kelambatan progres kepada atasan agar rekan yang berhalangan mendapatkan teguran disiplin.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 3, 2, 2, 1],
+                'explanation' => 'Kompetensi Kerjasama Level 4: Mampu membangun komitmen tim, adaptif mengatasi hambatan kolektif, dan mengorganisasi redistribusi tugas secara transparan dan solutif (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Komunikasi & Diplomasi Publik',
+                'question' => 'Terjadi aduan warga yang viral di media sosial mengenai lambatnya antrean verifikasi bantuan sosial di kantor Anda, padahal kelambatan terjadi karena pemeliharaan sistem server nasional terpusat. Langkah komunikasi yang paling tepat adalah...',
+                'options' => [
+                    'Menyusun klarifikasi resmi publik yang empatik dan transparan, menjelaskan kendala teknis dan estimasi waktu pemulihan, serta menyediakan kanal informasi darurat.',
+                    'Membalas komentar masyarakat di media sosial dengan nada tegas agar masyarakat memahami bahwa kendala berada di server pusat bukan kantor daerah.',
+                    'Menunggu pemeliharaan server selesai sepenuhnya baru kemudian memberikan penjelasan kepada masyarakat.',
+                    'Melaporkan pengunggah video ke pihak berwajib atas tuduhan pencemaran nama baik instansi pemerintah.',
+                    'Mengabaikan polemik di media sosial karena pelayanan loket fisik tetap berjalan apa adanya.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 3, 1, 1],
+                'explanation' => 'Kompetensi Komunikasi Publik: Menyampaikan informasi secara empatik, akurat, tepat waktu, dan berorientasi menenangkan keresahan publik dengan menjaga citra positif korps ASN (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Orientasi pada Hasil & Efisiensi',
+                'question' => 'Anggaran operasional unit kerja Anda dipotong sebesar 30% akibat kebijakan efisiensi fiskal nasional, namun pimpinan menetapkan target capaian kinerja utama (IKU) tidak boleh menurun. Sikap profesional Anda adalah...',
+                'options' => [
+                    'Mengkaji alur proses kerja, mengeliminasi tahapan birokrasi manual yang repetitif, dan mengoptimalkan aplikasi digital in-house untuk memangkas biaya operasional tanpa menurunkan kualitas output.',
+                    'Menerima pemotongan anggaran dan menyampaikan kepada pimpinan bahwa capaian target akan berkurang 30% proporsional.',
+                    'Mengurangi jam operasional pelayanan masyarakat untuk menghemat penggunaan listrik dan fasilitas kantor.',
+                    'Mengajukan nota keberatan formal kepada bagian keuangan agar pemotongan anggaran dialihkan ke unit lain.',
+                    'Menjalankan pekerjaan apa adanya dan menyerahkan risiko kegagalan target kepada pimpinan.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 1, 3, 1],
+                'explanation' => 'Kompetensi Orientasi pada Hasil Level 4: Menemukan inovasi dan metode kerja cerdas untuk mengatasi keterbatasan sumber daya guna memastikan target strategis organisasi tetap terpenuhi (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Pelayanan Publik Prima & Empati',
+                'question' => 'Seorang warga lansia dari desa terpencil datang ke loket Anda menjelang jam tutup pelayanan dengan dokumen persyaratan pensiun yang belum lengkap satu lembar surat pengantar. Jarak rumah warga tersebut 3 jam perjalanan. Respon terbaik Anda adalah...',
+                'options' => [
+                    'Melayani dengan ramah, memproses berkas yang ada, membantu memeriksa data secara online, dan memberikan dispensasi agar kekurangan dokumen dapat dikirimkan melalui kurir atau pesan daring keesokan harinya.',
+                    'Menolak berkas secara tegas sesuai SOP kaku dan meminta warga tersebut kembali esok hari dengan dokumen lengkap.',
+                    'Menyuruh warga lansia tersebut menunggu hingga seluruh staf selesai rapat sebelum memutuskan apakah bisa dilayani.',
+                    'Meminta biaya administrasi tambahan sebagai jaminan pengurusan berkas yang tidak lengkap.',
+                    'Mengarahkan warga lansia tersebut untuk mengurus berkas ke kantor pos terdekat tanpa pendampingan.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 2, 1, 1],
+                'explanation' => 'Pelayanan Publik Berorientasi Kepentingan Pengguna (Inklusif): Mengutamakan kemanfaatan bagi kelompok rentan/lansia dengan diskresi yang bertanggung jawab tanpa melanggar prinsip kepatuhan dasar (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catManajerial->id,
+                'sub_category' => 'Sosio-Kultural & Perekat Bangsa',
+                'question' => 'Dalam penempatan tim tugas lapangan ke daerah terpencil, terjadi resistensi dari sebagian warga lokal terhadap salah satu anggota tim Anda karena perbedaan latar belakang budaya dan bahasa. Sebagai ketua rombongan, apa yang Anda lakukan?',
+                'options' => [
+                    'Mengajak tokoh adat dan perangkat desa berdialog secara santun, memperkenalkan seluruh anggota tim dengan mengedepankan kearifan lokal serta tujuan program untuk kesejahteraan warga bersama.',
+                    'Menarik anggota tim tersebut kembali ke kantor pusat demi menghindari potensi konflik horizontal.',
+                    'Meminta aparat keamanan mendampingi secara ketat dan membatasi interaksi anggota tim dengan warga.',
+                    'Mengabaikan resistensi warga karena penugasan memiliki surat perintah resmi dari kementerian.',
+                    'Menghentikan program penugasan lapangan dan menyatakan daerah tersebut tidak kooperatif.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 3, 1, 1],
+                'explanation' => 'Kompetensi Perekat Bangsa Level 4: Mampu mendayagunakan perbedaan sosio-kultural menjadi kekuatan kolaboratif melalui pendekatan kultural dan dialog partisipatif dengan pemangku kepentingan adat (Skor 5).',
+                'is_active' => true,
+            ],
+
+            // =========================================================================
+            // 3. LITERASI DIGITAL (DIGITAL SKILLS, SAFETY, ETHICS, CULTURE & SPBE)
+            // =========================================================================
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Safety (Phishing & Domain Spoofing)',
+                'question' => 'Anda menerima surat elektronik pada inbox kedinasan yang mengatasnamakan Badan Kepegawaian Negara dengan subjek "Verifikasi Data Mandiri ASN Tahun 2026 - Mendesak". Isi email meminta Anda segera mengklik tombol verifikasi pada tautan "bkn-kepegawaian.id/login" dan menginput NIP serta password akun SIASN dalam 1x24 jam. Langkah keamanan yang wajib Anda lakukan adalah...',
+                'options' => [
+                    'Mengecek domain pengirim dan tautan (domain resmi BKN adalah bkn.go.id), tidak mengklik tautan tersebut, dan meneruskannya ke tim CSIRT/Pranata Komputer instansi sebagai laporan dugaan phishing.',
+                    'Segera mengklik tautan dan memasukkan data akun karena khawatir akun kepegawaian Anda dinonaktifkan.',
+                    'Membalas email tersebut dengan menanyakan apakah benar dari pihak panitia pusat BKN.',
+                    'Meneruskan email ke grup WhatsApp rekan kantor untuk memastikan apakah mereka menerima email yang sama.',
+                    'Mengabaikan email tersebut dan menghapusnya tanpa mencatat atau melaporkan kepada unit keamanan siber.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 1, 2, 2],
+                'explanation' => 'Domain instansi pemerintah resmi Indonesia berakhiran .go.id. Domain bkn-kepegawaian.id adalah domain spoofing/phishing. Menolak klik tautan dan melapor ke CSIRT (Computer Security Incident Response Team) instansi merupakan standar Digital Safety ASN (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Keamanan Data Pribadi (UU PDP No. 27/2022)',
+                'question' => 'Seorang staf dari lembaga mitra non-pemerintah menghubungi Anda meminta salinan data penerima bantuan sosial daerah dalam format file excel (memuat NIK, nomor KK, riwayat penghasilan, dan alamat lengkap) untuk keperluan survei cepat program CSR. Berdasarkan UU Perlindungan Data Pribadi, sikap Anda adalah...',
+                'options' => [
+                    'Menolak memberikan data mentah, menjelaskan regulasi UU PDP mengenai data pribadi spesifik dan sensitif, serta mengarahkan agar permohonan diajukan secara resmi melalui mekanisme perjanjian kerja sama (MoU/PKS) dengan pertukaran data yang teranonimkan/terpseudonimkan.',
+                    'Memberikan file tersebut karena lembaga tersebut merupakan mitra terpercaya yang sering membantu instansi Anda.',
+                    'Memberikan file data namun meminta staf tersebut berjanji tidak menyebarkannya ke pihak lain.',
+                    'Menghapus nama penerima saja namun tetap membiarkan kolom NIK dan nomor KK lengkap di dalam file excel.',
+                    'Menjual data tersebut untuk pemasukan kas operasional unit kerja.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 1, 2, 0],
+                'explanation' => 'Berdasarkan UU No. 27 Tahun 2022 tentang Perlindungan Data Pribadi (UU PDP), pengelola data publik bertanggung jawab melindungi data pribadi spesifik (keuangan, keluarga) dan umum (NIK). Penyaluran data wajib memiliki dasar hukum resmi dan proses masking/anonimisasi data (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Skill (Kolaborasi Cloud & Versioning SPBE)',
+                'question' => 'Unit Anda sedang menyusun naskah rancangan peraturan daerah yang melibatkan 6 orang analis. Dokumen sering mengalami tumpang tindih revisi (lost updates) karena para staf saling bertukar file lampiran via pesan chat dengan nama file berbeda-beda (Revisi1, Revisi_Final_Fix). Solusi Digital Skills berbasis SPBE yang paling tepat adalah...',
+                'options' => [
+                    'Mengimplementasikan penyimpanan berkas komputasi awan (cloud kedinasan) bersama dengan fitur co-authoring real-time, version history otomatis, dan manajemen hak akses terpusat.',
+                    'Menunjuk satu staf khusus untuk mengetik ulang secara manual seluruh revisi dari 5 anggota tim lainnya.',
+                    'Mencetak naskah di atas kertas dan melakukan koreksi coret manual menggunakan pena merah.',
+                    'Melarang anggota tim merevisi dokumen hingga staf sebelumnya selesai memeriksa berkas.',
+                    'Meminta pihak vendor eksternal membuat aplikasi khusus untuk penulisan draf peraturan tersebut.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 2, 1, 2, 2],
+                'explanation' => 'Kompetensi Digital Skills mencakup pemanfaatan alat kolaborasi modern (cloud document management) yang mendukung co-authoring terintegrasi dan version tracking, sejalan dengan prinsip efisiensi SPBE (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Ethics & Netiquette ASN',
+                'question' => 'Seorang aparatur sipil negara merasa tidak puas terhadap kebijakan mutasi jabatan internal instansinya, lalu mengunggah kritik bernada sindiran emosional di akun media sosial pribadinya disertai tangkapan layar surat keputusan (SK) pimpinan yang belum dipublikasikan. Berdasarkan etika digital ASN:',
+                'options' => [
+                    'Tindakan tersebut melanggar netiket dan loyalitas ASN karena dokumen internal rahasia tidak boleh disebarluaskan di ranah publik daring, dan penyampaian ketidakpuasan wajib melalui saluran resmi internal (Bapekat/whistleblowing system).',
+                    'Tindakan tersebut dibenarkan karena setiap warga negara memiliki kebebasan berekspresi di akun media sosial pribadi.',
+                    'Tindakan tersebut wajar asalkan wajah pimpinan pada tangkapan layar SK diburamkan (blur).',
+                    'Tindakan tersebut diperbolehkan jika postingan hanya disetel untuk dilihat oleh lingkaran teman dekat.',
+                    'Tindakan tersebut sah selama tidak menggunakan jaringan internet kantor saat mengunggah.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 0, 1, 1, 0],
+                'explanation' => 'Digital Ethics ASN: ASN terikat sumpah jabatan dan PP Disiplin PNS untuk menjaga rahasia dinas serta kehormatan korps. Ranah digital adalah ruang publik di mana integritas dan kepatuhan kode etik tetap mengikat penuh (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Digital Culture & Aksesibilitas SPBE',
+                'question' => 'Dalam proses perancangan portal pelayanan publik digital satu pintu di instansi Anda, prinsip Digital Culture dan arsitektur SPBE nasional yang paling esensial untuk diprioritaskan sejak tahap awal adalah...',
+                'options' => [
+                    'Prinsip User-Centered Design yang inklusif, interoperabilitas Satu Data dengan instansi lain, serta pemenuhan standar aksesibilitas bagi penyandang disabilitas dan lansia.',
+                    'Tampilan grafis yang sangat ramai dengan animasi berat tanpa memikirkan kecepatan akses jaringan internet di pelosok.',
+                    'Mengharuskan pengguna mengunduh aplikasi terpisah untuk setiap sub-layanan perizinan yang ada.',
+                    'Mengunci data agar hanya dapat diakses oleh satu unit dan tidak dapat dibagi-pakaikan antar instansi pemerintah.',
+                    'Menjadikan aplikasi hanya dapat dibuka pada perangkat komputer berspesifikasi tinggi.'
+                ],
+                'correct_answer' => 0,
+                'scores' => [5, 1, 1, 0, 0],
+                'explanation' => 'Digital Culture dalam birokrasi mengutamakan kemudahan warga (user-centric), inklusivitas pelayanan, dan interoperabilitas data nasional sesuai Perpres No. 95 Tahun 2018 tentang SPBE (Skor 5).',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catDigital->id,
+                'sub_category' => 'Technostress & Produktivitas Digital',
+                'question' => 'Aktivitas grup komunikasi dinas yang beroperasi terus-menerus hingga larut malam menyebabkan tingkat kejenuhan teknologi (technostress) tinggi dan penurunan konsentrasi kerja ASN di pagi hari. Solusi kepemimpinan digital yang tepat adalah...',
+                'options' => [
+                    'Menetapkan tata tertib komunikasi kedinasan yang membatasi pengiriman instruksi non-darurat di luar jam kerja, serta memanfaatkan task manager terstruktur untuk melacak progres tugas harian.',
+                    'Mewajibkan seluruh staf menonaktifkan ponsel pintar mereka sepanjang hari kerja.',
+                    'Meminta setiap staf membalas pesan instan dinas dalam waktu maksimal 3 menit bahkan pada saat akhir pekan.',
+                    'Menghapus seluruh aplikasi percakapan daring dan kembali menggunakan surat fisik kurir kertas.',
+                    'Mengabaikan stres yang dialami staf karena hal tersebut merupakan konsekuensi tak terelakkan dari era digital.'
                 ],
                 'correct_answer' => 0,
                 'scores' => [5, 1, 1, 1, 1],
-                'explanation' => 'Dari data: A > B, C > A (maka C > A > B), dan D < B tetapi D > E (maka B > D > E). Menggabungkan relasi: C > A > B > D > E (Skor 5).',
+                'explanation' => 'Digital Wellbeing: Pengelolaan teknologi yang sehat mensyaratkan batasan komunikasi yang jelas (Right to Disconnect untuk hal non-emergency) demi menjaga produktivitas prima dan kesehatan mental pegawai (Skor 5).',
                 'is_active' => true,
-            ]
+            ],
+
+            // =========================================================================
+            // 4. PREFERENSI KARIR (TRIPATHA KARIR ASN: STRUKTURAL vs FUNGSIONAL vs OPERASIONAL)
+            // =========================================================================
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Peran Transformasi & Minat Utama',
+                'question' => 'Ketika instansi Anda meluncurkan program reformasi birokrasi dan modernisasi pelayanan publik terpadu, peran manakah yang paling membangkitkan motivasi kerja dan antusiasme Anda?',
+                'options' => [
+                    'Menjadi ketua koordinator tim strategis yang mengarahkan pembagian tugas, memimpin rapat koordinasi lintas lembaga, dan meyakinkan pimpinan atas sasaran program (Jalur Kepemimpinan & Manajerial).',
+                    'Menjadi analis keahlian yang meneliti data empiris, merancang inovasi model layanan, dan menyusun dokumen telaahan kebijakan serta regulasi teknis (Jalur Fungsional Keahlian).',
+                    'Menjadi penanggung jawab operasional yang memastikan petunjuk teknis dijalankan dengan tertib, mendata arsip verifikasi, dan melayani kebutuhan langsung warga di garda depan (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Tripatha Karir: Opsi A mencerminkan orientasi Jalur Struktural (Kepemimpinan/JPT); Opsi B mencerminkan Jalur Fungsional Keahlian (Spesialis Analis/Riset); Opsi C mencerminkan Jalur Pelayanan & Keterampilan Operasional.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Pendekatan Pemecahan Masalah',
+                'question' => 'Dalam menghadapi permasalahan tumpang tindih regulasi perizinan yang menghambat investasi daerah, pendekatan pemecahan masalah yang paling mencerminkan cara kerja ideal Anda adalah:',
+                'options' => [
+                    'Mengumpulkan para pemangku kepentingan dalam forum lobi dan negosiasi untuk mencapai konsensus arah kebijakan bersama (Jalur Kepemimpinan & Manajerial).',
+                    'Mengkaji naskah hukum dan basis data secara mendalam, melakukan komparasi regulasi internasional, serta merumuskan rekomendasi perbaikan berbasis sains data (Jalur Fungsional Keahlian).',
+                    'Menginventarisir berkas kendala nyata di loket pelayanan, menyusun checklist kendala lapangan, dan merumuskan SOP perbaikan alur administrasi praktis (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Orientasi pemecahan masalah: Opsi A berbasis diplomasi kepemimpinan; Opsi B berbasis riset analisis independen; Opsi C berbasis kejelasan operasional prosedural.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Sumber Kepuasan Prestasi Kerja',
+                'question' => 'Anda merasakan kepuasan prestasi kerja tertinggi (sense of fulfillment) ketika berhasil mencapai hal berikut di lingkungan kerja:',
+                'options' => [
+                    'Berhasil memotivasi dan membangun tim yang tangguh, memimpin proyek hingga tuntas, dan dipercaya pimpinan memegang kendali unit organisasi yang lebih besar (Jalur Kepemimpinan & Manajerial).',
+                    'Menghasilkan karya analisis komprehensif, publikasi ilmiah/kebijakan inovatif yang diakui sebagai rujukan keahlian standar nasional di bidang spesialisasi saya (Jalur Fungsional Keahlian).',
+                    'Menuntaskan seluruh target administrasi harian dengan akurasi 100% tanpa celah audit, serta melihat masyarakat terlayani secara rapi, cepat, dan tertib (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Motivator kinerja Tripatha: Jalur Struktural didorong oleh kepemimpinan dan pengaruh; Jalur Fungsional didorong oleh penguasaan ilmu dan inovasi; Jalur Operasional didorong oleh akurasi ketelitian dan pelayanan prima.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Aktivitas Harian yang Menyenangkan',
+                'question' => 'Dari rangkaian rutinitas kedinasan berikut, jenis aktivitas yang paling membuat Anda berenergi dan betah bekerja berjam-jam adalah:',
+                'options' => [
+                    'Menyusun strategi organisasi, memimpin rapat dengar pendapat, bernegosiasi dengan mitra, dan memberikan arahan kerja kepada bawahan (Jalur Kepemimpinan & Manajerial).',
+                    'Mengolah data kompleks menggunakan perangkat analitik, membaca jurnal atau regulasi mutakhir, dan menulis laporan rekomendasi kebijakan strategis (Jalur Fungsional Keahlian).',
+                    'Mengoperasikan sistem aplikasi layanan, menata dokumentasi arsip secara sistematis, serta melayani konsultasi langsung pengguna layanan (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Gaya kerja harian: Menunjukkan kesesuaian ritme kerja apakah pada koordinasi sosial, konsentrasi analisis kognitif, atau keteraturan administrasi.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Respon Terhadap Situasi Krisis',
+                'question' => 'Saat terjadi krisis mendadak di instansi (misalnya keluhan massal akibat sistem layanan publik terhenti), reaksi spontan Anda yang paling dominan adalah:',
+                'options' => [
+                    'Mengambil inisiatif komando, membagi tim tanggap darurat, dan mengkomunikasikan situasi secara tenang kepada pihak eksternal serta pimpinan puncak (Jalur Kepemimpinan & Manajerial).',
+                    'Melakukan audit investigatif atas penyebab kegagalan sistem, mencari akar masalah teknis, dan merumuskan arsitektur mitigasi agar tidak terulang kembali (Jalur Fungsional Keahlian).',
+                    'Menenangkan antrean masyarakat di lapangan, mendistribusikan prosedur alternatif darurat secara manual, dan melayani satu per satu secara sabar (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Manajemen krisis: Menilai peranan alami aparatur apakah sebagai dirigen komando, pemecah masalah analitis, atau penenang dan eksekutor lapangan.',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $catKarir->id,
+                'sub_category' => 'Aspirasi Jenjang Karir ASN 10 Tahun Mendatang',
+                'question' => 'Jika memproyeksikan pencapaian karir ASN Anda dalam rentang 5 hingga 10 tahun ke depan, posisi yang paling Anda impikan adalah:',
+                'options' => [
+                    'Menduduki Jabatan Pimpinan Tinggi (JPT Madya/Pratama seperti Sekretaris Daerah, Dirjen, atau Kepala Dinas) yang berwenang menetapkan arah kebijakan organisasi (Jalur Kepemimpinan & Manajerial).',
+                    'Menjadi Pejabat Fungsional Ahli Madya/Utama (Analis Kebijakan, Perencana, Peneliti, atau Widyaiswara) yang diakui sebagai pakar terkemuka di bidangnya (Jalur Fungsional Keahlian).',
+                    'Menjadi Pejabat Pengawas Teknis / Koordinator Layanan Operasional Lapangan yang memastikan ketepatan dan efisiensi roda operasional kantor berjalan sempurna (Jalur Pelayanan & Operasional Teknis).'
+                ],
+                'correct_answer' => 1,
+                'scores' => ['STRUKTURAL', 'FUNGSIONAL', 'OPERASIONAL'],
+                'explanation' => 'Proyeksi Karir: Menyelaraskan aspirasi jabatan ASN jangka panjang dengan pola pembinaan karir Sistem Merit BKN.',
+                'is_active' => true,
+            ],
         ];
 
         foreach ($questionsData as $q) {
             Question::create($q);
         }
 
-        // 4. Create Materials for Profiling ASN
-        Material::truncate();
-
-        Material::create([
-            'category_id' => $catManajerial->id,
-            'title' => 'Panduan Standar Kompetensi Manajerial ASN (PermenPAN-RB No. 38/2017)',
-            'slug' => 'panduan-kompetensi-manajerial-asn',
-            'type' => 'Modul PDF & Teori',
-            'level' => 'Madya & Pratama',
-            'duration' => '30 Menit',
-            'summary' => 'Rangkuman lengkap 8 kompetensi manajerial (Integritas, Kerjasama, Komunikasi, Orientasi pada Hasil, Pelayanan Publik, Pengembangan Diri, Mengelola Perubahan, Pengambilan Keputusan) dan indikator perilaku level 1-5.',
-            'content' => 'Standar Kompetensi Manajerial ASN merupakan pedoman pokok dalam pemetaan talent pool dan seleksi terbuka jabatan pimpinan tinggi (JPT) maupun fungsional ahli. Pahami kata kunci indikator perilaku dan situasi dilematis etika birokrasi.',
-            'is_published' => true,
-            'is_free' => true,
-        ]);
-
-        Material::create([
-            'category_id' => $catDigital->id,
-            'title' => 'Literasi Digital ASN: 4 Pilar Indonesia Makin Cakap Digital',
-            'slug' => 'literasi-digital-asn-4-pilar',
-            'type' => 'Panduan Komprehensif',
-            'level' => 'Semua Jenjang Jabatan',
-            'duration' => '25 Menit',
-            'summary' => 'Kupas tuntas Digital Skills, Digital Culture, Digital Ethics, dan Digital Safety untuk ASN di era Satu Data Indonesia dan Sistem Pemerintahan Berbasis Elektronik (SPBE).',
-            'content' => 'Literasi digital bukan sekadar kemampuan mengoperasikan komputer, melainkan kesadaran etika bermedia sosial, kepatuhan pelindungan data pribadi (UU PDP), dan pencegahan rekayasa sosial di lingkungan birokrasi.',
-            'is_published' => true,
-            'is_free' => true,
-        ]);
-
-        Material::create([
-            'category_id' => $catEmerging->id,
-            'title' => 'Emerging Skills & Analytical Thinking: Kunci Menembus Box 9 Talent Pool',
-            'slug' => 'emerging-skills-analytical-thinking-asn',
-            'type' => 'Studi Kasus & Analisis',
-            'level' => 'Lanjutan (Advanced)',
-            'duration' => '40 Menit',
-            'summary' => 'Metode membedah masalah publik kompleks, teknik triangulasi data silang, pembuatan scenario planning anggaran, serta adopsi AI dan otomasi dalam tata kelola pelayanan publik.',
-            'content' => 'Emerging Skills menuntut aparatur memiliki analytical mindset. Pelajari cara mengidentifikasi bottleneck proses kerja, merumuskan hipotesis perbaikan, dan menyusun rekomendasi kebijakan berbasis bukti kuantitatif.',
-            'is_published' => true,
-            'is_free' => false,
-        ]);
-
-        Material::create([
-            'category_id' => $catPotensi->id,
-            'title' => 'Mastery Penalaran Figural, Logika Silogisme & Tes Potensi ASN',
-            'slug' => 'mastery-penalaran-figural-dan-potensi',
-            'type' => 'Drill Soal & Pembahasan',
-            'level' => 'Semua Jenjang',
-            'duration' => '35 Menit',
-            'summary' => 'Trik cepat membaca rotasi pola gambar spasial, keteraturan matriks bangun, penalaran analitis hubungan berantai, serta silogisme kategorik.',
-            'content' => 'Tes potensi kognitif dan figural menilai ketahanan mental dan kecepatan berpikir kritis. Kuasai rumus eliminasi opsi dan identifikasi pola rotasi 90/180/270 derajat.',
-            'is_published' => true,
-            'is_free' => true,
-        ]);
-
-        // 5. Seed Example Tryout Sessions with ASN Profiling Scores
-        TryoutSession::truncate();
-
-        TryoutSession::create([
-            'user_id' => $user->id,
-            'title' => 'Simulasi Profiling & Asesmen Kompetensi ASN #1',
-            'twk_score' => 88,
-            'tiu_score' => 85,
-            'tkp_score' => 90,
-            'total_score' => 355,
-            'category_scores' => [
-                'MANAJERIAL' => 92,
-                'DIGITAL' => 86,
-                'EMERGING' => 90,
-                'POTENSI' => 87,
-            ],
-            'competency_levels' => [
-                'Integritas & Etika' => 'Sangat Baik (Level 4)',
-                'Literasi Digital' => 'Mahir (Level 4)',
-                'Berpikir Analitis' => 'Optimal (Level 4)',
-                'Kognitif & Figural' => 'Tinggi (Level 4)',
-            ],
-            'talent_quadrant' => 'Bintang / Box 9 (High Potential & High Performance)',
-            'is_passed' => true,
-            'answers' => [1 => 1, 2 => 1, 3 => 1, 4 => 2, 5 => 1],
-            'time_spent_seconds' => 4200,
-            'completed_at' => now()->subDays(2),
-        ]);
+        // 4. Seed Materials for Profiling ASN
+        $this->call(RealMaterialsSeeder::class);
     }
 }
