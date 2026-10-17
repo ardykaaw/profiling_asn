@@ -203,46 +203,64 @@ export default function Dashboard({
                     </div>
                 </div>
 
-                {/* Visual Mini 3x3 Nine-Box Grid & Career Pill (5 cols) */}
+                {/* Visual Mini 3x3 9 BOX SIMATA & Career Pill (5 cols) */}
                 <div className="lg:col-span-5 rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden flex flex-col justify-between">
-                    <MacWindowControls title="Matriks Manajemen Talenta BKN" badge="NINE-BOX" />
+                    <MacWindowControls title="9 BOX SIMATA (Peta Talenta ASN)" badge="SIMATA" />
                     <div className="p-5 flex-1 flex flex-col justify-center space-y-3">
-                        <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold">
-                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
-                                Box 3
+                        <div className="space-y-1">
+                            <div className="flex items-center justify-between text-[10px] font-bold text-slate-500 uppercase tracking-wider px-1">
+                                <span>Sumbu Y: Kinerja</span>
+                                <span>Sumbu X: Potensial</span>
                             </div>
-                            <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-                                Box 6
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-300 ring-2 ring-amber-400 font-black shadow-xs">
-                                Box 9 ★
-                            </div>
+                            <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-bold">
+                                {/* Row 1: Kinerja Tinggi */}
+                                <div className="p-2 rounded-lg bg-[#38bdf8] text-slate-950 border border-sky-300">
+                                    <div className="font-black text-xs">Box 4</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Tinggi - Rendah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#2dd4bf] text-slate-950 border border-teal-300">
+                                    <div className="font-black text-xs">Box 7</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Tinggi - Menengah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#15803d] text-white border border-emerald-600 ring-2 ring-amber-400 shadow-xs relative">
+                                    <div className="font-black text-xs">Box 9 🏆</div>
+                                    <div className="text-[9px] font-black text-amber-200 leading-tight">Talenta Unggul</div>
+                                </div>
 
-                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
-                                Box 2
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-600 border border-slate-200">
-                                Box 5
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-                                Box 8
-                            </div>
+                                {/* Row 2: Kinerja Menengah */}
+                                <div className="p-2 rounded-lg bg-[#fcd34d] text-slate-950 border border-amber-300">
+                                    <div className="font-black text-xs">Box 2</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Sesuai - Rendah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#93c5fd] text-slate-950 border border-blue-300">
+                                    <div className="font-black text-xs">Box 5</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Sesuai - Menengah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#22d3ee] text-slate-950 border border-cyan-300">
+                                    <div className="font-black text-xs">Box 8</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Sesuai - Tinggi</div>
+                                </div>
 
-                            <div className="p-2.5 rounded-lg bg-red-50 text-red-700 border border-red-200">
-                                Box 1
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
-                                Box 4
-                            </div>
-                            <div className="p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
-                                Box 7
+                                {/* Row 3: Kinerja Rendah */}
+                                <div className="p-2 rounded-lg bg-[#f87171] text-white border border-rose-300">
+                                    <div className="font-black text-xs">Box 1</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Rendah - Rendah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#fb923c] text-white border border-orange-300">
+                                    <div className="font-black text-xs">Box 3</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Rendah - Menengah</div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-[#c084fc] text-white border border-purple-300">
+                                    <div className="font-black text-xs">Box 6</div>
+                                    <div className="text-[9px] font-semibold leading-tight">Rendah - Tinggi</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="text-center space-y-1.5">
+                        <div className="text-center space-y-1.5 pt-1">
                             <div>
                                 <span className="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
-                                    Posisi Anda: Box 9 (High Potential & Performance)
+                                    Posisi Anda: Box 9 (Kinerja Tinggi Potensial Tinggi)
                                 </span>
                             </div>
                             <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-semibold text-center line-clamp-1">
@@ -253,7 +271,7 @@ export default function Dashboard({
 
                     <div className="px-5 py-3 border-t border-slate-100 bg-slate-50 text-center">
                         <span className="text-[11px] text-slate-500 font-medium">
-                            Sumbu X: Potensi & Digital • Sumbu Y: Manajerial & Kinerja
+                            9 BOX SIMATA: Kinerja Saat Ini × Potensi Masa Depan
                         </span>
                     </div>
                 </div>

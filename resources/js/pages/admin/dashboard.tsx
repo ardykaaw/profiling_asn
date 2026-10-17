@@ -180,7 +180,7 @@ export default function AdminDashboard({
                         </div>
                         <div className="mt-2 flex items-center gap-1.5 text-xs text-emerald-700 font-medium">
                             <TrendingUp className="size-3.5" />
-                            <span>Nine-Box Matrix Profiling</span>
+                            <span>9 Box SIMATA Profiling</span>
                         </div>
                     </div>
                 </div>

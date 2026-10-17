@@ -24,7 +24,7 @@ const lynkProducts = [
             { text: 'Simulasi CAT 4 Dimensi Tanpa Batas', ok: true },
             { text: 'Bank Soal Kasus Manajerial & Sosio-Kultural', ok: true },
             { text: 'Kunci & Pembahasan Rasionalisasi BKN', ok: true },
-            { text: 'Rapor Analisis Skor Nine-Box Grid', ok: true },
+            { text: 'Rapor Analisis Skor 9 Box SIMATA', ok: true },
             { text: 'Modul Teori & Kisi-Kisi Lengkap', ok: true },
             { text: 'Konsultasi Pemetaan Karir Privat', ok: false },
         ],
@@ -50,7 +50,7 @@ const lynkProducts = [
         badge: 'INSTANSI & OPD',
         features: [
             { text: 'Multi-Akun ASN untuk Seluruh OPD', ok: true },
-            { text: 'Dashboard Rekapitulasi Nine-Box Grid Instansi', ok: true },
+            { text: 'Dashboard Rekapitulasi 9 Box SIMATA Instansi', ok: true },
             { text: 'Laporan Agregat Indeks Literasi Digital OPD', ok: true },
             { text: 'Export Laporan Rekap Format Excel/PDF', ok: true },
             { text: 'Custom Bank Soal Sesuai Kebutuhan Daerah', ok: true },

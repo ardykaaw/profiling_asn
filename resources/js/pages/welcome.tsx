@@ -136,7 +136,7 @@ export default function Welcome() {
                             Bedah Kasus & Pembahasan
                         </a>
                         <a href="#ninebox" className="hover:text-emerald-800 transition-colors">
-                            Matriks Nine-Box Grid
+                            9 Box SIMATA
                         </a>
                         <a href="/materi" className="hover:text-emerald-800 transition-colors">
                             Modul Kisi-Kisi BKN
@@ -197,7 +197,7 @@ export default function Welcome() {
                             Bedah Kasus & Pembahasan
                         </a>
                         <a href="#ninebox" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 font-medium">
-                            Matriks Nine-Box Grid
+                            9 Box SIMATA
                         </a>
                         <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
                             {user ? (
@@ -270,7 +270,7 @@ export default function Welcome() {
                             </div>
                             <div className="px-2 pt-2 sm:pt-0 sm:pl-4">
                                 <div className="text-[11px] font-semibold text-slate-500 uppercase">Standar Evaluasi</div>
-                                <div className="text-xl font-black text-slate-900 mt-1">Nine-Box</div>
+                                <div className="text-xl font-black text-slate-900 mt-1">9 Box SIMATA</div>
                                 <div className="text-xs text-slate-600 mt-0.5">Pemetaan Karier BKN</div>
                             </div>
                             <div className="px-2 pt-2 sm:pt-0 sm:pl-4">
@@ -510,38 +510,38 @@ export default function Welcome() {
                                     Manajemen Talenta Nasional
                                 </span>
                                 <h2 className="text-2xl sm:text-4xl font-black text-slate-900 mt-2 leading-tight">
-                                    Memahami Matriks Nine-Box Grid BKN
+                                    Memahami 9 Box SIMATA BKN
                                 </h2>
                                 <p className="text-xs sm:text-sm text-slate-600 mt-4 leading-relaxed">
-                                    Instansi pemerintah memetakan aparatur sipil negara ke dalam 9 kuadran berdasarkan perpaduan antara <strong>Potensi</strong> (Kognitif, Digital, Emerging Skills) dan <strong>Kinerja / Kompetensi</strong> (Manajerial & Sosio-Kultural).
+                                    9 Box adalah alat dalam Manajemen Talenta untuk memetakan ASN berdasarkan <strong>KINERJA</strong> dan <strong>POTENSIAL</strong> sebagai dasar pengembangan, penugasan, dan rencana suksesi.
                                 </p>
 
                                 <div className="mt-6 space-y-3">
                                     <div className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                        <div className="w-7 h-7 rounded-lg bg-[#15803d] text-white flex items-center justify-center shrink-0 font-black text-xs shadow-xs">
                                             9
                                         </div>
                                         <div>
-                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 9: Bintang (High Potential & High Performance)</div>
-                                            <div className="text-xs text-slate-500">Prioritas utama promosi terbuka JPT, penugasan strategis, dan suksesi kepemimpinan.</div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 9: Kinerja Tinggi Potensial Tinggi (Talenta Unggul)</div>
+                                            <div className="text-xs text-slate-500">Kinerja sangat baik dan potensi sangat tinggi. Prioritas utama promosi dan penugasan strategis.</div>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                        <div className="w-7 h-7 rounded-lg bg-[#22d3ee] text-slate-950 flex items-center justify-center shrink-0 font-black text-xs shadow-xs">
                                             8
                                         </div>
                                         <div>
-                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 8: Penampil Unggul (High Performance)</div>
-                                            <div className="text-xs text-slate-500">Kinerja konsisten di atas rata-rata dengan kesiapan penguatan kompetensi manajerial lanjutan.</div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 8: Kinerja Sesuai Potensial Tinggi</div>
+                                            <div className="text-xs text-slate-500">Kinerja sudah sesuai, potensi sangat tinggi untuk peran yang lebih besar.</div>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-md bg-blue-100 text-blue-800 flex items-center justify-center shrink-0 font-bold text-xs">
+                                        <div className="w-7 h-7 rounded-lg bg-[#2dd4bf] text-slate-950 flex items-center justify-center shrink-0 font-black text-xs shadow-xs">
                                             7
                                         </div>
                                         <div>
-                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 7: Potensi Berkembang (High Potential)</div>
-                                            <div className="text-xs text-slate-500">Kapasitas kognitif dan adaptabilitas tinggi yang siap diarahkan menuju performa puncak.</div>
+                                            <div className="font-bold text-slate-900 text-xs sm:text-sm">Box 7: Kinerja Tinggi Potensial Menengah</div>
+                                            <div className="text-xs text-slate-500">Kinerja sangat baik, potensi cukup untuk berkembang lebih tinggi.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -557,52 +557,59 @@ export default function Welcome() {
                                 </div>
                             </div>
 
-                            {/* Nine-Box Visual Grid in Mac Window */}
+                            {/* 9 BOX SIMATA Visual Grid in Mac Window */}
                             <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden">
-                                <MacWindowControls title="Matriks Manajemen Talenta BKN" badge="KUADRAN 3X3" />
-                                <div className="p-5">
+                                <MacWindowControls title="9 BOX SIMATA (Peta Talenta ASN)" badge="SIMATA" />
+                                <div className="p-5 space-y-3">
+                                    <div className="flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-wider px-1">
+                                        <span>Sumbu Y: KINERJA</span>
+                                        <span>Sumbu X: POTENSIAL</span>
+                                    </div>
                                     <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
-                                            <div className="font-bold">Box 3</div>
-                                            Kinerja Baik, Potensi Rendah
+                                        {/* Row 1: Kinerja Tinggi */}
+                                        <div className="p-3 rounded-xl bg-[#38bdf8] text-slate-950 font-bold border border-sky-300">
+                                            <div className="font-black text-sm">Box 4</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Tinggi - Rendah</div>
                                         </div>
-                                        <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800">
-                                            <div className="font-bold">Box 6</div>
-                                            Kinerja Baik, Potensi Sedang
+                                        <div className="p-3 rounded-xl bg-[#2dd4bf] text-slate-950 font-bold border border-teal-300">
+                                            <div className="font-black text-sm">Box 7</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Tinggi - Menengah</div>
                                         </div>
-                                        <div className="p-3 rounded-lg bg-amber-100 border border-amber-300 text-amber-900 font-bold shadow-xs ring-2 ring-amber-400">
-                                            <div className="font-bold">Box 9 ★</div>
-                                            Bintang / High Talent
-                                        </div>
-
-                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
-                                            <div className="font-bold">Box 2</div>
-                                            Kinerja Cukup, Potensi Rendah
-                                        </div>
-                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                                            <div className="font-bold">Box 5</div>
-                                            Kinerja Sedang, Potensi Sedang
-                                        </div>
-                                        <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800">
-                                            <div className="font-bold">Box 8</div>
-                                            Penampil Unggul
+                                        <div className="p-3 rounded-xl bg-[#15803d] text-white font-bold border border-emerald-600 ring-2 ring-amber-400 shadow-md">
+                                            <div className="font-black text-sm">Box 9 🏆</div>
+                                            <div className="text-[10px] font-black text-amber-300 mt-0.5">Talenta Unggul</div>
                                         </div>
 
-                                        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700">
-                                            <div className="font-bold">Box 1</div>
-                                            Perlu Peningkatan
+                                        {/* Row 2: Kinerja Menengah */}
+                                        <div className="p-3 rounded-xl bg-[#fcd34d] text-slate-950 font-bold border border-amber-300">
+                                            <div className="font-black text-sm">Box 2</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Sesuai - Rendah</div>
                                         </div>
-                                        <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-600">
-                                            <div className="font-bold">Box 4</div>
-                                            Potensi Cukup
+                                        <div className="p-3 rounded-xl bg-[#93c5fd] text-slate-950 font-bold border border-blue-300">
+                                            <div className="font-black text-sm">Box 5</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Sesuai - Menengah</div>
                                         </div>
-                                        <div className="p-3 rounded-lg bg-blue-50 border border-blue-200 text-blue-800">
-                                            <div className="font-bold">Box 7</div>
-                                            Potensi Berkembang
+                                        <div className="p-3 rounded-xl bg-[#22d3ee] text-slate-950 font-bold border border-cyan-300">
+                                            <div className="font-black text-sm">Box 8</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Sesuai - Tinggi</div>
+                                        </div>
+
+                                        {/* Row 3: Kinerja Rendah */}
+                                        <div className="p-3 rounded-xl bg-[#f87171] text-white font-bold border border-rose-300">
+                                            <div className="font-black text-sm">Box 1</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Rendah - Rendah</div>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-[#fb923c] text-white font-bold border border-orange-300">
+                                            <div className="font-black text-sm">Box 3</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Rendah - Menengah</div>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-[#c084fc] text-white font-bold border border-purple-300">
+                                            <div className="font-black text-sm">Box 6</div>
+                                            <div className="text-[10px] font-semibold mt-0.5">Rendah - Tinggi</div>
                                         </div>
                                     </div>
-                                    <div className="mt-4 text-center text-[11px] text-slate-500 font-medium">
-                                        Sumbu Horizontal: Potensi Kognitif & Digital • Sumbu Vertikal: Kinerja & Manajerial
+                                    <div className="mt-3 text-center text-[11px] text-slate-500 font-bold">
+                                        9 BOX MEMBANTU MEMBACA POSISI TALENTA ASN: KINERJA SAAT INI × POTENSI MASA DEPAN
                                     </div>
                                 </div>
                             </div>

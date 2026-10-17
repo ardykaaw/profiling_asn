@@ -41,3 +41,7 @@ yarn-error.log
 /boost.json
 /opencode.json
 /opencode.jsonc
+*.mp4
+*.zip
+*.py
+/public_html

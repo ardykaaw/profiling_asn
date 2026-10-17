@@ -34,11 +34,11 @@ interface ModuleItem {
 }
 
 const categoryTabs = [
-    { id: 'semua', name: 'Semua Modul (9 File)' },
+    { id: 'semua', name: 'Semua Modul (9 Dokumen)' },
+    { id: 'potensi', name: 'Tes Potensi Kognitif & Figural', icon: Brain },
     { id: 'manajerial', name: 'Manajerial & Sosio-Kultural', icon: Users },
-    { id: 'digital', name: 'Literasi Digital SPBE', icon: Cpu },
-    { id: 'emerging', name: 'Emerging Skills & Analitis', icon: Zap },
-    { id: 'potensi', name: 'Potensi Kognitif & Figural', icon: Brain },
+    { id: 'digital', name: 'Literasi Digital SPBE & Keamanan', icon: Cpu },
+    { id: 'karir', name: 'DNA Talent & Preferensi Karir', icon: Zap },
 ];
 
 interface MateriProps {

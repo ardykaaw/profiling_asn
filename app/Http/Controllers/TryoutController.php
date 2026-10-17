@@ -22,7 +22,7 @@ class TryoutController extends Controller
             ->map(function ($q) {
                 return [
                     'id' => $q->id,
-                    'kategori' => $q->category->code ?? 'MANAJERIAL',
+                    'kategori' => $q->category->code ?? 'POTENSI',
                     'category_name' => $q->category->name ?? '',
                     'subkategori' => $q->sub_category,
                     'soal' => $q->question,
@@ -124,7 +124,7 @@ class TryoutController extends Controller
         // Calculate normalized scores (percentage 0-100) for standard dimensions
         $normalizedScores = [];
         foreach (['POTENSI', 'MANAJERIAL', 'DIGITAL'] as $code) {
-            $max = $catMax[$code] > 0 ? $catMax[$code] : 30;
+            $max = $catMax[$code] > 0 ? $catMax[$code] : 25;
             $normalizedScores[$code] = round(($catScores[$code] / $max) * 100);
         }
 
@@ -169,27 +169,37 @@ class TryoutController extends Controller
             ],
         ];
 
-        // Nine-Box Talent Grid BKN
-        // Axis X: Potensi Kognitif & Digital
+        // 9 BOX SIMATA - PETA TALENTA ASN
+        // Axis X: Potensial (Potensi Kognitif & Literasi Digital)
         $axisX = round(($normalizedScores['POTENSI'] * 0.5) + ($normalizedScores['DIGITAL'] * 0.5));
-        // Axis Y: Kompetensi Manajerial & Integritas
+        // Axis Y: Kinerja (Manajerial & Sosio-Kultural)
         $axisY = $normalizedScores['MANAJERIAL'];
 
-        $talentQuadrant = 'Box 5 (Penampil Tangguh / Solid Performer)';
-        if ($axisX >= 80 && $axisY >= 80) {
-            $talentQuadrant = 'Box 9 (Bintang / High Potential & High Performance)';
-        } elseif ($axisX >= 70 && $axisY >= 80) {
-            $talentQuadrant = 'Box 8 (Penampil Unggul / High Performance)';
-        } elseif ($axisX >= 80 && $axisY >= 70) {
-            $talentQuadrant = 'Box 7 (Potensi Berkembang Cepat / High Potential)';
-        } elseif ($axisX >= 70 && $axisY >= 70) {
-            $talentQuadrant = 'Box 5 (Penampil Tangguh / Solid Performer)';
-        } elseif ($axisX < 70 && $axisY >= 80) {
-            $talentQuadrant = 'Box 6 (Penampil Mantap / Specialist)';
-        } elseif ($axisX >= 80 && $axisY < 70) {
-            $talentQuadrant = 'Box 4 (Bakat Belum Teredukasi / Emerging Talent)';
+        $talentQuadrant = 'Box 1: Kinerja Rendah Potensial Rendah';
+        if ($axisY >= 80) {
+            if ($axisX >= 80) {
+                $talentQuadrant = 'Box 9: Kinerja Tinggi Potensial Tinggi (Talenta Unggul)';
+            } elseif ($axisX >= 60) {
+                $talentQuadrant = 'Box 7: Kinerja Tinggi Potensial Menengah';
+            } else {
+                $talentQuadrant = 'Box 4: Kinerja Tinggi Potensial Rendah';
+            }
+        } elseif ($axisY >= 60) {
+            if ($axisX >= 80) {
+                $talentQuadrant = 'Box 8: Kinerja Sesuai Potensial Tinggi';
+            } elseif ($axisX >= 60) {
+                $talentQuadrant = 'Box 5: Kinerja Sesuai Potensial Menengah';
+            } else {
+                $talentQuadrant = 'Box 2: Kinerja Sesuai Potensial Rendah';
+            }
         } else {
-            $talentQuadrant = 'Box 1 (Perlu Peningkatan / Need Development)';
+            if ($axisX >= 80) {
+                $talentQuadrant = 'Box 6: Kinerja Rendah Potensial Tinggi';
+            } elseif ($axisX >= 60) {
+                $talentQuadrant = 'Box 3: Kinerja Rendah Potensial Menengah';
+            } else {
+                $talentQuadrant = 'Box 1: Kinerja Rendah Potensial Rendah';
+            }
         }
 
         $competencyLevels = [
