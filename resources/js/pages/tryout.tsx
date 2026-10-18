@@ -31,7 +31,8 @@ import {
     Trophy,
     TrendingUp,
     Target,
-    Lightbulb
+    Lightbulb,
+    ZoomIn
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -489,6 +490,20 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
     // Modal dialog states
     const [showExitModal, setShowExitModal] = useState(false);
     const [showSubmitModal, setShowSubmitModal] = useState(false);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+    // Escape listener for image preview
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setPreviewImage(null);
+            }
+        };
+        if (previewImage) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [previewImage]);
 
     // Review filters
     const [reviewStatusFilter, setReviewStatusFilter] = useState<'ALL' | 'CORRECT' | 'WRONG' | 'UNANSWERED'>('ALL');
@@ -1172,15 +1187,29 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
 
                                         {currentQ.image_url && (
                                             <div className="my-4 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-xs">
-                                                <img
-                                                    src={currentQ.image_url}
-                                                    alt="Bagan Soal Figural"
-                                                    className="max-h-[390px] w-auto max-w-full object-contain rounded-xl shadow-xs"
-                                                />
-                                                <span className="text-[11px] text-slate-500 mt-2.5 font-medium flex items-center gap-1.5">
+                                                <div 
+                                                    onClick={() => setPreviewImage(currentQ.image_url!)}
+                                                    className="group relative cursor-pointer overflow-hidden rounded-xl"
+                                                    title="Klik untuk memperbesar gambar (Modal)"
+                                                >
+                                                    <img
+                                                        src={currentQ.image_url}
+                                                        alt="Bagan Soal Figural"
+                                                        className="max-h-[390px] w-auto max-w-full object-contain rounded-xl shadow-xs transition-transform duration-200 group-hover:scale-[1.01]"
+                                                    />
+                                                    <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs backdrop-blur-[1px] rounded-xl">
+                                                        <ZoomIn className="w-4 h-4" />
+                                                        <span>Klik untuk memperbesar gambar</span>
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setPreviewImage(currentQ.image_url!)}
+                                                    className="text-[11px] text-slate-500 hover:text-blue-600 mt-2.5 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+                                                >
                                                     <Layers className="w-3.5 h-3.5 text-blue-600" />
-                                                    Bagan Visual Soal Figural (Standar BKN)
-                                                </span>
+                                                    <span>Bagan Visual Soal Figural (Standar BKN) • <strong className="text-blue-600 font-semibold underline underline-offset-2">Perbesar Gambar</strong></span>
+                                                </button>
                                             </div>
                                         )}
 
@@ -1619,15 +1648,29 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
 
                                                 {q.image_url && (
                                                     <div className="my-3 p-3 bg-slate-50 border border-slate-200/80 rounded-xl overflow-hidden flex flex-col items-center justify-center">
-                                                        <img
-                                                            src={q.image_url}
-                                                            alt="Diagram Soal Figural"
-                                                            className="max-h-[350px] w-auto max-w-full object-contain rounded-lg"
-                                                        />
-                                                        <span className="text-[10px] text-slate-500 mt-1.5 font-medium flex items-center gap-1">
+                                                        <div 
+                                                            onClick={() => setPreviewImage(q.image_url!)}
+                                                            className="group relative cursor-pointer overflow-hidden rounded-lg"
+                                                            title="Klik untuk memperbesar gambar (Modal)"
+                                                        >
+                                                            <img
+                                                                src={q.image_url}
+                                                                alt="Diagram Soal Figural"
+                                                                className="max-h-[350px] w-auto max-w-full object-contain rounded-lg transition-transform duration-200 group-hover:scale-[1.01]"
+                                                            />
+                                                            <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-white font-semibold text-xs backdrop-blur-[1px] rounded-lg">
+                                                                <ZoomIn className="w-4 h-4" />
+                                                                <span>Klik untuk memperbesar gambar</span>
+                                                            </div>
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setPreviewImage(q.image_url!)}
+                                                            className="text-[10px] text-slate-500 hover:text-blue-600 mt-1.5 font-medium flex items-center gap-1 transition-colors cursor-pointer"
+                                                        >
                                                             <Layers className="w-3 h-3 text-blue-600" />
-                                                            Bagan Visual Soal Figural
-                                                        </span>
+                                                            <span>Bagan Visual Soal Figural • <strong className="text-blue-600 font-semibold underline underline-offset-2">Perbesar Gambar</strong></span>
+                                                        </button>
                                                     </div>
                                                 )}
 
@@ -1785,6 +1828,53 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                     Kumpulkan Sekarang
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* =========================================================================
+                MODAL 3: LIGHTBOX PREVIEW GAMBAR SOAL FIGURAL (TANPA TAB BARU)
+               ========================================================================= */}
+            {previewImage && (
+                <div 
+                    className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4 animate-in fade-in duration-200"
+                    onClick={() => setPreviewImage(null)}
+                >
+                    <div 
+                        className="relative bg-white rounded-2xl shadow-2xl max-w-4xl max-h-[92vh] w-full flex flex-col overflow-hidden border border-slate-200"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-slate-200 bg-slate-50">
+                            <div className="flex items-center gap-2 text-slate-800">
+                                <Layers className="w-4 h-4 text-blue-600" />
+                                <span className="font-bold text-sm">Bagan Visual Soal Figural</span>
+                                <span className="text-xs text-slate-500 font-normal hidden sm:inline">(Resolusi Penuh)</span>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setPreviewImage(null)}
+                                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 transition-colors cursor-pointer"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+                        <div className="p-4 sm:p-6 overflow-auto flex items-center justify-center bg-slate-100/70 max-h-[calc(92vh-100px)]">
+                            <img
+                                src={previewImage}
+                                alt="Bagan Soal Figural"
+                                className="max-h-[75vh] w-auto max-w-full object-contain rounded-xl shadow-md border border-slate-200 bg-white"
+                            />
+                        </div>
+                        <div className="px-5 py-2.5 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
+                            <span>Tekan <kbd className="px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-mono text-[10px]">ESC</kbd> atau klik di luar untuk menutup</span>
+                            <button
+                                type="button"
+                                onClick={() => setPreviewImage(null)}
+                                className="px-3 py-1 rounded-lg bg-slate-900 text-white font-medium text-xs hover:bg-slate-800 transition-colors cursor-pointer"
+                            >
+                                Tutup
+                            </button>
                         </div>
                     </div>
                 </div>
