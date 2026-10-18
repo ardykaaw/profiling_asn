@@ -41,6 +41,7 @@ interface Question {
     category_name?: string;
     subkategori: string;
     soal: string;
+    image_url?: string | null;
     pilihan: string[];
     jawaban: number;
     scores?: number[] | string[];
@@ -1168,6 +1169,21 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                         <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
                                             {currentQ.soal}
                                         </h2>
+
+                                        {currentQ.image_url && (
+                                            <div className="my-4 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-xs">
+                                                <img
+                                                    src={currentQ.image_url}
+                                                    alt="Bagan Soal Figural"
+                                                    className="max-h-[390px] w-auto max-w-full object-contain rounded-xl shadow-xs"
+                                                />
+                                                <span className="text-[11px] text-slate-500 mt-2.5 font-medium flex items-center gap-1.5">
+                                                    <Layers className="w-3.5 h-3.5 text-blue-600" />
+                                                    Bagan Visual Soal Figural (Standar BKN)
+                                                </span>
+                                            </div>
+                                        )}
+
                                         {currentQ.kategori === 'KARIR' && (
                                             <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-900 text-xs flex items-center gap-2 font-medium">
                                                 <Compass className="w-4 h-4 text-amber-700 shrink-0" />
@@ -1600,6 +1616,20 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                                 <div className="font-bold text-slate-900 text-sm leading-relaxed">
                                                     {idx + 1}. {q.soal}
                                                 </div>
+
+                                                {q.image_url && (
+                                                    <div className="my-3 p-3 bg-slate-50 border border-slate-200/80 rounded-xl overflow-hidden flex flex-col items-center justify-center">
+                                                        <img
+                                                            src={q.image_url}
+                                                            alt="Diagram Soal Figural"
+                                                            className="max-h-[350px] w-auto max-w-full object-contain rounded-lg"
+                                                        />
+                                                        <span className="text-[10px] text-slate-500 mt-1.5 font-medium flex items-center gap-1">
+                                                            <Layers className="w-3 h-3 text-blue-600" />
+                                                            Bagan Visual Soal Figural
+                                                        </span>
+                                                    </div>
+                                                )}
 
                                                 {/* Options List with Key & User Answer highlighting */}
                                                 <div className="space-y-2.5">

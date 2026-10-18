@@ -26,6 +26,7 @@ class TryoutController extends Controller
                     'category_name' => $q->category->name ?? '',
                     'subkategori' => $q->sub_category,
                     'soal' => $q->question,
+                    'image_url' => $q->image_url,
                     'pilihan' => $q->options,
                     'jawaban' => $q->correct_answer,
                     'scores' => $q->scores,

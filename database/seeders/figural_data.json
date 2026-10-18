@@ -1,0 +1,722 @@
+[
+  {
+    "number": 1,
+    "sub_category": "Penalaran Figural (Analogi Bangun Simetri)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_01.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 4,
+    "correct_letter": "E",
+    "explanation": "Polanya: Bangun awal dicerminkan secara vertikal, kemudian hasil dari pencerminannya dicerminkan lagi secara vertikal, sehingga terdapat dua bangun yang saling simetris. Satu bangun yang bawah digeser ke kanan kemudian digabungkan dengan bangun yang lain. Dengan analogi yang sama pada gambar kedua, bentuk yang dihasilkan sesuai dengan Pilihan E."
+  },
+  {
+    "number": 2,
+    "sub_category": "Penalaran Figural (Rotasi & Transformasi Bentuk)",
+    "question": "Perhatikan analogi perubahan gambar pertama. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_02.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "Polanya: Gambar dirotasikan terlebih dahulu sebesar 90° searah jarum jam. Kemudian bangun persegi panjang berubah menjadi ruas garis lurus, sedangkan bangun segitiga berubah menjadi gambar anak panah dengan arah sesuai dengan sudut puncak segitiga. Mengikuti pola yang sama, jawaban yang tepat adalah Pilihan A."
+  },
+  {
+    "number": 3,
+    "sub_category": "Penalaran Figural (Serial / Deret Elemen & Warna)",
+    "question": "Perhatikan barisan pola gambar berikut. Tentukan gambar pilihan yang merupakan lanjutan dari urutan deret gambar tersebut.",
+    "image_path": "questions/figural_03.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Pola pada gambar tersebut adalah urutan bergantian antara lingkaran putih dan lingkaran hitam, selain itu juga ujung mata anak panah yang selalu berkurang dua setiap langkah. Jadi pada urutan gambar berikutnya, lingkaran di tengah gambar adalah hitam dan ujung garis sudah tidak memiliki mata anak panah sama sekali. Jawaban yang tepat adalah Pilihan B."
+  },
+  {
+    "number": 4,
+    "sub_category": "Penalaran Figural (Jaring-Jaring Bangun Ruang Kubus 3D)",
+    "question": "Berdasarkan pola jaring-jaring kubus yang dibentangkan, pilihlah bentuk kubus 3 dimensi (A, B, C, D, atau E) yang paling sesuai ketika dirangkai.",
+    "image_path": "questions/figural_04.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "Kubus yang sesuai adalah kubus Pilihan A. Karena pada saat sisi (5) menjadi sisi kubus bagian depan dan sisi (4) berada di sebelah kiri, maka gambar panah pada sisi (1) yang berada di atas kubus mengarah ke sebelah kanan. Pilihan B salah karena sisi (3) tidak dapat berdampingan dengan sisi (5). Pilihan C salah karena orientasi sisi (3) terbalik. Jawaban yang tepat adalah Pilihan A."
+  },
+  {
+    "number": 5,
+    "sub_category": "Penalaran Figural (Matriks Pola 3x3)",
+    "question": "Perhatikan matriks 3x3 berikut. Tentukan gambar pilihan (A, B, C, D, atau E) yang tepat untuk mengisi kotak tanda tanya (?).",
+    "image_path": "questions/figural_05.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "Pola banyaknya belah ketupat pada baris pertama: 4, 3, 2. Baris kedua: 5, 4, 3. Sehingga pola banyaknya belah ketupat hitam yang berada di kotak berdasarkan urutan baris selalu berkurang satu. Maka pada baris ketiga kolom ketiga, jumlah belah ketupat hitam yang tepat adalah 4 buah. Jawaban yang tepat adalah Pilihan A."
+  },
+  {
+    "number": 6,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_06.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "JAWABAN : C\nCARA PENGERJAAN\n\nLangkah 1 — Perhatikan jumlah sisi gambar pertama.\nSegitiga pada gambar 1 memiliki 3 sisi.\nLangkah 2 — Amati hubungan gambar kedua.\nPada gambar 2, segitiga tetap dipertahankan sebagai bentuk dalam, kemudian\nditambahkan belah ketupat sebagai bentuk luar. Belah ketupat memiliki 4 sisi,\nsedangkan segitiga memiliki 3 sisi.\nDengan demikian, susunannya adalah:\n\n\nBentuk luar: 4 sisi.\n\n\n\nBentuk dalam: 3 sisi.\n\nLangkah 3 — Identifikasi bentuk pada gambar ketiga.\nGambar 3 berbentuk segi lima seperti rumah, yang memiliki 5 sisi.\nJika pola sebelumnya berlanjut, bentuk luar pada gambar 4 diperkirakan memiliki 6\nsisi, sedangkan bentuk dalam tetap menggunakan bentuk segi lima seperti pada\ngambar 3."
+  },
+  {
+    "number": 7,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_07.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban: C.\nAlasannya, pola gambar menunjukkan penambahan bentuk luar dengan jumlah sisi\nsatu lebih banyak daripada bentuk dalam, dengan bentuk dalam berupa gambar\nsebelumnya dan orientasi kedua bentuk tetap selaras.\n\n7.\n\nJAWABAN : C\nCARA PENGERJAAN\nAnalisis Pola:\n1. Pasangan Pertama (Gambar 1 → Gambar 2):\no\n\nGambar (1) merupakan bentuk setengah bagian (setengah lingkaran).\n\no\n\nGambar (2) menjadi bentuk simetris utuh (lingkaran) yang terbagi dua\nsecara horizontal, dengan warna hitam pada bagian ATAS.\n\n2. Pasangan Kedua (Gambar 3 → Gambar 4):\no\n\nGambar (3) merupakan bentuk setengah bagian terbuka (\"Σ\").\n\no\n\nGambar (4) harus dibentuk dengan menggabungkan dua elemen\nmenjadi bentuk simetris utuh berbentuk panah bertumpuk.\n\no\n\nMengikuti konsistensi posisi pada pasangan pertama, pengisian warna\nhitam harus berada di area ATAS/TENGAH LEKUKAN.\n\nLangkah Pengerjaan:\n1. Amati perubahan Gambar (1) ke Gambar (2): bentuk digabung menjadi\nsimetris utuh dengan bagian atas berwarna hitam.\n2. Terapkan prinsip yang sama pada Gambar (3) untuk membentuk panah\nganda simetris.\n3. Pertahankan letak warna hitam pada posisi atas/dalam lekukan sesuai pola\nGambar (2).\n4. Opsi yang paling tepat memenuhi bentuk simetris dan proporsi warna hitam di\nposisi atas/tengah adalah Gambar C.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Warna hitam terlalu dominan dan memenuhi hampir seluruh\nbagian panah.\n\n\n\nGambar B: Warna hitam menutup seluruh kepala panah tanpa batas proporsi\nyang jelas.\n\n\n\nGambar D: Warna hitam berada di posisi bawah (bertentangan dengan pola\nposisi atas pada Gambar 2).\n\n\n\nGambar E: Warna hitam berada di bagian bawah.\n\nTrik Cepat Mengerjakan:\nLihat Posisi Warna Hitam:\nPada Gambar (2), warna hitam terletak di bagian ATAS. Langsung\neliminasi Gambar D dan E yang memiliki warna hitam di bawah. Di antara\npilihan A, B, dan C, pilih C karena bentuk hitamnya paling proporsional\nmengisi lekukan atas sesuai kontur Gambar (3)."
+  },
+  {
+    "number": 8,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_08.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "JAWABAN B\nPembahasan :\nSoal ini menampilkan seri gambar berupa empat buah belah ketupat kecil yang\ntersusun membentuk belah ketupat besar, di mana masing-masing belah ketupat kecil\nmemiliki garis sekat internal.\n1. Pola Perubahan: Setiap langkah dari Kotak (1) ke Kotak (2), lalu ke Kotak (3),\nmenunjukkan adanya rotasi (perputaran) posisi garis sekat internal sebesar 90∘\nsecara konsisten.\n2. Konsistensi Bentuk Luar: Bingkai luar dan kerangka utama keempat belah\nketupat tetap, namun orientasi garis pembagi di dalam masing-masing belah\nketupat kecil berputar mengikuti arah perputaran tertentu.\nLangkah Pengerjaan\n1. Amati Kotak (1) sampai Kotak (3):\no\n\nPerhatikan arah garis sekat pada belah ketupat bagian atas, bawah, kiri,\ndan kanan secara berurutan.\n\no\n\nSetiap perpindahan kotak menggeser orientasi garis di dalam setiap\nsub-bagian sebesar 90∘.\n\n2. Terapkan Rotasi ke Kotak (4):\no\n\nBerdasarkan kelanjutan pola rotasi dari Kotak (3) menuju Kotak (4),\nposisi garis sekat internal harus berputar lagi sebesar 90∘.\n\n3. Cocokkan dengan Pilihan B:\no\n\nJika kita memutar orientasi dari Kotak (3) sebesar 90∘ berikutnya, letak\ndan sudut garis sekat pada setiap belah ketupat kecil akan tepat jatuh\npada posisi yang digambarkan dalam Gambar B.\n\nTrik Cepat Mengerjakan\nTrik \"Fokus Satu Titik Sudut\":\n1. Amati hanya satu belah ketupat kecil (misal yang berada di posisi paling atas)\npada Kotak (3).\n2. Bayangkan atau putar posisi garis di dalamnya sebesar 90∘ searah/berlawanan\narah jarum jam sesuai tren Kotak 1 ke 2.\n3. Langsung cari pilihan jawaban yang posisi bagian atasnya sesuai dengan hasil\nbayangan tersebut, yang dalam hal ini langsung mengarah ke Gambar"
+  },
+  {
+    "number": 9,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_09.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\nAnalisis Pola:\nSoal ini menggunakan hubungan analogi ganda 𝐴: 𝐵 = 𝐶: 𝐷 dengan dua aturan\nutama:\n1. Objek Kiri: Mengubah bentuk setengah bagian polos menjadi bentuk utuh\nsimetris dengan pengisian arsiran diagonal pada salah satu sisinya.\n2. Objek Kanan: Mengubah kelompok elemen susunan vertikal dari bentuk\npersegi panjang menjadi bentuk segitiga kecil, dengan mempertahankan pola\npengarsiran (elemen tengah diarsir, elemen atas dan bawah polos).\nLangkah Pengerjaan:\n1. Amati Objek Kiri Gambar (3): Bentuk setengah kapsul polos harus diubah\nmenjadi kapsul utuh yang separuh bagiannya diarsir diagonal.\n2. Amati Objek Kanan Gambar (3): Susunan tiga persegi panjang vertikal harus\nberganti menjadi susunan tiga segitiga kecil vertikal.\n3. Periksa Pola Arsiran Objek Kanan: Segitiga bagian tengah diarsir diagonal,\nsedangkan segitiga atas dan bawah tetap putih polos.\n4. Kesimpulan: Opsi yang memenuhi gabungan kapsul utuh terarsir di kiri dan tiga\nsegitiga vertikal di kanan adalah Gambar C.\nPilihan C secara sempurna memenuhi kedua aturan transformasi:\n\n\nObjek sebelah kiri menjadi bentuk kapsul simetris dengan setengah bagian\nterarsir.\n\n\n\nObjek sebelah kanan berganti dari persegi panjang menjadi tiga segitiga kecil\nvertikal dengan arsiran pada segitiga bagian tengah.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & D: Objek sebelah kanan masih berupa persegi panjang, tidak\nmengalami perubahan jenis bentuk.\n\n\n\nGambar B: Arah dan letak arsiran pada bagian kapsul sebelah kiri kurang\ntepat/terbalik dibanding pola standar.\n\n\n\nGambar E: Objek sebelah kanan mencampurkan bentuk persegi panjang di\ntengah, yang bertentangan dengan pola segitiga seragam.\n\nTrik Cepat Mengerjakan:\nTrik \"Eliminasi Elemen Kanan\":\nPerhatikan bahwa pada pasangan pertama, tiga persegi panjang berubah menjadi\ntiga segitiga. Maka pada pasangan kedua, tiga persegi panjang di kanan pasti\nberubah menjadi segitiga.\n\n\nLangsung eiminasikan A, D, dan E.\n\n\n\nBandingkan B dan C: pilih C karena bentuk kapsul di kiri diarsir secara\nproporsional sesuai pola analogi gambar pertama."
+  },
+  {
+    "number": 10,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_10.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "JAWABAN : A\nPEMBAHASAN :\nAnalisis Pola:\n1. Pasangan Pertama (Gambar 1 → Gambar 2):\no\n\nObjek pada Gambar (1) berubah orientasi dan karakternya menjadi\nbentuk siluet pekat (hitam penuh) pada Gambar (2).\n\n2. Pasangan Kedua (Gambar 3 → Gambar 4):\no\n\nGambar (4) menampilkan objek pesawat dalam posisi miring diagonal\ndengan warna hitam penuh.\n\no\n\nUntuk mencari bentuk awal pada Gambar (3) (tanda tanya), kita\nmenarik mundur objek tersebut ke posisi awal (tegak lurus vertikal)\ndengan karakteristik siluet pekat dasar.\n\nLangkah Pengerjaan:\n1. Amati bentuk akhir pada Gambar (4) yang berupa siluet pesawat hitam dalam\nposisi miring.\n2. Tarik mundur posisi tersebut ke orientasi normal/tegak lurus vertikal.\n3. Sesuaikan dengan format bentuk siluet pekat dasar yang konsisten dari\npasangan soal sebelumnya.\n4. Pilihan yang secara tepat menunjukkan bentuk dasar siluet vertikal hitam\npekat adalah Gambar A.\nGambar A merupakan bentuk dasar siluet vertikal hitam pekat yang menjadi akar\nbentuk dari objek pesawat sebelum mengalami rotasi dan penyesuaian detail pada\nGambar (4).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar B, C, D, dan E: Memiliki variasi detail tambahan, format outline\nputih, atau posisi miring yang tidak sesuai dengan aturan penarikan mundur\nbentuk siluet dasar.\n\nTrik Cepat Mengerjakan:\nTrik \"Tarikan Mundur Siluet\":\nPerhatikan bentuk akhir di kotak (4) yang berupa siluet hitam. Cari bentuk dasarnya\ndalam posisi normal/tegak di pilihan jawaban, yang langsung mengarah ke bentuk\nsiluet solid pada opsi A."
+  },
+  {
+    "number": 11,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_11.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "JAWABAN B\nPEMBAHASAN :\nLangkah Pengerjaan:\n1. Amati Elemen Anak Panah (Pasangan 1 → 2): Garis panah dari sisi kanan\nvertikal (menghadap bawah) berpindah menjadi horizontal di sisi bawah\n(menghadap kanan).\n2. Terapkan pada Gambar (3): Garis panah di sisi kiri vertikal (menghadap\nbawah) harus berpindah ke sisi atas horizontal dengan arah panah menghadap\nke kiri. (Tersisa B dan C).\n3. Amati Elemen Titik Hitam (Pasangan 1 → 2): Garis bertitik hitam dari bawah\nberpindah ke sisi kiri dengan titik berada di atas.\n4. Terapkan pada Gambar (3): Garis bertitik hitam yang ada di atas berpindah\nke sisi kanan vertikal dengan posisi titik berada di bawah.\n5. Kesimpulan: Gambar yang memenuhi gabungan anak panah di atas\n(menghadap kiri) dan titik hitam di kanan vertikal (titik di bawah) adalah\nGambar B.\n\nGambar B secara presisi merepresentasikan hasil perubahan posisi dan rotasi dari\nGambar (3): elemen anak panah berpindah ke posisi atas melengkung ke kiri,\nsedangkan elemen titik hitam berpindah ke posisi kanan vertikal dengan bulatan pejal\nberada di bawah.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Arah anak panah terbalik (menghadap ke kanan).\n\n\nGambar C: Posisi titik hitam terbalik (titik berada di atas).\n\n\n\nGambar D: Elemen garis titik hitam terpotong/tidak lengkap dan posisi panah\ntidak sesuai.\n\n\n\nGambar E: Arah anak panah menghadap ke kanan dan posisi titik hitam tidak\nsesuai.\n\nTrik Cepat Mengerjakan:\nTrik \"Fokus Arah Panah\":\nPada Pasangan 1 (Gambar 1 ke 2), arah panah yang tadinya ke bawah berubah\nmenjadi ke kanan (berputar 90∘ berlawanan arah jarum jam).\nPada Gambar (3), panah menghadap ke bawah, maka pada Gambar (4) panah harus\nberputar 90∘ ke arah kiri. Hanya B dan C yang panahnya ke kiri. Cek posisi titik hitam\npada B yang berada di kanan bawah untuk memastikan jawaban B!"
+  },
+  {
+    "number": 12,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_12.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Soal ini menggunakan pola analogi berpasangan (1: 2 = 3: 4):\n1. Pasangan Pertama (Gambar 1 → Gambar 2): Bangun segi empat pada\nGambar (1) masuk menjadi objek bagian dalam pada Gambar (2), sementara\nbagian luarnya dibungkus oleh bingkai baru berbentuk segi lima.\n2. Pasangan Kedua (Gambar 3 → Gambar 4): Bangun segi tiga pada Gambar\n(3) harus masuk menjadi objek bagian dalam pada Gambar (4), dengan\ndibungkus oleh bingkai luar berbentuk segi lima yang sejenis.\nLangkah Pengerjaan:\n1. Amati Objek Asal (Gambar 3): Gambar (3) adalah sebuah segitiga.\n2. Tentukan Bingkai Luar: Berdasarkan pola Gambar (2), bentuk bingkai luar\nyang digunakan adalah bentuk segi lima (papan rumah terbalik). (Eliminasi C\ndan E).\n3. Pindahkan Objek ke Dalam Bingkai: Masukkan bentuk segitiga dari Gambar\n(3) ke posisi dalam bingkai segi lima tersebut. (Eliminasi A).\n4. Kesimpulan: Gambar yang memiliki bingkai luar segi lima dengan isi segitiga\ndi dalamnya adalah Gambar B.\n\nGambar B secara presisi memenuhi kaidah analogi: bentuk segitiga dari Gambar (3)\ndipindahkan ke posisi dalam, dan dibungkus oleh bingkai luar berbentuk segi lima\nyang identik dengan bingkai luar pada Gambar (2).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Menggunakan bingkai luar segitiga dan objek dalam segi lima,\nyang terbalik secara pola.\n\n\n\nGambar C & E: Menggunakan bingkai luar berbentuk persegi/segi empat, yang\ntidak sesuai dengan pola bingkai segi lima.\n\n\n\nGambar D: Bentuk dan orientasi objek segitiga di bagian dalam tidak sesuai\ndengan posisi asal pada Gambar (3).\n\nTrik Cepat Mengerjakan:\nTrik \"Perhatikan Bingkai Luar\":\n1. Lihat bingkai luar pada Gambar (2) yang berbentuk segi lima.\n2. Pada Gambar (4), bingkai luar juga harus berbentuk segi lima dengan\nmemasukkan objek dari Gambar (3) (segitiga) ke dalamnya.\n3. Pilihan dengan bingkai segi lima dan isi segitiga adalah Gambar B!"
+  },
+  {
+    "number": 13,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_13.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "JAWABAN A\nPEMBAHASAN :\nSoal ini menggunakan pola analogi berpasangan (1: 2 = 3: 4):\n1. Pasangan Pertama (Gambar 1 → Gambar 2): Dua objek lingkaran yang\nawalnya terpisah secara diagonal bergerak mendekat ke tengah hingga saling\nberirisan (overlap).\n2. Pasangan Kedua (Gambar 3 → Gambar 4): Dua objek segi lima yang terpisah\nsecara diagonal harus mengalami pergerakan yang sama ke pusat hingga\nsaling beririsan, dengan tetap mempertahankan bentuk asli segi lima\ntersebut.\nLangkah Pengerjaan:\n1. Amati Pola Perubahan Pasangan Pertama: Gambar (1) ke Gambar (2)\nmenunjukkan dua bentuk yang menyatu di tengah dan saling beririsan.\n2. Terapkan pada Gambar (3): Ambil dua bangun segi lima yang terletak di posisi\ndiagonal pada Gambar (3).\n3. Geser ke Tengah: Dekatkan kedua segi lima tersebut ke titik pusat hingga\nbagian sisinya saling bertumpuk/beririsan. (Eliminasi B dan C).\n4. Pertahankan Bentuk Asli: Pastikan bentuk yang beririsan adalah dua buah\nsegi lima asli, bukan bentuk lain. (Eliminasi D dan E).\n5. Kesimpulan: Gambar yang memenuhi gabungan dua segi lima yang saling\nberirisan di tengah adalah Gambar A.\n\nGambar A secara sempurna memenuhi aturan analogi: dua buah segi lima dari\nGambar (3) bergeser dari posisi diagonal menuju pusat dan saling beririsan, persis\nseperti perubahan lingkaran dari Gambar (1) ke Gambar (2).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar B: Objek berhadapan horizontal dan tidak saling beririsan.\n\n\n\nGambar C: Objek tidak mengalami perubahan posisi menyatu/beririsan (masih\nterpisah).\n\n\n\nGambar D: Mencampurkan elemen lingkaran yang tidak ada pada Gambar (3).\n\n\n\nGambar E: Penumpukan dilakukan secara vertikal tegak, tidak sesuai dengan\npergeseran diagonal dari Gambar (3).\n\nTrik Cepat Mengerjakan:\nTrik \"Terpisah → Beririsan\":\n1. Gambar (1) ke (2) menunjukkan pola: Dua objek terpisah disatukan menjadi\nberirisan di tengah.\n2. Pada Gambar (3), objeknya adalah segi lima terpisah.\n3. Maka Gambar (4) harus berupa segi lima yang saling beririsan.\n4. Pilihan yang secara jelas menampilkan dua segi lima beririsan adalah Gambar\nA!"
+  },
+  {
+    "number": 14,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_14.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menggunakan pola matriks 3 × 3 berdasarkan distribusi kombinasi tipe figur\n(Pria dan Wanita) serta jumlah objek dalam lingkaran. Setiap baris memuat kombinasi\nobjek ganda, objek wanita, dan objek tunggal pria yang terdistribusi secara simetris.\nLangkah Pengerjaan:\n1. Identifikasi Jenis Elemen:\no\n\nFigur Pria: Badan garis lurus (tanpa gaun).\n\no\n\nFigur Wanita: Badan berbentuk segitiga/gaun.\n\n2. Amati Pola Baris 1 dan Baris 2:\no\n\nBaris 1 memuat elemen: 2 Pria, 1 Wanita, 1 Pria.\n\no\n\nBaris 2 memuat elemen: 3 Wanita, 1 Pria, 2 Wanita.\n\n3. Analisis Kebutuhan Baris 3:\no\n\nBaris 3 sudah memiliki: 2 Pria (Kolom 1) dan 2 Wanita (Kolom 2).\no\n\nUntuk melengkapi variasi elemen tunggal yang konsisten muncul di\nsetiap baris, elemen yang dibutuhkan di Kolom 3 adalah 1 Pria.\n\n4. Kesimpulan: Pilihan yang menampilkan 1 orang Pria adalah Gambar B.\n\nGambar B adalah satu-satunya pilihan yang menyediakan figur 1 Pria. Keberadaan\nelemen 1 Pria melengkapi deret kombinasi distribusi tipe dan jumlah figur pada Baris\n3, sejalan dengan pola kehadiran figur pria tunggal pada baris-baris sebelumnya.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A (2 Wanita): Pengulangan elemen dari Kolom 2 Baris 3.\n\n\n\nGambar C (Lingkaran Kosong): Mengabaikan pola keberadaan figur dalam\nmatriks.\n\n\n\nGambar D (3 Wanita): Merupakan elemen unik yang khusus milik Baris 2.\n\nTrik Cepat Mengerjakan:\nTrik \"Cari Elemen Tunggal yang Hilang\":\n1. Perhatikan Baris 1 memiliki figur 1 Pria.\n2. Baris 2 memiliki figur 1 Pria.\n3. Baris 3 memuat 2 Pria dan 2 Wanita, sehingga figur tunggal yang belum ada di\nbaris tersebut adalah 1 Pria.\n4. Langsung pilih B yang berisi 1 Pria!"
+  },
+  {
+    "number": 15,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_15.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPembahasan :\nSoal ini menampilkan deretan kotak vertikal yang terdiri dari grid 5 baris × 3 kolom\n(total 15 kotak kecil), di mana beberapa kotak diisi dengan warna hitam (arsiran pejal)\ndan sisanya dibiarkan putih.\n1. Pergerakan Kotak Hitam: Amati pergeseran posisi kotak hitam dari satu\ngambar ke gambar berikutnya secara berurutan membentuk pola perputaran\natau pergeseran posisi secara konsisten ke arah kanan/bawah pada kolom\ngrid.\n2. Konsistensi Jumlah Elemen: Jumlah kotak kecil yang diarsir hitam pada\nsetiap gambar tetap sama, namun posisinya bergeser secara beraturan dari\nkolom satu ke kolom berikutnya.\nLangkah Pengerjaan:\n1. Amati Pola Pergeseran Urutan Gambar: Perhatikan perpindahan letak\narsiran hitam pada kolom kiri, tengah, dan kanan dari kotak pertama hingga\nkotak keempat sebelum tanda tanya.\n2. Terapkan Aturan Pergeseran: Berdasarkan hukum transisi pola deret\ntersebut, kotak hitam pada baris tertentu mengalami pergeseran posisi ke\nkolom sebelah kanannya secara sistematis.\n3. Cocokkan dengan Pilihan Gambar C: Pilihan C secara akurat menunjukkan\nkelanjutan pola pergeseran posisi kotak hitam yang selaras dengan irama\npergerakan deret gambar sebelumnya.\n\nGambar C merupakan satu-satunya pilihan yang posisi arsiran kotak hitamnya secara\npresisi melanjutkan aturan pergeseran (translasi) dari gambar terakhir sebelum tanda\ntanya.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Posisi kotak hitam masih mengulang pola lama dan belum\nmelanjutkan perpindahan kolom yang benar.\n\n\n\nGambar B: Letak kotak hitam pada beberapa baris terbalik atau tidak sesuai\ndengan arah pergeseran deret.\n\n\n\nGambar D: Kombinasi posisi arsiran melompat tidak beraturan dan\nbertentangan dengan hukum pergeseran matriks.\n\nTrik Cepat Mengerjakan:\nTrik \"Fokus Pergeseran Kolom\":\n1. Perhatikan kolom tempat kotak hitam terakhir berada.\n2. Ikuti arah pergeseran baris demi baris ke kolom berikutnya secara konsisten.\n3. Langsung pilih opsi C yang letak arsiran hitamnya sesuai dengan hasil\npergeseran tersebut!"
+  },
+  {
+    "number": 16,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_16.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 3,
+    "correct_letter": "D",
+    "explanation": "Jawaban : D\nPEMBAHASAN :\nAnalisis Pola Visual:\n\n\nSoal ini menampilkan deretan 5 kotak yang memuat sebuah bangun belah\nketupat di bagian tengah serta 4 simbol berbeda di sekitarnya, yaitu titik hitam\n(∙), lingkaran putih (∘), tanda silang (×), dan garis sejajar (=).\n\n\n\nSetiap simbol berpindah tempat dari satu kotak ke kotak berikutnya secara\nteratur.\n\n\n\nSebagai contoh, simbol titik hitam (∙) bergerak secara konsisten mengelilingi\nkeempat sudut luar kotak, sementara simbol lainnya bergantian masuk ke\ndalam belah ketupat atau bergeser antarsudut.\n\nLangkah Pengerjaan:\n1. Amati Pergerakan Titik Hitam (∙): Pada kotak ke-5, titik hitam berada di\nsudut kiri atas. Mengikuti pola pergerakan berlawanan arah jarum jam ke\nsudut berikutnya, pada kotak ke-6 (pilihan jawaban) titik hitam harus\nberpindah ke sudut kiri bawah.\n2. Amati Pergerakan Simbol Silang (×): Simbol silang bergerak keluar-masuk\nke dalam area belah ketupat. Karena pada kotak ke-5 berada di sudut luar,\nmaka pada kotak ke-6 posisinya berada di dalam belah ketupat.\n3. Sesuaikan Simbol Lain (∘ dan =): Posisi lingkaran putih dan garis sejajar\nmengikuti kelanjutan rotasi siklus sudut luar.\n4. Kesimpulan Pola: Kombinasi seluruh perpindahan ini secara akurat\nmenghasilkan formasi gambar yang ada pada Pilihan D.\n\nPilihan D secara tepat memenuhi seluruh kaidah pergerakan pola: titik hitam\nberada di sudut kiri bawah, simbol silang berada di dalam belah ketupat, serta\nposisi lingkaran putih dan garis sejajar melanjutkan siklus rotasi secara\nkonsisten dari kotak kelima.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, dan C: Memiliki penempatan posisi simbol (seperti letak titik\nhitam atau silang) yang tidak sesuai dengan urutan siklus perputaran deret\ngambar.\n\n\n\nPilihan E: Memiliki orientasi bentuk geometri belah ketupat yang\nmiring/menyimpang dari standar struktur kotak soal.\n\nTrik Cepat Mengerjakan:\nTrik \"Fokus Dua Simbol Kunci\":\n1. Perhatikan pergerakan titik hitam (∙) yang bergeser satu langkah ke sudut\nberikutnya secara teratur.\n2. Cari opsi yang menempatkan titik hitam di sudut kiri bawah (terdapat pada\nopsi B, D, dan E).\n3. Perhatikan simbol silang (×) yang masuk ke dalam belah ketupat, di mana hal\ntersebut langsung mengerucutkan pilihan yang tepat ke opsi D."
+  },
+  {
+    "number": 17,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_17.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 4,
+    "correct_letter": "E",
+    "explanation": "Jawaban : E\nPEMBAHASAN :\nSoal ini menggunakan pola perulangan siklus berputar sebesar 90∘ searah jarum\njam:\n1. Pergerakan Arah Panah: Mengikuti urutan Kiri (←) → Atas (↑) → Kanan (→)\n→ Bawah (↓) → Kiri (←). Maka gambar berikutnya pasti berarah Atas (↑).\n2. Posisi Segitiga Hitam: Mengikuti pergantian orientasi sudut dan letak pada\nsetiap rotasi 90∘. Pada langkah ke-6, posisi segitiga hitam berada di bagian\nbawah.\nLangkah Pengerjaan:\n1. Amati Pola Perulangan Gambar (1) ke (5): Gambar (5) persis sama dengan\nGambar (1). Ini menandakan terjadinya siklus perulangan.\n2. Tentukan Acuan Gambar Ke-6: Karena Gambar (5) = Gambar (1), maka\nGambar (6) = Gambar (2).\n3. Cek Arah Panah: Gambar (2) memiliki panah menunjuk ke atas (↑). Maka\nelemen panah pada jawaban harus menunjuk ke atas (↑). (Eliminasi A dan B).\n4. Cek Posisi Segitiga Hitam: Dengan rotasi dan penyesuaian posisi bawah,\nbentuk yang memenuhi secara presisi adalah Gambar E.\nGambar E secara tepat melanjutkan siklus rotasi deret gambar: memiliki panah kecil\ndi sebelah kiri yang menunjuk ke atas (↑) serta segitiga hitam di posisi bawah.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & B: Memiliki panah yang menunjuk ke bawah (↓), bertentangan\ndengan siklus perputaran panah.\n\n\n\nGambar C: Posisi segitiga hitam berada di sebelah kiri (posisi horizontal),\npadahal seharusnya di posisi vertikal.\n\n\n\nGambar D: Orientasi kedalaman segitiga hitam tidak sesuai dengan\ntransformasi siklus lanjutan.\n\nTrik Cepat Mengerjakan:\nTrik \"Perulangan Siklus (Sama Dengan Gambar 2)\":\n1. Perhatikan bahwa Gambar 5 sama persis dengan Gambar 1.\n2. Artinya, Gambar 6 pasti merupakan variasi/kelanjutan langsung dari\nGambar 2.\n3. Gambar 2 memiliki panah menunjuk ke ATAS (↑). Cari opsi dengan panah ke\nATAS: tersisa C, D, dan E.\n4. Pilih E yang memiliki segitiga hitam menunjuk ke luar di posisi bawah!"
+  },
+  {
+    "number": 18,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_18.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 4,
+    "correct_letter": "E",
+    "explanation": "Jawaban : E\nPEMBAHASAN :\nSoal ini menampilkan deretan 5 kotak yang menggambarkan proses konstruksi\nsebuah bentuk geometris kompleks secara kumulatif (bertahap dari gambar 1 hingga\n5):\n1. Kotak 1: Memuat garis vertikal lurus di sisi kiri dengan lengkungan busur\nseperempat lingkaran di sebelah kanan.\n2. Kotak 2 & 3: Penambahan unsur garis busur lingkaran bagian atas dan\nbawah secara bertahap yang mulai membentuk kerangka lingkaran.\n3. Kotak 4: Terbentuk lingkaran penuh yang dibagi oleh garis diameter vertikal\ndan horizontal menjadi empat kuadran, disertai sisa busur konstruksi di\ndalamnya.\n4. Kotak 5: Penambahan segmen garis horizontal di dalam kuadran atas\nlingkaran.\n5. Kotak 6 (Pilihan Jawaban): Melanjutkan tahapan akumulasi konstruksi garis\nberikutnya secara konsisten sesuai urutan penambahan elemen.\n\nLangkah Pengerjaan:\n1. Amati Perkembangan dari Kotak 1 ke Kotak 5: Setiap langkah\nmenambahkan garis atau busur baru secara akumulatif ke dalam bingkai\nlingkaran.\n2. Identifikasi Kondisi Terakhir (Kotak 5): Kotak 5 menampilkan lingkaran\npenuh dengan garis diameter vertikal-horizontal serta tambahan garis\nhorizontal di bagian atas.\n3. Tentukan Penambahan pada Langkah Berikutnya: Langkah ke-6\nmeneruskan pola konstruksi dengan menyempurnakan detail garis penutup\natau busur simetris berikutnya di dalam lingkaran.\n4. Gambar E merupakan bentuk penyempurnaan akumulatif yang sah dari\nurutan deret Kotak 1 sampai 5, di mana seluruh garis bantu, diameter, dan\nsegmen tambahan terpasang secara proporsional sesuai kaidah konstruksi\ngambar bertahap.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, C, dan D: Memiliki kelebihan, kekurangan, atau posisi\npenempatan segmen garis horizontal/busur di dalam lingkaran yang tidak\nsinkron dengan tahapan konstruksi lanjutan dari Kotak 5.\n\nTrik Cepat Mengerjakan:\nTrik \"Akumulasi Garis Berkelanjutan\":\n1. Perhatikan bahwa soal ini berbasis penambahan garis tahap demi tahap\n(bukan rotasi murni).\n2. Amati elemen terakhir pada Kotak 5.\n3. Pilih opsi yang mempertahankan struktur dasar lingkaran penuh berdiameter\ndengan tambahan segmen garis yang paling konsisten melanjutkan pola,\nyaitu Gambar E."
+  },
+  {
+    "number": 19,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_19.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "Jawaban : A\nPEMBAHASAN :\nSoal ini menampilkan 5 buah kartu domino (A, B, C, D, dan E) yang masing-masing\nterbagi menjadi dua bagian (atas dan bawah) berisi simbol segi enam kecil. Untuk\nmenemukan gambar yang tidak mengikuti pola, kita perlu menghitung jumlah total\nobjek pada setiap kartu:\n\n\nKartu A: Bagian atas berisi 5 objek dan bagian bawah berisi 3 objek (Total =\n5 + 3 = 8 objek).\n\n\n\nKartu B: Bagian atas berisi 2 objek dan bagian bawah berisi 5 objek (Total =\n2 + 5 = 7 objek).\n\n\n\nKartu C: Bagian atas berisi 3 objek dan bagian bawah berisi 4 objek (Total =\n3 + 4 = 7 objek).\n\n\n\nKartu D: Bagian atas berisi 1 objek besar dan bagian bawah berisi 6 objek\n(Total = 1 + 6 = 7 objek).\n\n\n\nKartu E: Bagian atas berisi 4 objek dan bagian bawah berisi 3 objek (Total =\n4 + 3 = 7 objek).\n\nBerdasarkan perhitungan tersebut, kartu B, C, D, dan E memiliki jumlah total objek\nyang seragam yaitu 7 buah, sedangkan kartu A memiliki jumlah total 8 buah.\nLangkah Pengerjaan:\n1. Hitung Jumlah Objek: Jumlahkan seluruh simbol pada bagian atas dan\nbawah untuk setiap kartu pilihan dari A sampai E.\n2. Kategorisasikan Kelompok: Amati angka mayoritas yang mewakili jumlah\ntotal pada sebagian besar kartu.\n3. Bandingkan Anomali: Temukan kartu yang memiliki jumlah total berbeda\ndari kelompok mayoritas.\n4. Tentukan Hasil: Kartu A memiliki total 8, sedangkan B, C, D, dan E memiliki\ntotal 7.\n\nGambar A merupakan jawaban yang tepat karena menjadi satu-satunya kartu yang\ntidak mengikuti aturan kelompok mayoritas (berjumlah total 8 objek, sedangkan yang\nlain berjumlah 7 objek).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar B, C, D, dan E: Merupakan kelompok kartu yang valid karena\nmasing-masing memiliki konsistensi jumlah total objek sebanyak 7 buah.\n\nTrik Cepat Mengerjakan:\nTrik \"Jumlahkan Total Elemen\":\nPada soal deret kartu atau domino, langsung hitung total elemen di setiap pilihan.\nJika 4 gambar memiliki total angka yang sama dan 1 gambar berbeda, maka gambar\ndengan angka yang berbeda itulah jawabannya. Dalam hal ini, A berjumlah 8\nsementara yang lain berjumlah 7."
+  },
+  {
+    "number": 20,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_20.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini bertujuan menemukan satu gambar yang berbeda karakteristik\npenggabungan objeknya dari kelompok gambar lainnya:\n1. Kelompok Mayoritas (A, C, D, E): Memiliki pola di mana dua bangun datar\nsaling bertumpuk/beririsan (overlap), sehingga garis dari salah satu\nbangun memotong ke dalam bidang bangun lainnya.\n2. Gambar Berbeda (B): Dua bangun datar disatukan secara sisi menempel\n(sejajar) tanpa ada bidang yang saling menumpuk/beririsan ke dalam.\nLangkah Pengerjaan:\n1. Amati Hubungan Antar-Bangun pada Setiap Gambar: Perhatikan apakah\nada garis bagian dalam yang saling berpotongan/menumpuk.\n2. Cek Gambar A, C, D, dan E: Keempat gambar ini secara konsisten\nmenampilkan dua kotak/persegi yang saling tumpang tindih (overlap).\n3. Cek Gambar B: Gambar B hanya menempelkan satu kotak di atas kotak\nlainnya tanpa terjadi tumpang tindih (overlap).\n4. Kesimpulan: Gambar B tidak mengikuti pola penumpukan bidang dari empat\ngambar lainnya.\n\nGambar B merupakan jawaban yang tepat karena menjadi satu-satunya gambar\nyang dua bangun datarnya tidak saling beririsan/tumpang tindih (overlap),\nmelainkan hanya menempel pada bagian tepi luarnya saja.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A, C, D, dan E: Tidak tepat dijadikan jawaban karena semuanya\nmemiliki karakteristik yang seragam, yaitu memiliki bidang irisan/tumpang\ntindih antarbangun.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Garis Berpotongan / Overlap\":\n1. Perhatikan pertemuan dua kotak pada setiap pilihan.\n2. Pada pilihan A, C, D, dan E, garis kotak saling menembus/menumpuk ke\ndalam kotak lain.\n3. Hanya Gambar B yang kotaknya polos menempel di luar tanpa garis yang\nmenembus ke dalam. Langsung pilih B!"
+  },
+  {
+    "number": 21,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_21.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nAnalisis Pola Visual:\n\n\nSoal ini menampilkan deretan 4 kotak yang di dalamnya terdapat garis\ndiagonal silang yang membagi kotak menjadi 4 bagian segitiga (atas, bawah,\nkiri, kanan).\n\n\n\nDi dalam kuadran segitiga tersebut terdapat simbol-simbol khusus seperti\nlingkaran (∘), tanda tambah (+), dan lingkaran bergaris silang/plus (⊕).\n\n\n\nSetiap simbol berpindah posisi dari satu segitiga ke segitiga lainnya (searah\natau berlawanan arah jarum jam) dari kotak pertama hingga kotak keempat\nsecara teratur.\n\n\n\nBerdasarkan pola pergerakan siklus posisi simbol-simbol tersebut, kita dapat\nmenentukan susunan yang tepat untuk melanjutkan deret ke kotak kelima.\n\nLangkah Pengerjaan:\n1. Amati Pergerakan Simbol Lingkaran (∘): Perhatikan perpindahan posisi\nlingkaran putih dari kotak (1) ke kotak (4) yang bergeser secara konsisten\nmengelilingi kuadran segitiga.\n2. Amati Pergerakan Simbol Tambah (+): Lacak pula perpindahan posisi\ntanda plus pada setiap kotak.\n3. Analisis Kotak ke-4: Pada kotak (4), posisi lingkaran berada di kuadran\nkanan dan tanda plus berada di kuadran atas.\n4. Tentukan Kelanjutan ke Kotak Berikutnya: Melanjutkan siklus pergeseran\nposisi tersebut, simbol lingkaran (∘) akan bergeser ke kuadran atas,\nsementara simbol tanda tambah (+) bergeser ke kuadran bawah. Formasi ini\nsecara tepat ditunjukkan oleh Pilihan B.\nAlasan Jawaban Benar:\n\n\nGambar B adalah pilihan yang paling akurat karena menempatkan simbol\nlingkaran (∘) di kuadran atas dan simbol tanda tambah (+) di kuadran bawah,\nyang merupakan kelanjutan siklus pergerakan yang valid dari kotak ke-4.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A, C, D, dan E: Menempatkan kombinasi simbol lingkaran dan tanda\ntambah pada posisi kuadran yang tidak sesuai dengan aturan rotasi atau\nsiklus pergeseran dari deret sebelumnya.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Jejak Satu Simbol Utama\":\n1. Fokuskan perhatian pada pergerakan satu simbol saja, misalnya lingkaran (∘).\n2. Perhatikan bagaimana posisinya berputar dari kotak (1) ke (4).\n3. Cari pilihan jawaban di mana lingkaran tersebut berada pada posisi lanjutan\nputaran berikutnya (yaitu di kuadran atas pada opsi B)!"
+  },
+  {
+    "number": 22,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_22.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPembahasan :\nSoal ini menggunakan pola rotasi teratur dari objek utama bulan sabit sebesar 90∘\nberlawanan arah jarum jam (counter-clockwise) pada setiap tahap deret:\n1. Perputaran Arah Menghadap: Kanan → Bawah → Kiri → Atas → Kanan.\n2. Kesesuaian Siklus: Kotak ke-5 harus kembali berorientasi tegak dengan\nbagian cembung di kiri dan lekukan menghadap ke kanan, persis seperti pada\nKotak 1.\nLangkah Pengerjaan:\n1. Amati Orientasi Bulan Sabit dari Kotak 1 ke Kotak 4:\no\n\nKotak 1: Menghadap ke Kanan.\n\no\n\nKotak 2: Menghadap ke Bawah.\n\no\n\nKotak 3: Menghadap ke Kiri.\n\no\n\nKotak 4: Menghadap ke Atas.\n\n2. Tentukan Orientasi Kotak ke-5: Putar posisi Kotak 4 sebesar 90∘\nberlawanan arah jarum jam. Hasilnya, bulan sabit harus menghadap ke\nkanan.\n3. Eliminasi Opsi Jawaban:\no\n\nOpsi A, D (menghadap ke bawah) → Salah.\n\no\n\nOpsi C (menghadap ke kiri) → Salah.\n\no\n\nOpsi E (menghadap ke atas) → Salah.\n\no\n\nOpsi B (menghadap ke kanan) → Benar.\n\n4. Kesimpulan: Opsi yang secara konsisten memenuhi aturan rotasi bulan sabit\nmenghadap ke kanan adalah Gambar B.\n\nGambar B secara sempurna memenuhi kaidah seri figural ini karena memiliki objek\nutama bulan sabit yang menghadap ke kanan, sebagai hasil rotasi 90∘ berlawanan\narah jarum jam dari Kotak 4.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & D: Memiliki orientasi bulan sabit yang menghadap ke bawah\n(bertentangan dengan arah putaran deret).\n\n\n\nGambar C: Memiliki orientasi bulan sabit yang menghadap ke kiri.\n\n\n\nGambar E: Tidak mengalami rotasi dari Kotak 4 (masih menghadap ke atas).\n\nTrik Cepat Mengerjakan:\nTrik \"Fokus Orientasi Putaran Objek Utama\":\n1. Abaikan sejenak detail simbol kecil di dalamnya dan fokus hanya pada arah\nmenghadapnya bulan sabit.\n2. Lacak arah putarannya: Kanan → Bawah → Kiri → Atas → ...\n3. Urutan berikutnya pasti kembali ke KANAN.\n4. Dari pilihan A, B, C, D, E, hanya B yang bulan sabitnya menghadap ke\nKANAN. Langsung pilih B!"
+  },
+  {
+    "number": 23,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_23.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menguji kemampuan visualisasi spasial 3 dimensions dalam melipat jaringjaring menjadi bentuk kubus utuh:\n1. Aturan Sisi Berhadapan (Opposite Faces): Sisi lingkaran abu-abu (∘) dan\nsisi lingkaran hitam (∙) terletak berselang satu kotak pada strip horizontal,\nsehingga keduanya saling berhadapan. Saat dilipat menjadi kubus, kedua sisi\nini berada di posisi bertolak belakang dan tidak boleh tampak secara\nbersamaan pada 3 sisi luar.\n2. Aturan Sisi Berdampingan (Adjacent Faces): Sisi dengan motif silang\ndiagonal (×) di bagian atas jaring-jaring ketika dilipat akan bertemu langsung\ndengan sisi-sisi bergaris diagonal di strip vertikal, membentuk orientasi yang\ntepat pada Kubus B.\nLangkah Pengerjaan:\n1. Identifikasi Sisi Berhadapan: Perhatikan bahwa lingkaran abu-abu dan\nlingkaran hitam berhadapan. (Eliminasi opsi E karena memperlihatkan kedua\nlingkaran sekaligus).\n2. Cek Elemen Motif Sisi: Perhatikan jaring-jaring tidak memiliki motif garis\nsalib tegak lurus (+). (Eliminasi opsi A dan D).\n3. Uji Orientasi Pertemuan Sisi (Lipatan Spasial): Fold/lipat sisi-sisi bergaris\ndiagonal ke arah dalam. Sisi silang penuh (×) berada di bagian atas,\nsementara dua sisi garis diagonal bertemu pada rusuk tegak lurus di bagian\ndepan dan samping.\n4. Kesimpulan: Tampilan visual 3D yang terbentuk secara sempurna sesuai\nlipatan jaring-jaring tersebut adalah Gambar B.\n\nGambar B secara presisi merepresentasikan kubus hasil lipatan jaring-jaring:\nmenampilkan sisi atas bermotif silang diagonal (×) serta dua sisi samping/depan\nyang garis diagonalnya bersambung secara tepat pada garis rusuk pertemuan.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & D: Memuat elemen garis tegak lurus/salib (+) yang tidak\nterdapat pada jaring-jaring soal.\n\n\n\nGambar C: Arah kemiringan garis diagonal pada sisi bawah/samping tidak\nselaras dengan orientasi lipatan jaring-jaring.\n\n\n\nGambar E: Menampilkan lingkaran hitam dan abu-abu secara bersamaan,\npadahal kedua sisi tersebut berhadapan (seharusnya salah satu tersembunyi\ndi belakang/bawah).\n\nTrik Cepat Mengerjakan:\nTrik \"Eliminasi Sisi Berhadapan & Motif Palsu\":\n1. Cek Sisi Berhadapan: Lingkaran Hitam dan Abu-abu berhadapan → Coret E\n(karena muncul bersamaan).\n2. Cek Motif Palsu: Jaring-jaring tidak punya garis salib tegak/plus (+) → Coret\nA dan D.\n3. Bandingkan B dan C: Pilih B karena orientasi garis diagonalnya\nmenyambung secara konsisten dari sisi atas silang (×)."
+  },
+  {
+    "number": 24,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_24.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 3,
+    "correct_letter": "D",
+    "explanation": "Jawaban : D\nPEMBAHASAN :\nSoal ini menggunakan hubungan analogi transformasi proyeksi geometris dari\nbentuk bangun ruang 3D menjadi bentuk bidang datar 2D berdasarkan bentuk\nalas/tampak atasnya (top view):\n1. Pasangan Pertama: Tabung Memiliki alas/tampak atas berbentuk\nLingkaran.\n2. Pasangan Kedua: Prisma Segi Empat / Balok Memiliki alas/tampak atas\nberbentuk Persegi / Segi Empat.\nLangkah Pengerjaan:\n1. Amati Pasangan Pertama: Tabung diproyeksikan menjadi lingkaran karena\nlingkaran adalah bentuk penampang dasar/tampak atas dari tabung.\n2. Amati Gambar pada Pasangan Kedua: Gambar berupa bangun ruang\nPrisma Segi Empat / Balok Tegak.\n3. Tentukan Proyeksi Tampak Atasnya: Bentuk alas atau tampilan tepat dari\natas balok/prisma segi empat tersebut adalah bangun datar Persegi / Segi\nEmpat.\n4. Kesimpulan: Pilihan yang menyediakan gambar persegi/segi empat adalah\nPilihan D.\n\nGambar D secara sempurna memenuhi kaidah analogi proyeksi 3D ke 2D, di mana\npersegi merupakan bentuk bidang datar yang memproyeksikan penampang\nalas/tampak atas dari prisma segi empat pada soal.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & C: Merupakan hasil proyeksi untuk prisma berbasis segitiga.\n\n\n\nGambar B: Merupakan hasil proyeksi untuk prisma berbasis segi enam.\n\n\n\nGambar E: Merupakan penampang hasil irisan miring silinder, bukan tampak\nalas tegak lurus.\n\nTrik Cepat Mengerjakan:\nTrik \"Lihat Bentuk Alasnya\":\n1. Tabung alasnya bundar → hasilnya Lingkaran.\n2. Balok/Prisma Segi Empat alasnya kotak → hasilnya pasti Persegi/Segi\nEmpat.\n3. Langsung pilih opsi D!"
+  },
+  {
+    "number": 25,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_25.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 4,
+    "correct_letter": "E",
+    "explanation": "Jawaban : E\nPEMBAHASAN :\nSoal ini menggunakan pola analogi berpasangan (1: 2 = 3: 4):\n1. Pasangan Pertama (Baris Top): Objek utama yang berwarna hitam diputar\nsebesar 90∘ dan diubah warna tampilannya menjadi abu-abu.\n2. Pasangan Kedua (Baris Bottom): Objek grafik gerigi yang berwarna hitam\ntegak harus diputar 90∘ menjadi posisi mendatar/horizontal dan warnanya\ndiubah menjadi abu-abu.\nLangkah Pengerjaan:\n1. Amati Perubahan Warna: Pada baris 1, gambar dari hitam berubah menjadi\nabu-abu. Maka gambar bertanda tanya (?) pasti berwarna abu-abu.\n(Eliminasi opsi A dan D).\n2. Amati Perubahan Orientasi/Rotasi: Pada baris 1, objek diputar sebesar 90∘.\n3. Terapkan Rotasi pada Baris 2: Objek gerigi tegak pada baris 2 jika diputar\n90∘ akan rebah menjadi posisi mendatar/horizontal. (Eliminasi opsi B dan\nC).\n4. Kesimpulan: Gambar berlayar abu-abu yang posisinya sudah terrotasi 90∘\nsecara mendatar adalah Gambar E.\nGambar E secara presisi memenuhi seluruh kaidah analogi: objek grafik gerigi\ndiubah warnanya menjadi abu-abu dan orientasi posisinya diputar 90∘ sehingga\nmenjadi mendatar, persis seperti pola transformasi pada pasangan gambar pertama.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & D: Tidak mengalami perubahan warna menjadi abu-abu (masih\ndominan hitam).\n\n\n\nGambar B & C: Walaupun sudah berwarna abu-abu, orientasi objeknya\nmasih tetap tegak/vertikal dan belum mengalami rotasi 90∘.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Warna & Arah Rebah\":\n1. Gambar asal berwarna HITAM & TEGAK → berubah jadi ABU-ABU &\nREBAH/MENDATAR.\n2. Pada soal: Gambar asal juga HITAM & TEGAK.\n3. Jawabannya PASTI ABU-ABU & REBAH/MENDATAR.\n4. Opsi abu-abu yang rebah/horizontal hanya E!"
+  },
+  {
+    "number": 26,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_26.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menampilkan lima buah pilihan gambar (A, B, C, D, dan E) yang masingmasing terdiri atas dua bangun datar (seperti segitiga dan segi empat) yang saling\nberirisan (overlap), serta sebuah titik hitam (∙) yang terletak di dalam area tertentu.\nUntuk menentukan gambar yang berbeda (odd-one-out), kita perlu menganalisis\nkonsistensi hubungan geometris, orientasi bentuk, serta letak titik hitam terhadap\nbidang irisan antar-bangun.\nLangkah Pengerjaan:\n1. Identifikasi Komponen Tiap Gambar: Setiap opsi memuat kombinasi\nbangun segi empat dan segitiga yang saling bertumpuk.\n2. Amati Posisi Titik Hitam (∙): Titik hitam pada pilihan A, C, D, dan E berada di\ndalam area irisan yang terbentuk secara konsisten di antara kedua bangun\ndatar.\n3. Evaluasi Keunikan Gambar B: Pada pilihan B, orientasi sudut tajam segitiga\ndan posisi perpotongan garis membentuk sudut pandang spasial yang\nberbeda dari kelompok mayoritas. Selain itu, letak titik hitam dan sudut\npotong sisi bangun pada B menyimpang dari pola tata letak simetris irisan\nyang ditemukan pada opsi A, C, D, dan E.\n4. Kesimpulan: Berdasarkan analisis variasi posisi dan struktur irisan spasial,\nGambar B adalah satu-satunya gambar yang tidak mengikuti pola konsisten\ndari keempat gambar lainnya.\nGambar B merupakan jawaban yang tepat karena memiliki karakteristik tata letak\nirisan dan orientasi sudut bangun datar yang berbeda (anomali) dibanding kelompok\ngambar A, C, D, dan E.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A, C, D, dan E: Memiliki kesamaan pola dalam hal komposisi\ntumpang tindih (overlap) bangun datar serta letak titik pusat irisan yang\nproporsional.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Konsistensi Irisan dan Posisi Titik\":\n1. Perhatikan letak titik hitam yang berada di tengah irisan bangun pada\nsebagian besar opsi.\n2. Bandingkan orientasi sudut dan bentuk tumpang tindihnya.\n3. Pilihlah gambar yang posisi sudut dan perpotongannya tampak paling\nberbeda dari kelompoknya, yaitu Gambar B."
+  },
+  {
+    "number": 27,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_27.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\nSoal ini menggunakan pola pengurangan jumlah objek (elemen titik hitam)\nsecara konstan berkurang 2 pada setiap tahapnya:\n1. Kotak 1: 3 × 3 = 𝟗 titik.\n2. Kotak 2: 9 − 2 = 𝟕 titik (titik tengah sisi kiri dan kanan dihilangkan).\n3. Kotak 3: 7 − 2 = 𝟓 titik (titik tengah sisi atas dan bawah dihilangkan).\n4. Kotak 4: 5 − 2 = 𝟑 titik (dua titik sudut dihilangkan, menyisakan 3 titik\nberderet secara diagonal).\nLangkah Pengerjaan:\n1. Hitung Elemen di Kotak 1, 2, dan 3:\no\n\nKotak 1 = 9 titik.\n\no\n\nKotak 2 = 7 titik.\n\no\n\nKotak 3 = 5 titik.\n\n2. Tentukan Jumlah Elemen Kotak 4: Mengikuti pola deret penurunan\naritmatika (berkurang 2), Kotak 4 harus memiliki tepat 3 titik.\n3. Eliminasi Opsi Berdasarkan Jumlah:\no\n\nOpsi A (4 titik) → Salah.\no\n\nOpsi B (6 titik) → Salah.\n\no\n\nOpsi D (8 titik) → Salah.\n\no\n\nOpsi E (1 titik) → Salah.\n\no\n\nOpsi C (3 titik) → Benar.\n\n4. Kesimpulan: Opsi C adalah satu-satunya gambar yang memiliki tepat 3 titik\nhitam dengan susunan diagonal melintang.\n\nGambar C secara konsisten memenuhi aturan deret pengurangan kuantitas elemen:\nmemiliki 3 titik hitam tersisa yang tersusun secara diagonal dari sudut kiri atas ke\nkanan bawah.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Memiliki 4 titik (hanya berkurang 1 dari Kotak 3).\n\n\n\nGambar B: Memiliki 6 titik (bertentangan dengan pola pengurangan).\n\n\n\nGambar D: Memiliki 8 titik (pola bertambah/kembali ke awal).\n\n\n\nGambar E: Memiliki 1 titik saja (berkurang 4 dari Kotak 3).\n\nTrik Cepat Mengerjakan:\nTrik \"Hitung Kuantitas Elemen (Deret Aritmatika)\":\n1. Hitung jumlah titik hitam tiap kotak: 9 → 7 → 5 → ...\n2. Polanya jelas BERKURANG 2 setiap langkah.\n3. Maka gambar berikutnya wajib berjumlah 3 titik (5 − 2 = 3).\n4. Dari pilihan A, B, C, D, E, hanya C yang berisi 3 titik. Langsung pilih C!"
+  },
+  {
+    "number": 28,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_28.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 4,
+    "correct_letter": "E",
+    "explanation": "Jawaban : E\nPEMBAHASAN :\nSoal ini menampilkan deretan empat kotak awal yang berisi perpotongan garis serta\nbeberapa atribut mata panah. Seluruh elemen garis dan panah di dalam kotak\ntersebut membentuk satu kesatuan struktur yang mengalami perputaran posisi\nsecara konsisten dari satu kotak ke kotak berikutnya.\nLangkah Pengerjaan:\n1. Amati Transformasi Antar-Kotak: Perhatikan pergerakan struktur garis dan\narah mata panah dari Kotak 1 menuju Kotak 2, 3, dan 4. Setiap langkah\nmenunjukkan perputaran orientasi sebesar 90∘ searah jarum jam.\n2. Analisis Kotak ke-4: Identifikasi posisi sudut diagonal serta letak mata panah\npada kotak terakhir sebelum tanda tanya.\n3. Tentukan Kelanjutan Rotasi: Untuk mengisi kotak bertanda tanya (?), putar\nseluruh konfigurasi dari kotak keempat sebesar 90∘ searah jarum jam.\n4. Cocokkan dengan Pilihan E: Hasil perputaran tersebut secara tepat\nmenghasilkan formasi garis dan panah yang identik dengan Pilihan E.\n\nGambar E merupakan jawaban yang paling tepat karena secara akurat\nmerepresentasikan hasil rotasi lanjutan sebesar 90∘ searah jarum jam dari kotak\nkeempat dalam deret figural tersebut.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, C, dan D: Memiliki orientasi kemiringan garis atau arah tunjuk\nmata panah yang tidak sesuai dengan aturan rotasi seperempat lingkaran\n(90∘) yang konsisten.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Satu Garis / Panah Patokan\":\n1. Pilih satu elemen yang paling mudah diamati (misalnya garis diagonal atau\npanah vertikal) pada kotak terakhir.\n2. Bayangkan elemen tersebut berputar 90∘ searah jarum jam.\n3. Cari opsi yang posisinya sesuai dengan hasil putaran tersebut, yaitu E!"
+  },
+  {
+    "number": 29,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_29.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nDeret gambar ini menunjukkan perubahan formasi sel hitam di dalam grid 4 × 4 yang\nbergeser dan berotasi secara sistematis dari kotak pertama hingga keempat.\nKelanjutan deret ini menuntut konsistensi arah pergerakan elemen hitam.\nLangkah Pengerjaan:\n1. Identifikasi letak sel hitam pada kotak terakhir dari deret utama.\n2. Terapkan aturan pergeseran atau rotasi yang sama untuk menentukan bentuk\nberikutnya.\n3. Eliminasi pilihan yang formasi sel hitamnya tidak sesuai dengan arah\ntransformasi.\n4. Pilih opsi yang paling akurat melanjutkan pola, yaitu B.\n\nGambar B merupakan kelanjutan yang sah karena formasi dan letak sel hitamnya\nsecara konsisten mematuhi kaidah transformasi posisi dari deret gambar\nsebelumnya.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, C, dan D: Memiliki susunan dan letak sel hitam yang bertentangan\ndengan aturan pergeseran atau rotasi pola deret.\nTrik Cepat Mengerjakan:\nTrik \"Fokus Pergerakan Kelompok Sel Hitam\":\n1. Amati arah pergeseran kelompok sel hitam utama pada kotak terakhir.\n2. Cari opsi di pilihan jawaban yang posisinya merupakan hasil rotasi atau\npergeseran satu langkah berikutnya.\n3. Langsung pilih B!"
+  },
+  {
+    "number": 30,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_30.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menggunakan dua kombinasi aturan pola dalam deret gambar:\n1. Warna Objek Utama di Pusat: Mengikuti pola selang-seling/bergantian\nantara Putih → Hitam → Putih → Hitam → PUTIH.\n2. Transformasi Elemen Sudut: Penambahan dan perpindahan bentuk simbol\nsudut kecil dari Kotak 1 hingga 4. Pada Kotak 5, simbol di sudut kanan bawah\nadalah lingkaran hitam pejal (∙).\nLangkah Pengerjaan:\n1. Cek Warna Objek Pusat:\no\n\nKotak 1 (Putih) → Kotak 2 (Hitam) → Kotak 3 (Putih) → Kotak 4 (Hitam).\n\no\n\nKotak 5 wajib berwarna PUTIH. (Eliminasi pilihan C dan D).\n\n2. Cek Bentuk Objek Pusat: Gambar ke-5 menampilkan bentuk jajar genjang.\n3. Bandingkan Elemen Sudut Pilihan A dan B:\no\n\nPilihan A: Sudut kanan bawah berisi elips pipih mendatar.\n\no\n\nPilihan B: Sudut kanan bawah berisi lingkaran hitam pejal (∙).\n\n4. Kesimpulan: Pilihan yang secara presisi memenuhi seluruh kaidah deret ini\nadalah Gambar B.\nGambar B merupakan jawaban yang paling tepat karena mempertahankan pola\nwarna putih pada objek utama jajar genjang di pusat kotak serta memiliki komposisi\nsimbol sudut yang tepat.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Memiliki bentuk simbol pada sudut kanan bawah yang tidak\nsesuai (elips mendatar).\n\n\n\nGambar C & D: Menyimpang dari aturan pola warna selang-seling karena\nobjek utamanya berwarna hitam pejal.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Warna Objek Utama (Putih - Hitam - Putih)\":\n1. Perhatikan warna gambar besar di tengah: Putih → Hitam → Putih → Hitam →\npasti PUTIH!\n2. Langsung coret pilihan yang tengahnya hitam (C dan D tersingkir).\n3. Bandingkan A dan B pada simbol sudut kanan bawah: Pilih B yang sudutnya\nberisi lingkaran hitam bulat sempurna!"
+  },
+  {
+    "number": 31,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_31.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPembahasan :\n\n\nSoal ini menampilkan deretan bentuk geometri segi enam (hexagonal) yang\ntersusun dari beberapa bagian segitiga kecil di dalamnya.\n\n\n\nSebagian segmen segitiga tersebut diarsir hitam pejal, sementara sisanya\nberupa garis putih biasa.\n\n\n\nSeluruh elemen bangun hexagonal ini mengalami rotasi atau perputaran\nposisi secara konsisten dari gambar pertama, kedua, hingga ketiga pada\nbaris atas.\n\nLangkah Pengerjaan:\n1. Amati Perubahan Bentuk dari Gambar 1 ke Gambar 2: Perhatikan\nbagaimana kelompok segmen hitam bergeser atau berotasi mengelilingi\npusat bangun hexagonal.\n2. Lacak Konsistensi Rotasi pada Gambar 3: Posisi segmen hitam pada\ngambar ketiga menunjukkan kelanjutan perputaran sudut yang teratur dari\ngambar sebelumnya.\n3. Tentukan Gambar Kelanjutan (Kotak Keempat): Berdasarkan aturan rotasi\nsiklus tersebut, posisi segmen hitam pada pilihan berikutnya harus\nmelanjutkan arah putaran yang konsisten.\n4. Cocokkan dengan Pilihan C: Bentuk rotasi yang paling akurat dan selaras\ndengan pola perputaran tersebut ditunjukkan oleh Pilihan C.\nGambar C adalah pilihan yang paling tepat karena posisi arsiran hitamnya\nmerupakan hasil rotasi lanjutan yang sah dan konsisten dari gambar ketiga\npada deret soal.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, dan D: Memiliki orientasi letak atau sudut arsiran segmen hitam\nyang tidak sesuai dengan kaidah perputaran rotasi deret gambar utama.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Pergerakan Blok Hitam\":\n1. Fokuskan pengamatan pada arah perpindahan blok segitiga hitam yang\npaling mencolok.\n2. Bayangkan blok tersebut berputar mengikuti arah jarum jam ke posisi\nberikutnya.\n3. Cari pilihan yang letak blok hitamnya sesuai dengan hasil putaran tersebut,\nyaitu C!"
+  },
+  {
+    "number": 32,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_32.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\nSoal ini menggunakan pola perputaran rotasi teratur dari seluruh struktur garis dan\nelemen panah sebesar 45∘ searah jarum jam (clockwise) pada setiap langkah deret:\n1. Garis Utama Berpanah Dua Ujung: Berputar dari Horizontal → Diagonal →\nVertikal → Diagonal/Vertikal berotasi.\n2. Panah Pendek/Tebal: Berputar secara konsisten mengelilingi titik pusat\nsebesar 45∘ searah jarum jam pada setiap tahapnya.\nLangkah Pengerjaan:\n1. Amati Rotasi Garis Utama Berpanah Dua:\no\n\nGambar 1 = Horizontal (↔).\n\no\n\nGambar 2 = Miring Kiri Atas-Kanan Bawah.\n\no\n\nGambar 3 = Vertikal (↕).\n\n2. Amati Rotasi Panah Pendek/Tebal:\no\n\nGambar 1 = Menunjuk Bawah (↓).\n\no\n\nGambar 2 = Menunjuk Kiri Bawah (↙).\no\n\nGambar 3 = Menunjuk Kiri Atas (↖).\n\n3. Tentukan Gambar ke-4:\no\n\nPutar seluruh konfigurasi Gambar 3 sebesar 45∘ searah jarum jam.\n\no\n\nPanah pendek tebal yang semula menunjuk ke kiri atas akan bergeser\nmenunjuk tepat ke Kanan (→).\n\n4. Kesimpulan: Opsi yang secara presisi menampilkan panah tebal menunjuk\nke kanan pada sumbu utama adalah Gambar C.\n\nGambar C merupakan pilihan yang paling tepat karena mempertahankan konsistensi\nrotasi 45∘ searah jarum jam pada seluruh komponen garis dan menempatkan panah\ntebal ke arah kanan secara akurat.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Memiliki posisi panah pendek yang menunjuk ke kanan bawah\n(↘), menyimpang dari urutan rotasi.\n\n\n\nGambar B: Panah pendek masih menunjuk ke bawah (↓), menandakan tidak\nterjadi rotasi dari Gambar 1.\n\n\n\nGambar D: Orientasi rotasi garis diagonal dan posisi panah tidak sesuai\ndengan aturan putaran 45∘ yang konsisten.\n\nTrik Cepat Mengerjakan:\nTrik \"Fokus Pergerakan Ujung Panah Pendek\":\n1. Perhatikan panah pendek tebal: Bawah (↓) → Kiri Bawah (↙) → Kiri Atas (↖).\n2. Putaran berikutnya sebesar 45∘ searah jarum jam PASTI MENUNJUK KE\nKANAN (→).\n3. Cari pilihan yang memiliki panah pendek menunjuk ke KANAN (→): Hanya\nPilihan C yang memenuhi!"
+  },
+  {
+    "number": 33,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_33.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 3,
+    "correct_letter": "D",
+    "explanation": "Jawaban : D\nPEMBAHASAN :\n\n\nSoal ini menampilkan bentuk matriks 3 × 3 yang berisi figur tongkat (stick\nfigure) dengan variasi bentuk kepala (segitiga, persegi, lingkaran) dan jenis\nkaki (zigzag atau kurva siku/bracket).\n\n\n\nSetiap baris dan kolom dalam matriks mengikuti pola kombinasi atribut yang\nkonsisten (mirip prinsip Latin Square), di mana setiap jenis bentuk kepala dan\nkaki terdistribusi secara teratur.\n\nLangkah Pengerjaan:\n1. Identifikasi Atribut Kepala pada Kolom 3:\no\n\nPada kolom ketiga, dua baris teratas berturut-turut diisi oleh kepala\nberbentuk lingkaran dan segitiga.\n\no\n\nBerdasarkan aturan distribusi matriks, bentuk kepala yang belum\nmuncul di kolom ketiga adalah persegi.\n\n2. Eliminasi Opsi Berdasarkan Kepala:\no\n\nPilihan yang memiliki kepala persegi adalah opsi A dan D.\n\n3. Analisis Atribut Kaki:\no\n\nBerdasarkan pola sebaran jenis kaki (zigzag dan kurva siku) pada\nbaris dan kolom matriks, kotak kosong pada baris ketiga kolom ketiga\nmemerlukan figur dengan atribut kaki zigzag.\n\n4. Tentukan Hasil Akhir:\no\n\n\n\nKombinasi antara kepala berbentuk persegi dan kaki jenis zigzag\nsecara tepat ditunjukkan oleh Pilihan D.\n\nGambar D adalah pilihan yang paling tepat karena secara akurat melengkapi\nsel kosong pada baris ke-3 kolom ke-3 dengan atribut kepala persegi dan\nbentuk kaki zigzag yang sesuai dengan kaidah matriks.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, C, dan E: Tidak tepat karena memiliki kombinasi bentuk kepala\natau jenis kaki yang bertentangan dengan pola distribusi atribut pada baris\ndan kolom matriks soal.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Kelengkapan Baris & Kolom\":\n\n\nPeriksa atribut kepala dan kaki yang belum lengkap pada kolom atau baris\nfigur yang ditanyakan.\n\n\n\nCocokkan langsung dengan pilihan yang menyediakan atribut tersebut secara\nutuh, yaitu D!"
+  },
+  {
+    "number": 34,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_34.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\n\n\nSoal ini menampilkan lima buah gambar bentuk asimetris yang menyerupai\norgan/tapak tangan dengan sebuah lubang kecil berupa titik bulat di\ndalamnya.\n\n\n\nTugas Anda adalah mencari satu gambar yang berbeda atau tidak bisa\ndisamakan melalui proses rotasi (perputaran) dengan gambar-gambar\nlainnya.\n\n\n\nJika kita menguji perputaran rotasi pada opsi A, C, D, dan E, bentuk-bentuk\ntersebut dapat saling berimpit (kongruen) karena merupakan hasil rotasi dari\nsatu bangun master yang sama.\n\n\n\nSebaliknya, Gambar B merupakan hasil pencerminan (refleksi / cermin) dari\nbentuk dasar yang lain, sehingga tidak dapat disamakan hanya melalui rotasi\nmurni tanpa dibalik.\n\nLangkah Pengerjaan:\n1. Pilih Satu Gambar sebagai Acuan: Amati bentuk dasar (misalnya Gambar\nA) yang memiliki lengan melengkung dan beberapa tonjolan jari beserta\nposisi titik lingkaran di dekatnya.\n2. Uji Rotasi pada Pilihan Lain: Putar Gambar C, D, dan E secara mental.\nAnda akan mendapati bahwa bentuk-bentuk tersebut identik dengan Gambar\nA setelah diputar pada sudut tertentu.\n3. Analisis Keunikan Gambar B: Ketika Gambar B dicoba untuk dicocokkan\ndengan rotasi, posisi orientasi lekukan tubuh dan letak titik bulannya\nmengalami kebalikan posisi (cerminan).\n4. Kesimpulan: Gambar B memiliki orientasi tangan/bentuk yang dicerminkan\n(ilegal dalam aturan rotasi murni), menjadikannya anomali di antara pilihan\nlainnya.\n\n\nGambar B merupakan jawaban yang tepat karena menjadi satu-satunya\nbangun yang posisinya merupakan hasil pencerminan (refleksi), sehingga\ntidak dapat dibentuk ulang hanya melalui rotasi sederhana seperti pilihan A,\nC, D, dan E.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, C, D, dan E: Merupakan kelompok gambar yang valid dan saling\nkonsisten karena merupakan bentuk yang sama yang hanya mengalami\nperputaran (rotasi) posisi sudut yang berbeda.\n\nTrik Cepat Mengerjakan:\nTrik \"Uji Rotasi Mental vs Pencerminan\":\n\n\nBayangkan Anda memutar-mutar gambar A agar sejajar dengan C, D, dan E\n(semuanya bisa pas).\n\n\n\nKetika Anda mencoba memutar Gambar B, posisinya tidak akan pernah bisa\nmenutupi bentuk yang lain karena sisi depannya terbalik (seperti tangan kiri\ndan tangan kanan).\n\n\n\nLangsung pilih B!"
+  },
+  {
+    "number": 35,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_35.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menguji ketelitian peserta dalam mengidentifikasi sifat geometris huruf\nkapital berdasarkan jumlah segmen garis lurus (line strokes) yang membentuk huruf\ntersebut:\n\n\nEmpat opsi (A, C, D, dan E) secara konsisten dibentuk oleh 3 buah segmen\ngaris lurus.\n\n\n\nPilihan B (Huruf M) memiliki struktur yang berbeda karena dibentuk oleh 4\nbuah segmen garis lurus.\n\nLangkah Pengerjaan:\n1. Hitung Jumlah Garis Pembentuk Setiap Huruf:\no\n\nA = 3 segmen garis.\n\no\n\nM = 4 segmen garis.\n\no\n\nH = 3 segmen garis.\n\no\n\nN = 3 segmen garis.\n\no\n\nF = 3 segmen garis.\n\n2. Bandingkan Kuantitas Segmen Garis:\no\n\nHuruf A, H, N, dan F membentuk kelompok minoritas 3 garis.\n\no\n\nHuruf M berdiri sendiri sebagai satu-satunya huruf yang membutuhkan\n4 garis.\n\n3. Kesimpulan: Pilihan yang memiliki pola berbeda dari kelompoknya adalah B.\n\nPilihan B (Huruf M) adalah jawaban yang tepat karena merupakan satu-satunya\nhuruf kapital pada soal yang terdiri dari 4 segmen garis lurus, sedangkan huruf-huruf\nlainnya (A, H, N, dan F) semuanya terdiri dari 3 segmen garis lurus.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A (A), C (H), D (N), dan E (F): Seluruhnya merupakan anggota\nkelompok yang sama karena masing-masing hanya membutuhkan tepat 3\nsegmen garis lurus untuk membentuk huruf tersebut.\n\nTrik Cepat Mengerjakan:\nTrik \"Hitung Jumlah Segmen Garis (Stroke Count)\":\n1. Jika menemui soal klasifikasi huruf kapital, periksa terlebih dahulu jumlah\ngaris lurusnya.\n2. A = 3 garis, H = 3 garis, N = 3 garis, F = 3 garis.\n3. M = 4 garis → Karena berjumlah 4 garis sendiri, maka M (opsi B) adalah\njawabannya!"
+  },
+  {
+    "number": 36,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_36.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\nSoal ini menguji kemampuan visualisasi spasial 3 dimensi dalam melipat jaringjaring menjadi bentuk kubus utuh:\n1. Analisis Sisi Berdampingan (Adjacent Faces): Sisi hitam pejal (bawah)\nketika dilipat ke atas akan berada tepat berdampingan dengan sisi bermotif\nkisi-kisi (grid 4 kotak) di sebelah kanan dan sisi bermotif garis diagonal\ndengan segitiga hitam di bagian atas.\n2. Kesesuaian Pertemuan Rusuk: Sudut segitiga hitam pada sisi kanan\nhorizontal terlipat dan bertemu tepat di sudut atas kubus yang berbatasan\nlangsung dengan sisi hitam pejal.\nLangkah Pengerjaan:\n1. Identifikasi Letak Sisi Hitam Pejal: Sisi hitam pejal berada di bagian paling\nbawah jaring-jaring.\n2. Lakukan Lipatan Mentally (Spasial): Fold/lipat sisi-sisi jaring-jaring ke arah\ndalam mengelilingi sisi pusat:\no\n\nSisi hitam pejal terlipat menjadi sisi depan.\n\no\n\nSisi grid 4 kotak terlipat menjadi sisi samping kanan.\n\no\n\nSisi garis miring dengan segitiga terlipat menjadi sisi atas.\n\n3. Cek Orientasi Pertemuan Sudut: Perhatikan bahwa bagian hitam di sudut\natas bersambung secara tepat dengan sisi depan yang berwarna hitam pejal.\n4. Kesimpulan: Bentuk 3D yang merepresentasikan hasil lipatan jaring-jaring\ntersebut secara sempurna adalah Gambar C.\n\nGambar C merupakan jawaban yang paling tepat karena secara akurat\nmenampilkan tiga sisi yang saling berdampingan hasil lipatan jaring-jaring: sisi\ndepan hitam pejal, sisi samping bermotif kisi-kisi grid 4 kotak, serta sisi atas bermotif\ndiagonal dengan sudut segitiga hitam yang bersambung presisi.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A & D: Memiliki orientasi garis dan penempatan sisi yang\nbertentangan dengan jaring-jaring asli.\n\n\n\nGambar B: Posisi garis pada sisi samping tidak selaras dengan orientasi\nlipatan jaring-jaring.\n\n\n\nGambar E: Menampilkan garis-garis tebal di sisi atas yang posisinya terbalik\ndibanding jaring-jaring soal.\n\nTrik Cepat Mengerjakan:\nTrik \"Cari Sisi Hitam Pejal & Grid 4 Kotak\":\n1. Perhatikan Sisi Khas: Cari pilihan kubus yang memiliki Sisi Hitam Pejal dan\nGrid 4 Kotak di posisi berdampingan.\n2. Pilihan yang memuat kombinasi tersebut hanya B dan C.\n3. Cek Sisi Atas: Pada C, sisi atas memuat garis diagonal dengan sudut\nsegitiga hitam yang bersambung langsung ke sisi hitam pejal. Langsung pilih\nC!"
+  },
+  {
+    "number": 37,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_37.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\n\n\nSoal ini menampilkan lima buah gambar (A, B, C, D, dan E) yang masingmasing terdiri dari kombinasi tiga bentuk bangun datar: Segitiga, Persegi\n(Kotak), dan Lingkaran yang saling beririsan atau bertumpuk satu sama lain.\n\n\n\nUntuk menemukan gambar yang berbeda (odd-one-out), kita perlu menguji\napakah bentuk-bentuk tersebut kongruen (sama persis) melalui proses\nperputaran (rotasi) murni tanpa dicermin.\n\n\n\nPada pilihan A, B, D, dan E, komposisi posisi dan tumpang tindih antarbangunnya merupakan bentuk yang sama yang hanya mengalami rotasi\nsudut yang berbeda.\n\n\n\nSebaliknya, Gambar C memiliki konfigurasi posisi dan relasi tumpang tindih\nelemen yang berbeda dari kelompok mayoritas tersebut.\n\nLangkah Pengerjaan:\n1. Pilih Satu Gambar Acuan: Amati bentuk dasar pada pilihan A (terdiri dari\nsegitiga di atas, lingkaran di tengah, dan persegi di bawah).\n2. Uji Rotasi pada Pilihan Lain: Putar gambar B, D, dan E secara mental. Anda\nakan mendapati bahwa susunan serta hubungan tumpang tindih antar-sisinya\nidentik dengan acuan setelah diputar.\n3. Analisis Anomali pada Gambar C: Pada pilihan C, letak posisi segitiga,\nlingkaran, dan persegi membentuk formasi tumpang tindih yang posisinya\ntidak selaras dengan aturan perputaran murni dari keempat gambar lainnya.\n4. Kesimpulan: Berdasarkan uji konsistensi rotasi spasial, Gambar C adalah\nanomali dan berbeda dari kelompoknya.\n\n\nGambar C merupakan jawaban yang tepat karena memiliki pola susunan dan\nrelasi tumpang tindih antar-bangun geometri yang berbeda (tidak bisa\ndisamakan melalui rotasi murni) dibandingkan pilihan A, B, D, dan E.\n\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, D, dan E: Merupakan kelompok gambar yang valid dan saling\nkonsisten karena merepresentasikan bentuk kombinasi geometris yang sama\nmelalui variasi rotasi sudut.\n\nTrik Cepat Mengerjakan:\nTrik \"Uji Rotasi Bentuk Gabungan\":\n\n\nAmbil satu gambar, bayangkan diputar ke segala arah untuk mencocokkan\npilihan A, B, D, dan E (semuanya tembus/cocok).\n\n\n\nPerhatikan bahwa susunan letak bangun pada C tidak akan bisa berimpit pas\nmeskipun diputar ke posisi mana pun.\n\n\n\nLangsung pilih C!"
+  },
+  {
+    "number": 38,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_38.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\nSoal ini menggunakan pola rotasi/pergeseran posisi elemen sebesar 90∘ berlawanan\narah jarum jam (counter-clockwise) mengelilingi 4 kuadran segitiga pembagi kotak:\n1. Persegi (□): Atas → Kiri → Bawah → Kanan.\n2. Lingkaran (∘): Kanan → Bawah → Kiri → Atas.\nLangkah Pengerjaan:\n1. Lacak Posisi Persegi (□):\no\n\nKotak 1: Atas\n\no\n\nKotak 2: Kiri\n\no\n\nKotak 3: Bawah\n\no\n\nKotak 4: Bergeser satu langkah berlawanan arah jarum jam ke kuadran\nKANAN.\n\n2. Lacak Posisi Lingkaran (∘):\no\n\nKotak 1: Kanan\n\no\n\nKotak 2: Bawah\n\no\n\nKotak 3: Kiri\n\no\n\nKotak 4: Bergeser satu langkah berlawanan arah jarum jam ke kuadran\nATAS.\n3. Cocokkan dengan Pilihan Jawaban: Pilihan yang menempatkan Lingkaran\ndi kuadran Atas dan Persegi di kuadran Kanan adalah Pilihan B.\n\nGambar B secara sempurna memenuhi kaidah deret pergeseran posisi 90∘\nberlawanan arah jarum jam, di mana lingkaran berada di posisi atas dan persegi\nberada di posisi kanan.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Mengulang persis konfigurasi awal pada Kotak 1.\n\n\n\nGambar C: Mempertahankan persegi di bagian bawah (tidak mengalami\npergeseran lanjutan).\n\n\n\nGambar D: Menempatkan persegi di posisi atas dan lingkaran di posisi kiri,\nbertentangan dengan arah pergeseran deret.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Jejak Satu Elemen Utama\":\n1. Fokus saja pada Persegi (□): Atas → Kiri → Bawah → pasti KANAN!\n2. Lihat pilihan A, B, C, D: Hanya Opsi B yang perseginya berada di sebelah\nKANAN.\n3. Langsung pilih B tanpa perlu membuang waktu mengecek elemen lain!"
+  },
+  {
+    "number": 39,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_39.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawab : C\nPEMBAHASAN :\nSoal ini menggabungkan dua aturan transformasi visual:\n1. Rotasi Orientasi Sumbu Utama: Berputar secara konstan sebesar 90∘\nsearah jarum jam (Horizontal → Vertikal → Horizontal → VERTIKAL).\n2. Posisi Elemen Hitam & Putih: Pada posisi vertikal berikutnya (Gambar 4),\nsegitiga warna hitam berada di posisi atas dan segitiga putih berada di posisi\nbawah dengan alas menghadap ke luar.\nLangkah Pengerjaan:\n1. Lacak Orientasi Sumbu Gambar:\no\n\nGambar 1 = Horizontal\n\no\n\nGambar 2 = Vertikal\n\no\n\nGambar 3 = Horizontal\n\no\n\nGambar 4 = Pasti VERTIKAL. (Eliminasi opsi B dan D).\n\n2. Lacak Posisi Segitiga Hitam:\no\n\nPada Gambar 1, Hitam di Kanan.\n\no\n\nPada Gambar 2, Hitam di Bawah.\n\no\n\nPada Gambar 3, Hitam di Kiri.\n\no\n\nPada Gambar 4, Hitam berputar lagi 90∘ searah jarum jam menuju\nposisi ATAS.\n\n3. Cocokkan Bentuk Alas Segitiga: Segitiga Hitam di atas memiliki alas yang\nlurus horizontal di bagian atas dan puncaknya menunjuk ke titik pusat.\n4. Kesimpulan: Opsi yang secara sempurna menampilkan segitiga hitam di\natas dan segitiga putih di bawah adalah Gambar C.\n\nGambar C adalah pilihan yang paling tepat karena secara konsisten melanjutkan\npola rotasi sumbu 90∘ searah jarum jam serta menempatkan segitiga hitam di bagian\natas dengan orientasi alas yang benar.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar A: Orientasi alas segitiga terbalik (puncak di luar, alas di titik pusat).\n\n\n\nGambar B: Posisinya horizontal/mendatar, tidak mengalami rotasi ke posisi\nvertikal.\n\n\n\nGambar D: Kemiringan sudutnya diagonal (bukan 90∘ tegak lurus).\n\nTrik Cepat Mengerjakan:\nTrik \"Perhatikan Posisi Segitiga Hitam\":\n1. Ikuti arah pergerakan Segitiga Hitam: Kanan → Bawah → Kiri → pasti ATAS!\n2. Cari gambar dengan segitiga hitam di bagian ATAS.\n3. Pilihan A dan C sama-sama hitam di atas, namun hanya C yang alas\nsegitiganya menghadap ke luar (melanjutkan bentuk Gambar 2). Langsung\npilih C!"
+  },
+  {
+    "number": 40,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_40.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "Jawaban : C\nPEMBAHASAN :\nSoal ini menampilkan deretan gambar yang terdiri atas sebuah lingkaran dengan\ngaris salib sumbu (horizontal dan vertikal) serta dua buah elemen titik pada keliling\nlingkaran, yaitu titik hitam (∙) dan titik putih (∘). Seluruh elemen titik bergeser atau\nberotasi secara konsisten dari satu kotak ke kotak berikutnya mengikuti titik potong\nsumbu.\nLangkah Pengerjaan:\n1. Lacak Pergerakan Titik Hitam (∙):\no\n\nKotak 1: Berada di kuadran kanan tengah.\n\no\n\nKotak 2: Bergeser ke titik potong sumbu bagian atas.\n\no\n\nKotak 3: Bergeser ke titik potong sumbu bagian kiri tengah.\n\no\n\nKotak 4: Bergeser ke titik potong sumbu bagian bawah.\n\no\n\nKotak 5 (Jawaban): Melanjutkan perputaran searah jarum jam, titik\nhitam bergeser ke kuadran kanan bawah / sisi kanan lingkaran.\n\n2. Lacak Pergerakan Titik Putih (∘):\no\n\nBergeser dengan pola rotasi teratur yang selalu berada di sisi\nberlawanan atau mengikuti jarak sudut tertentu dari titik hitam.\n\n3. Cocokkan dengan Pilihan Jawaban: Berdasarkan kelanjutan pola rotasi\ntersebut, konfigurasi posisi titik hitam dan titik putih secara tepat ditunjukkan\noleh Pilihan C.\nGambar C merupakan jawaban yang paling tepat karena susunan posisi titik hitam\ndan titik putihnya secara konsisten melanjutkan kaidah rotasi pergeseran posisi pada\nkeliling lingkaran dari deret gambar sebelumnya.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, dan D: Memiliki letak titik hitam atau titik putih yang\nmenyimpang dari aturan siklus rotasi sumbu lingkaran.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Pergeseran Titik Hitam\":\n1. Fokuskan perhatian hanya pada Titik Hitam (∙) yang bergerak melompat dari\nsatu titik potong garis ke titik potong berikutnya.\n2. Tentukan posisi selengkapnya untuk gambar ke-5.\n3. Pilih opsi yang menempatkan titik hitam dan putih sesuai alur perputaran\ntersebut, yaitu C!"
+  },
+  {
+    "number": 41,
+    "sub_category": "Penalaran Figural (Serial / Deret Gambar Berkelanjutan)",
+    "question": "Perhatikan deret pola perubahan gambar yang ada. Tentukan gambar pilihan (A, B, C, D, atau E) yang paling tepat untuk melanjutkan deret gambar.",
+    "image_path": "questions/figural_41.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "JAWABAN : C\nPEMBAHASAN :\nSoal ini menampilkan deretan gambar yang terdiri dari bangun datar di luar dan\nbeberapa lingkaran kecil di dalamnya. Mari kita perhatikan pola perubahan jumlah\nsisi bangun datar dan jumlah titik dari kotak pertama hingga ketiga:\n1. Kotak 1: Bangun berupa Segitiga (memiliki 3 sisi) yang berisi 6 buah\nlingkaran kecil.\n2. Kotak 2: Bangun berupa Persegi / Segi Empat (memiliki 4 sisi) yang berisi 4\nbuah lingkaran kecil.\n3. Kotak 3: Bangun berupa Segi Lima (memiliki 5 sisi) yang berisi 2 buah\nlingkaran kecil.\n4. Pola Matematika Objek:\no\n\nJumlah sisi bangun luar bertambah secara teratur: 3 → 4 → 5 → 6\n(Segi Enam / Hexagon).\n\no\n\nJumlah titik/lingkaran di dalam berkurang secara teratur dengan selisih\n2: 6 → 4 → 2 → 0 (kosong / tanpa titik).\n\nLangkah Pengerjaan:\n1. Tentukan Jumlah Sisi Bangun Berikutnya: Mengikuti urutan penambahan\nsisi bangun datar (3 → 4 → 5), gambar ke-4 harus berupa Segi Enam\n(Hexagon). (Opsi A dan D langsung tersingkir karena bukan segi enam).\n2. Tentukan Jumlah Titik di Dalamnya: Mengikuti pola pengurangan jumlah\ntitik (6 → 4 → 2), maka pada gambar ke-4 jumlah titiknya adalah 2 − 2 = 𝟎 titik\n(artinya tidak ada titik di dalam bangun).\n3. Cocokkan dengan Pilihan B dan C:\no\n\nPilihan B adalah bangun Segi Enam dengan 1 titik di dalamnya.\n\no\n\nPilihan C adalah bangun Segi Enam kosong tanpa titik.\n\n4. Kesimpulan: Pilihan yang paling tepat dan konsisten dengan pola di atas\nadalah Pilihan C.\n\nGambar C merupakan jawaban yang tepat karena memiliki bentuk bangun luar\nberupa segi enam (melanjutkan deret 3, 4, 5 sisi) dan berisi 0 lingkaran di dalamnya\n(melanjutkan deret pengurangan jumlah titik 6, 4, 2, 0).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A: Merupakan bangun segi lima, tidak sesuai dengan urutan jumlah\nsisi.\n\n\n\nPilihan B: Merupakan bangun segi enam, tetapi masih menyisakan 1 titik di\ndalamnya, yang menyimpang dari pola penurunan jumlah titik.\n\n\n\nPilihan D: Merupakan bangun segi delapan (oktagon) dengan 3 titik, tidak\nsesuai dengan kaidah urutan deret.\n\nTrik Cepat Mengerjakan:\nTrik \"Analisis Sisi Luar dan Hitung Titik\":\n1. Hitung jumlah sisi bangun luar: Segitiga (3) → Segi empat (4) → Segi lima (5)\n→ Pasti Segi Enam (6).\n2. Hitung jumlah titik di dalam: 6 → 4 → 2 → Pasti 0 (kosong).\n3. Cari segi enam yang tidak memiliki titik di dalamnya, yaitu C"
+  },
+  {
+    "number": 42,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_42.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "JAWABAN : B\nPEMBAHASAN :\nSoal ini menampilkan deretan gambar yang terdiri atas dua bangun gabungan:\nsebuah persegi panjang vertikal (dengan garis tepi ganda di sisi kiri dan bawah) dan\nsebuah bangun segitiga siku-siku yang terletak di sisi luar persegi panjang tersebut.\nSeluruh konfigurasi mengalami rotasi atau perputaran posisi secara konsisten\nsebesar 90∘ searah jarum jam (clockwise) dari kotak pertama hingga keempat.\nLangkah Pengerjaan:\n1. Lacak Pergerakan Posisi Segitiga:\no\n\nGambar 1: Posisi segitiga berada di sisi bawah-kiri persegi panjang.\n\no\n\nGambar 2: Segitiga bergeser berputar ke sisi kiri-atas.\n\no\n\nGambar 3: Segitiga bergeser berputar ke sisi atas-kanan.\n\no\n\nGambar 4: Segitiga bergeser berputar ke sisi kanan-atas.\n\no\n\nGambar 5 (Jawaban): Melanjutkan siklus rotasi 90∘ berikutnya searah\njarum jam, posisi segitiga berpindah ke sisi kanan-bawah persegi\npanjang.\n\n2. Evaluasi Bentuk dan Orientasi: Pastikan orientasi siku-siku dan sudut\nlancip segitiga mengikuti kaidah perputaran rotasi yang akurat.\n3. Cocokkan dengan Pilihan Jawaban: Berdasarkan kelanjutan pola rotasi\ntersebut, konfigurasi posisi yang tepat ditunjukkan oleh Pilihan B.\nGambar B merupakan jawaban yang paling tepat karena susunan posisi dan\norientasi segitiga terhadap persegi panjangnya secara konsisten melanjutkan kaidah\nrotasi sebesar 90∘ searah jarum jam dari deret gambar sebelumnya.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, C, dan D: Memiliki letak posisi sudut atau orientasi segitiga yang\nmenyimpang dari aturan siklus rotasi sudut persegi panjang.\n\nTrik Cepat Mengerjakan:\nTrik \"Ikuti Pergeseran Sudut Segitiga\":\n1. Fokuskan perhatian pada posisi ujung lancip atau sisi miring segitiga yang\nmengelilingi kotak persegi panjang.\n2. Amati bahwa segitiga berputar secara teratur mengitari kotak sebesar\nseperempat lingkaran (90∘) tiap langkahnya.\n3. Pilih opsi yang menempatkan segitiga pada kelanjutan sektor rotasi tersebut,\nyaitu B!"
+  },
+  {
+    "number": 43,
+    "sub_category": "Penalaran Figural (Rotasi & Orientasi Spasial)",
+    "question": "Perhatikan perubahan rotasi dan posisi elemen gambar berikut. Tentukan gambar pilihan yang paling tepat untuk mengisi tanda tanya (?).",
+    "image_path": "questions/figural_43.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 0,
+    "correct_letter": "A",
+    "explanation": "Jawaban : A\nPEMBAHASAN :\nSoal ini menggabungkan beberapa aturan pergerakan elemen dalam kuadran\nsegitiga:\n1. Posisi Persegi Panjang Pipih (□): Mengikuti urutan pergeseran Bawah →\nAtas → Bawah → Kanan → Atas → BAWAH.\n2. Transformasi Anak Panah: Berputar mengelilingi kuadran dan berganti arah\ntunjuk, dari Bawah (Kotak 5) menuju posisi ATAS dengan arah menunjuk ke\nATAS (↑).\n3. Simbol Tambahan: Kuadran Kanan diisi oleh karakter/simbol baru ('S').\nLangkah Pengerjaan:\n1. Lacak Posisi Persegi Panjang Pipih (□):\no\n\nKotak 4 = Kanan\n\no\n\nKotak 5 = Atas\n\no\n\nKotak 6 (Jawaban) = Pasti BAWAH. (Eliminasi opsi C dan D).\n\n2. Lacak Arah dan Posisi Anak Panah:\no\n\nPada Kotak 5, panah berada di bawah menunjuk ke bawah (↓).\n\no\n\nPada Kotak 6, panah bergeser ke kuadran Atas dan membalik arah\nmenunjuk ke Atas (↑). (Eliminasi opsi D dan E).\n\n3. Bandingkan Opsi A dan B:\no\n\nOpsi A menghadirkan karakter baru 'S'.\n\no\n\nOpsi B menghadirkan garis dua (=).\n4. Kesimpulan: Opsi yang secara konsisten dan lengkap memenuhi seluruh\nkaidah deret ini adalah Gambar A.\n\nGambar A merupakan jawaban yang paling tepat karena menempatkan elemen\nanak panah ke atas di kuadran Atas, persegi panjang di kuadran Bawah, serta\nmenghadirkan simbol baru 'S' di kuadran Kanan.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nGambar B: Menggunakan simbol sama dengan (=) yang tidak selaras\ndengan kaidah kemunculan elemen baru.\n\n\n\nGambar C: Posisi persegi panjang pipih berada di atas (tidak mengalami\npergeseran lanjutan).\n\n\n\nGambar D & E: Arah tunjuk anak panah mendatar ke kanan (→),\nbertentangan dengan siklus perputaran panah.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Kombinasi Panah Atas & Persegi Panjang Bawah\":\n1. Lacak posisi Anak Panah: Kotak 5 (Bawah ↓) → Kotak 6 pasti Atas\nmenunjuk ke Atas (↑).\n2. Lacak posisi Persegi Panjang Pipih (□): Kotak 5 (Atas) → Kotak 6 pasti\nBawah.\n3. Cari opsi yang panahnya di ATAS (↑) dan persegi panjangnya di BAWAH:\nHanya Opsi A dan Opsi B.\n4. Pilih A yang menyertakan huruf/simbol tunggal baru ('S') di sisi kanan!"
+  },
+  {
+    "number": 44,
+    "sub_category": "Penalaran Figural (Ketidaksamaan / Pengelompokan Pola)",
+    "question": "Tentukanlah salah satu gambar di antara pilihan (A, B, C, D, atau E) yang memiliki pola berbeda atau tidak mengikuti aturan kelompoknya.",
+    "image_path": "questions/figural_44.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 1,
+    "correct_letter": "B",
+    "explanation": "Jawaban : B\nPEMBAHASAN :\n\n\nSoal ini menampilkan lima buah opsi (A, B, C, D, dan E) yang masing-masing\nberisi sejumlah simbol keriting (club).\n\n\n\nMari kita hitung jumlah total simbol keriting (club) pada setiap kotak:\n\n\n\no\n\nOpsi A: Terdiri dari 3 simbol.\n\no\n\nOpsi B: Terdiri dari 4 simbol.\n\no\n\nOpsi C: Terdiri dari 5 simbol.\n\no\n\nOpsi D: Terdiri dari 7 simbol (3 di kiri, 1 di tengah, 3 di kanan).\n\no\n\nOpsi E: Terdiri dari 9 simbol (kisi 3 × 3).\n\nAnalisis Matematika Kuantitas:\no\n\nOpsi A (3), Opsi C (5), Opsi D (7), dan Opsi E (9) semuanya berjumlah\nGANJIL.\n\no\n\nOpsi B (4) adalah satu-satunya opsi dengan jumlah simbol GENAP.\n\nLangkah Pengerjaan:\n1. Hitung Jumlah Simbol pada Setiap Gambar:\no\n\nGambar A = 3 simbol (Ganjil).\n\no\n\nGambar B = 4 simbol (Genap).\n\no\n\nGambar C = 5 simbol (Ganjil).\n\no\n\nGambar D = 7 simbol (Ganjil).\n\no\n\nGambar E = 9 simbol (Ganjil).\n\n2. Identifikasi Kategori Pembeda:\no\n\nKelompok mayoritas (A, C, D, E) terdiri atas deret bilangan ganjil\n(3,5,7,9).\n\no\n\nGambar B adalah satu-satunya gambar yang memiliki jumlah simbol\ngenap (4).\n\n3. Kesimpulan: Gambar yang memiliki pola paling berbeda (odd-one-out) dari\nkelompoknya adalah Gambar B.\n\nGambar B merupakan jawaban yang tepat karena merupakan satu-satunya opsi\ndengan kuantitas simbol berjumlah genap (4 simbol), sedangkan empat opsi\nlainnya (A, C, D, dan E) secara konsisten memiliki jumlah simbol ganjil (3,5,7, dan\n9).\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, C, D, dan E: Seluruhnya membentuk satu kelompok pola yang\nsama berdasarkan sifat kuantitas bilangan ganjil pada jumlah objeknya.\n\nTrik Cepat Mengerjakan:\nTrik \"Cek Bilangan Ganjil vs Genap\":\n1. Hitung dengan cepat jumlah objek pada setiap opsi: 3, 4, 5, 7, 9.\n2. Perhatikan sifat bilangannya: 3,5,7,9 semuanya GANJIL.\n3. Angka 4 adalah satu-satunya bilangan GENAP.\n4. Tanpa ragu, langsung pilih B!"
+  },
+  {
+    "number": 45,
+    "sub_category": "Penalaran Figural (Analogi Bentuk Gambar)",
+    "question": "Carilah pasangan gambar di bawah ini sehingga memiliki hubungan analogi bentuk yang sama dengan pasangan gambar sebelumnya.",
+    "image_path": "questions/figural_45.png",
+    "options": [
+      "Pilihan A",
+      "Pilihan B",
+      "Pilihan C",
+      "Pilihan D",
+      "Pilihan E"
+    ],
+    "correct_answer": 2,
+    "correct_letter": "C",
+    "explanation": "\n\nSoal ini menampilkan lima buah pilihan gambar (A, B, C, D, dan E) berupa\nfigur tanaman/tunas yang tumbuh di atas garis berarsir miring.\n\n\n\nSetiap figur memiliki dua komponen utama elemen berulang:\n1. Komponen Atas: Jumlah kelopak daun/tunas melengkung di atas\ngaris setengah lingkaran.\n2. Komponen Bawah: Jumlah gumpalan/lingkaran akar (seperti huruf 'o'\nbersambung) di bawah garis tanah berarsir.\n\n\n\nMari kita hitung dan bandingkan jumlah kedua komponen ini pada setiap opsi:\no\n\nOpsi A: Jumlah Daun Atas = 3, Jumlah Akar Bawah = 3 (Sama / 3 =\n3).\n\no\n\nOpsi B: Jumlah Daun Atas = 4, Jumlah Akar Bawah = 4 (Sama / 4 =\n4).\n\no\n\nOpsi C: Jumlah Daun Atas = 1, Jumlah Akar Bawah = 2 (BEDA / 1 ≠\n2).\n\no\n\nOpsi D: Jumlah Daun Atas = 2, Jumlah Akar Bawah = 2 (Sama / 2 =\n2).\n\no\n\nOpsi E: Jumlah Daun Atas = 5, Jumlah Akar Bawah = 5 (Sama / 5 =\n5).\n\nLangkah Pengerjaan:\n1. Hitung Elemen Atas dan Bawah pada Setiap Gambar:\no\n\nGambar A: 3 elemen atas, 3 elemen bawah (Jumlah sama).\n\no\n\nGambar B: 4 elemen atas, 4 elemen bawah (Jumlah sama).\n\no\n\nGambar C: 1 elemen atas, 2 elemen bawah (Jumlah tidak sama /\nanomali).\n\no\n\nGambar D: 2 elemen atas, 2 elemen bawah (Jumlah sama).\no\n\nGambar E: 5 elemen atas, 5 elemen bawah (Jumlah sama).\n\n2. Identifikasi Pola Konsistensi:\no\n\nEmpat opsi (A, B, D, dan E) memiliki aturan yang identik: Jumlah\nelemen di bagian atas SELALU SAMA DENGAN jumlah elemen di\nbagian bawah (𝑁atas = 𝑁bawah ).\n\n3. Temukan Anomali:\no\n\nGambar C merupakan satu-satunya gambar yang jumlah elemen atas\n(1) tidak seimbang dengan jumlah elemen bawah (2).\n\n4. Kesimpulan: Gambar yang memiliki pola berbeda (odd-one-out) dari\nkelompoknya adalah Gambar C.\n\nGambar C merupakan jawaban yang tepat karena merupakan satu-satunya gambar\nyang tidak memenuhi pola kesamaan kuantitas elemen. Pada Gambar C, terdapat 1\nkelopak daun di atas dan 2 gumpalan di bawah, sedangkan pada opsi A, B, D, dan\nE, jumlah elemen bagian atas dan bawah selalu berjumlah sama persis.\nMengapa Pilihan Lain Tidak Tepat:\n\n\nPilihan A, B, D, dan E: Semuanya memiliki hubungan kuantitas elemen yang\nseimbang/sama (3 = 3, 4 = 4, 2 = 2, 5 = 5), sehingga membentuk satu\nkelompok pola yang konsisten.\n\nTrik Cepat Mengerjakan:\nTrik \"Perbandingan Kuantitas Atas vs Bawah\":\n1. Hitung jumlah kelopak daun di atas dan gumpalan di bawah secara\nberpasangan.\n2. Cek kesamaannya:\no\n\nA = 3 Atas : 3 Bawah (Cocok)\n\no\n\nB = 4 Atas : 4 Bawah (Cocok)\n\no\n\nC = 1 Atas : 2 Bawah (BEDA!)\n\no\n\nD = 2 Atas : 2 Bawah (Cocok)\n\no\n\nE = 5 Atas : 5 Bawah (Cocok)\n\n3. Langsung pilih C karena jumlahnya tidak seimbang!"
+  }
+]

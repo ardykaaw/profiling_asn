@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -43,6 +44,7 @@ class AdminQuestionController extends Controller
             'category_id' => 'required|exists:categories,id',
             'sub_category' => 'required|string|max:255',
             'question' => 'required|string',
+            'image' => 'nullable|file|image|mimes:jpeg,png,jpg,webp,svg|max:10240',
             'options' => 'required|array|min:5|max:5',
             'options.*' => 'required|string',
             'correct_answer' => 'required|integer|min:0|max:4',
@@ -59,6 +61,12 @@ class AdminQuestionController extends Controller
             $validated['scores'] = [5, 4, 3, 2, 1];
         }
 
+        if ($request->hasFile('image')) {
+            $validated['image_path'] = $request->file('image')->store('questions', 'public');
+        }
+
+        unset($validated['image']);
+
         Question::create($validated);
 
         return back()->with('success', 'Soal ujian berhasil ditambahkan ke bank soal!');
@@ -70,6 +78,8 @@ class AdminQuestionController extends Controller
             'category_id' => 'required|exists:categories,id',
             'sub_category' => 'required|string|max:255',
             'question' => 'required|string',
+            'image' => 'nullable|file|image|mimes:jpeg,png,jpg,webp,svg|max:10240',
+            'remove_image' => 'nullable|boolean',
             'options' => 'required|array|min:5|max:5',
             'options.*' => 'required|string',
             'correct_answer' => 'required|integer|min:0|max:4',
@@ -79,6 +89,22 @@ class AdminQuestionController extends Controller
             'is_active' => 'boolean',
         ]);
 
+        if ($request->boolean('remove_image')) {
+            if ($question->image_path && Storage::disk('public')->exists($question->image_path)) {
+                Storage::disk('public')->delete($question->image_path);
+            }
+            $validated['image_path'] = null;
+        }
+
+        if ($request->hasFile('image')) {
+            if ($question->image_path && Storage::disk('public')->exists($question->image_path)) {
+                Storage::disk('public')->delete($question->image_path);
+            }
+            $validated['image_path'] = $request->file('image')->store('questions', 'public');
+        }
+
+        unset($validated['image'], $validated['remove_image']);
+
         $question->update($validated);
 
         return back()->with('success', 'Soal ujian berhasil diperbarui!');
@@ -86,6 +112,10 @@ class AdminQuestionController extends Controller
 
     public function destroy(Question $question)
     {
+        if ($question->image_path && Storage::disk('public')->exists($question->image_path)) {
+            Storage::disk('public')->delete($question->image_path);
+        }
+
         $question->delete();
 
         return back()->with('success', 'Soal ujian berhasil dihapus dari bank soal!');

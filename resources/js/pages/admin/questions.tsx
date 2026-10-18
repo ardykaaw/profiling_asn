@@ -10,6 +10,7 @@ import {
     Filter, 
     FolderKanban, 
     HelpCircle, 
+    Image as ImageIcon,
     Layers, 
     Plus, 
     Search, 
@@ -33,6 +34,8 @@ interface Question {
     category_id: number;
     sub_category: string;
     question: string;
+    image_path?: string | null;
+    image_url?: string | null;
     options: string[];
     correct_answer: number;
     scores?: number[] | null;
@@ -66,9 +69,21 @@ export default function AdminQuestions({ questions, categories, filters }: Props
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
 
     // Form state for creating question
-    const { data, setData, post, put, processing, reset, errors } = useForm({
+    const { data, setData, post, processing, reset, errors } = useForm<{
+        category_id: number;
+        sub_category: string;
+        question: string;
+        options: string[];
+        correct_answer: number;
+        scores: number[];
+        explanation: string;
+        is_active: boolean;
+        image: File | null;
+        remove_image: boolean;
+    }>({
         category_id: categories[0]?.id || 1,
         sub_category: '',
         question: '',
@@ -77,6 +92,8 @@ export default function AdminQuestions({ questions, categories, filters }: Props
         scores: [5, 4, 3, 2, 1],
         explanation: '',
         is_active: true,
+        image: null,
+        remove_image: false,
     });
 
     const activeCat = categories.find((c) => c.id === Number(data.category_id));
@@ -100,12 +117,14 @@ export default function AdminQuestions({ questions, categories, filters }: Props
 
     const openCreateModal = () => {
         setEditingQuestion(null);
+        setImagePreview(null);
         reset();
         setIsCreateModalOpen(true);
     };
 
     const openEditModal = (q: Question) => {
         setEditingQuestion(q);
+        setImagePreview(q.image_url || null);
         setData({
             category_id: q.category_id,
             sub_category: q.sub_category,
@@ -115,24 +134,46 @@ export default function AdminQuestions({ questions, categories, filters }: Props
             scores: q.scores ? [...q.scores] : [5, 4, 3, 2, 1],
             explanation: q.explanation || '',
             is_active: q.is_active,
+            image: null,
+            remove_image: false,
         });
         setIsCreateModalOpen(true);
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setData((prev) => ({ ...prev, image: file, remove_image: false }));
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setData((prev) => ({ ...prev, image: null, remove_image: true }));
+        setImagePreview(null);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (editingQuestion) {
-            put(`/admin/soal/${editingQuestion.id}`, {
+            router.post(`/admin/soal/${editingQuestion.id}`, {
+                _method: 'put',
+                ...data,
+            }, {
+                forceFormData: true,
                 onSuccess: () => {
                     setIsCreateModalOpen(false);
                     reset();
+                    setImagePreview(null);
                 },
             });
         } else {
             post('/admin/soal', {
+                forceFormData: true,
                 onSuccess: () => {
                     setIsCreateModalOpen(false);
                     reset();
+                    setImagePreview(null);
                 },
             });
         }
@@ -179,7 +220,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-card border border-border">
                     <div>
                         <div className="flex items-center gap-2 mb-1.5">
-                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
                                 BANK SOAL CAT BKN
                             </span>
                             <span className="text-xs text-muted-foreground">• Total {questions.total} Butir Soal Terdaftar</span>
@@ -203,7 +244,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                         </Button>
                         <Button
                             onClick={openCreateModal}
-                            className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 transition-all shadow-sm"
+                            className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166] transition-all shadow-sm"
                         >
                             <Plus className="size-4 mr-1.5" />
                             + Input Soal Baru
@@ -219,7 +260,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                             onClick={() => handleCategoryFilter('')}
                             className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                 selectedCategory === ''
-                                    ? 'bg-emerald-800 text-white shadow-sm'
+                                    ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
                                     : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                             }`}
                         >
@@ -231,7 +272,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                 onClick={() => handleCategoryFilter(String(c.id))}
                                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all whitespace-nowrap ${
                                     selectedCategory === String(c.id)
-                                        ? 'bg-emerald-800 text-white shadow-sm'
+                                        ? 'bg-[#F0A500] text-[#0B1023] shadow-sm'
                                         : 'border border-border bg-card text-muted-foreground hover:text-foreground'
                                 }`}
                             >
@@ -289,7 +330,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                     {(questions.current_page - 1) * questions.per_page + idx + 1}
                                                 </td>
                                                 <td className="py-3 px-4">
-                                                    <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                                    <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-[#F0A500]/15 text-[#F0A500]">
                                                         {q.category?.code ?? 'TWK'}
                                                     </span>
                                                 </td>
@@ -300,6 +341,18 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                     <p className="font-medium text-foreground line-clamp-2">
                                                         {q.question}
                                                     </p>
+                                                    {q.image_url && (
+                                                        <div className="flex items-center gap-2">
+                                                            <a
+                                                                href={q.image_url}
+                                                                target="_blank"
+                                                                rel="noreferrer"
+                                                                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 transition-colors"
+                                                            >
+                                                                <ImageIcon className="size-3" /> Soal Figural (Lihat Gambar)
+                                                            </a>
+                                                        </div>
+                                                    )}
                                                     <div className="flex flex-wrap gap-1.5">
                                                         {q.options.map((opt, optIdx) => (
                                                             <span
@@ -384,7 +437,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
             {/* CREATE / EDIT QUESTION MODAL */}
             {isCreateModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-                    <div className="rounded-2xl border border-border bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <div>
                                 <h2 className="font-display text-xl font-bold text-foreground">
@@ -409,7 +462,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     <select
                                         value={data.category_id}
                                         onChange={(e) => setData('category_id', Number(e.target.value))}
-                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-emerald-700"
+                                        className="w-full h-10 rounded-xl bg-card border border-border text-foreground px-3 text-xs focus:ring-[#F0A500]"
                                     >
                                         {categories.map((c) => (
                                             <option key={c.id} value={c.id}>
@@ -440,10 +493,73 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     onChange={(e) => setData('question', e.target.value)}
                                     rows={3}
                                     placeholder="Tuliskan butir soal lengkap di sini..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-emerald-700"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-[#F0A500]"
                                     required
                                 />
                                 {errors.question && <p className="text-destructive text-[11px]">{errors.question}</p>}
+                            </div>
+
+                            {/* Soal Figural (Upload Gambar Kualitas Tinggi) */}
+                            <div className="space-y-2 p-3.5 rounded-xl border border-dashed border-border bg-card/60">
+                                <div className="flex items-center justify-between">
+                                    <Label className="text-xs font-semibold flex items-center gap-1.5 text-foreground">
+                                        <ImageIcon className="size-4 text-[#F0A500]" />
+                                        Gambar Soal Figural (Kualitas Tinggi)
+                                    </Label>
+                                    <span className="text-[10px] text-muted-foreground">PNG / JPG / WebP hingga 10MB</span>
+                                </div>
+
+                                {imagePreview ? (
+                                    <div className="relative mt-2 p-3 rounded-xl bg-card border border-border flex flex-col items-center justify-center">
+                                        <img
+                                            src={imagePreview}
+                                            alt="Pratinjau Gambar Soal"
+                                            className="max-h-56 max-w-full rounded-lg object-contain shadow-sm border border-border/50"
+                                        />
+                                        <div className="flex items-center gap-3 mt-3">
+                                            <label
+                                                htmlFor="replace-question-image"
+                                                className="cursor-pointer text-xs font-semibold text-[#F0A500] hover:underline flex items-center gap-1"
+                                            >
+                                                <UploadCloud className="size-3.5" /> Ganti Gambar
+                                            </label>
+                                            <input
+                                                id="replace-question-image"
+                                                type="file"
+                                                accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                                                onChange={handleImageChange}
+                                                className="hidden"
+                                            />
+                                            <span className="text-muted-foreground">•</span>
+                                            <button
+                                                type="button"
+                                                onClick={handleRemoveImage}
+                                                className="text-xs font-semibold text-red-500 hover:text-red-400 flex items-center gap-1"
+                                            >
+                                                <Trash2 className="size-3.5" /> Hapus Gambar
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="mt-1">
+                                        <input
+                                            type="file"
+                                            id="new-question-image"
+                                            accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                                            onChange={handleImageChange}
+                                            className="hidden"
+                                        />
+                                        <label
+                                            htmlFor="new-question-image"
+                                            className="flex flex-col items-center justify-center p-4 border border-dashed border-border/80 rounded-xl cursor-pointer hover:bg-accent/30 transition-colors"
+                                        >
+                                            <UploadCloud className="size-6 text-muted-foreground mb-1" />
+                                            <span className="text-xs font-semibold text-foreground">Klik atau Tarik Gambar Soal ke Sini</span>
+                                            <span className="text-[10px] text-muted-foreground mt-0.5">Mendukung visual grafik resolusi tinggi (Lossless HD)</span>
+                                        </label>
+                                    </div>
+                                )}
+                                {errors.image && <p className="text-destructive text-[11px]">{errors.image}</p>}
                             </div>
 
                             {/* 5 Options A-E */}
@@ -464,7 +580,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                 name="correct_answer_radio"
                                                 checked={data.correct_answer === optIndex}
                                                 onChange={() => setData('correct_answer', optIndex)}
-                                                className="size-4 text-emerald-700 focus:ring-emerald-700"
+                                                className="size-4 text-[#F0A500] focus:ring-[#F0A500]"
                                                 title={`Tandai Opsi ${letter} sebagai Kunci Jawaban`}
                                             />
                                         ) : (
@@ -485,7 +601,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                             </div>
                                         )}
 
-                                        <span className="font-mono font-bold w-4 text-center text-emerald-700">
+                                        <span className="font-mono font-bold w-4 text-center text-[#F0A500]">
                                             {letter}
                                         </span>
 
@@ -512,7 +628,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                     onChange={(e) => setData('explanation', e.target.value)}
                                     rows={3}
                                     placeholder="Jelaskan alasan kunci jawaban dan trik cepat penyelesaiannya..."
-                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-emerald-700"
+                                    className="w-full rounded-xl bg-card border border-border text-foreground p-3 text-xs focus:ring-[#F0A500]"
                                 />
                             </div>
 
@@ -529,7 +645,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                 <Button
                                     type="submit"
                                     disabled={processing}
-                                    className="text-xs font-bold h-10 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900"
+                                    className="text-xs font-bold h-10 rounded-xl bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
                                 >
                                     {editingQuestion ? 'Simpan Perubahan' : 'Tambahkan ke Bank Soal'}
                                 </Button>
@@ -542,7 +658,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
             {/* IMPORT MODAL */}
             {isImportModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="rounded-2xl border border-border bg-white w-full max-w-lg p-6 space-y-4 shadow-2xl">
+                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-lg p-6 space-y-4 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <h3 className="font-display text-lg font-bold text-foreground">
                                 Import Soal Massal
@@ -563,7 +679,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                             </p>
                             <Button
                                 onClick={handleQuickSampleImport}
-                                className="w-full mt-2 text-xs font-bold bg-emerald-800 text-white hover:bg-emerald-900"
+                                className="w-full mt-2 text-xs font-bold bg-[#F0A500] text-[#0B1023] hover:bg-[#FFD166]"
                             >
                                 Import 2 Soal Contoh Sekarang
                             </Button>
