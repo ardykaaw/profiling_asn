@@ -25,7 +25,7 @@ export default function WaitingVerification() {
         router.post('/logout');
     };
 
-    const cleanPhone = '6282292223334'; // Nomor CS / Admin Lynk.id / ProASN
+    const cleanPhone = '6282297441115'; // Admin Verifikasi proASN (+62 822-9744-1115)
     const waText = encodeURIComponent(
         `Halo Admin proASN, saya sudah mendaftar di portal simulasi.\n\n` +
         `Nama: ${user?.name || ''}\n` +
@@ -131,6 +131,10 @@ export default function WaitingVerification() {
                                     <span>Konfirmasi via WhatsApp</span>
                                 </a>
                             </div>
+
+                            <p className="text-[11px] text-slate-500 text-center">
+                                Layanan Bantuan & Verifikasi CS WhatsApp: <a href={waUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-emerald-700 hover:underline">+62 822-9744-1115</a>
+                            </p>
 
                             <button
                                 type="button"
