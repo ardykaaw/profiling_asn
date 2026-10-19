@@ -3598,5 +3598,725 @@
     ],
     "correct_answer": 0,
     "explanation": "Jawaban: A. Bagian awal sama. Bandingkan tiga digit terakhir: 654 lebih besar daripada 645, sehingga A lebih besar."
+  },
+  {
+    "number": 301,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "583.716",
+      "583.761"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Tiga digit awal sama. Pada tiga digit terakhir, 761 lebih besar daripada 716."
+  },
+  {
+    "number": 302,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-647.285",
+      "-647.258"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Keduanya negatif. -647.258 lebih dekat ke nol daripada -647.285 sehingga nilainya lebih besar."
+  },
+  {
+    "number": 303,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "74.806",
+      "748.060"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Karena keduanya positif, B lebih besar."
+  },
+  {
+    "number": 304,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-835.419",
+      "-835.491"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Untuk bilangan negatif, nilai yang lebih dekat ke nol lebih besar. -835.419 lebih besar daripada -835.491."
+  },
+  {
+    "number": 305,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "926.304",
+      "926.340"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 340 lebih besar daripada 304."
+  },
+  {
+    "number": 306,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-56.827",
+      "56.782"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bilangan positif selalu lebih besar daripada bilangan negatif."
+  },
+  {
+    "number": 307,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-712.638",
+      "-712.683"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 712.638 lebih kecil daripada 712.683. Karena keduanya negatif, A lebih besar."
+  },
+  {
+    "number": 308,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "405.092",
+      "405.029"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Tiga digit pertama sama. Pada tiga digit terakhir, 092 lebih besar daripada 029."
+  },
+  {
+    "number": 309,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-93.604",
+      "-936.040"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -93.604 lebih dekat ke nol daripada -936.040 sehingga nilainya lebih besar."
+  },
+  {
+    "number": 310,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "681.527",
+      "681.572"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 572 lebih besar daripada 527."
+  },
+  {
+    "number": 311,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-528.741",
+      "-528.714"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -528.714 lebih dekat ke nol daripada -528.741, sehingga B lebih besar."
+  },
+  {
+    "number": 312,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "67.315",
+      "673.150"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Keduanya positif, jadi B lebih besar."
+  },
+  {
+    "number": 313,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-864.203",
+      "-864.230"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -864.203 lebih dekat ke nol daripada -864.230, sehingga A lebih besar."
+  },
+  {
+    "number": 314,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "719.486",
+      "719.468"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Pada tiga digit terakhir, 486 lebih besar daripada 468."
+  },
+  {
+    "number": 315,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-42.718",
+      "42.781"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bilangan positif lebih besar daripada bilangan negatif."
+  },
+  {
+    "number": 316,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-975.621",
+      "-975.612"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -975.612 lebih dekat ke nol daripada -975.621 sehingga B lebih besar."
+  },
+  {
+    "number": 317,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "348.705",
+      "348.750"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Tiga digit awal sama. Tiga digit terakhir 750 lebih besar daripada 705."
+  },
+  {
+    "number": 318,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-706.483",
+      "-706.438"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Angka absolut 706.438 lebih kecil daripada 706.483. Karena keduanya negatif, B lebih besar."
+  },
+  {
+    "number": 319,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "85.629",
+      "856.290"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. B lebih besar."
+  },
+  {
+    "number": 320,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-591.076",
+      "-591.067"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -591.067 lebih dekat ke nol daripada -591.076 sehingga nilainya lebih besar."
+  },
+  {
+    "number": 321,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "462.819",
+      "462.891"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 891 lebih besar daripada 819."
+  },
+  {
+    "number": 322,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-823.547",
+      "-823.574"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 823.547 lebih kecil daripada 823.574. Maka -823.547 lebih besar."
+  },
+  {
+    "number": 323,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "96.408",
+      "964.080"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Karena keduanya positif, B lebih besar."
+  },
+  {
+    "number": 324,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-347.925",
+      "-347.952"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -347.925 lebih dekat ke nol daripada -347.952 sehingga A lebih besar."
+  },
+  {
+    "number": 325,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "827.164",
+      "827.146"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Pada tiga digit terakhir, 164 lebih besar daripada 146."
+  },
+  {
+    "number": 326,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-68.439",
+      "68.394"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bilangan positif selalu lebih besar daripada bilangan negatif."
+  },
+  {
+    "number": 327,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-914.682",
+      "-914.628"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -914.628 lebih dekat ke nol daripada -914.682, sehingga B lebih besar."
+  },
+  {
+    "number": 328,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "531.907",
+      "531.970"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 970 lebih besar daripada 907."
+  },
+  {
+    "number": 329,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-285.416",
+      "-285.461"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 285.416 lebih kecil daripada 285.461. Jadi, -285.416 lebih besar."
+  },
+  {
+    "number": 330,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "79.254",
+      "792.540"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. B lebih besar."
+  },
+  {
+    "number": 331,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-638.105",
+      "-638.150"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -638.105 lebih dekat ke nol daripada -638.150 sehingga A lebih besar."
+  },
+  {
+    "number": 332,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "704.862",
+      "704.826"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Tiga digit terakhir 862 lebih besar daripada 826."
+  },
+  {
+    "number": 333,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-459.738",
+      "-459.783"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 459.738 lebih kecil daripada 459.783. Karena keduanya negatif, A lebih besar."
+  },
+  {
+    "number": 334,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "62.507",
+      "625.070"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Karena keduanya positif, B lebih besar."
+  },
+  {
+    "number": 335,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-782.604",
+      "-782.640"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -782.604 lebih dekat ke nol daripada -782.640 sehingga nilainya lebih besar."
+  },
+  {
+    "number": 336,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "193.857",
+      "193.875"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 875 lebih besar daripada 857."
+  },
+  {
+    "number": 337,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-57.291",
+      "-572.910"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -57.291 lebih dekat ke nol daripada -572.910 sehingga A lebih besar."
+  },
+  {
+    "number": 338,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "846.302",
+      "846.320"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Tiga digit awal sama. Pada tiga digit terakhir, 320 lebih besar daripada 302."
+  },
+  {
+    "number": 339,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-621.495",
+      "-621.459"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -621.459 lebih dekat ke nol daripada -621.495 sehingga B lebih besar."
+  },
+  {
+    "number": 340,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "88.731",
+      "887.310"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. B lebih besar."
+  },
+  {
+    "number": 341,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-936.217",
+      "-936.271"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 936.217 lebih kecil daripada 936.271. Jadi, -936.217 lebih besar."
+  },
+  {
+    "number": 342,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "572.684",
+      "572.648"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Tiga digit terakhir 684 lebih besar daripada 648."
+  },
+  {
+    "number": 343,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-73.518",
+      "73.581"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bilangan positif lebih besar daripada bilangan negatif."
+  },
+  {
+    "number": 344,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-814.306",
+      "-814.360"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -814.306 lebih dekat ke nol daripada -814.360 sehingga A lebih besar."
+  },
+  {
+    "number": 345,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "639.472",
+      "639.427"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Tiga digit terakhir 472 lebih besar daripada 427."
+  },
+  {
+    "number": 346,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-294.681",
+      "-294.618"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -294.618 lebih dekat ke nol daripada -294.681, sehingga B lebih besar."
+  },
+  {
+    "number": 347,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "54.826",
+      "548.260"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Keduanya positif, jadi B lebih besar."
+  },
+  {
+    "number": 348,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-867.532",
+      "-867.523"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -867.523 lebih dekat ke nol daripada -867.532 sehingga B lebih besar."
+  },
+  {
+    "number": 349,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "415.096",
+      "415.069"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Pada tiga digit terakhir, 096 lebih besar daripada 069."
+  },
+  {
+    "number": 350,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-49.682",
+      "-496.820"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. -49.682 lebih dekat ke nol daripada -496.820, sehingga A lebih besar."
+  },
+  {
+    "number": 351,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "783.615",
+      "783.651"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 651 lebih besar daripada 615."
+  },
+  {
+    "number": 352,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-542.798",
+      "-542.789"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -542.789 lebih dekat ke nol daripada -542.798 sehingga B lebih besar."
+  },
+  {
+    "number": 353,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "97.306",
+      "973.060"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. B memiliki enam digit, sedangkan A memiliki lima digit. Karena keduanya positif, B lebih besar."
+  },
+  {
+    "number": 354,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-681.425",
+      "-681.452"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Angka absolut 681.425 lebih kecil daripada 681.452. Karena keduanya negatif, A lebih besar."
+  },
+  {
+    "number": 355,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "268.904",
+      "268.940"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bagian awal sama. Tiga digit terakhir 940 lebih besar daripada 904."
+  },
+  {
+    "number": 356,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-759.183",
+      "-759.138"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -759.138 lebih dekat ke nol daripada -759.183 sehingga B lebih besar."
+  },
+  {
+    "number": 357,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "631.572",
+      "631.527"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Tiga digit terakhir 572 lebih besar daripada 527."
+  },
+  {
+    "number": 358,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-87.416",
+      "87.461"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. Bilangan positif selalu lebih besar daripada bilangan negatif."
+  },
+  {
+    "number": 359,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "-924.675",
+      "-924.657"
+    ],
+    "correct_answer": 1,
+    "explanation": "Jawaban: B. -924.657 lebih dekat ke nol daripada -924.675 sehingga B lebih besar."
+  },
+  {
+    "number": 360,
+    "category_id": 1,
+    "sub_category": "Numerik",
+    "question": "Manakah angka yang nilainya lebih besar di antara dua pilihan berikut?",
+    "options": [
+      "896.743",
+      "896.734"
+    ],
+    "correct_answer": 0,
+    "explanation": "Jawaban: A. Bagian awal sama. Tiga digit terakhir 743 lebih besar daripada 734."
   }
 ]

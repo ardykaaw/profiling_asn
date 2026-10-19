@@ -29,11 +29,7 @@ class CleanManajerialQuestionsSeeder extends Seeder
         $data = json_decode(File::get($jsonPath), true);
         $manajerialQuestions = $data['MANAJERIAL'] ?? [];
 
-        if (count($manajerialQuestions) > 30) {
-            $manajerialQuestions = array_slice($manajerialQuestions, 0, 30);
-        }
-
-        $this->command->info("Menghapus soal lama kategori MANAJERIAL (termasuk 15 duplikat)...");
+        $this->command->info("Menghapus soal lama kategori MANAJERIAL...");
         $deleted = Question::where('category_id', $cat->id)->delete();
         $this->command->info("Berhasil menghapus {$deleted} butir soal.");
 
@@ -54,6 +50,6 @@ class CleanManajerialQuestionsSeeder extends Seeder
         }
 
         $cat->update(['question_count' => $inserted]);
-        $this->command->info("Selesai! Berhasil memasukkan {$inserted} butir soal autentik Manajerial & Sosio-Kultural (23 Manajerial + 7 Sosio Kultural).");
+        $this->command->info("Selesai! Berhasil memasukkan {$inserted} butir soal autentik Manajerial & Sosio-Kultural (23 Manajerial + 22 Sosio Kultural).");
     }
 }

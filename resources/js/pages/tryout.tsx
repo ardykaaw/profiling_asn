@@ -58,56 +58,57 @@ const packages = [
         id: 'profiling-full', 
         title: 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)', 
         cat: 'SEMUA', 
-        defaultSoal: 698, 
-        durasi: 120, 
-        badge: '15 Subtes / 698 Soal Paten',
-        desc: 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (465 soal), Manajerial & Sosio-Kultural (30 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).'
+        defaultSoal: 773, 
+        durasi: 243, 
+        badge: '15 Subtes / 773 Soal Paten (243 Menit)',
+        desc: 'Simulasi menyeluruh 4 kategori resmi BKN: Tes Potensi (525 soal, 139 mnt), Manajerial & Sosio-Kultural (45 soal, 42 mnt), Literasi Digital (35 soal, 27 mnt), dan Preferensi Karir (168 soal, 35 mnt). Total 243 Menit.'
     },
     { 
         id: 'potensi-drill', 
         title: 'Sesi 1: Tes Potensi Kognitif & Figural', 
         cat: 'POTENSI', 
-        defaultSoal: 465, 
-        durasi: 90, 
-        badge: '5 Subtes / 465 Soal Paten',
-        desc: 'Mencakup 5 subtes resmi: Figural (30 soal), Numerik (300 soal), Berpikir Kritis (45 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).'
+        defaultSoal: 525, 
+        durasi: 139, 
+        badge: '5 Subtes / 525 Soal Paten (139 Menit)',
+        desc: 'Mencakup 5 subtes resmi: Figural (30 soal, 30 mnt), Numerik (360 soal, 34 mnt), Berpikir Kritis (45 soal, 25 mnt), Kepribadian (45 soal, 25 mnt), dan Belajar Cepat (45 soal, 25 mnt). Total 139 Menit.'
     },
     { 
         id: 'manajerial-drill', 
         title: 'Sesi 2: Manajerial & Sosio-Kultural (SJT MenPAN-RB)', 
         cat: 'MANAJERIAL', 
-        defaultSoal: 30, 
-        durasi: 40, 
-        badge: '2 Subtes / 30 Soal Paten',
-        desc: 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 butir soal) dan Sosio Kultural (7 butir soal) berbasis skenario situasional birokrasi & integritas.'
+        defaultSoal: 45, 
+        durasi: 42, 
+        badge: '2 Subtes / 45 Soal Paten (42 Menit)',
+        desc: 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 soal, 22 mnt) dan Sosio Kultural (22 soal, 20 mnt). Total 42 Menit.'
     },
     { 
         id: 'digital-drill', 
         title: 'Sesi 3: Literasi & Keamanan Digital ASN', 
         cat: 'DIGITAL', 
         defaultSoal: 35, 
-        durasi: 30, 
-        badge: '4 Subtes / 35 Soal Paten',
-        desc: 'Mencakup 4 pilar kecakapan digital: Digital Skill (9 butir), Digital Culture (9 butir), Digital Ethics (9 butir), dan Digital Safety (8 butir).'
+        durasi: 27, 
+        badge: '4 Subtes / 35 Soal Paten (27 Menit)',
+        desc: 'Mencakup 4 pilar kecakapan digital: Digital Skill (9 soal, 7 mnt), Digital Culture (9 soal, 7 mnt), Digital Ethics (9 soal, 7 mnt), dan Digital Safety (8 soal, 6 mnt). Total 27 Menit.'
     },
     { 
         id: 'karir-drill', 
         title: 'Sesi 4: Preferensi & Tripatha Karir ASN', 
         cat: 'KARIR', 
         defaultSoal: 168, 
-        durasi: 45, 
-        badge: '4 Subtes / 168 Soal Paten',
-        desc: 'Mencakup 4 instrumen minat & bakat: Minat (42 butir), Nilai Pribadi (42 butir), Aspirasi (42 butir), dan Pengalaman Kerja (42 butir).'
+        durasi: 35, 
+        badge: '4 Subtes / 168 Soal Paten (35 Menit)',
+        desc: 'Mencakup 4 instrumen minat & bakat: Minat (42 butir, 9 mnt), Nilai Pribadi (42 butir, 9 mnt), Aspirasi (42 butir, 9 mnt), dan Pengalaman Kerja (42 butir, 8 mnt). Total 35 Menit.'
     },
 ];
 
-const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sessionName: string; category: string; description: string }> = {
+const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sessionName: string; category: string; description: string; durationMinutes: number }> = {
     'potensi-figural': {
         title: 'Penalaran Figural (Spasial & Bentuk)',
         shortTitle: 'Figural',
         sessionName: 'Tes Potensi Kognitif',
         category: 'POTENSI',
         description: 'Uji daya visualisasi, rotasi bentuk 3D, analogi gambar, dan kelanjutan pola figural standar BKN.',
+        durationMinutes: 30,
     },
     'potensi-numerik': {
         title: 'Penalaran Numerik (Perbandingan Angka)',
@@ -115,6 +116,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tes Potensi Kognitif',
         category: 'POTENSI',
         description: 'Uji kecepatan dan ketelitian komparasi nilai angka positif-negatif berkecepatan tinggi.',
+        durationMinutes: 34,
     },
     'potensi-kritis': {
         title: 'Berpikir Kritis & Problem Solving',
@@ -122,6 +124,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tes Potensi Kognitif',
         category: 'POTENSI',
         description: 'Uji logika analitis, identifikasi premis, dan evaluasi solusi kebijakan publik.',
+        durationMinutes: 25,
     },
     'potensi-belajar-cepat': {
         title: 'Kemampuan Belajar Cepat & Adaptasi',
@@ -129,6 +132,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tes Potensi Kognitif',
         category: 'POTENSI',
         description: 'Uji kecepatan memahami instruksi baru, sintesis data, dan fleksibilitas kerja.',
+        durationMinutes: 25,
     },
     'potensi-kepribadian': {
         title: 'Integritas & Kepribadian ASN',
@@ -136,6 +140,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tes Potensi Kognitif',
         category: 'POTENSI',
         description: 'Uji profil ketahanan mental, etos kerja, kedisiplinan, dan konsistensi moral ASN.',
+        durationMinutes: 25,
     },
     'manajerial-sjt': {
         title: 'Kompetensi Manajerial (SJT)',
@@ -143,6 +148,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Manajerial & Sosio Kultural',
         category: 'MANAJERIAL',
         description: 'Uji 8 kompetensi manajerial MenPAN-RB berbasis skenario situasional birokrasi & integritas.',
+        durationMinutes: 22,
     },
     'manajerial-sosio': {
         title: 'Sosio-Kultural & Perekat Bangsa',
@@ -150,6 +156,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Manajerial & Sosio Kultural',
         category: 'MANAJERIAL',
         description: 'Uji kepekaan sosial, toleransi keberagaman, dan peran sebagai perekat persatuan bangsa.',
+        durationMinutes: 20,
     },
     'digital-skill': {
         title: 'Digital Skill (Kecakapan Digital)',
@@ -157,6 +164,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Literasi Digital',
         category: 'DIGITAL',
         description: 'Pemahaman pengoperasian perangkat lunak, sistem digital pemerintahan, dan otomatisasi administrasi.',
+        durationMinutes: 7,
     },
     'digital-culture': {
         title: 'Digital Culture (Budaya Digital)',
@@ -164,6 +172,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Literasi Digital',
         category: 'DIGITAL',
         description: 'Penanaman wawasan kebangsaan, Pancasila, dan Bhinneka Tunggal Ika di ruang siber.',
+        durationMinutes: 7,
     },
     'digital-ethics': {
         title: 'Digital Ethics (Etika Digital)',
@@ -171,6 +180,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Literasi Digital',
         category: 'DIGITAL',
         description: 'Tata krama bermedia digital, komunikasi birokrasi santun, dan pencegahan ujaran kebencian.',
+        durationMinutes: 7,
     },
     'digital-safety': {
         title: 'Digital Safety (Keamanan Siber)',
@@ -178,6 +188,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Literasi Digital',
         category: 'DIGITAL',
         description: 'Perlindungan data pribadi ASN, keamanan sandi, penanganan phishing, dan mitigasi kebocoran data.',
+        durationMinutes: 6,
     },
     'karir-minat': {
         title: 'Preferensi Karir: Minat Kerja (RIASEC)',
@@ -185,6 +196,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
         description: 'Eksplorasi ketertarikan jenis tugas dan lingkungan kerja ASN yang paling memotivasi.',
+        durationMinutes: 9,
     },
     'karir-nilai': {
         title: 'Preferensi Karir: Nilai Pribadi (Values)',
@@ -192,6 +204,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
         description: 'Prinsip utama yang menjadi dorongan moral dan standar ideal dalam bekerja.',
+        durationMinutes: 9,
     },
     'karir-aspirasi': {
         title: 'Preferensi Karir: Aspirasi Masa Depan',
@@ -199,6 +212,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
         description: 'Visi jangka panjang dan target kontribusi bagi organisasi dan negara.',
+        durationMinutes: 9,
     },
     'karir-pengalaman': {
         title: 'Preferensi Karir: Pengalaman Kerja',
@@ -206,6 +220,7 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
         description: 'Refleksi pencapaian tugas dan peran kerja efektif yang pernah dijalankan.',
+        durationMinutes: 8,
     },
 };
 
@@ -265,6 +280,7 @@ interface SubtestItem {
     sessionName: string;
     category: string;
     description: string;
+    durationMinutes?: number;
     questions: Question[];
 }
 
@@ -298,6 +314,7 @@ const buildSubtestsForPackage = (pkgCat: string, bank: Question[]): SubtestItem[
                 sessionName: meta?.sessionName || '',
                 category: meta?.category || '',
                 description: meta?.description || '',
+                durationMinutes: meta?.durationMinutes,
                 questions: qList.sort((a, b) => a.id - b.id),
             });
         }
@@ -1803,6 +1820,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             {currentSubtest?.sessionName && (
                                                 <span className="hidden md:inline-block text-[11px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
                                                     {currentSubtest.sessionName}
+                                                </span>
+                                            )}
+                                            {currentSubtest?.durationMinutes && (
+                                                <span className="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-100/70 border border-emerald-200 px-2 py-0.5 rounded inline-flex items-center gap-1">
+                                                    ⏱️ {currentSubtest.durationMinutes} Menit
                                                 </span>
                                             )}
                                         </div>
