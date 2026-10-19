@@ -58,10 +58,10 @@ const packages = [
         id: 'profiling-full', 
         title: 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)', 
         cat: 'SEMUA', 
-        defaultSoal: 713, 
+        defaultSoal: 698, 
         durasi: 120, 
-        badge: '15 Subtes / 713 Soal Paten',
-        desc: 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (465 soal), Manajerial & Sosio-Kultural (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).'
+        badge: '15 Subtes / 698 Soal Paten',
+        desc: 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (465 soal), Manajerial & Sosio-Kultural (30 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).'
     },
     { 
         id: 'potensi-drill', 
@@ -70,16 +70,16 @@ const packages = [
         defaultSoal: 465, 
         durasi: 90, 
         badge: '5 Subtes / 465 Soal Paten',
-        desc: 'Mencakup 5 subtes resmi: Figural (45 soal), Numerik (300 soal), Berpikir Kritis (30 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).'
+        desc: 'Mencakup 5 subtes resmi: Figural (30 soal), Numerik (300 soal), Berpikir Kritis (45 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).'
     },
     { 
         id: 'manajerial-drill', 
         title: 'Sesi 2: Manajerial & Sosio-Kultural (SJT MenPAN-RB)', 
         cat: 'MANAJERIAL', 
-        defaultSoal: 45, 
+        defaultSoal: 30, 
         durasi: 40, 
-        badge: '2 Subtes / 45 Soal Paten',
-        desc: 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 butir soal) dan Sosio Kultural (22 butir soal) berbasis skenario situasional birokrasi & integritas.'
+        badge: '2 Subtes / 30 Soal Paten',
+        desc: 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 butir soal) dan Sosio Kultural (7 butir soal) berbasis skenario situasional birokrasi & integritas.'
     },
     { 
         id: 'digital-drill', 
