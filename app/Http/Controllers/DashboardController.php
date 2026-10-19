@@ -40,19 +40,12 @@ class DashboardController extends Controller
                 'title' => $s->title,
                 'date' => $completedDate ? $completedDate->translatedFormat('d M Y') : '-',
                 'score' => $s->total_score,
-                'max' => 100,
-                'status' => $s->talent_quadrant ?? ($s->is_passed ? 'MEMENUHI SYARAT' : 'PERLU PENINGKATAN'),
+                'max' => 550,
+                'status' => $s->is_passed ? 'LULUS PG' : 'TIDAK LULUS',
                 'passing' => (bool) $s->is_passed,
-                'category_scores' => $s->category_scores ?? [
-                    'POTENSI' => $s->twk_score ?? 85,
-                    'MANAJERIAL' => $s->tiu_score ?? 88,
-                    'DIGITAL' => $s->tkp_score ?? 82,
-                    'KARIR' => 100,
-                ],
-                'career_recommendation' => $s->career_recommendation ?? 'Jalur Fungsional Keahlian & Riset Kebijakan',
-                'career_breakdown' => $s->career_breakdown,
-                'competency_levels' => $s->competency_levels ?? [],
-                'talent_quadrant' => $s->talent_quadrant ?? 'Bintang (Box 9)',
+                'twk_score' => $s->twk_score,
+                'tiu_score' => $s->tiu_score,
+                'tkp_score' => $s->tkp_score,
             ];
         })->values()->all();
 
@@ -64,32 +57,175 @@ class DashboardController extends Controller
             }
         }
 
+        // Sessions and questions this week
+        $sessionsThisWeek = $allSessions->filter(function ($s) {
+            $date = $s->completed_at ?? $s->created_at;
+            return $date && $date->greaterThanOrEqualTo(now()->startOfWeek());
+        });
+        $sessionsThisWeekCount = $sessionsThisWeek->count();
+
+        $questionsThisWeek = 0;
+        foreach ($sessionsThisWeek as $s) {
+            if (is_array($s->answers)) {
+                $questionsThisWeek += count($s->answers);
+            }
+        }
+
+        // Score difference compared to previous session
+        $scoreDiff = 0;
+        if ($allSessions->count() >= 2) {
+            $scoreDiff = (int) $allSessions[0]->total_score - (int) $allSessions[1]->total_score;
+        }
+
         // Average score
         $avgScore = $totalSessionsCount > 0
             ? round($allSessions->avg('total_score'))
             : 0;
 
-        // Categories with material counts
+        // Accuracy rate based on score achieved / max score 550
+        $accuracyRate = $totalSessionsCount > 0 && $avgScore > 0
+            ? round(($avgScore / 550) * 100)
+            : 0;
+
+        // Bank and materials stats
+        $totalQuestionsInBank = Question::where('is_active', true)->count();
+        $totalMaterialsCount = Material::where('is_published', true)->count();
+
+        // Categories with material counts for progress widget
         $categories = Category::withCount(['materials' => function ($q) {
             $q->where('is_published', true);
         }])->orderBy('order')->get();
 
-        $totalQuestionsInBank = Question::where('is_active', true)->count();
-        $totalMaterialsCount = Material::where('is_published', true)->count();
-
-        // Completed dates for streak
+        // Calculate active streak days
         $completedDates = $allSessions->map(function ($s) {
             return ($s->completed_at ?? $s->created_at)->toDateString();
         })->unique()->values()->all();
 
-        $streakDays = count($completedDates) > 0 ? 3 : 1;
+        $streakDays = 0;
+        $checkDate = now()->toDateString();
+        if (in_array($checkDate, $completedDates)) {
+            $streakDays = 1;
+            $current = now()->subDay();
+            while (in_array($current->toDateString(), $completedDates)) {
+                $streakDays++;
+                $current->subDay();
+            }
+        } elseif (in_array(now()->subDay()->toDateString(), $completedDates)) {
+            $streakDays = 1;
+            $current = now()->subDays(2);
+            while (in_array($current->toDateString(), $completedDates)) {
+                $streakDays++;
+                $current->subDay();
+            }
+        }
 
         // 28-day activity grid
         $activityGrid = [];
         for ($i = 27; $i >= 0; $i--) {
             $date = now()->subDays($i)->toDateString();
-            $activityGrid[] = in_array($date, $completedDates) || ($i % 4 === 0 && $totalSessionsCount > 0);
+            $activityGrid[] = in_array($date, $completedDates);
         }
+
+        // Package Tracking Data
+        $packagesConfig = [
+            [
+                'id' => 'profiling-full',
+                'title' => 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)',
+                'short_title' => 'Simulasi Lengkap 4 Sesi',
+                'category' => 'SEMUA',
+                'badge' => '15 Subtes / 728 Soal',
+                'total_subtest' => 15,
+                'total_soal' => 728,
+                'durasi' => 120,
+                'description' => 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (480 soal), Manajerial & Soskultur (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).',
+            ],
+            [
+                'id' => 'potensi-drill',
+                'title' => 'Sesi 1: Tes Potensi Kognitif & Figural',
+                'short_title' => 'Sesi 1: Tes Potensi Kognitif',
+                'category' => 'POTENSI',
+                'badge' => '5 Subtes / 480 Soal',
+                'total_subtest' => 5,
+                'total_soal' => 480,
+                'durasi' => 90,
+                'description' => 'Mencakup 5 subtes resmi: Figural (45 soal), Numerik (300 soal), Berpikir Kritis (45 soal), Kemampuan Belajar Cepat (45 soal), dan Kepribadian (45 soal).',
+            ],
+            [
+                'id' => 'manajerial-drill',
+                'title' => 'Sesi 2: Manajerial & Sosio-Kultural (SJT MenPAN-RB)',
+                'short_title' => 'Sesi 2: Manajerial & Soskultur',
+                'category' => 'MANAJERIAL',
+                'badge' => '2 Subtes / 45 Soal',
+                'total_subtest' => 2,
+                'total_soal' => 45,
+                'durasi' => 40,
+                'description' => 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 butir soal) dan Sosio Kultural (22 butir soal) berbasis skenario situasional birokrasi & integritas.',
+            ],
+            [
+                'id' => 'digital-drill',
+                'title' => 'Sesi 3: Literasi & Keamanan Digital ASN',
+                'short_title' => 'Sesi 3: Literasi Digital ASN',
+                'category' => 'DIGITAL',
+                'badge' => '4 Subtes / 35 Soal',
+                'total_subtest' => 4,
+                'total_soal' => 35,
+                'durasi' => 30,
+                'description' => 'Mencakup 4 pilar kecakapan digital: Digital Skill (9 butir), Digital Culture (9 butir), Digital Ethics (9 butir), dan Digital Safety (8 butir).',
+            ],
+            [
+                'id' => 'karir-drill',
+                'title' => 'Sesi 4: Preferensi & Tripatha Karir ASN',
+                'short_title' => 'Sesi 4: Preferensi Tripatha Karir',
+                'category' => 'KARIR',
+                'badge' => '4 Subtes / 168 Soal',
+                'total_subtest' => 4,
+                'total_soal' => 168,
+                'durasi' => 45,
+                'description' => 'Mencakup 4 instrumen minat & bakat: Minat (42 butir), Nilai Pribadi (42 butir), Aspirasi (42 butir), dan Pengalaman Kerja (42 butir).',
+            ],
+        ];
+
+        $packageTracking = [];
+        $completedPackagesCount = 0;
+
+        foreach ($packagesConfig as $pkg) {
+            $matchingSession = $allSessions->first(function ($s) use ($pkg) {
+                return $s->title === $pkg['title'] 
+                    || str_contains($s->title, $pkg['title'])
+                    || ($pkg['id'] === 'profiling-full' && str_contains($s->title, 'Simulasi Profiling 4 Subtes'));
+            });
+
+            $isCompleted = (bool) $matchingSession;
+            if ($isCompleted) {
+                $completedPackagesCount++;
+            }
+
+            $completedDate = $matchingSession ? ($matchingSession->completed_at ?? $matchingSession->created_at) : null;
+
+            $packageTracking[] = [
+                'id' => $pkg['id'],
+                'title' => $pkg['title'],
+                'short_title' => $pkg['short_title'],
+                'category' => $pkg['category'],
+                'badge' => $pkg['badge'],
+                'total_subtest' => $pkg['total_subtest'],
+                'total_soal' => $pkg['total_soal'],
+                'durasi' => $pkg['durasi'],
+                'description' => $pkg['description'],
+                'is_completed' => $isCompleted,
+                'progress_percentage' => $isCompleted ? 100 : 0,
+                'session_id' => $matchingSession?->id,
+                'completed_at' => $completedDate ? $completedDate->translatedFormat('d M Y, H:i') : null,
+                'score' => $matchingSession?->total_score,
+                'talent_quadrant' => $matchingSession?->talent_quadrant,
+                'career_recommendation' => $matchingSession?->career_recommendation,
+                'is_passed' => $matchingSession ? (bool) $matchingSession->is_passed : null,
+            ];
+        }
+
+        $overallProgressPercent = count($packagesConfig) > 0 
+            ? round(($completedPackagesCount / count($packagesConfig)) * 100) 
+            : 0;
 
         return Inertia::render('dashboard', [
             'latestSession' => $latestSession,
@@ -97,12 +233,20 @@ class DashboardController extends Controller
             'totalSessionsCount' => $totalSessionsCount,
             'passedSessionsCount' => $passedSessionsCount,
             'totalQuestionsAnswered' => $totalQuestionsAnswered,
+            'sessionsThisWeek' => $sessionsThisWeekCount,
+            'questionsThisWeek' => $questionsThisWeek,
+            'scoreDiff' => $scoreDiff,
+            'accuracyRate' => $accuracyRate,
             'avgScore' => $avgScore,
             'streakDays' => $streakDays,
             'activityGrid' => $activityGrid,
             'totalQuestionsInBank' => $totalQuestionsInBank,
             'totalMaterialsCount' => $totalMaterialsCount,
             'categories' => $categories,
+            'packageTracking' => $packageTracking,
+            'completedPackagesCount' => $completedPackagesCount,
+            'totalPackagesCount' => count($packagesConfig),
+            'overallProgressPercent' => $overallProgressPercent,
         ]);
     }
 }

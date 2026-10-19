@@ -42,9 +42,16 @@ class TryoutController extends Controller
 
         $categories = Category::orderBy('order')->get();
 
+        $completedTitles = TryoutSession::where('user_id', $user->id)
+            ->pluck('title')
+            ->unique()
+            ->values()
+            ->all();
+
         return Inertia::render('tryout', [
             'dbQuestions' => $questions,
             'sessions' => $sessions,
+            'completedTitles' => $completedTitles,
             'categories' => $categories,
         ]);
     }
@@ -235,5 +242,31 @@ class TryoutController extends Controller
             'success' => 'Hasil asesmen profiling dan pemetaan Tripatha Karir berhasil diproses!',
             'session' => $session,
         ]);
+    }
+
+    public function destroy(Request $request, TryoutSession $tryout)
+    {
+        $user = $request->user();
+        if ($tryout->user_id !== $user->id && !$user->isAdmin()) {
+            abort(403, 'Akses tidak diizinkan.');
+        }
+
+        $tryout->delete();
+
+        return back()->with('success', 'Riwayat pengerjaan tes berhasil dihapus. Modul sekarang dapat dikerjakan ulang.');
+    }
+
+    public function resetPackage(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string',
+        ]);
+
+        $user = $request->user();
+        TryoutSession::where('user_id', $user->id)
+            ->where('title', $validated['title'])
+            ->delete();
+
+        return back()->with('success', 'Riwayat pengerjaan paket telah direset. Modul sekarang dapat dikerjakan ulang.');
     }
 }

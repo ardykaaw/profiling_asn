@@ -34,7 +34,9 @@ import {
     Lightbulb,
     ZoomIn,
     Coffee,
-    PauseCircle
+    PauseCircle,
+    Lock,
+    Trash2
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -307,6 +309,7 @@ const buildSubtestsForPackage = (pkgCat: string, bank: Question[]): SubtestItem[
 interface TryOutPageProps {
     dbQuestions?: Question[];
     sessions?: any[];
+    completedTitles?: string[];
     categories?: any[];
     auth?: {
         user?: {
@@ -669,7 +672,7 @@ function NineBoxSimata({ activeBox, axisX, axisY }: { activeBox: number; axisX?:
     );
 }
 
-export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: TryOutPageProps) {
+export default function TryOutPage({ dbQuestions = [], sessions = [], completedTitles = [], auth }: TryOutPageProps) {
     const rawBank = dbQuestions && dbQuestions.length > 0 ? dbQuestions : [];
 
     const getPackageQuestionCount = (cat: string, fallback: number) => {
@@ -699,6 +702,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
     const [showExitModal, setShowExitModal] = useState(false);
     const [showSubmitModal, setShowSubmitModal] = useState(false);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+    // Reset Package Modal State
+    const [packageToReset, setPackageToReset] = useState<any | null>(null);
+    const [isResetting, setIsResetting] = useState(false);
 
     // Subtest Break States & Session Persistence
     const [justCompletedSubtest, setJustCompletedSubtest] = useState<SubtestItem | null>(null);
@@ -730,8 +737,58 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
         }
     };
 
+    const handleConfirmReset = () => {
+        if (!packageToReset) return;
+        setIsResetting(true);
+
+        try {
+            const raw = localStorage.getItem('tryout_saved_session');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed?.packageTitle === packageToReset.title || parsed?.packageId === packageToReset.id) {
+                    localStorage.removeItem('tryout_saved_session');
+                    setSavedSession(null);
+                }
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+        router.post(
+            '/tryout/reset-package',
+            { title: packageToReset.title },
+            {
+                preserveScroll: true,
+                onSuccess: () => {
+                    setIsResetting(false);
+                    setPackageToReset(null);
+                },
+                onError: () => {
+                    setIsResetting(false);
+                    setPackageToReset(null);
+                }
+            }
+        );
+    };
+
     useEffect(() => {
         checkSavedSession();
+
+        // Check if navigated with query param ?package=...
+        const params = new URLSearchParams(window.location.search);
+        const pkgParam = params.get('package');
+        if (pkgParam) {
+            const foundPkg = packages.find(p => p.id === pkgParam);
+            if (foundPkg) {
+                const isDone = (completedTitles && completedTitles.includes(foundPkg.title)) || 
+                    sessions.some(s => s.title === foundPkg.title || (s.title && s.title.includes(foundPkg.title)) || (foundPkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes')));
+                if (isDone) {
+                    alert(`Paket "${foundPkg.title}" sudah pernah diselesaikan dan saat ini terkunci. Anda tidak dapat melakukan tes ulang sebelum menghapus riwayat pengerjaannya.`);
+                } else {
+                    initiateTest(foundPkg);
+                }
+            }
+        }
     }, []);
 
     // Escape listener for image preview
@@ -1329,43 +1386,95 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                 Pilihan Modul Latihan Uji Kompetensi
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                                {packages.map((pkg) => (
-                                    <div
-                                        key={pkg.id}
-                                        className="rounded-2xl border border-slate-200 bg-white shadow-md hover:shadow-xl hover:border-emerald-300 transition-all flex flex-col justify-between overflow-hidden"
-                                    >
-                                        <MacWindowControls title={pkg.title} badge={pkg.badge} />
-                                        <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                                            <div>
-                                                <h3 className="font-bold text-sm sm:text-base text-slate-900">
-                                                    {pkg.title}
-                                                </h3>
-                                                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                                                    {pkg.desc}
-                                                </p>
-                                            </div>
+                                {packages.map((pkg) => {
+                                    const isDone = (completedTitles && completedTitles.includes(pkg.title)) || 
+                                        sessions.some(s => s.title === pkg.title || (s.title && s.title.includes(pkg.title)) || (pkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes')));
+                                    return (
+                                        <div
+                                            key={pkg.id}
+                                            className={`rounded-2xl border ${isDone ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-200 bg-white'} shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden`}
+                                        >
+                                            <MacWindowControls 
+                                                title={pkg.title} 
+                                                badge={isDone ? '100% SELESAI' : pkg.badge} 
+                                            />
+                                            <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                                <div>
+                                                    <div className="flex items-center justify-between gap-2">
+                                                        <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                                                            {pkg.title}
+                                                        </h3>
+                                                    </div>
+                                                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                                        {pkg.desc}
+                                                    </p>
+                                                </div>
 
-                                            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                                                <span className="flex items-center gap-1.5">
-                                                    <Clock className="w-3.5 h-3.5 text-slate-400" />
-                                                    {pkg.durasi} Menit
-                                                </span>
-                                                <span className="flex items-center gap-1.5">
-                                                    <Award className="w-3.5 h-3.5 text-slate-400" />
-                                                    {getPackageQuestionCount(pkg.cat, pkg.defaultSoal)} Butir Soal
-                                                </span>
-                                            </div>
+                                                {/* Progress Bar Widget */}
+                                                <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                                                    <div className="flex items-center justify-between text-xs font-bold">
+                                                        <span className="text-slate-500 text-[11px] uppercase tracking-wider">Progress Pengerjaan</span>
+                                                        <span className={isDone ? 'text-emerald-700 flex items-center gap-1 font-mono text-xs' : 'text-slate-400 font-mono text-xs'}>
+                                                            {isDone ? (
+                                                                <>
+                                                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                                                                    <span>100% Selesai</span>
+                                                                </>
+                                                            ) : (
+                                                                <span>0% Belum Dikerjakan</span>
+                                                            )}
+                                                        </span>
+                                                    </div>
+                                                    <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                                        <div 
+                                                            className={`h-full rounded-full transition-all duration-500 ${isDone ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0'}`} 
+                                                        />
+                                                    </div>
+                                                </div>
 
-                                            <button
-                                                onClick={() => initiateTest(pkg)}
-                                                className="w-full py-2.5 rounded-xl bg-slate-900 text-white hover:bg-emerald-800 font-bold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
-                                            >
-                                                <span>Buka Modul Ini</span>
-                                                <ArrowRight className="w-3.5 h-3.5" />
-                                            </button>
+                                                <div className="pt-1 flex items-center justify-between text-xs text-slate-500 font-medium">
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Clock className="w-3.5 h-3.5 text-slate-400" />
+                                                        {pkg.durasi} Menit
+                                                    </span>
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Award className="w-3.5 h-3.5 text-slate-400" />
+                                                        {getPackageQuestionCount(pkg.cat, pkg.defaultSoal)} Butir Soal
+                                                    </span>
+                                                </div>
+
+                                                {isDone ? (
+                                                    <div className="space-y-2 pt-1">
+                                                        <button
+                                                            disabled
+                                                            className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs flex items-center justify-center gap-2 border border-slate-200 cursor-not-allowed select-none"
+                                                            title="Modul ini sudah pernah dikerjakan dan terkunci. Anda tidak dapat melakukan tes ulang kecuali menghapus riwayatnya."
+                                                        >
+                                                            <Lock className="w-3.5 h-3.5" />
+                                                            <span>Terkunci (Sudah Selesai)</span>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setPackageToReset(pkg)}
+                                                            className="w-full py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                                                        >
+                                                            <Trash2 className="w-3.5 h-3.5" />
+                                                            <span>Hapus / Reset Riwayat Tes Ini</span>
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <button
+                                                        onClick={() => initiateTest(pkg)}
+                                                        className="w-full py-2.5 rounded-xl bg-slate-900 text-white hover:bg-emerald-800 font-bold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                                                    >
+                                                        <span>Buka Modul Ini</span>
+                                                        <ArrowRight className="w-3.5 h-3.5" />
+                                                    </button>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
@@ -1384,6 +1493,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                                     <th className="py-2.5 px-3">Predikat 9 Box SIMATA</th>
                                                     <th className="py-2.5 px-3">Rekomendasi Karir</th>
                                                     <th className="py-2.5 px-3 text-right">Skor Total</th>
+                                                    <th className="py-2.5 px-3 text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -1409,6 +1519,16 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                                                         </td>
                                                         <td className="py-3 px-3 font-bold text-slate-900 text-right">
                                                             {s.total_score} Poin
+                                                        </td>
+                                                        <td className="py-3 px-3 text-center">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setPackageToReset({ title: s.title, id: s.id })}
+                                                                className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                                                                title="Hapus riwayat sesi ini"
+                                                            >
+                                                                <Trash2 className="w-3.5 h-3.5" />
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))}
@@ -2452,6 +2572,64 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                             >
                                 Tutup
                             </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal Konfirmasi Hapus & Reset Riwayat Paket */}
+            {packageToReset && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-xs animate-in fade-in duration-200">
+                    <div className="max-w-md w-full rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+                        <MacWindowControls title="Konfirmasi Reset Riwayat Tes" badge="PERINGATAN" />
+                        <div className="p-6 space-y-4">
+                            <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+                                    <AlertTriangle className="w-6 h-6" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-base text-slate-900">
+                                        Hapus Riwayat & Buka Kunci?
+                                    </h4>
+                                    <p className="text-xs text-slate-500">
+                                        Tindakan ini akan mereset progress tes Anda.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                                <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400">Paket yang akan direset:</div>
+                                <div className="font-bold text-slate-900">{packageToReset.title}</div>
+                                <div className="text-slate-500 text-[11px]">
+                                    Progress bar akan kembali ke <span className="font-bold text-slate-800">0%</span> dan modul ujian ini akan terbuka kembali sehingga Anda dapat melakukan tes ulang.
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-end gap-2.5 pt-2">
+                                <button
+                                    type="button"
+                                    disabled={isResetting}
+                                    onClick={() => setPackageToReset(null)}
+                                    className="px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors cursor-pointer"
+                                >
+                                    Batal
+                                </button>
+                                <button
+                                    type="button"
+                                    disabled={isResetting}
+                                    onClick={handleConfirmReset}
+                                    className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
+                                >
+                                    {isResetting ? (
+                                        <span>Mereset...</span>
+                                    ) : (
+                                        <>
+                                            <Trash2 className="w-3.5 h-3.5" />
+                                            <span>Ya, Hapus & Buka Kunci</span>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

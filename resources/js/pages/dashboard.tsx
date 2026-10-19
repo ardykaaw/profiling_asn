@@ -1,4 +1,5 @@
-import { Head, Link, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import { 
     Award, 
     Sparkles, 
@@ -9,7 +10,15 @@ import {
     TrendingUp,
     FileText,
     Compass,
-    CheckCircle2
+    CheckCircle2,
+    Lock,
+    Trash2,
+    AlertTriangle,
+    RotateCcw,
+    Clock,
+    ShieldAlert,
+    Check,
+    X
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -27,6 +36,26 @@ interface SharedData {
     [key: string]: unknown;
 }
 
+export interface PackageTrackingItem {
+    id: string;
+    title: string;
+    short_title: string;
+    category: string;
+    badge: string;
+    total_subtest: number;
+    total_soal: number;
+    durasi: number;
+    description: string;
+    is_completed: boolean;
+    progress_percentage: number;
+    session_id?: number | null;
+    completed_at?: string | null;
+    score?: number | null;
+    talent_quadrant?: string | null;
+    career_recommendation?: string | null;
+    is_passed?: boolean | null;
+}
+
 interface DashboardProps {
     latestSession?: any;
     recentSessions?: any[];
@@ -38,6 +67,10 @@ interface DashboardProps {
     totalQuestionsInBank?: number;
     totalMaterialsCount?: number;
     categories?: any[];
+    packageTracking?: PackageTrackingItem[];
+    completedPackagesCount?: number;
+    totalPackagesCount?: number;
+    overallProgressPercent?: number;
 }
 
 export default function Dashboard({
@@ -51,9 +84,52 @@ export default function Dashboard({
     totalQuestionsInBank = 24,
     totalMaterialsCount = 9,
     categories = [],
+    packageTracking = [],
+    completedPackagesCount = 0,
+    totalPackagesCount = 5,
+    overallProgressPercent = 0,
 }: DashboardProps) {
     const { auth } = usePage<SharedData>().props;
     const user = auth?.user;
+
+    const [packageToReset, setPackageToReset] = useState<PackageTrackingItem | null>(null);
+    const [isResetting, setIsResetting] = useState(false);
+    const [successBanner, setSuccessBanner] = useState<string | null>(null);
+
+    const handleConfirmReset = () => {
+        if (!packageToReset) return;
+        setIsResetting(true);
+
+        try {
+            const raw = localStorage.getItem('tryout_saved_session');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed?.packageTitle === packageToReset.title || parsed?.packageId === packageToReset.id) {
+                    localStorage.removeItem('tryout_saved_session');
+                }
+            }
+        } catch (e) {
+            console.error(e);
+        }
+
+        router.post(
+            '/tryout/reset-package',
+            { title: packageToReset.title },
+            {
+                preserveScroll: true,
+                onSuccess: () => {
+                    setIsResetting(false);
+                    setSuccessBanner(`Riwayat paket "${packageToReset.short_title || packageToReset.title}" berhasil direset. Anda dapat mengerjakan kembali tes tersebut.`);
+                    setPackageToReset(null);
+                    setTimeout(() => setSuccessBanner(null), 6000);
+                },
+                onError: () => {
+                    setIsResetting(false);
+                    setPackageToReset(null);
+                }
+            }
+        );
+    };
 
     const latestCareer = latestSession?.career_recommendation || recentSessions[0]?.career_recommendation || 'Jalur Fungsional Keahlian & Riset Kebijakan';
 
@@ -132,6 +208,185 @@ export default function Dashboard({
                     </div>
                     <div className="text-lg sm:text-xl font-black text-slate-900 mt-2">{totalQuestionsInBank} Soal</div>
                     <div className="text-[11px] font-semibold text-purple-700 mt-0.5">4 Subtes + 9 Buku Panduan</div>
+                </div>
+            </div>
+
+            {/* Success Alert Banner if Reset */}
+            {successBanner && (
+                <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 flex items-center justify-between gap-3 text-emerald-900 shadow-xs animate-in fade-in slide-in-from-top-2">
+                    <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                            <Check className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs sm:text-sm font-semibold">{successBanner}</span>
+                    </div>
+                    <button 
+                        type="button"
+                        onClick={() => setSuccessBanner(null)} 
+                        className="p-1 text-emerald-700 hover:text-emerald-900 hover:bg-emerald-100 rounded-lg transition-colors cursor-pointer"
+                    >
+                        <X className="w-4 h-4" />
+                    </button>
+                </div>
+            )}
+
+            {/* Tracking Capaian & Pengerjaan Paket Asesmen Mandiri */}
+            <div className="rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden">
+                <MacWindowControls 
+                    title="Tracking Pengerjaan Paket Simulasi Asesmen Profiling" 
+                    badge={`${completedPackagesCount} / ${totalPackagesCount} SELESAI (${overallProgressPercent}%)`} 
+                />
+                
+                <div className="p-5 sm:p-6 space-y-6">
+                    {/* Overall Progress Bar */}
+                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2.5">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-bold text-slate-800">
+                            <div className="flex items-center gap-2">
+                                <Award className="w-4 h-4 text-emerald-700" />
+                                <span>Status Kelengkapan Simulasi Seluruh Paket Mandiri</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="text-slate-500 font-medium">Progres Akumulatif:</span>
+                                <span className="font-mono text-emerald-800 text-sm font-black">{overallProgressPercent}%</span>
+                            </div>
+                        </div>
+
+                        {/* Progress Bar Container */}
+                        <div className="w-full h-3 rounded-full bg-slate-200 overflow-hidden p-0.5">
+                            <div 
+                                className="h-full rounded-full bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 transition-all duration-700 shadow-xs" 
+                                style={{ width: `${overallProgressPercent}%` }}
+                            />
+                        </div>
+
+                        <div className="flex items-center justify-between text-[11px] text-slate-500">
+                            <span>{completedPackagesCount} paket telah diselesaikan dan terkunci</span>
+                            <span>{totalPackagesCount - completedPackagesCount} paket siap dikerjakan</span>
+                        </div>
+                    </div>
+
+                    {/* 5 Packages Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                        {packageTracking.map((pkg) => (
+                            <div 
+                                key={pkg.id} 
+                                className={`rounded-2xl border transition-all flex flex-col justify-between overflow-hidden ${
+                                    pkg.is_completed 
+                                        ? 'border-emerald-200 bg-emerald-50/20 shadow-xs' 
+                                        : 'border-slate-200 bg-white hover:border-slate-300 shadow-xs'
+                                }`}
+                            >
+                                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                                    <div className="space-y-2">
+                                        <div className="flex items-center justify-between gap-2">
+                                            <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                                                pkg.is_completed 
+                                                    ? 'bg-emerald-100 text-emerald-800 border-emerald-300' 
+                                                    : 'bg-slate-100 text-slate-600 border-slate-200'
+                                            }`}>
+                                                {pkg.badge}
+                                            </span>
+                                            {pkg.is_completed && (
+                                                <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                                                    Selesai
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <h3 className="font-bold text-sm sm:text-base text-slate-900 leading-snug">
+                                            {pkg.title}
+                                        </h3>
+
+                                        <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                                            {pkg.description}
+                                        </p>
+                                    </div>
+
+                                    {/* Progress Bar inside Card */}
+                                    <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                                        <div className="flex items-center justify-between text-xs font-bold">
+                                            <span className="text-slate-500 text-[11px]">Progres Paket</span>
+                                            <span className={pkg.is_completed ? "text-emerald-700 font-mono text-xs font-bold" : "text-slate-400 font-mono text-xs font-bold"}>
+                                                {pkg.progress_percentage}% {pkg.is_completed ? 'Selesai' : 'Belum'}
+                                            </span>
+                                        </div>
+                                        <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                                            <div 
+                                                className={`h-full rounded-full transition-all duration-500 ${
+                                                    pkg.is_completed ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0'
+                                                }`} 
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Completed Metadata Pill */}
+                                    {pkg.is_completed ? (
+                                        <div className="rounded-xl bg-white border border-emerald-100 p-2.5 space-y-1 text-xs">
+                                            <div className="flex items-center justify-between text-slate-600">
+                                                <span>Skor Capaian:</span>
+                                                <span className="font-mono font-bold text-slate-900">{pkg.score ?? '-'} Poin</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-slate-600">
+                                                <span>Predikat 9 Box:</span>
+                                                <span className="font-bold text-emerald-800 text-[11px]">{pkg.talent_quadrant?.split('(')[0] || 'Box 9'}</span>
+                                            </div>
+                                            {pkg.completed_at && (
+                                                <div className="flex items-center justify-between text-[11px] text-slate-400 pt-0.5 border-t border-slate-50">
+                                                    <span>Selesai:</span>
+                                                    <span className="font-mono">{pkg.completed_at}</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div className="flex items-center justify-between text-xs text-slate-500 font-medium pt-1">
+                                            <span className="flex items-center gap-1.5">
+                                                <Clock className="w-3.5 h-3.5 text-slate-400" />
+                                                {pkg.durasi} Menit
+                                            </span>
+                                            <span className="flex items-center gap-1.5">
+                                                <FileText className="w-3.5 h-3.5 text-slate-400" />
+                                                {pkg.total_soal} Soal
+                                            </span>
+                                        </div>
+                                    )}
+
+                                    {/* Actions: Locked vs Start */}
+                                    <div className="pt-1">
+                                        {pkg.is_completed ? (
+                                            <div className="flex items-center gap-2">
+                                                <button
+                                                    disabled
+                                                    className="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs flex items-center justify-center gap-1.5 border border-slate-200 cursor-not-allowed select-none"
+                                                    title="Modul ini telah selesai dikerjakan dan terkunci. Anda tidak dapat mengulang tes kecuali menghapus riwayatnya."
+                                                >
+                                                    <Lock className="w-3.5 h-3.5" />
+                                                    <span>Terkunci</span>
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setPackageToReset(pkg)}
+                                                    className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                                                    title="Hapus riwayat untuk mengulang tes ini kembali"
+                                                >
+                                                    <Trash2 className="w-3.5 h-3.5" />
+                                                    <span>Hapus / Ulang</span>
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <a
+                                                href={`/tryout?package=${pkg.id}`}
+                                                className="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer text-center"
+                                            >
+                                                <span>Mulai Simulasi Ini</span>
+                                                <ArrowRight className="w-3.5 h-3.5" />
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -291,6 +546,7 @@ export default function Dashboard({
                                         <th className="py-2.5 px-3">Predikat Talenta</th>
                                         <th className="py-2.5 px-3">Arah Tripatha Karir</th>
                                         <th className="py-2.5 px-3 text-right">Skor Total</th>
+                                        <th className="py-2.5 px-3 text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -307,10 +563,91 @@ export default function Dashboard({
                                                 {s.career_recommendation || 'Jalur Fungsional Keahlian'}
                                             </td>
                                             <td className="py-3 px-3 font-bold text-slate-900 font-mono text-right">{s.score} Poin</td>
+                                            <td className="py-3 px-3 text-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setPackageToReset({
+                                                        id: 'session-' + (s.id || idx),
+                                                        title: s.title,
+                                                        short_title: s.title,
+                                                        category: '',
+                                                        badge: '',
+                                                        total_subtest: 0,
+                                                        total_soal: 0,
+                                                        durasi: 0,
+                                                        description: '',
+                                                        is_completed: true,
+                                                        progress_percentage: 100,
+                                                        session_id: s.id,
+                                                    })}
+                                                    className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                                                    title="Hapus riwayat sesi ini"
+                                                >
+                                                    <Trash2 className="w-3.5 h-3.5" />
+                                                </button>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal Konfirmasi Hapus & Reset Riwayat Paket */}
+            {packageToReset && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-xs animate-in fade-in duration-200">
+                    <div className="max-w-md w-full rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+                        <MacWindowControls title="Konfirmasi Reset Riwayat Tes" badge="PERINGATAN" />
+                        <div className="p-6 space-y-4">
+                            <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+                                    <AlertTriangle className="w-6 h-6" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-base text-slate-900">
+                                        Hapus Riwayat & Buka Kunci?
+                                    </h4>
+                                    <p className="text-xs text-slate-500">
+                                        Tindakan ini akan mereset progress tes Anda.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1.5">
+                                <div className="text-[11px] uppercase tracking-wider font-bold text-slate-400">Paket yang akan direset:</div>
+                                <div className="font-bold text-slate-900">{packageToReset.title}</div>
+                                <div className="text-slate-500 text-[11px]">
+                                    Progress bar akan kembali ke <span className="font-bold text-slate-800">0%</span> dan tombol pengerjaan akan terbuka kembali sehingga Anda dapat melakukan tes ulang.
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-end gap-2.5 pt-2">
+                                <button
+                                    type="button"
+                                    disabled={isResetting}
+                                    onClick={() => setPackageToReset(null)}
+                                    className="px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors cursor-pointer"
+                                >
+                                    Batal
+                                </button>
+                                <button
+                                    type="button"
+                                    disabled={isResetting}
+                                    onClick={handleConfirmReset}
+                                    className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition-colors flex items-center gap-1.5 shadow-xs cursor-pointer"
+                                >
+                                    {isResetting ? (
+                                        <span>Mereset...</span>
+                                    ) : (
+                                        <>
+                                            <Trash2 className="w-3.5 h-3.5" />
+                                            <span>Ya, Hapus & Buka Kunci</span>
+                                        </>
+                                    )}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
