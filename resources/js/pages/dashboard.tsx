@@ -47,6 +47,8 @@ export interface PackageTrackingItem {
     durasi: number;
     description: string;
     is_completed: boolean;
+    is_in_progress?: boolean;
+    current_subtest?: number;
     progress_percentage: number;
     session_id?: number | null;
     completed_at?: string | null;
@@ -307,20 +309,29 @@ export default function Dashboard({
                                     <div className="space-y-1.5 pt-2 border-t border-slate-100">
                                         <div className="flex items-center justify-between text-xs font-bold">
                                             <span className="text-slate-500 text-[11px]">Progres Paket</span>
-                                            <span className={pkg.is_completed ? "text-emerald-700 font-mono text-xs font-bold" : "text-slate-400 font-mono text-xs font-bold"}>
-                                                {pkg.progress_percentage}% {pkg.is_completed ? 'Selesai' : 'Belum'}
+                                            <span className={
+                                                pkg.is_completed 
+                                                    ? "text-emerald-700 font-mono text-xs font-bold" 
+                                                    : (pkg.is_in_progress ? "text-amber-700 font-mono text-xs font-bold" : "text-slate-400 font-mono text-xs font-bold")
+                                            }>
+                                                {pkg.is_completed 
+                                                    ? '100% Selesai' 
+                                                    : (pkg.is_in_progress ? `${pkg.progress_percentage}% (Sub-tes ${pkg.current_subtest}/${pkg.total_subtest})` : '0% Belum Dikerjakan')}
                                             </span>
                                         </div>
                                         <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                                             <div 
                                                 className={`h-full rounded-full transition-all duration-500 ${
-                                                    pkg.is_completed ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0'
+                                                    pkg.is_completed 
+                                                        ? 'bg-emerald-600 w-full' 
+                                                        : (pkg.is_in_progress ? 'bg-amber-500' : 'bg-slate-200 w-0')
                                                 }`} 
+                                                style={{ width: pkg.is_completed ? '100%' : (pkg.is_in_progress ? `${pkg.progress_percentage}%` : '0%') }}
                                             />
                                         </div>
                                     </div>
 
-                                    {/* Completed Metadata Pill */}
+                                    {/* Completed or In Progress Metadata Pill */}
                                     {pkg.is_completed ? (
                                         <div className="rounded-xl bg-white border border-emerald-100 p-2.5 space-y-1 text-xs">
                                             <div className="flex items-center justify-between text-slate-600">
@@ -338,6 +349,17 @@ export default function Dashboard({
                                                 </div>
                                             )}
                                         </div>
+                                    ) : pkg.is_in_progress ? (
+                                        <div className="rounded-xl bg-amber-50/70 border border-amber-200 p-2.5 space-y-1 text-xs text-amber-900">
+                                            <div className="flex items-center justify-between font-medium">
+                                                <span>Status Pengerjaan:</span>
+                                                <span className="font-bold text-amber-800">Sub-tes {pkg.current_subtest} Selesai</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-[11px] text-amber-700">
+                                                <span>Siap Dilanjutkan:</span>
+                                                <span className="font-bold">Sub-tes ke-{(pkg.current_subtest ?? 0) + 1}</span>
+                                            </div>
+                                        </div>
                                     ) : (
                                         <div className="flex items-center justify-between text-xs text-slate-500 font-medium pt-1">
                                             <span className="flex items-center gap-1.5">
@@ -351,7 +373,7 @@ export default function Dashboard({
                                         </div>
                                     )}
 
-                                    {/* Actions: Locked vs Start */}
+                                    {/* Actions: Locked vs Resume vs Start */}
                                     <div className="pt-1">
                                         {pkg.is_completed ? (
                                             <div className="flex items-center gap-2">
@@ -371,6 +393,24 @@ export default function Dashboard({
                                                 >
                                                     <Trash2 className="w-3.5 h-3.5" />
                                                     <span>Hapus / Ulang</span>
+                                                </button>
+                                            </div>
+                                        ) : pkg.is_in_progress ? (
+                                            <div className="flex items-center gap-2">
+                                                <a
+                                                    href={`/tryout?resume=${pkg.id}`}
+                                                    className="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center"
+                                                >
+                                                    <span>Lanjutkan Subtes {(pkg.current_subtest ?? 0) + 1}</span>
+                                                    <ArrowRight className="w-3.5 h-3.5" />
+                                                </a>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setPackageToReset(pkg)}
+                                                    className="px-3 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                                                    title="Hapus progres tersimpan untuk mulai dari awal"
+                                                >
+                                                    <Trash2 className="w-3.5 h-3.5" />
                                                 </button>
                                             </div>
                                         ) : (

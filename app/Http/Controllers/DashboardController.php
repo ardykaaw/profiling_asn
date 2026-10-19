@@ -189,18 +189,46 @@ class DashboardController extends Controller
         $completedPackagesCount = 0;
 
         foreach ($packagesConfig as $pkg) {
-            $matchingSession = $allSessions->first(function ($s) use ($pkg) {
-                return $s->title === $pkg['title'] 
+            $completedSession = $allSessions->first(function ($s) use ($pkg) {
+                return $s->completed_at !== null && (
+                    $s->title === $pkg['title'] 
                     || str_contains($s->title, $pkg['title'])
-                    || ($pkg['id'] === 'profiling-full' && str_contains($s->title, 'Simulasi Profiling 4 Subtes'));
+                    || ($pkg['id'] === 'profiling-full' && str_contains($s->title, 'Simulasi Profiling 4 Subtes'))
+                );
             });
 
-            $isCompleted = (bool) $matchingSession;
-            if ($isCompleted) {
-                $completedPackagesCount++;
-            }
+            $inProgressSession = $allSessions->first(function ($s) use ($pkg) {
+                return $s->completed_at === null && (
+                    $s->title === $pkg['title'] 
+                    || str_contains($s->title, $pkg['title'])
+                    || (isset($s->category_scores['package_id']) && $s->category_scores['package_id'] === $pkg['id'])
+                );
+            });
 
-            $completedDate = $matchingSession ? ($matchingSession->completed_at ?? $matchingSession->created_at) : null;
+            if ($completedSession) {
+                $completedPackagesCount++;
+                $isCompleted = true;
+                $isInProgress = false;
+                $progressPercentage = 100;
+                $currentSubtest = $pkg['total_subtest'];
+                $session = $completedSession;
+                $completedDate = $completedSession->completed_at ?? $completedSession->created_at;
+            } elseif ($inProgressSession) {
+                $isCompleted = false;
+                $isInProgress = true;
+                $currSub = (int) ($inProgressSession->category_scores['current_subtest_index'] ?? 1);
+                $currentSubtest = $currSub;
+                $progressPercentage = (int) min(99, max(1, round(($currSub / $pkg['total_subtest']) * 100)));
+                $session = $inProgressSession;
+                $completedDate = null;
+            } else {
+                $isCompleted = false;
+                $isInProgress = false;
+                $progressPercentage = 0;
+                $currentSubtest = 0;
+                $session = null;
+                $completedDate = null;
+            }
 
             $packageTracking[] = [
                 'id' => $pkg['id'],
@@ -213,13 +241,15 @@ class DashboardController extends Controller
                 'durasi' => $pkg['durasi'],
                 'description' => $pkg['description'],
                 'is_completed' => $isCompleted,
-                'progress_percentage' => $isCompleted ? 100 : 0,
-                'session_id' => $matchingSession?->id,
+                'is_in_progress' => $isInProgress,
+                'current_subtest' => $currentSubtest,
+                'progress_percentage' => $progressPercentage,
+                'session_id' => $session?->id,
                 'completed_at' => $completedDate ? $completedDate->translatedFormat('d M Y, H:i') : null,
-                'score' => $matchingSession?->total_score,
-                'talent_quadrant' => $matchingSession?->talent_quadrant,
-                'career_recommendation' => $matchingSession?->career_recommendation,
-                'is_passed' => $matchingSession ? (bool) $matchingSession->is_passed : null,
+                'score' => $session?->total_score,
+                'talent_quadrant' => $session?->talent_quadrant,
+                'career_recommendation' => $session?->career_recommendation,
+                'is_passed' => $session ? (bool) $session->is_passed : null,
             ];
         }
 

@@ -34,15 +34,23 @@ class TryoutController extends Controller
                 ];
             });
 
-        // User sessions history
+        // User sessions history (completed)
         $sessions = TryoutSession::where('user_id', $user->id)
+            ->whereNotNull('completed_at')
             ->latest('completed_at')
             ->take(10)
             ->get();
 
+        // Any in-progress saved session
+        $inProgressSession = TryoutSession::where('user_id', $user->id)
+            ->whereNull('completed_at')
+            ->latest('updated_at')
+            ->first();
+
         $categories = Category::orderBy('order')->get();
 
         $completedTitles = TryoutSession::where('user_id', $user->id)
+            ->whereNotNull('completed_at')
             ->pluck('title')
             ->unique()
             ->values()
@@ -51,6 +59,7 @@ class TryoutController extends Controller
         return Inertia::render('tryout', [
             'dbQuestions' => $questions,
             'sessions' => $sessions,
+            'inProgressSession' => $inProgressSession,
             'completedTitles' => $completedTitles,
             'categories' => $categories,
         ]);
@@ -220,6 +229,14 @@ class TryoutController extends Controller
         $totalScore = $catScores['POTENSI'] + $catScores['MANAJERIAL'] + $catScores['DIGITAL'] + $catScores['KARIR'];
         $avgScore = round(($normalizedScores['POTENSI'] + $normalizedScores['MANAJERIAL'] + $normalizedScores['DIGITAL']) / 3);
 
+        // Clean up any in-progress draft for this package
+        if (!empty($validated['title'])) {
+            TryoutSession::where('user_id', $user->id)
+                ->where('title', $validated['title'])
+                ->whereNull('completed_at')
+                ->delete();
+        }
+
         $session = TryoutSession::create([
             'user_id' => $user->id,
             'title' => $validated['title'] ?? 'Simulasi Profiling 4 Subtes #' . (TryoutSession::where('user_id', $user->id)->count() + 1),
@@ -244,6 +261,44 @@ class TryoutController extends Controller
         ]);
     }
 
+    public function saveProgress(Request $request)
+    {
+        $validated = $request->validate([
+            'package_id' => 'required|string',
+            'title' => 'required|string',
+            'answers' => 'required|array',
+            'current_subtest_index' => 'required|integer',
+            'total_subtests' => 'required|integer',
+            'time_spent' => 'nullable|integer',
+        ]);
+
+        $user = $request->user();
+
+        $session = TryoutSession::updateOrCreate(
+            [
+                'user_id' => $user->id,
+                'title' => $validated['title'],
+                'completed_at' => null,
+            ],
+            [
+                'answers' => $validated['answers'],
+                'time_spent_seconds' => $validated['time_spent'] ?? 0,
+                'category_scores' => [
+                    'in_progress' => true,
+                    'package_id' => $validated['package_id'],
+                    'current_subtest_index' => (int) $validated['current_subtest_index'],
+                    'total_subtests' => (int) $validated['total_subtests'],
+                ],
+            ]
+        );
+
+        return response()->json([
+            'status' => 'success',
+            'session_id' => $session->id,
+            'message' => 'Progres subtes berhasil disimpan.',
+        ]);
+    }
+
     public function destroy(Request $request, TryoutSession $tryout)
     {
         $user = $request->user();
@@ -264,7 +319,10 @@ class TryoutController extends Controller
 
         $user = $request->user();
         TryoutSession::where('user_id', $user->id)
-            ->where('title', $validated['title'])
+            ->where(function ($q) use ($validated) {
+                $q->where('title', $validated['title'])
+                  ->orWhere('title', 'like', '%' . $validated['title'] . '%');
+            })
             ->delete();
 
         return back()->with('success', 'Riwayat pengerjaan paket telah direset. Modul sekarang dapat dikerjakan ulang.');

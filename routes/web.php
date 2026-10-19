@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tryout', [TryoutController::class, 'store'])->name('tryout.store');
     Route::delete('tryout/{tryout}', [TryoutController::class, 'destroy'])->name('tryout.destroy');
     Route::post('tryout/reset-package', [TryoutController::class, 'resetPackage'])->name('tryout.reset-package');
+    Route::post('tryout/save-progress', [TryoutController::class, 'saveProgress'])->name('tryout.save-progress');
     Route::get('materi', [MateriController::class, 'index'])->name('materi');
     Route::inertia('paket', 'paket')->name('paket');
 });
