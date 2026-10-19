@@ -42,7 +42,7 @@ class MateriController extends Controller
                     'level' => $m->level,
                     'desc' => $m->summary,
                     'content' => $m->content,
-                    'file_path' => $m->file_path ? asset('storage/' . $m->file_path) : null,
+                    'file_path' => $m->file_path ? asset('storage/' . implode('/', array_map('rawurlencode', explode('/', $m->file_path)))) : null,
                     'video_url' => $m->video_url,
                     'locked' => false,
                     'done' => false,
