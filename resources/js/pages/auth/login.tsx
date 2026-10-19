@@ -1,6 +1,4 @@
 import { Form, Head } from '@inertiajs/react';
-import { useState } from 'react';
-import { Sparkles, ShieldCheck } from 'lucide-react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -11,7 +9,6 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
-import PasskeyVerify from '@/components/passkey-verify';
 
 type Props = {
     status?: string;
@@ -19,50 +16,9 @@ type Props = {
 };
 
 export default function Login({ status, canResetPassword }: Props) {
-    const [demoEmail, setDemoEmail] = useState('');
-    const [demoPassword, setDemoPassword] = useState('');
-
-    const fillAdmin = () => {
-        setDemoEmail('admin@example.com');
-        setDemoPassword('password');
-    };
-
-    const fillUser = () => {
-        setDemoEmail('user@example.com');
-        setDemoPassword('password');
-    };
-
     return (
         <>
             <Head title="Masuk ke Akun — ProASN" />
-
-            <PasskeyVerify />
-
-            {/* Quick Demo Credentials Banner */}
-            <div className="mb-6 p-3 rounded-xl border border-emerald-200 bg-emerald-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
-                <div className="flex items-center gap-2 text-emerald-800 font-semibold">
-                    <Sparkles className="size-4 shrink-0 text-emerald-600" />
-                    <span>Akun Demo Cepat:</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <button
-                        type="button"
-                        onClick={fillAdmin}
-                        className="px-2.5 py-1 rounded-lg bg-emerald-700 text-white font-bold text-[11px] hover:bg-emerald-800 transition-colors shadow-xs"
-                        title="Login sebagai Administrator"
-                    >
-                        👑 Admin
-                    </button>
-                    <button
-                        type="button"
-                        onClick={fillUser}
-                        className="px-2.5 py-1 rounded-lg border border-emerald-300 bg-white text-emerald-800 font-bold text-[11px] hover:bg-emerald-50 transition-colors shadow-xs"
-                        title="Login sebagai Pegawai / Peserta"
-                    >
-                        👤 Peserta ASN
-                    </button>
-                </div>
-            </div>
 
             <Form
                 {...store.form()}
@@ -84,8 +40,7 @@ export default function Login({ status, canResetPassword }: Props) {
                                     autoFocus
                                     tabIndex={1}
                                     autoComplete="email"
-                                    defaultValue={demoEmail}
-                                    placeholder="nama@instansi.go.id"
+                                    placeholder="nama@email.com"
                                     className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
                                 />
                                 <InputError message={errors.email} />
@@ -112,7 +67,6 @@ export default function Login({ status, canResetPassword }: Props) {
                                     required
                                     tabIndex={2}
                                     autoComplete="current-password"
-                                    defaultValue={demoPassword}
                                     placeholder="••••••••"
                                     className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 focus-visible:ring-emerald-600 h-10 rounded-xl"
                                 />
@@ -133,7 +87,7 @@ export default function Login({ status, canResetPassword }: Props) {
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full h-11 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm transition-all shadow-md"
+                                className="mt-2 w-full h-11 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm transition-all shadow-md cursor-pointer"
                                 tabIndex={4}
                                 disabled={processing}
                             >

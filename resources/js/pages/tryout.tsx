@@ -1,3 +1,4 @@
+import ConfirmModal from '@/components/confirm-modal';
 import { useState, useEffect, useMemo } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
 import { 
@@ -718,6 +719,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
     const [countdownSeconds, setCountdownSeconds] = useState(5);
 
     // Modal dialog states
+    const [lockedPackageAlert, setLockedPackageAlert] = useState<string | null>(null);
     const [showExitModal, setShowExitModal] = useState(false);
     const [showSubmitModal, setShowSubmitModal] = useState(false);
     const [showSubtestFinishModal, setShowSubtestFinishModal] = useState(false);
@@ -888,7 +890,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 const isDone = (completedTitles && completedTitles.includes(foundPkg.title)) || 
                     sessions.some(s => s.completed_at && (s.title === foundPkg.title || (s.title && s.title.includes(foundPkg.title)) || (foundPkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes'))));
                 if (isDone) {
-                    alert(`Paket "${foundPkg.title}" sudah pernah diselesaikan dan saat ini terkunci. Anda tidak dapat melakukan tes ulang sebelum menghapus riwayat pengerjaannya.`);
+                    setLockedPackageAlert(foundPkg.title);
                 } else {
                     if (activeSaved && (activeSaved.packageId === foundPkg.id || activeSaved.packageTitle === foundPkg.title)) {
                         handleResumeSavedSession(foundPkg);
@@ -1135,7 +1137,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             } catch (e) {
                 console.error(e);
             }
-            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest.title);
+            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest?.title ?? "");
             setMode('subtest-break');
         } else {
             setShowSubmitModal(true);
@@ -1172,7 +1174,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             } catch (e) {
                 console.error(e);
             }
-            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest.title);
+            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest?.title ?? "");
         }
         setMode('list');
     };
@@ -1486,7 +1488,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     </button>
                                     <button
                                         type="button"
-                                        onClick={handleResumeSavedSession}
+                                        onClick={() => handleResumeSavedSession()}
                                         className="px-5 py-2.5 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 transition-all shadow-md flex items-center gap-2 cursor-pointer"
                                     >
                                         <Play className="w-4 h-4 fill-white" />
@@ -2701,46 +2703,57 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 MODAL 1: PERINGATAN PEMBATALAN TES (ANTI-CHEAT / EXIT LOCK)
                ========================================================================= */}
             {showExitModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 backdrop-blur-xs p-4 exit-modal">
-                    <div className="max-w-md w-full rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-                        <MacWindowControls title="Peringatan Ujian Aktif" badge="PERHATIAN" />
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-md p-4 exit-modal animate-in fade-in duration-200">
+                    <div className="max-w-md w-full rounded-2xl bg-white border border-slate-200/90 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+                        <MacWindowControls title="Peringatan Ujian Berlangsung" badge="ANTI-CHEAT / EXIT LOCK" />
                         <div className="p-6 sm:p-7 text-center space-y-4">
-                            <div className="w-14 h-14 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto shadow-xs">
+                            <div className="w-14 h-14 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto ring-8 ring-rose-50/60 shadow-xs">
                                 <AlertTriangle className="w-7 h-7" />
                             </div>
-                            <div className="space-y-2">
+                            <div className="space-y-1.5">
                                 <h3 className="text-lg font-black text-slate-900 tracking-tight">
-                                    Batalkan Tes?
+                                    Keluar atau Batalkan Tes?
                                 </h3>
                                 <p className="text-xs text-slate-600 leading-relaxed">
-                                    Tes sedang berlangsung. Jika Anda berpindah ke halaman lain, tes ini akan dibatalkan dan seluruh progres <strong>{answeredCount} butir jawaban</strong> Anda akan hilang. Apakah Anda yakin ingin membatalkan tes?
+                                    Simulasi ujian sedang aktif berjalan. Anda telah menjawab <strong>{answeredCount} butir jawaban</strong>. Tentukan tindakan yang ingin Anda ambil:
                                 </p>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
+                            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-left text-xs space-y-1">
+                                <div className="flex justify-between items-center text-slate-500">
+                                    <span>Paket Ujian:</span>
+                                    <span className="font-bold text-slate-800">{selectedPackage?.title}</span>
+                                </div>
+                                <div className="flex justify-between items-center text-slate-500">
+                                    <span>Subtes Berjalan:</span>
+                                    <span className="font-medium text-emerald-700">{currentSubtest?.title}</span>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-2 pt-2">
                                 <button
                                     onClick={() => {
                                         setShowExitModal(false);
                                         setPendingUrl(null);
                                     }}
-                                    className="flex-1 py-3 rounded-xl bg-emerald-800 text-white font-bold text-xs hover:bg-emerald-900 transition-colors cursor-pointer shadow-xs"
+                                    className="w-full py-3 rounded-xl bg-emerald-700 text-white font-bold text-xs hover:bg-emerald-800 transition-all cursor-pointer shadow-md"
                                 >
-                                    Lanjutkan Tes
+                                    Lanjutkan Pengerjaan Ujian
                                 </button>
                                 <button
                                     onClick={handleSaveAndPauseCurrentTest}
-                                    className="flex-1 py-3 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 font-bold text-xs hover:bg-amber-100 transition-colors cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
+                                    className="w-full py-2.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 font-bold text-xs hover:bg-amber-100 transition-colors cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
                                     title="Simpan progres pengerjaan dan keluar untuk dilanjutkan nanti"
                                 >
                                     <BookmarkCheck className="w-4 h-4 text-amber-700" />
-                                    <span>Selesaikan & Simpan</span>
+                                    <span>Selesaikan & Simpan Progres (Lanjutkan Nanti)</span>
                                 </button>
                                 <button
                                     onClick={confirmCancelTest}
-                                    className="py-3 px-4 rounded-xl border border-red-200 bg-red-50 text-red-700 font-bold text-xs hover:bg-red-100 transition-colors cursor-pointer"
+                                    className="w-full py-2 rounded-xl text-rose-600 hover:text-rose-700 hover:bg-rose-50 font-bold text-xs transition-colors cursor-pointer"
                                     title="Batalkan tanpa menyimpan progres"
                                 >
-                                    Hapus / Batal
+                                    Batalkan Tes & Hapus Jawaban
                                 </button>
                             </div>
                         </div>
@@ -2752,7 +2765,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 MODAL: KONFIRMASI PENYELESAIAN SUB-TES (JIKA ADA SOAL BELUM DIJAWAB)
                ========================================================================= */}
             {showSubtestFinishModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
                     <div className="max-w-lg w-full rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
                         <MacWindowControls title="Konfirmasi Selesai Sub-tes" badge={`SUB-TES ${currentSubtestIndex + 1}`} />
                         <div className="p-6 space-y-4">
@@ -2811,7 +2824,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 MODAL 2: KONFIRMASI PENGUMPULAN JAWABAN (FINISH TEST)
                ========================================================================= */}
             {showSubmitModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
                     <div className="max-w-md w-full rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
                         <MacWindowControls title="Konfirmasi Selesai Ujian" badge="PENGUMPULAN" />
                         <div className="p-6 text-center space-y-4">
@@ -2892,6 +2905,34 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                         </div>
                     </div>
                 </div>
+            )}
+
+            
+            {/* Modal Peringatan Paket Sudah Terkunci */}
+            {lockedPackageAlert && (
+                <ConfirmModal
+                    isOpen={Boolean(lockedPackageAlert)}
+                    onClose={() => setLockedPackageAlert(null)}
+                    isAlertOnly={true}
+                    variant="warning"
+                    title="Paket Asesmen Terkunci"
+                    windowTitle="Pemberitahuan Sistem CAT"
+                    badgeText="SUDAH SELESAI"
+                    confirmText="Saya Mengerti"
+                    description={
+                        <span>
+                            Paket <strong>"{lockedPackageAlert}"</strong> sudah pernah Anda selesaikan sebelumnya dan saat ini statusnya terkunci untuk mencegah duplikasi pengerjaan.
+                        </span>
+                    }
+                    details={
+                        <div className="space-y-1 text-xs">
+                            <p className="font-bold text-amber-900">Ingin Mengulang Tes?</p>
+                            <p className="text-amber-800 text-[11px] leading-relaxed">
+                                Silakan gunakan tombol <span className="font-bold text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">Reset Riwayat</span> pada kartu paket ujian ini untuk mengosongkan progres dan membuka kunci kembali.
+                            </p>
+                        </div>
+                    }
+                />
             )}
 
             {/* Modal Konfirmasi Hapus & Reset Riwayat Paket */}

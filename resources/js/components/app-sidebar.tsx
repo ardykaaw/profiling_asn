@@ -43,7 +43,7 @@ const userNavItems: NavItem[] = [
         icon: BookOpen,
     },
     {
-        title: 'Status & Paket Akses',
+        title: 'Status Langganan 1 Tahun',
         href: '/paket',
         icon: Sparkles,
     },

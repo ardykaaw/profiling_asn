@@ -16,41 +16,35 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Create Users
-        $admin = User::updateOrCreate(
-            ['email' => 'admin@example.com'],
-            [
-                'name' => 'Administrator ProASN',
-                'password' => bcrypt('password'),
-                'role' => 'admin',
-                'phone' => '081299998888',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
+        // 1. Clean Demo Users & Seed Official Admin Accounts
+        User::whereIn('email', ['admin@example.com', 'user@example.com', 'dewi.lestari@example.com'])->delete();
 
-        $user = User::updateOrCreate(
-            ['email' => 'user@example.com'],
-            [
-                'name' => 'Andi Pratama, S.STP, M.Tr.IP',
-                'password' => bcrypt('password'),
-                'role' => 'user',
-                'phone' => '081234567890',
-                'lynk_order_id' => 'ASN-88291',
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
-
+        // Admin 1: Ardika
         User::updateOrCreate(
-            ['email' => 'dewi.lestari@example.com'],
+            ['email' => 'ardykaaw26@gmail.com'],
             [
-                'name' => 'Dewi Lestari, S.Psi, M.M',
-                'password' => bcrypt('password'),
-                'role' => 'user',
-                'phone' => '085211223344',
-                'lynk_order_id' => 'ASN-99412',
+                'name' => 'Ardika',
+                'password' => bcrypt('ProfilingASN@123@2026'),
+                'role' => 'admin',
+                'phone' => '081234567890',
                 'is_active' => true,
+                'verification_status' => 'verified',
+                'verified_at' => now(),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // Admin 2: Ibu Wa Ode Rahmatia, SP
+        User::updateOrCreate(
+            ['email' => 'waoderahmatia@gmail.com'],
+            [
+                'name' => 'Wa Ode Rahmatia, SP',
+                'password' => bcrypt('ProfilingASN@123@2026'),
+                'role' => 'admin',
+                'phone' => '085394553435',
+                'is_active' => true,
+                'verification_status' => 'verified',
+                'verified_at' => now(),
                 'email_verified_at' => now(),
             ]
         );

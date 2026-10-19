@@ -9,11 +9,23 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\TryoutController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::inertia('/', 'welcome')->name('home');
 
-// Member Routes
+// Waiting Verification Screen for pending/unverified members
 Route::middleware(['auth'])->group(function () {
+    Route::get('waiting-verification', function () {
+        $user = request()->user();
+        if ($user && $user->isVerified()) {
+            return redirect()->route('dashboard');
+        }
+        return Inertia::render('auth/waiting-verification');
+    })->name('waiting-verification');
+});
+
+// Member Protected Routes (requires authentication AND active 1-year verification)
+Route::middleware(['auth', 'active'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('tryout', [TryoutController::class, 'index'])->name('tryout');
     Route::post('tryout', [TryoutController::class, 'store'])->name('tryout.store');
@@ -21,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tryout/reset-package', [TryoutController::class, 'resetPackage'])->name('tryout.reset-package');
     Route::post('tryout/save-progress', [TryoutController::class, 'saveProgress'])->name('tryout.save-progress');
     Route::get('materi', [MateriController::class, 'index'])->name('materi');
-    Route::inertia('paket', 'paket')->name('paket');
+    Route::get('paket', [DashboardController::class, 'paket'])->name('paket');
 });
 
 // Administrator Routes
@@ -45,9 +57,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('kategori', [AdminCategoryController::class, 'index'])->name('categories.index');
     Route::put('kategori/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
 
-    // User Verification & Management (Lynk.id)
+    // User Verification & Management (Lynk.id & 1-Year Subscriptions)
     Route::get('users', [AdminUserController::class, 'index'])->name('users.index');
     Route::post('users', [AdminUserController::class, 'store'])->name('users.store');
+    Route::post('users/{user}/verify', [AdminUserController::class, 'verify'])->name('users.verify');
+    Route::post('users/{user}/extend', [AdminUserController::class, 'extend'])->name('users.extend');
     Route::post('users/{user}/toggle-status', [AdminUserController::class, 'toggleStatus'])->name('users.toggle-status');
     Route::delete('users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
 });

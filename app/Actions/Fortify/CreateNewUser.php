@@ -33,7 +33,10 @@ class CreateNewUser implements CreatesNewUsers
             'lynk_order_id' => $input['lynk_order_id'] ?? null,
             'password' => $input['password'],
             'role' => 'user',
-            'is_active' => true,
+            'is_active' => false,
+            'verification_status' => 'pending',
+            'verified_at' => null,
+            'expires_at' => null,
         ]);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureUserIsActive
@@ -16,16 +15,36 @@ class EnsureUserIsActive
     {
         $user = $request->user();
 
-        if ($user && ! $user->isActive()) {
-            Auth::guard('web')->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-
-            return redirect()->route('login')->withErrors([
-                'email' => 'Akun Anda dinonaktifkan atau belum diverifikasi. Silakan hubungi admin.',
-            ]);
+        if (! $user) {
+            return $next($request);
         }
 
-        return $next($request);
+        // Administrators bypass verification checks
+        if ($user->isAdmin()) {
+            return $next($request);
+        }
+
+        // Allow logging out at any time
+        if ($request->routeIs('logout')) {
+            return $next($request);
+        }
+
+        // If user is verified and active:
+        if ($user->isVerified()) {
+            // If they accidentally visit the waiting page, redirect to dashboard
+            if ($request->routeIs('waiting-verification')) {
+                return redirect()->route('dashboard');
+            }
+            return $next($request);
+        }
+
+        // If user is NOT verified (pending or inactive/expired):
+        // Allow them to view the waiting verification page
+        if ($request->routeIs('waiting-verification')) {
+            return $next($request);
+        }
+
+        // Redirect all protected attempts to the waiting verification screen
+        return redirect()->route('waiting-verification');
     }
 }

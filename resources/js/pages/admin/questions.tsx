@@ -1,3 +1,4 @@
+import ConfirmModal from '@/components/confirm-modal';
 import { useState, useEffect } from 'react';
 import { Head, router, useForm } from '@inertiajs/react';
 import { 
@@ -70,6 +71,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [isImportModalOpen, setIsImportModalOpen] = useState(false);
     const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+    const [questionToDelete, setQuestionToDelete] = useState<Question | null>(null);
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [viewingImage, setViewingImage] = useState<{ url: string; title?: string } | null>(null);
 
@@ -193,9 +195,16 @@ export default function AdminQuestions({ questions, categories, filters }: Props
         }
     };
 
-    const handleDelete = (id: number) => {
-        if (confirm('Yakin ingin menghapus butir soal ini dari bank soal?')) {
-            router.delete(`/admin/soal/${id}`);
+    const handleDelete = (q: Question) => {
+        setQuestionToDelete(q);
+    };
+
+    const executeDeleteQuestion = () => {
+        if (questionToDelete) {
+            router.delete(`/admin/soal/${questionToDelete.id}`, {
+                preserveScroll: true,
+                onFinish: () => setQuestionToDelete(null),
+            });
         }
     };
 
@@ -406,7 +415,7 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                                                             <Edit3 className="size-3.5" />
                                                         </button>
                                                         <button
-                                                            onClick={() => handleDelete(q.id)}
+                                                            onClick={() => handleDelete(q)}
                                                             className="p-1.5 rounded-lg border border-border hover:bg-[#EF4444]/10 text-muted-foreground hover:text-[#EF4444] transition-colors"
                                                             title="Hapus Soal"
                                                         >
@@ -451,10 +460,34 @@ export default function AdminQuestions({ questions, categories, filters }: Props
                 </div>
             </div>
 
+                        {/* Modal Konfirmasi Hapus Soal */}
+            {questionToDelete && (
+                <ConfirmModal
+                    isOpen={Boolean(questionToDelete)}
+                    onClose={() => setQuestionToDelete(null)}
+                    onConfirm={executeDeleteQuestion}
+                    variant="danger"
+                    title="Hapus Butir Soal?"
+                    windowTitle="Bank Soal Asesmen"
+                    badgeText="HAPUS PERMANEN"
+                    confirmText="Ya, Hapus Butir Soal"
+                    description="Butir soal ini akan dihapus secara permanen dari bank data simulasi ujian."
+                    details={
+                        <div className="space-y-1 text-xs">
+                            <div className="flex justify-between items-center">
+                                <span className="text-slate-400">ID / Kategori:</span>
+                                <span className="font-bold text-slate-700">#{questionToDelete.id} — {questionToDelete.category?.name ?? 'Umum'}</span>
+                            </div>
+                            <p className="line-clamp-2 text-slate-600 italic mt-1">"{questionToDelete.question}"</p>
+                        </div>
+                    }
+                />
+            )}
+
             {/* CREATE / EDIT QUESTION MODAL */}
             {isCreateModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+                    <div className="rounded-2xl border border-border bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <div>
                                 <h2 className="font-display text-xl font-bold text-foreground">
@@ -684,8 +717,8 @@ export default function AdminQuestions({ questions, categories, filters }: Props
 
             {/* IMPORT MODAL */}
             {isImportModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-                    <div className="rounded-2xl border border-border bg-[#131B2E] w-full max-w-lg p-6 space-y-4 shadow-2xl">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200">
+                    <div className="rounded-2xl border border-border bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-full max-w-lg p-6 space-y-4 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <h3 className="font-display text-lg font-bold text-foreground">
                                 Import Soal Massal

@@ -18,7 +18,9 @@ import {
     Clock,
     ShieldAlert,
     Check,
-    X
+    X,
+    Share2,
+    Calendar
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -27,6 +29,9 @@ interface User {
     name: string;
     email: string;
     role?: string;
+    is_verified?: boolean;
+    expires_at_formatted?: string;
+    remaining_days?: number;
 }
 
 interface SharedData {
@@ -145,10 +150,10 @@ export default function Dashboard({
             {/* Lean Executive Greeting & Quick Actions */}
             <div className="rounded-2xl border border-slate-200 bg-white shadow-xs p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-bold border border-emerald-200">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                            AKUN PEGAWAI AKTIF
+                            AKUN AKTIF 1 TAHUN {user?.expires_at_formatted ? `(Hingga ${user.expires_at_formatted})` : ''}
                         </span>
                         <span className="text-xs text-slate-400">• Standar 4 Subtes BKN</span>
                     </div>
@@ -171,6 +176,14 @@ export default function Dashboard({
                     >
                         <FileText className="w-4 h-4 text-slate-500" />
                         <span>Modul PDF ({totalMaterialsCount})</span>
+                    </a>
+                    <a
+                        href="/paket"
+                        className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-blue-900 text-xs font-bold transition-all shadow-xs"
+                        title="Ajak rekan sejawat ASN"
+                    >
+                        <Share2 className="w-4 h-4 text-blue-600" />
+                        <span className="hidden sm:inline">Bagikan</span>
                     </a>
                 </div>
             </div>

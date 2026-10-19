@@ -133,22 +133,22 @@ class DashboardController extends Controller
                 'title' => 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)',
                 'short_title' => 'Simulasi Lengkap 4 Sesi',
                 'category' => 'SEMUA',
-                'badge' => '15 Subtes / 713 Soal',
+                'badge' => '15 Subtes / 773 Soal',
                 'total_subtest' => 15,
-                'total_soal' => 713,
-                'durasi' => 120,
-                'description' => 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (465 soal), Manajerial & Soskultur (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).',
+                'total_soal' => 773,
+                'durasi' => 243,
+                'description' => 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (525 soal), Manajerial & Soskultur (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).',
             ],
             [
                 'id' => 'potensi-drill',
                 'title' => 'Sesi 1: Tes Potensi Kognitif & Figural',
                 'short_title' => 'Sesi 1: Tes Potensi Kognitif',
                 'category' => 'POTENSI',
-                'badge' => '5 Subtes / 465 Soal',
+                'badge' => '5 Subtes / 525 Soal',
                 'total_subtest' => 5,
-                'total_soal' => 465,
-                'durasi' => 90,
-                'description' => 'Mencakup 5 subtes resmi: Figural (45 soal), Numerik (300 soal), Berpikir Kritis (30 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).',
+                'total_soal' => 525,
+                'durasi' => 139,
+                'description' => 'Mencakup 5 subtes resmi: Figural (30 soal), Numerik (360 soal), Berpikir Kritis (45 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).',
             ],
             [
                 'id' => 'manajerial-drill',
@@ -158,7 +158,7 @@ class DashboardController extends Controller
                 'badge' => '2 Subtes / 45 Soal',
                 'total_subtest' => 2,
                 'total_soal' => 45,
-                'durasi' => 40,
+                'durasi' => 42,
                 'description' => 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 butir soal) dan Sosio Kultural (22 butir soal) berbasis skenario situasional birokrasi & integritas.',
             ],
             [
@@ -169,7 +169,7 @@ class DashboardController extends Controller
                 'badge' => '4 Subtes / 35 Soal',
                 'total_subtest' => 4,
                 'total_soal' => 35,
-                'durasi' => 30,
+                'durasi' => 27,
                 'description' => 'Mencakup 4 pilar kecakapan digital: Digital Skill (9 butir), Digital Culture (9 butir), Digital Ethics (9 butir), dan Digital Safety (8 butir).',
             ],
             [
@@ -180,7 +180,7 @@ class DashboardController extends Controller
                 'badge' => '4 Subtes / 168 Soal',
                 'total_subtest' => 4,
                 'total_soal' => 168,
-                'durasi' => 45,
+                'durasi' => 35,
                 'description' => 'Mencakup 4 instrumen minat & bakat: Minat (42 butir), Nilai Pribadi (42 butir), Aspirasi (42 butir), dan Pengalaman Kerja (42 butir).',
             ],
         ];
@@ -293,6 +293,24 @@ class DashboardController extends Controller
             'completedPackagesCount' => $completedPackagesCount,
             'totalPackagesCount' => count($packagesConfig),
             'overallProgressPercent' => $overallProgressPercent,
+        ]);
+    }
+
+    public function paket(Request $request): Response
+    {
+        $user = $request->user();
+
+        return Inertia::render('paket', [
+            'subscription' => [
+                'is_verified' => $user->isVerified(),
+                'status' => $user->verification_status,
+                'verified_at' => $user->verified_at ? $user->verified_at->translatedFormat('d F Y, H:i') : null,
+                'expires_at' => $user->expires_at ? $user->expires_at->translatedFormat('d F Y') : null,
+                'remaining_days' => $user->remaining_days,
+                'duration_label' => '1 Tahun Penuh (365 Hari)',
+                'email' => $user->email,
+                'lynk_order_id' => $user->lynk_order_id,
+            ],
         ]);
     }
 }

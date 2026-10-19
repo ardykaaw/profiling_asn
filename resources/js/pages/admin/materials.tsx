@@ -1,3 +1,4 @@
+import ConfirmModal from '@/components/confirm-modal';
 import { useState } from 'react';
 import { Head, router, useForm } from '@inertiajs/react';
 import { 
@@ -69,6 +70,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
     const [selectedCategory, setSelectedCategory] = useState(filters.category_id || '');
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [editingMaterial, setEditingMaterial] = useState<Material | null>(null);
+    const [materialToDelete, setMaterialToDelete] = useState<Material | null>(null);
 
     const { data, setData, post, put, processing, reset, errors } = useForm<{
         category_id: number;
@@ -155,9 +157,16 @@ export default function AdminMaterials({ materials, categories, filters }: Props
         }
     };
 
-    const handleDelete = (id: number) => {
-        if (confirm('Yakin ingin menghapus modul materi ini?')) {
-            router.delete(`/admin/materi/${id}`);
+    const handleDelete = (m: Material) => {
+        setMaterialToDelete(m);
+    };
+
+    const executeDeleteMaterial = () => {
+        if (materialToDelete) {
+            router.delete(`/admin/materi/${materialToDelete.id}`, {
+                preserveScroll: true,
+                onFinish: () => setMaterialToDelete(null),
+            });
         }
     };
 
@@ -292,7 +301,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                             <Edit3 className="size-3.5" />
                                         </button>
                                         <button
-                                            onClick={() => handleDelete(m.id)}
+                                            onClick={() => handleDelete(m)}
                                             className="p-1.5 rounded-lg border border-border hover:bg-[#EF4444]/10 text-muted-foreground hover:text-[#EF4444] transition-colors"
                                             title="Hapus Materi"
                                         >
@@ -306,10 +315,37 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                 </div>
             </div>
 
+                        {/* Modal Konfirmasi Hapus Materi */}
+            {materialToDelete && (
+                <ConfirmModal
+                    isOpen={Boolean(materialToDelete)}
+                    onClose={() => setMaterialToDelete(null)}
+                    onConfirm={executeDeleteMaterial}
+                    variant="danger"
+                    title="Hapus Modul Materi?"
+                    windowTitle="Kelola Modul Pembelajaran"
+                    badgeText="HAPUS PERMANEN"
+                    confirmText="Ya, Hapus Materi"
+                    description="Modul materi ini akan dihapus dari perpustakaan materi belajar peserta."
+                    details={
+                        <div className="space-y-1 text-xs">
+                            <div className="flex justify-between items-center">
+                                <span className="text-slate-400">Judul Modul:</span>
+                                <span className="font-bold text-slate-800">{materialToDelete.title}</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span className="text-slate-400">Kategori:</span>
+                                <span className="font-mono text-emerald-700">{materialToDelete.category?.name ?? 'Umum'}</span>
+                            </div>
+                        </div>
+                    }
+                />
+            )}
+
             {/* CREATE / EDIT MATERIAL MODAL */}
             {isCreateModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-                    <div className="rounded-2xl border border-border bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 w-full max-w-2xl shadow-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl">
                         <div className="flex items-center justify-between pb-3 border-b border-border">
                             <div>
                                 <h2 className="font-display text-xl font-bold text-foreground">
