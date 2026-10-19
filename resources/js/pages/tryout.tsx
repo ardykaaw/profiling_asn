@@ -99,80 +99,110 @@ const packages = [
     },
 ];
 
-const SUBTEST_METADATA: Record<string, { title: string; category: string; description: string }> = {
+const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sessionName: string; category: string; description: string }> = {
     'potensi-figural': {
         title: 'Penalaran Figural (Spasial & Bentuk)',
-        category: 'Tes Potensi Kognitif',
+        shortTitle: 'Figural',
+        sessionName: 'Tes Potensi Kognitif',
+        category: 'POTENSI',
         description: 'Uji daya visualisasi, rotasi bentuk 3D, analogi gambar, dan kelanjutan pola figural standar BKN.',
     },
     'potensi-numerik': {
         title: 'Penalaran Numerik (Perbandingan Angka)',
-        category: 'Tes Potensi Kognitif',
+        shortTitle: 'Numerik',
+        sessionName: 'Tes Potensi Kognitif',
+        category: 'POTENSI',
         description: 'Uji kecepatan dan ketelitian komparasi nilai angka positif-negatif berkecepatan tinggi.',
     },
     'potensi-kritis': {
         title: 'Berpikir Kritis & Problem Solving',
-        category: 'Tes Potensi Kognitif',
+        shortTitle: 'Berpikir Kritis',
+        sessionName: 'Tes Potensi Kognitif',
+        category: 'POTENSI',
         description: 'Uji logika analitis, identifikasi premis, dan evaluasi solusi kebijakan publik.',
     },
     'potensi-belajar-cepat': {
         title: 'Kemampuan Belajar Cepat & Adaptasi',
-        category: 'Tes Potensi Kognitif',
+        shortTitle: 'Belajar Cepat',
+        sessionName: 'Tes Potensi Kognitif',
+        category: 'POTENSI',
         description: 'Uji kecepatan memahami instruksi baru, sintesis data, dan fleksibilitas kerja.',
     },
     'potensi-kepribadian': {
         title: 'Integritas & Kepribadian ASN',
-        category: 'Tes Potensi Kognitif',
+        shortTitle: 'Kepribadian',
+        sessionName: 'Tes Potensi Kognitif',
+        category: 'POTENSI',
         description: 'Uji profil ketahanan mental, etos kerja, kedisiplinan, dan konsistensi moral ASN.',
     },
     'manajerial-sjt': {
         title: 'Kompetensi Manajerial (SJT)',
-        category: 'Manajerial & Sosio Kultural',
+        shortTitle: 'Manajerial SJT',
+        sessionName: 'Manajerial & Sosio Kultural',
+        category: 'MANAJERIAL',
         description: 'Uji 8 kompetensi manajerial MenPAN-RB berbasis skenario situasional birokrasi & integritas.',
     },
     'manajerial-sosio': {
         title: 'Sosio-Kultural & Perekat Bangsa',
-        category: 'Manajerial & Sosio Kultural',
+        shortTitle: 'Sosio Kultural',
+        sessionName: 'Manajerial & Sosio Kultural',
+        category: 'MANAJERIAL',
         description: 'Uji kepekaan sosial, toleransi keberagaman, dan peran sebagai perekat persatuan bangsa.',
     },
     'digital-skill': {
         title: 'Digital Skill (Kecakapan Digital)',
-        category: 'Literasi Digital',
+        shortTitle: 'Digital Skill',
+        sessionName: 'Literasi Digital',
+        category: 'DIGITAL',
         description: 'Pemahaman pengoperasian perangkat lunak, sistem digital pemerintahan, dan otomatisasi administrasi.',
     },
     'digital-culture': {
         title: 'Digital Culture (Budaya Digital)',
-        category: 'Literasi Digital',
+        shortTitle: 'Digital Culture',
+        sessionName: 'Literasi Digital',
+        category: 'DIGITAL',
         description: 'Penanaman wawasan kebangsaan, Pancasila, dan Bhinneka Tunggal Ika di ruang siber.',
     },
     'digital-ethics': {
         title: 'Digital Ethics (Etika Digital)',
-        category: 'Literasi Digital',
+        shortTitle: 'Digital Ethics',
+        sessionName: 'Literasi Digital',
+        category: 'DIGITAL',
         description: 'Tata krama bermedia digital, komunikasi birokrasi santun, dan pencegahan ujaran kebencian.',
     },
     'digital-safety': {
         title: 'Digital Safety (Keamanan Siber)',
-        category: 'Literasi Digital',
+        shortTitle: 'Digital Safety',
+        sessionName: 'Literasi Digital',
+        category: 'DIGITAL',
         description: 'Perlindungan data pribadi ASN, keamanan sandi, penanganan phishing, dan mitigasi kebocoran data.',
     },
     'karir-minat': {
         title: 'Preferensi Karir: Minat Kerja (RIASEC)',
-        category: 'Tripatha Karir',
+        shortTitle: 'Minat Kerja',
+        sessionName: 'Tripatha Karir',
+        category: 'KARIR',
         description: 'Eksplorasi ketertarikan jenis tugas dan lingkungan kerja ASN yang paling memotivasi.',
     },
     'karir-nilai': {
         title: 'Preferensi Karir: Nilai Pribadi (Values)',
-        category: 'Tripatha Karir',
+        shortTitle: 'Nilai Pribadi',
+        sessionName: 'Tripatha Karir',
+        category: 'KARIR',
         description: 'Prinsip utama yang menjadi dorongan moral dan standar ideal dalam bekerja.',
     },
     'karir-aspirasi': {
         title: 'Preferensi Karir: Aspirasi Masa Depan',
-        category: 'Tripatha Karir',
+        shortTitle: 'Aspirasi Karir',
+        sessionName: 'Tripatha Karir',
+        category: 'KARIR',
         description: 'Visi jangka panjang dan target kontribusi bagi organisasi dan negara.',
     },
     'karir-pengalaman': {
         title: 'Preferensi Karir: Pengalaman Kerja',
-        category: 'Tripatha Karir',
+        shortTitle: 'Pengalaman Kerja',
+        sessionName: 'Tripatha Karir',
+        category: 'KARIR',
         description: 'Refleksi pencapaian tugas dan peran kerja efektif yang pernah dijalankan.',
     },
 };
@@ -229,12 +259,50 @@ const getQuestionSubtestId = (q: Question): string => {
 interface SubtestItem {
     id: string;
     title: string;
+    shortTitle: string;
+    sessionName: string;
     category: string;
     description: string;
-    startIndex: number;
-    endIndex: number;
-    count: number;
+    questions: Question[];
 }
+
+const buildSubtestsForPackage = (pkgCat: string, bank: Question[]): SubtestItem[] => {
+    let sourceQuestions: Question[] = [];
+    if (pkgCat === 'SEMUA') {
+        sourceQuestions = [...bank];
+    } else {
+        sourceQuestions = bank.filter((q) => q.kategori === pkgCat);
+    }
+    if (sourceQuestions.length === 0) {
+        sourceQuestions = [...bank];
+    }
+
+    const groups: Record<string, Question[]> = {};
+    sourceQuestions.forEach((q) => {
+        const sId = getQuestionSubtestId(q);
+        if (!groups[sId]) groups[sId] = [];
+        groups[sId].push(q);
+    });
+
+    const result: SubtestItem[] = [];
+    SUBTEST_ORDER.forEach((sId) => {
+        const qList = groups[sId];
+        if (qList && qList.length > 0) {
+            const meta = SUBTEST_METADATA[sId];
+            result.push({
+                id: sId,
+                title: meta?.title || sId,
+                shortTitle: meta?.shortTitle || sId,
+                sessionName: meta?.sessionName || '',
+                category: meta?.category || '',
+                description: meta?.description || '',
+                questions: qList.sort((a, b) => a.id - b.id),
+            });
+        }
+    });
+
+    return result;
+};
 
 interface TryOutPageProps {
     dbQuestions?: Question[];
@@ -616,8 +684,9 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
     const [mode, setMode] = useState<'list' | 'countdown' | 'test' | 'subtest-break' | 'result' | 'review'>('list');
     const [selectedPackage, setSelectedPackage] = useState(packages[0]);
     const [pendingPackage, setPendingPackage] = useState(packages[0]);
-    const [activeQuestions, setActiveQuestions] = useState<Question[]>(rawBank);
-    const [currentIdx, setCurrentIdx] = useState(0);
+    const [activeSubtests, setActiveSubtests] = useState<SubtestItem[]>([]);
+    const [currentSubtestIndex, setCurrentSubtestIndex] = useState(0);
+    const [currentQuestionInSubtest, setCurrentQuestionInSubtest] = useState(0);
     const [answers, setAnswers] = useState<Record<number, number>>({});
     const [timeLeft, setTimeLeft] = useState(45 * 60);
     const [categoryFilter, setCategoryFilter] = useState<string>('SEMUA');
@@ -638,7 +707,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
         packageId: string;
         packageTitle: string;
         answers: Record<number, number>;
-        nextSubtestStartIndex: number;
+        currentSubtestIndex: number;
+        currentQuestionInSubtest: number;
         nextSubtestTitle: string;
         timestamp: string;
     } | null>(null);
@@ -785,81 +855,42 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
         setMode('countdown');
     };
 
-    // Compute ordered subtests
-    const activeSubtests = useMemo(() => {
-        const list: SubtestItem[] = [];
-        if (activeQuestions.length === 0) return list;
+    // Active subtests and current subtest
+    const currentSubtest: SubtestItem | undefined = activeSubtests[currentSubtestIndex] || activeSubtests[0];
+    const currentSubtestQuestions: Question[] = currentSubtest ? currentSubtest.questions : [];
+    const currentQ: Question | undefined = currentSubtestQuestions[currentQuestionInSubtest];
 
-        let currentSubId = '';
-        let startIdx = 0;
-
-        for (let i = 0; i < activeQuestions.length; i++) {
-            const sId = getQuestionSubtestId(activeQuestions[i]);
-            if (sId !== currentSubId) {
-                if (currentSubId !== '') {
-                    const meta = SUBTEST_METADATA[currentSubId];
-                    list.push({
-                        id: currentSubId,
-                        title: meta?.title || currentSubId,
-                        category: meta?.category || '',
-                        description: meta?.description || '',
-                        startIndex: startIdx,
-                        endIndex: i - 1,
-                        count: i - startIdx,
-                    });
-                }
-                currentSubId = sId;
-                startIdx = i;
-            }
+    // Flat array of all package questions for scoring, review, and reporting
+    const activeQuestions: Question[] = useMemo(() => {
+        if (activeSubtests.length > 0) {
+            return activeSubtests.flatMap((s) => s.questions);
         }
-        if (currentSubId !== '') {
-            const meta = SUBTEST_METADATA[currentSubId];
-            list.push({
-                id: currentSubId,
-                title: meta?.title || currentSubId,
-                category: meta?.category || '',
-                description: meta?.description || '',
-                startIndex: startIdx,
-                endIndex: activeQuestions.length - 1,
-                count: activeQuestions.length - startIdx,
-            });
-        }
-        return list;
-    }, [activeQuestions]);
+        return rawBank;
+    }, [activeSubtests, rawBank]);
 
-    const currentSubtest = activeSubtests.find(
-        (s) => currentIdx >= s.startIndex && currentIdx <= s.endIndex
-    ) || activeSubtests[0];
-    const currentSubtestIndex = activeSubtests.findIndex((s) => s.id === currentSubtest?.id);
-    const isLastQuestionOfSubtest = currentSubtest ? currentIdx === currentSubtest.endIndex : false;
     const hasNextSubtest = currentSubtestIndex >= 0 && currentSubtestIndex < activeSubtests.length - 1;
     const nextSubtest = hasNextSubtest ? activeSubtests[currentSubtestIndex + 1] : null;
+    const isLastQuestionOfSubtest = currentSubtestQuestions.length > 0 && currentQuestionInSubtest === currentSubtestQuestions.length - 1;
+
+    const currentSubtestAnsweredCount = currentSubtestQuestions.filter(
+        (q) => answers[q.id] !== undefined
+    ).length;
 
     // Step 2: Countdown finishes -> executes start of test
-    const executeStartTest = (pkg: typeof packages[0], resumeStartIndex?: number, initialAnswers?: Record<number, number>) => {
+    const executeStartTest = (
+        pkg: typeof packages[0],
+        resumeSubtestIndex = 0,
+        resumeQuestionIndex = 0,
+        initialAnswers: Record<number, number> = {}
+    ) => {
         setSelectedPackage(pkg);
-        let filtered: Question[] = [];
-        if (pkg.cat === 'SEMUA') {
-            filtered = [...rawBank];
-        } else {
-            filtered = rawBank.filter((q) => q.kategori === pkg.cat);
-        }
-
-        if (filtered.length === 0) {
-            filtered = [...rawBank];
-        }
-
-        // Sort questions strictly by subtest sequence
-        filtered.sort((a, b) => {
-            const orderA = SUBTEST_ORDER.indexOf(getQuestionSubtestId(a));
-            const orderB = SUBTEST_ORDER.indexOf(getQuestionSubtestId(b));
-            if (orderA !== orderB) return orderA - orderB;
-            return a.id - b.id;
-        });
-
-        setActiveQuestions(filtered);
-        setCurrentIdx(resumeStartIndex ?? 0);
-        setAnswers(initialAnswers ?? {});
+        const subtests = buildSubtestsForPackage(pkg.cat, rawBank);
+        setActiveSubtests(subtests);
+        const targetSubIdx = Math.min(Math.max(0, resumeSubtestIndex), Math.max(0, subtests.length - 1));
+        setCurrentSubtestIndex(targetSubIdx);
+        const maxQ = subtests[targetSubIdx]?.questions?.length || 1;
+        setCurrentQuestionInSubtest(Math.min(Math.max(0, resumeQuestionIndex), maxQ - 1));
+        setAnswers(initialAnswers);
         setTimeLeft(pkg.durasi * 60);
         setCategoryFilter('SEMUA');
         setShowExitModal(false);
@@ -876,7 +907,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
 
     // Transition to break between subtests
     const handleFinishSubtest = () => {
-        if (hasNextSubtest && nextSubtest) {
+        if (hasNextSubtest && nextSubtest && currentSubtest) {
             setJustCompletedSubtest(currentSubtest);
             setBreakNextSubtest(nextSubtest);
             // Save current progress to localStorage
@@ -887,7 +918,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                         packageId: selectedPackage.id,
                         packageTitle: selectedPackage.title,
                         answers: answers,
-                        nextSubtestStartIndex: nextSubtest.startIndex,
+                        currentSubtestIndex: currentSubtestIndex + 1,
+                        currentQuestionInSubtest: 0,
                         nextSubtestTitle: nextSubtest.title,
                         timestamp: new Date().toISOString(),
                     })
@@ -903,28 +935,32 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
 
     // Break screen action: proceed to next subtest
     const handleProceedNextSubtest = () => {
-        if (breakNextSubtest) {
-            setCurrentIdx(breakNextSubtest.startIndex);
+        if (hasNextSubtest) {
+            setCurrentSubtestIndex((prev) => prev + 1);
+            setCurrentQuestionInSubtest(0);
             setMode('test');
         }
     };
 
     // Break screen action: pause & save progress
     const handlePauseAndSave = () => {
-        try {
-            localStorage.setItem(
-                'tryout_saved_session',
-                JSON.stringify({
-                    packageId: selectedPackage.id,
-                    packageTitle: selectedPackage.title,
-                    answers: answers,
-                    nextSubtestStartIndex: breakNextSubtest?.startIndex ?? currentIdx,
-                    nextSubtestTitle: breakNextSubtest?.title ?? currentSubtest?.title,
-                    timestamp: new Date().toISOString(),
-                })
-            );
-        } catch (e) {
-            console.error(e);
+        if (breakNextSubtest) {
+            try {
+                localStorage.setItem(
+                    'tryout_saved_session',
+                    JSON.stringify({
+                        packageId: selectedPackage.id,
+                        packageTitle: selectedPackage.title,
+                        answers: answers,
+                        currentSubtestIndex: currentSubtestIndex + 1,
+                        currentQuestionInSubtest: 0,
+                        nextSubtestTitle: breakNextSubtest.title,
+                        timestamp: new Date().toISOString(),
+                    })
+                );
+            } catch (e) {
+                console.error(e);
+            }
         }
         setMode('list');
         checkSavedSession();
@@ -934,7 +970,12 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
     const handleResumeSavedSession = () => {
         if (!savedSession) return;
         const targetPkg = packages.find((p) => p.id === savedSession.packageId) || packages[0];
-        executeStartTest(targetPkg, savedSession.nextSubtestStartIndex, savedSession.answers);
+        executeStartTest(
+            targetPkg,
+            savedSession.currentSubtestIndex ?? 0,
+            savedSession.currentQuestionInSubtest ?? 0,
+            savedSession.answers ?? {}
+        );
     };
 
     // Discard saved session
@@ -991,7 +1032,6 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
         window.print();
     };
 
-    const currentQ = activeQuestions[currentIdx];
 
     // Compute live client-side scores
     const scoresPerCategory: Record<string, { total: number; count: number }> = {
@@ -1448,354 +1488,412 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], auth }: Tr
                 )}
 
                 {/* =========================================================================
-                    MODE 3: CAT TEST INTERFACE (UJIAN AKTIF)
+                    MODE 3: CAT TEST INTERFACE (UJIAN AKTIF PER SUB-TES)
                    ========================================================================= */}
                 {mode === 'test' && currentQ && (
                     <div className="fixed inset-0 z-40 bg-[#F8F9FA] overflow-y-auto p-4 sm:p-6 lg:p-8 test-workarea flex flex-col justify-start">
                         <div className="max-w-6xl mx-auto w-full space-y-6">
-                        {/* Top Bar Status in Mac Window */}
-                        <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
-                            <MacWindowControls title={selectedPackage.title} badge="SIMULASI BERLANGSUNG" />
-                            <div className="p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-slate-50/50">
-                                <div className="flex items-center gap-4">
-                                    <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                                        <Layers className="w-4 h-4 text-emerald-700" />
-                                        <span>Soal {currentIdx + 1} dari {activeQuestions.length}</span>
-                                    </div>
-                                    <div className="h-4 w-px bg-slate-200" />
-                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-800">
-                                        {currentSubtest ? (
-                                            <span>
-                                                Subtes {currentSubtestIndex + 1}/{activeSubtests.length}: <strong>{currentSubtest.title}</strong>
+                            {/* Top Bar Status in Mac Window */}
+                            <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
+                                <MacWindowControls title={selectedPackage.title} badge="SIMULASI BERLANGSUNG" />
+                                
+                                <div className="p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-white">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-black text-xs shrink-0">
+                                            Sub-tes {currentSubtestIndex + 1} dari {activeSubtests.length}
+                                        </span>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-slate-900 font-extrabold text-sm sm:text-base">
+                                                {currentSubtest?.title}
                                             </span>
-                                        ) : (
-                                            <span>Subtes {currentQ.subkategori || currentQ.kategori}</span>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-3">
-                                    {/* Timer */}
-                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-amber-200 bg-amber-50 text-amber-900 font-mono text-sm font-bold">
-                                        <Clock className="w-4 h-4 text-amber-600 animate-pulse" />
-                                        <span>{formatTime(timeLeft)}</span>
-                                    </div>
-
-                                    {/* Exit Button with alert */}
-                                    <button
-                                        onClick={() => setShowExitModal(true)}
-                                        className="px-3 py-2 rounded-xl border border-red-200 bg-red-50 text-red-700 hover:bg-red-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
-                                        title="Batalkan Ujian"
-                                    >
-                                        <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
-                                        <span className="hidden sm:inline">Batalkan Tes</span>
-                                    </button>
-
-                                    {/* Finish Button */}
-                                    <button
-                                        onClick={() => setShowSubmitModal(true)}
-                                        className="px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 transition-colors shadow-xs cursor-pointer"
-                                    >
-                                        Selesaikan Ujian
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Subtest switcher tabs if full simulation */}
-                            {selectedPackage.cat === 'SEMUA' && (
-                                <div className="px-4 py-2 bg-white border-b border-slate-100 flex items-center gap-2 overflow-x-auto text-xs">
-                                    <span className="text-[11px] font-bold text-slate-400 shrink-0">Lompat Subtes:</span>
-                                    {[
-                                        { code: 'SEMUA', label: 'Semua (' + getPackageQuestionCount('SEMUA', 773) + ' Soal)' },
-                                        { code: 'POTENSI', label: '1. Tes Potensi (' + getPackageQuestionCount('POTENSI', 525) + ' Soal)' },
-                                        { code: 'MANAJERIAL', label: '2. Manajerial (' + getPackageQuestionCount('MANAJERIAL', 45) + ' Soal)' },
-                                        { code: 'DIGITAL', label: '3. Literasi Digital (' + getPackageQuestionCount('DIGITAL', 35) + ' Soal)' },
-                                        { code: 'KARIR', label: '4. Preferensi Karir (' + getPackageQuestionCount('KARIR', 168) + ' Soal)' },
-                                    ].map(tab => (
-                                        <button
-                                            key={tab.code}
-                                            onClick={() => setCategoryFilter(tab.code)}
-                                            className={`px-3 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                                                categoryFilter === tab.code
-                                                    ? 'bg-slate-900 text-white'
-                                                    : 'text-slate-600 hover:bg-slate-100'
-                                            }`}
-                                        >
-                                            {tab.label}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Question Work Area Grid */}
-                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                            {/* Question Box (Cols 3) */}
-                            <div className="lg:col-span-3 rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden flex flex-col justify-between">
-                                <div className="p-6 sm:p-8 space-y-6 flex-1">
-                                    <div className="space-y-2">
-                                        <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
-                                            {currentQ.subkategori || currentQ.category_name}
+                                            {currentSubtest?.sessionName && (
+                                                <span className="hidden md:inline-block text-[11px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
+                                                    {currentSubtest.sessionName}
+                                                </span>
+                                            )}
                                         </div>
-                                        <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
-                                            {currentQ.soal}
-                                        </h2>
-
-                                        {currentQ.image_url && (
-                                            <div className="my-4 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-xs">
-                                                <div 
-                                                    onClick={() => setPreviewImage(currentQ.image_url!)}
-                                                    className="group relative cursor-pointer overflow-hidden rounded-xl"
-                                                    title="Klik untuk memperbesar gambar (Modal)"
-                                                >
-                                                    <img
-                                                        src={currentQ.image_url}
-                                                        alt="Bagan Soal Figural"
-                                                        className="max-h-[390px] w-auto max-w-full object-contain rounded-xl shadow-xs transition-transform duration-200 group-hover:scale-[1.01]"
-                                                    />
-                                                    <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs backdrop-blur-[1px] rounded-xl">
-                                                        <ZoomIn className="w-4 h-4" />
-                                                        <span>Klik untuk memperbesar gambar</span>
-                                                    </div>
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setPreviewImage(currentQ.image_url!)}
-                                                    className="text-[11px] text-slate-500 hover:text-blue-600 mt-2.5 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
-                                                >
-                                                    <Layers className="w-3.5 h-3.5 text-blue-600" />
-                                                    <span>Bagan Visual Soal Figural (Standar BKN) • <strong className="text-blue-600 font-semibold underline underline-offset-2">Perbesar Gambar</strong></span>
-                                                </button>
-                                            </div>
-                                        )}
-
-                                        {currentQ.kategori === 'KARIR' && (
-                                            <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-900 text-xs flex items-center gap-2 font-medium">
-                                                <Compass className="w-4 h-4 text-amber-700 shrink-0" />
-                                                <span>Pilih opsi peran yang paling mencerminkan motivasi dan pendekatan kerja terbaik Anda:</span>
-                                            </div>
-                                        )}
+                                        <div className="h-4 w-px bg-slate-200 hidden sm:block" />
+                                        <div className="text-xs font-semibold text-slate-500 hidden sm:inline-flex items-center gap-1.5">
+                                            <Layers className="w-3.5 h-3.5 text-slate-400" />
+                                            <span>Soal {currentQuestionInSubtest + 1} dari {currentSubtestQuestions.length}</span>
+                                        </div>
                                     </div>
 
-                                    {/* Options List */}
-                                    <div className={`pt-2 ${currentQ.pilihan?.length === 2 ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'space-y-3'}`}>
-                                        {currentQ.pilihan?.map((pil, oIdx) => {
-                                            const isSelected = answers[currentQ.id] === oIdx;
-                                            return (
-                                                <button
-                                                    key={oIdx}
-                                                    onClick={() => handleSelectOption(currentQ.id, oIdx)}
-                                                    className={`w-full text-left rounded-xl border transition-all flex items-start gap-3.5 font-medium cursor-pointer ${
-                                                        currentQ.pilihan.length === 2 ? 'p-5 sm:p-6 text-sm sm:text-base' : 'p-4 text-xs sm:text-sm'
-                                                    } ${
-                                                        isSelected
-                                                            ? 'border-emerald-600 bg-emerald-50/70 text-slate-900 ring-2 ring-emerald-600/30 shadow-xs'
-                                                            : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
-                                                    }`}
-                                                >
-                                                    <span className={`rounded-md flex items-center justify-center font-bold shrink-0 transition-colors ${
-                                                        currentQ.pilihan.length === 2 ? 'w-8 h-8 text-sm' : 'w-6 h-6 text-xs'
-                                                    } ${
-                                                        isSelected ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
-                                                    }`}>
-                                                        {String.fromCharCode(65 + oIdx)}
-                                                    </span>
-                                                    <span className={`flex-1 leading-relaxed ${currentQ.pilihan.length === 2 ? 'font-mono font-bold text-slate-900 text-base sm:text-lg' : ''}`}>
-                                                        {pil}
-                                                    </span>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
+                                    <div className="flex items-center gap-3">
+                                        {/* Timer */}
+                                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-amber-200 bg-amber-50 text-amber-900 font-mono text-sm font-bold">
+                                            <Clock className="w-4 h-4 text-amber-600 animate-pulse" />
+                                            <span>{formatTime(timeLeft)}</span>
+                                        </div>
 
-                                {/* Navigation Arrows Bottom */}
-                                <div className="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
-                                    <button
-                                        disabled={currentIdx === 0}
-                                        onClick={() => setCurrentIdx((p) => Math.max(0, p - 1))}
-                                        className="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 disabled:opacity-40 hover:bg-white flex items-center gap-2 cursor-pointer disabled:cursor-not-allowed"
-                                    >
-                                        <ArrowLeft className="w-3.5 h-3.5" />
-                                        <span>Soal Sebelumnya</span>
-                                    </button>
-                                    <div className="flex items-center gap-2">
-                                        {hasNextSubtest && (
+                                        {/* Exit Button with alert */}
+                                        <button
+                                            onClick={() => setShowExitModal(true)}
+                                            className="px-3 py-2 rounded-xl border border-red-200 bg-red-50 text-red-700 hover:bg-red-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                                            title="Batalkan Ujian"
+                                        >
+                                            <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
+                                            <span className="hidden sm:inline">Batalkan Tes</span>
+                                        </button>
+
+                                        {/* Action Button: Selesai Sub-tes / Selesaikan Ujian */}
+                                        {hasNextSubtest ? (
                                             <button
-                                                type="button"
                                                 onClick={handleFinishSubtest}
-                                                className="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50/90 text-blue-800 hover:bg-blue-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                                                className="px-4 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold hover:bg-blue-800 transition-colors shadow-xs cursor-pointer flex items-center gap-1.5"
                                                 title="Selesaikan sub-tes saat ini dan masuk ke jeda istirahat"
                                             >
-                                                <Coffee className="w-3.5 h-3.5 text-blue-600" />
-                                                <span className="hidden sm:inline">Selesai Sub-tes (Break)</span>
-                                            </button>
-                                        )}
-                                        {isLastQuestionOfSubtest && hasNextSubtest ? (
-                                            <button
-                                                onClick={handleFinishSubtest}
-                                                className="px-5 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 flex items-center gap-2 cursor-pointer shadow-md"
-                                            >
-                                                <span>Lanjut Sub-tes (Break)</span>
-                                                <ArrowRight className="w-3.5 h-3.5" />
+                                                <Coffee className="w-3.5 h-3.5" />
+                                                <span>Selesai Sub-tes</span>
                                             </button>
                                         ) : (
                                             <button
-                                                disabled={currentIdx === activeQuestions.length - 1}
-                                                onClick={() => setCurrentIdx((p) => Math.min(activeQuestions.length - 1, p + 1))}
-                                                className="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold disabled:opacity-40 hover:bg-emerald-800 flex items-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                                                onClick={() => setShowSubmitModal(true)}
+                                                className="px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 transition-colors shadow-xs cursor-pointer"
                                             >
-                                                <span>Soal Berikutnya</span>
-                                                <ArrowRight className="w-3.5 h-3.5" />
+                                                Selesaikan Ujian
                                             </button>
                                         )}
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Question Navigation Palette (Cols 1) */}
-                            <div className="lg:col-span-1 rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden h-fit">
-                                <MacWindowControls title="Daftar Nomor Soal" badge={`${answeredCount}/${activeQuestions.length}`} />
-                                <div className="p-4 space-y-4">
-                                    <div className="text-xs font-semibold text-slate-500">
-                                        Klik nomor untuk langsung berpindah soal:
+                                {/* Sub-test Sequential Stepper */}
+                                <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-200/80 flex items-center gap-2 overflow-x-auto text-xs">
+                                    <div className="flex items-center gap-1.5 shrink-0 text-slate-500 font-bold text-[11px] uppercase tracking-wider pr-1">
+                                        <Layers className="w-3.5 h-3.5 text-slate-600" />
+                                        <span>Alur Sub-tes:</span>
                                     </div>
-                                    <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 gap-2 max-h-96 overflow-y-auto pr-1">
-                                        {activeQuestions.map((q, qIndex) => {
-                                            const isAnswered = answers[q.id] !== undefined;
-                                            const isCurrent = currentIdx === qIndex;
+                                    <div className="flex items-center gap-1.5 flex-nowrap">
+                                        {activeSubtests.map((sub, sIdx) => {
+                                            const isCompleted = sIdx < currentSubtestIndex;
+                                            const isCurrent = sIdx === currentSubtestIndex;
+                                            const isUpcoming = sIdx > currentSubtestIndex;
                                             return (
-                                                <button
-                                                    key={q.id || qIndex}
-                                                    onClick={() => setCurrentIdx(qIndex)}
-                                                    className={`h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center cursor-pointer ${
+                                                <div
+                                                    key={sub.id}
+                                                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold shrink-0 transition-all ${
                                                         isCurrent
-                                                            ? 'ring-2 ring-slate-900 bg-emerald-800 text-white'
-                                                            : isAnswered
-                                                            ? 'bg-emerald-100 border border-emerald-300 text-emerald-900'
-                                                            : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200'
+                                                            ? 'bg-slate-900 text-white shadow-xs ring-2 ring-emerald-500/40'
+                                                            : isCompleted
+                                                            ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
+                                                            : 'bg-slate-200/70 text-slate-400 border border-slate-200'
                                                     }`}
                                                 >
-                                                    {qIndex + 1}
-                                                </button>
+                                                    {isCompleted ? (
+                                                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                                                    ) : isCurrent ? (
+                                                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                                                    ) : (
+                                                        <span className="text-[10px] font-mono text-slate-400">#{sIdx + 1}</span>
+                                                    )}
+                                                    <span>
+                                                        {sub.shortTitle} ({sub.questions.length})
+                                                    </span>
+                                                    {isUpcoming && <span className="text-[10px] opacity-60">🔒</span>}
+                                                </div>
                                             );
                                         })}
                                     </div>
+                                </div>
+                            </div>
 
-                                    <div className="pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-500 font-medium">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded bg-emerald-800 ring-2 ring-slate-900" />
-                                            <span>Soal Aktif</span>
+                            {/* Question Work Area Grid */}
+                            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                                {/* Question Box (Cols 3) */}
+                                <div className="lg:col-span-3 rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-900/5 overflow-hidden flex flex-col justify-between">
+                                    <div className="p-6 sm:p-8 space-y-6 flex-1">
+                                        <div className="space-y-2">
+                                            <div className="flex items-center justify-between">
+                                                <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
+                                                    {currentSubtest?.title} • {currentQ.subkategori || currentQ.category_name}
+                                                </div>
+                                                <span className="text-xs font-mono font-bold text-slate-400">
+                                                    Butir {currentQuestionInSubtest + 1} / {currentSubtestQuestions.length}
+                                                </span>
+                                            </div>
+                                            <h2 className="text-base sm:text-lg font-bold text-slate-900 leading-relaxed">
+                                                {currentQ.soal}
+                                            </h2>
+
+                                            {currentQ.image_url && (
+                                                <div className="my-4 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-xs">
+                                                    <div 
+                                                        onClick={() => setPreviewImage(currentQ.image_url!)}
+                                                        className="group relative cursor-pointer overflow-hidden rounded-xl"
+                                                        title="Klik untuk memperbesar gambar (Modal)"
+                                                    >
+                                                        <img
+                                                            src={currentQ.image_url}
+                                                            alt="Bagan Soal Figural"
+                                                            className="max-h-[390px] w-auto max-w-full object-contain rounded-xl shadow-xs transition-transform duration-200 group-hover:scale-[1.01]"
+                                                        />
+                                                        <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-semibold text-xs backdrop-blur-[1px] rounded-xl">
+                                                            <ZoomIn className="w-4 h-4" />
+                                                            <span>Klik untuk memperbesar gambar</span>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setPreviewImage(currentQ.image_url!)}
+                                                        className="text-[11px] text-slate-500 hover:text-blue-600 mt-2.5 font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+                                                    >
+                                                        <Layers className="w-3.5 h-3.5 text-blue-600" />
+                                                        <span>Bagan Visual Soal Figural (Standar BKN) • <strong className="text-blue-600 font-semibold underline underline-offset-2">Perbesar Gambar</strong></span>
+                                                    </button>
+                                                </div>
+                                            )}
+
+                                            {currentQ.kategori === 'KARIR' && (
+                                                <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-900 text-xs flex items-center gap-2 font-medium">
+                                                    <Compass className="w-4 h-4 text-amber-700 shrink-0" />
+                                                    <span>Pilih opsi peran yang paling mencerminkan motivasi dan pendekatan kerja terbaik Anda:</span>
+                                                </div>
+                                            )}
                                         </div>
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300" />
-                                            <span>Sudah Terjawab</span>
+
+                                        {/* Options List */}
+                                        <div className={`pt-2 ${currentQ.pilihan?.length === 2 ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'space-y-3'}`}>
+                                            {currentQ.pilihan?.map((pil, oIdx) => {
+                                                const isSelected = answers[currentQ.id] === oIdx;
+                                                return (
+                                                    <button
+                                                        key={oIdx}
+                                                        onClick={() => handleSelectOption(currentQ.id, oIdx)}
+                                                        className={`w-full text-left rounded-xl border transition-all flex items-start gap-3.5 font-medium cursor-pointer ${
+                                                            currentQ.pilihan.length === 2 ? 'p-5 sm:p-6 text-sm sm:text-base' : 'p-4 text-xs sm:text-sm'
+                                                        } ${
+                                                            isSelected
+                                                                ? 'border-emerald-600 bg-emerald-50/70 text-slate-900 ring-2 ring-emerald-600/30 shadow-xs'
+                                                                : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+                                                        }`}
+                                                    >
+                                                        <span className={`rounded-md flex items-center justify-center font-bold shrink-0 transition-colors ${
+                                                            currentQ.pilihan.length === 2 ? 'w-8 h-8 text-sm' : 'w-6 h-6 text-xs'
+                                                        } ${
+                                                            isSelected ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
+                                                        }`}>
+                                                            {String.fromCharCode(65 + oIdx)}
+                                                        </span>
+                                                        <span className={`flex-1 leading-relaxed ${currentQ.pilihan.length === 2 ? 'font-mono font-bold text-slate-900 text-base sm:text-lg' : ''}`}>
+                                                            {pil}
+                                                        </span>
+                                                    </button>
+                                                );
+                                            })}
                                         </div>
+                                    </div>
+
+                                    {/* Navigation Arrows Bottom */}
+                                    <div className="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+                                        <button
+                                            disabled={currentQuestionInSubtest === 0}
+                                            onClick={() => setCurrentQuestionInSubtest((p) => Math.max(0, p - 1))}
+                                            className="px-4 py-2 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 disabled:opacity-40 hover:bg-white flex items-center gap-2 cursor-pointer disabled:cursor-not-allowed"
+                                        >
+                                            <ArrowLeft className="w-3.5 h-3.5" />
+                                            <span>Soal Sebelumnya</span>
+                                        </button>
+                                        
                                         <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded bg-slate-100 border border-slate-200" />
-                                            <span>Belum Terjawab</span>
+                                            {hasNextSubtest && !isLastQuestionOfSubtest && (
+                                                <button
+                                                    type="button"
+                                                    onClick={handleFinishSubtest}
+                                                    className="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50/90 text-blue-800 hover:bg-blue-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                                                    title="Selesaikan sub-tes saat ini dan masuk ke jeda istirahat"
+                                                >
+                                                    <Coffee className="w-3.5 h-3.5 text-blue-600" />
+                                                    <span className="hidden sm:inline">Selesai Sub-tes</span>
+                                                </button>
+                                            )}
+
+                                            {isLastQuestionOfSubtest ? (
+                                                hasNextSubtest ? (
+                                                    <button
+                                                        onClick={handleFinishSubtest}
+                                                        className="px-5 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 flex items-center gap-2 cursor-pointer shadow-md transition-all"
+                                                    >
+                                                        <span>Selesai Sub-tes & Masuk Break</span>
+                                                        <ArrowRight className="w-3.5 h-3.5" />
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        onClick={() => setShowSubmitModal(true)}
+                                                        className="px-5 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 flex items-center gap-2 cursor-pointer shadow-md transition-all"
+                                                    >
+                                                        <span>Selesaikan Seluruh Ujian</span>
+                                                        <CheckCircle2 className="w-3.5 h-3.5" />
+                                                    </button>
+                                                )
+                                            ) : (
+                                                <button
+                                                    onClick={() => setCurrentQuestionInSubtest((p) => Math.min(currentSubtestQuestions.length - 1, p + 1))}
+                                                    className="px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-emerald-800 flex items-center gap-2 cursor-pointer transition-colors"
+                                                >
+                                                    <span>Soal Berikutnya</span>
+                                                    <ArrowRight className="w-3.5 h-3.5" />
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Question Navigation Palette (Cols 1) - ONLY FOR ACTIVE SUB-TEST */}
+                                <div className="lg:col-span-1 rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden h-fit">
+                                    <MacWindowControls 
+                                        title={`Sub-tes ${currentSubtestIndex + 1}: ${currentSubtest?.shortTitle || 'Daftar Soal'}`} 
+                                        badge={`${currentSubtestAnsweredCount}/${currentSubtestQuestions.length}`} 
+                                    />
+                                    <div className="p-4 space-y-4">
+                                        <div className="space-y-1">
+                                            <div className="text-xs font-bold text-slate-800 flex items-center justify-between">
+                                                <span>Daftar Soal Sub-tes</span>
+                                                <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                                    Sub-tes {currentSubtestIndex + 1} of {activeSubtests.length}
+                                                </span>
+                                            </div>
+                                            <p className="text-[11px] text-slate-500 leading-snug">
+                                                Hanya butir soal pada <strong>{currentSubtest?.shortTitle}</strong> ({currentSubtestQuestions.length} butir). Sub-tes berikutnya akan terbuka setelah jeda.
+                                            </p>
+                                        </div>
+
+                                        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-4 gap-2 max-h-96 overflow-y-auto pr-1">
+                                            {currentSubtestQuestions.map((q, qIndex) => {
+                                                const isAnswered = answers[q.id] !== undefined;
+                                                const isCurrent = currentQuestionInSubtest === qIndex;
+                                                return (
+                                                    <button
+                                                        key={q.id || qIndex}
+                                                        onClick={() => setCurrentQuestionInSubtest(qIndex)}
+                                                        className={`h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center cursor-pointer ${
+                                                            isCurrent
+                                                                ? 'ring-2 ring-slate-900 bg-emerald-800 text-white shadow-sm'
+                                                                : isAnswered
+                                                                ? 'bg-emerald-100 border border-emerald-300 text-emerald-900 font-bold'
+                                                                : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200'
+                                                        }`}
+                                                        title={`Soal nomor ${qIndex + 1} (${isAnswered ? 'Sudah terjawab' : 'Belum dijawab'})`}
+                                                    >
+                                                        {qIndex + 1}
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+
+                                        <div className="pt-3 border-t border-slate-100 space-y-1.5 text-[11px] text-slate-500 font-medium">
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded bg-emerald-800 ring-2 ring-slate-900" />
+                                                <span>Soal Aktif</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300" />
+                                                <span>Sudah Terjawab</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded bg-slate-100 border border-slate-200" />
+                                                <span>Belum Terjawab</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* =========================================================================
-                MODE 3.5: HALAMAN BREAK & JEDA ANTAR SUB-TES (INTERMISSION)
-               ========================================================================= */}
-            {mode === 'subtest-break' && justCompletedSubtest && breakNextSubtest && (
-                <div className="fixed inset-0 z-40 bg-[#F8F9FA] overflow-y-auto p-4 sm:p-6 lg:p-8 test-workarea flex flex-col items-center justify-center min-h-screen">
-                    <div className="max-w-2xl w-full rounded-3xl border border-slate-200 bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                        <MacWindowControls 
-                            title={`Sesi Jeda Antar Sub-tes • ${selectedPackage.title}`} 
-                            badge="BREAK TIME" 
-                        />
-                        
-                        <div className="p-6 sm:p-8 space-y-6 text-center">
-                            {/* Celebration / Status Icon */}
-                            <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
-                                <CheckCircle2 className="w-8 h-8" />
-                            </div>
+                {/* =========================================================================
+                    MODE 3.5: HALAMAN BREAK & JEDA ANTAR SUB-TES (INTERMISSION)
+                   ========================================================================= */}
+                {mode === 'subtest-break' && justCompletedSubtest && breakNextSubtest && (
+                    <div className="fixed inset-0 z-40 bg-[#F8F9FA] overflow-y-auto p-4 sm:p-6 lg:p-8 test-workarea flex flex-col items-center justify-center min-h-screen">
+                        <div className="max-w-2xl w-full rounded-3xl border border-slate-200 bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                            <MacWindowControls 
+                                title={`Sesi Jeda Antar Sub-tes • ${selectedPackage.title}`} 
+                                badge="BREAK TIME" 
+                            />
+                            
+                            <div className="p-6 sm:p-8 space-y-6 text-center">
+                                {/* Celebration / Status Icon */}
+                                <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+                                    <CheckCircle2 className="w-8 h-8" />
+                                </div>
 
-                            <div className="space-y-2">
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 uppercase tracking-wider">
-                                    ★ Sub-tes Selesai
-                                </span>
-                                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                                    {justCompletedSubtest.title} Telah Selesai
-                                </h2>
-                                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
-                                    Jawaban Anda pada sub-tes ini telah tersimpan aman di sistem. Anda dapat beristirahat sejenak sebelum memulai sub-tes berikutnya.
-                                </p>
-                            </div>
-
-                            {/* Stat Summary Box */}
-                            <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left">
-                                <div className="space-y-1">
-                                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Progres Sub-tes Ini</span>
-                                    <div className="text-base font-black text-slate-900">
-                                        {activeQuestions.slice(justCompletedSubtest.startIndex, justCompletedSubtest.endIndex + 1).filter(q => answers[q.id] !== undefined).length} / {justCompletedSubtest.count} Terjawab
-                                    </div>
-                                    <p className="text-[10px] text-slate-500 font-medium">
-                                        {justCompletedSubtest.count - activeQuestions.slice(justCompletedSubtest.startIndex, justCompletedSubtest.endIndex + 1).filter(q => answers[q.id] !== undefined).length === 0 ? 'Semua butir soal terjawab' : `${justCompletedSubtest.count - activeQuestions.slice(justCompletedSubtest.startIndex, justCompletedSubtest.endIndex + 1).filter(q => answers[q.id] !== undefined).length} butir terlewat`}
+                                <div className="space-y-2">
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 uppercase tracking-wider">
+                                        ★ Sub-tes {currentSubtestIndex + 1} Selesai
+                                    </span>
+                                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                                        {justCompletedSubtest.title} Telah Selesai
+                                    </h2>
+                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-lg mx-auto">
+                                        Jawaban Anda pada sub-tes ini telah tersimpan aman di sistem. Anda dapat beristirahat sejenak sebelum memulai sub-tes berikutnya.
                                     </p>
                                 </div>
-                                <div className="space-y-1 border-l border-slate-200 pl-4">
-                                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Terjawab Keseluruhan</span>
-                                    <div className="text-base font-black text-emerald-700">
-                                        {Object.keys(answers).length} / {activeQuestions.length} Soal
+
+                                {/* Stat Summary Box */}
+                                <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left">
+                                    <div className="space-y-1">
+                                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Progres Sub-tes Ini</span>
+                                        <div className="text-base font-black text-slate-900">
+                                            {justCompletedSubtest.questions.filter(q => answers[q.id] !== undefined).length} / {justCompletedSubtest.questions.length} Terjawab
+                                        </div>
+                                        <p className="text-[10px] text-slate-500 font-medium">
+                                            {justCompletedSubtest.questions.length - justCompletedSubtest.questions.filter(q => answers[q.id] !== undefined).length === 0 ? 'Semua butir soal terjawab' : `${justCompletedSubtest.questions.length - justCompletedSubtest.questions.filter(q => answers[q.id] !== undefined).length} butir terlewat`}
+                                        </p>
                                     </div>
-                                    <p className="text-[10px] text-slate-500 font-medium">
-                                        Sub-tes ke-{activeSubtests.findIndex(s => s.id === justCompletedSubtest.id) + 1} dari {activeSubtests.length}
+                                    <div className="space-y-1 border-l border-slate-200 pl-4">
+                                        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Terjawab Keseluruhan</span>
+                                        <div className="text-base font-black text-emerald-700">
+                                            {Object.keys(answers).length} / {activeQuestions.length} Soal
+                                        </div>
+                                        <p className="text-[10px] text-slate-500 font-medium">
+                                            Sub-tes ke-{currentSubtestIndex + 1} dari {activeSubtests.length}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Next Subtest Preview Card */}
+                                <div className="p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200/80 text-left space-y-2.5">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[11px] font-bold text-blue-800 uppercase tracking-wider flex items-center gap-1.5">
+                                            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                                            Sub-tes Selanjutnya (Siap Dikerjakan)
+                                        </span>
+                                        <span className="px-2 py-0.5 rounded-md bg-blue-200/60 text-blue-900 font-mono text-[11px] font-bold">
+                                            {breakNextSubtest.questions.length} Butir Soal
+                                        </span>
+                                    </div>
+                                    <h3 className="text-base font-black text-slate-900">
+                                        {breakNextSubtest.title}
+                                    </h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed">
+                                        {breakNextSubtest.description || 'Fokus dan teliti dalam memilih jawaban terbaik. Waktu pengerjaan akan kembali berjalan saat Anda menekan tombol di bawah.'}
                                     </p>
                                 </div>
-                            </div>
 
-                            {/* Next Subtest Preview Card */}
-                            <div className="p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200/80 text-left space-y-2.5">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-[11px] font-bold text-blue-800 uppercase tracking-wider flex items-center gap-1.5">
-                                        <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                                        Sub-tes Selanjutnya (Siap Dikerjakan)
-                                    </span>
-                                    <span className="px-2 py-0.5 rounded-md bg-blue-200/60 text-blue-900 font-mono text-[11px] font-bold">
-                                        {breakNextSubtest.count} Butir Soal
-                                    </span>
+                                {/* Action Buttons */}
+                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button
+                                        type="button"
+                                        onClick={handlePauseAndSave}
+                                        className="flex-1 py-3.5 px-4 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                                    >
+                                        <PauseCircle className="w-4 h-4 text-slate-500" />
+                                        <span>Istirahat & Simpan Progres</span>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handleProceedNextSubtest}
+                                        className="flex-1 py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-emerald-800 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
+                                    >
+                                        <span>Mulai Sub-tes Berikutnya</span>
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </button>
                                 </div>
-                                <h3 className="text-base font-black text-slate-900">
-                                    {breakNextSubtest.title}
-                                </h3>
-                                <p className="text-xs text-slate-600 leading-relaxed">
-                                    {breakNextSubtest.description || 'Fokus dan teliti dalam memilih jawaban terbaik. Waktu pengerjaan akan kembali berjalan saat Anda menekan tombol di bawah.'}
-                                </p>
-                            </div>
-
-                            {/* Action Buttons */}
-                            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                                <button
-                                    type="button"
-                                    onClick={handlePauseAndSave}
-                                    className="flex-1 py-3.5 px-4 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                                >
-                                    <PauseCircle className="w-4 h-4 text-slate-500" />
-                                    <span>Istirahat & Simpan Progres</span>
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={handleProceedNextSubtest}
-                                    className="flex-1 py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-emerald-800 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
-                                >
-                                    <span>Mulai Sub-tes Berikutnya</span>
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </button>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
 
             {/* =========================================================================
                 MODE 4: HASIL SKOR & RAPOR PROFILING
