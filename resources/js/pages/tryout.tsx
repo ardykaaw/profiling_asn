@@ -58,19 +58,19 @@ const packages = [
         id: 'profiling-full', 
         title: 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)', 
         cat: 'SEMUA', 
-        defaultSoal: 728, 
+        defaultSoal: 713, 
         durasi: 120, 
-        badge: '15 Subtes / 728 Soal Paten',
-        desc: 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (480 soal), Manajerial & Sosio-Kultural (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).'
+        badge: '15 Subtes / 713 Soal Paten',
+        desc: 'Simulasi menyeluruh mencakup semua 4 kategori resmi: Tes Potensi (465 soal), Manajerial & Sosio-Kultural (45 soal), Literasi Digital (35 soal), dan Preferensi Karir (168 soal).'
     },
     { 
         id: 'potensi-drill', 
         title: 'Sesi 1: Tes Potensi Kognitif & Figural', 
         cat: 'POTENSI', 
-        defaultSoal: 480, 
+        defaultSoal: 465, 
         durasi: 90, 
-        badge: '5 Subtes / 480 Soal Paten',
-        desc: 'Mencakup 5 subtes resmi: Figural (45 soal), Numerik (300 soal), Berpikir Kritis & Problem Solving (45 soal), Kemampuan Belajar Cepat (45 soal), dan Kepribadian (45 soal).'
+        badge: '5 Subtes / 465 Soal Paten',
+        desc: 'Mencakup 5 subtes resmi: Figural (45 soal), Numerik (300 soal), Berpikir Kritis (30 soal), Kepribadian (45 soal), dan Kemampuan Belajar Cepat (45 soal).'
     },
     { 
         id: 'manajerial-drill', 
@@ -213,8 +213,8 @@ const SUBTEST_ORDER = [
     'potensi-figural',
     'potensi-numerik',
     'potensi-kritis',
-    'potensi-belajar-cepat',
     'potensi-kepribadian',
+    'potensi-belajar-cepat',
     'manajerial-sjt',
     'manajerial-sosio',
     'digital-skill',
