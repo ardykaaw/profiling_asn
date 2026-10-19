@@ -211,14 +211,24 @@ class DashboardController extends Controller
                 $isInProgress = false;
                 $progressPercentage = 100;
                 $currentSubtest = $pkg['total_subtest'];
+                $currentQuestion = $pkg['total_soal'];
+                $answeredCount = $pkg['total_soal'];
+                $subtestTitle = null;
                 $session = $completedSession;
                 $completedDate = $completedSession->completed_at ?? $completedSession->created_at;
             } elseif ($inProgressSession) {
                 $isCompleted = false;
                 $isInProgress = true;
-                $currSub = (int) ($inProgressSession->category_scores['current_subtest_index'] ?? 1);
+                $currSub = (int) ($inProgressSession->category_scores['current_subtest_index'] ?? 0);
+                $currQ = (int) ($inProgressSession->category_scores['current_question_index'] ?? 0);
+                $subtestTitle = $inProgressSession->category_scores['subtest_title'] ?? null;
+                $answeredCount = is_array($inProgressSession->answers) ? count($inProgressSession->answers) : (int) ($inProgressSession->category_scores['answered_count'] ?? 0);
+                
                 $currentSubtest = $currSub;
-                $progressPercentage = (int) min(99, max(1, round(($currSub / $pkg['total_subtest']) * 100)));
+                $currentQuestion = $currQ;
+                $progressPercentage = $pkg['total_soal'] > 0 
+                    ? (int) min(99, max(1, round(($answeredCount / $pkg['total_soal']) * 100))) 
+                    : (int) min(99, max(1, round((($currSub + 1) / $pkg['total_subtest']) * 100)));
                 $session = $inProgressSession;
                 $completedDate = null;
             } else {
@@ -226,6 +236,9 @@ class DashboardController extends Controller
                 $isInProgress = false;
                 $progressPercentage = 0;
                 $currentSubtest = 0;
+                $currentQuestion = 0;
+                $answeredCount = 0;
+                $subtestTitle = null;
                 $session = null;
                 $completedDate = null;
             }
@@ -243,6 +256,9 @@ class DashboardController extends Controller
                 'is_completed' => $isCompleted,
                 'is_in_progress' => $isInProgress,
                 'current_subtest' => $currentSubtest,
+                'current_question' => $currentQuestion,
+                'subtest_title' => $subtestTitle,
+                'answered_count' => $answeredCount,
                 'progress_percentage' => $progressPercentage,
                 'session_id' => $session?->id,
                 'completed_at' => $completedDate ? $completedDate->translatedFormat('d M Y, H:i') : null,

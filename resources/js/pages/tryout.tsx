@@ -722,7 +722,15 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
     } | null>(null);
 
     // Helper to persist in-progress subtest progress to server
-    const saveProgressToServer = (pkgId: string, pkgTitle: string, currentAnswers: Record<number, number>, nextSubIndex: number, totalSubs: number) => {
+    const saveProgressToServer = (
+        pkgId: string, 
+        pkgTitle: string, 
+        currentAnswers: Record<number, number>, 
+        subIndex: number, 
+        qIndex: number, 
+        totalSubs: number,
+        subTitle?: string
+    ) => {
         try {
             router.post(
                 '/tryout/save-progress',
@@ -730,8 +738,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                     package_id: pkgId,
                     title: pkgTitle,
                     answers: currentAnswers,
-                    current_subtest_index: nextSubIndex,
+                    current_subtest_index: subIndex,
+                    current_question_index: qIndex,
                     total_subtests: totalSubs,
+                    subtest_title: subTitle || '',
+                    answered_count: Object.keys(currentAnswers).length,
                     time_spent: selectedPackage.durasi * 60 - timeLeft,
                 },
                 {
@@ -742,6 +753,38 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         } catch (err) {
             console.error(err);
         }
+    };
+
+    // Save and pause directly from active test
+    const handleSaveAndPauseCurrentTest = () => {
+        const nextQIdx = currentQuestionInSubtest;
+        const subTitle = currentSubtest?.title || '';
+        try {
+            const stateData = {
+                packageId: selectedPackage.id,
+                packageTitle: selectedPackage.title,
+                answers: answers,
+                currentSubtestIndex: currentSubtestIndex,
+                currentQuestionInSubtest: nextQIdx,
+                nextSubtestTitle: subTitle,
+                timestamp: new Date().toISOString(),
+            };
+            localStorage.setItem('tryout_saved_session', JSON.stringify(stateData));
+            setSavedSession(stateData);
+        } catch (e) {
+            console.error(e);
+        }
+        saveProgressToServer(
+            selectedPackage.id,
+            selectedPackage.title,
+            answers,
+            currentSubtestIndex,
+            nextQIdx,
+            activeSubtests.length,
+            subTitle
+        );
+        setShowExitModal(false);
+        setMode('list');
     };
 
     // Check for saved in-progress session in localStorage or server
@@ -760,9 +803,9 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                     packageId: inProgressSession.category_scores.package_id || 'profiling-full',
                     packageTitle: inProgressSession.title,
                     answers: inProgressSession.answers || {},
-                    currentSubtestIndex: inProgressSession.category_scores.current_subtest_index || 1,
-                    currentQuestionInSubtest: 0,
-                    nextSubtestTitle: '',
+                    currentSubtestIndex: inProgressSession.category_scores.current_subtest_index ?? 0,
+                    currentQuestionInSubtest: inProgressSession.category_scores.current_question_index ?? 0,
+                    nextSubtestTitle: inProgressSession.category_scores.subtest_title || '',
                     timestamp: inProgressSession.updated_at || new Date().toISOString(),
                 };
                 setSavedSession(serverSaved);
@@ -991,8 +1034,20 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         setActiveSubtests(subtests);
         const targetSubIdx = Math.min(Math.max(0, resumeSubtestIndex), Math.max(0, subtests.length - 1));
         setCurrentSubtestIndex(targetSubIdx);
-        const maxQ = subtests[targetSubIdx]?.questions?.length || 1;
-        setCurrentQuestionInSubtest(Math.min(Math.max(0, resumeQuestionIndex), maxQ - 1));
+        
+        const subQuestions = subtests[targetSubIdx]?.questions || [];
+        let targetQIdx = 0;
+        if (subQuestions.length > 0) {
+            // Find first unanswered question or place at resumeQuestionIndex
+            const firstUnanswered = subQuestions.findIndex((q) => initialAnswers[q.id] === undefined);
+            if (firstUnanswered !== -1) {
+                targetQIdx = firstUnanswered;
+            } else {
+                targetQIdx = Math.min(Math.max(0, resumeQuestionIndex), subQuestions.length - 1);
+            }
+        }
+
+        setCurrentQuestionInSubtest(targetQIdx);
         setAnswers(initialAnswers);
         setTimeLeft(pkg.durasi * 60);
         setCategoryFilter('SEMUA');
@@ -1002,10 +1057,28 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
     };
 
     const handleSelectOption = (qId: number, optIdx: number) => {
-        setAnswers((prev) => ({
-            ...prev,
-            [qId]: optIdx,
-        }));
+        setAnswers((prev) => {
+            const next = {
+                ...prev,
+                [qId]: optIdx,
+            };
+            try {
+                const stateData = {
+                    packageId: selectedPackage.id,
+                    packageTitle: selectedPackage.title,
+                    answers: next,
+                    currentSubtestIndex: currentSubtestIndex,
+                    currentQuestionInSubtest: currentQuestionInSubtest,
+                    nextSubtestTitle: currentSubtest?.title || '',
+                    timestamp: new Date().toISOString(),
+                };
+                localStorage.setItem('tryout_saved_session', JSON.stringify(stateData));
+                setSavedSession(stateData);
+            } catch (e) {
+                console.error(e);
+            }
+            return next;
+        });
     };
 
     // Transition to break between subtests
@@ -1030,7 +1103,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             } catch (e) {
                 console.error(e);
             }
-            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, activeSubtests.length);
+            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest.title);
             setMode('subtest-break');
         } else {
             setShowSubmitModal(true);
@@ -1065,7 +1138,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             } catch (e) {
                 console.error(e);
             }
-            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, activeSubtests.length);
+            saveProgressToServer(selectedPackage.id, selectedPackage.title, answers, nextIdx, 0, activeSubtests.length, nextSubtest.title);
         }
         setMode('list');
     };
@@ -1076,9 +1149,9 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             packageId: inProgressSession.category_scores?.package_id || 'profiling-full',
             packageTitle: inProgressSession.title,
             answers: inProgressSession.answers || {},
-            currentSubtestIndex: inProgressSession.category_scores?.current_subtest_index || 1,
-            currentQuestionInSubtest: 0,
-            nextSubtestTitle: '',
+            currentSubtestIndex: inProgressSession.category_scores?.current_subtest_index ?? 0,
+            currentQuestionInSubtest: inProgressSession.category_scores?.current_question_index ?? 0,
+            nextSubtestTitle: inProgressSession.category_scores?.subtest_title || '',
             timestamp: inProgressSession.updated_at || new Date().toISOString(),
         } : null);
 
@@ -1347,7 +1420,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             {savedSession.packageTitle || 'Simulasi Tryout'}
                                         </h4>
                                         <p className="text-xs text-slate-600">
-                                            Telah menjawab <strong>{Object.keys(savedSession.answers || {}).length} soal</strong>. Siap melanjutkan ke <strong>{savedSession.nextSubtestTitle}</strong>.
+                                            Tersimpan di <strong>Sub-tes {savedSession.currentSubtestIndex + 1}</strong> • Sampai <strong>Soal ke-{(savedSession.currentQuestionInSubtest ?? 0) + 1}</strong> ({Object.keys(savedSession.answers || {}).length} soal sudah terjawab).
                                         </p>
                                     </div>
                                 </div>
@@ -1457,8 +1530,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     );
 
                                     const totalSubs = pkg.id === 'profiling-full' ? 15 : (pkg.id === 'potensi-drill' ? 5 : (pkg.id === 'manajerial-drill' ? 2 : 4));
-                                    const currSub = savedSession?.currentSubtestIndex ?? (inProgressSession?.category_scores?.current_subtest_index ?? 1);
-                                    const progressPct = isDone ? 100 : (pkgInProgress ? Math.min(99, Math.max(1, Math.round((currSub / totalSubs) * 100))) : 0);
+                                    const currSub = savedSession?.currentSubtestIndex ?? (inProgressSession?.category_scores?.current_subtest_index ?? 0);
+                                    const currQ = savedSession?.currentQuestionInSubtest ?? (inProgressSession?.category_scores?.current_question_index ?? 0);
+                                    const savedAnswersCount = Object.keys(savedSession?.answers || inProgressSession?.answers || {}).length;
+                                    const totalQuestionsInPkg = getPackageQuestionCount(pkg.cat, pkg.defaultSoal);
+                                    const progressPct = isDone ? 100 : (pkgInProgress ? Math.min(99, Math.max(1, Math.round((savedAnswersCount / totalQuestionsInPkg) * 100))) : 0);
 
                                     return (
                                         <div
@@ -1467,7 +1543,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                         >
                                             <MacWindowControls 
                                                 title={pkg.title} 
-                                                badge={isDone ? '100% SELESAI' : (pkgInProgress ? `SUBTES ${currSub} / ${totalSubs}` : pkg.badge)} 
+                                                badge={isDone ? '100% SELESAI' : (pkgInProgress ? `SUBTES ${currSub + 1} • SOAL ${currQ + 1}` : pkg.badge)} 
                                             />
                                             <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                                                 <div>
@@ -1492,7 +1568,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                                     <span>100% Selesai</span>
                                                                 </>
                                                             ) : pkgInProgress ? (
-                                                                <span>{progressPct}% (Sub-tes {currSub} / {totalSubs})</span>
+                                                                <span>{progressPct}% (Sub-tes {currSub + 1} • Soal ke-{currQ + 1})</span>
                                                             ) : (
                                                                 <span>0% Belum Dikerjakan</span>
                                                             )}
@@ -1504,6 +1580,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                             style={{ width: `${progressPct}%` }}
                                                         />
                                                     </div>
+                                                    {pkgInProgress && (
+                                                        <p className="text-[11px] text-amber-700 font-medium">
+                                                            {savedAnswersCount} butir jawaban tersimpan di database
+                                                        </p>
+                                                    )}
                                                 </div>
 
                                                 <div className="pt-1 flex items-center justify-between text-xs text-slate-500 font-medium">
@@ -1543,7 +1624,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                             className="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
                                                         >
                                                             <Play className="w-3.5 h-3.5 fill-white" />
-                                                            <span>Lanjutkan Ujian (Sub-tes {currSub + 1})</span>
+                                                            <span>Lanjutkan Ujian (Mulai Soal ke-{currQ + 1})</span>
                                                         </button>
                                                         <button
                                                             type="button"
@@ -1739,14 +1820,25 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             <span>{formatTime(timeLeft)}</span>
                                         </div>
 
+                                        {/* Save & Pause Button */}
+                                        <button
+                                            type="button"
+                                            onClick={handleSaveAndPauseCurrentTest}
+                                            className="px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                                            title="Simpan seluruh jawaban dan jeda tes untuk dilanjutkan nanti"
+                                        >
+                                            <PauseCircle className="w-4 h-4 text-amber-700" />
+                                            <span className="hidden sm:inline">Simpan & Jeda</span>
+                                        </button>
+
                                         {/* Exit Button with alert */}
                                         <button
                                             onClick={() => setShowExitModal(true)}
-                                            className="px-3 py-2 rounded-xl border border-red-200 bg-red-50 text-red-700 hover:bg-red-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
-                                            title="Batalkan Ujian"
+                                            className="px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                                            title="Keluar dari Ujian"
                                         >
-                                            <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
-                                            <span className="hidden sm:inline">Batalkan Tes</span>
+                                            <AlertTriangle className="w-3.5 h-3.5 text-slate-500" />
+                                            <span className="hidden sm:inline">Keluar</span>
                                         </button>
 
                                         {/* Action Button: Selesai Sub-tes / Selesaikan Ujian */}
@@ -2572,10 +2664,18 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     Lanjutkan Tes
                                 </button>
                                 <button
-                                    onClick={confirmCancelTest}
-                                    className="flex-1 py-3 rounded-xl border border-red-200 bg-red-50 text-red-700 font-bold text-xs hover:bg-red-100 transition-colors cursor-pointer"
+                                    onClick={handleSaveAndPauseCurrentTest}
+                                    className="flex-1 py-3 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 font-bold text-xs hover:bg-amber-100 transition-colors cursor-pointer shadow-xs"
+                                    title="Simpan progres dan keluar ke dashboard"
                                 >
-                                    Ya, Batalkan Tes
+                                    Simpan & Keluar
+                                </button>
+                                <button
+                                    onClick={confirmCancelTest}
+                                    className="py-3 px-4 rounded-xl border border-red-200 bg-red-50 text-red-700 font-bold text-xs hover:bg-red-100 transition-colors cursor-pointer"
+                                    title="Batalkan tanpa menyimpan progres"
+                                >
+                                    Hapus / Batal
                                 </button>
                             </div>
                         </div>

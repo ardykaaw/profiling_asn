@@ -268,7 +268,10 @@ class TryoutController extends Controller
             'title' => 'required|string',
             'answers' => 'required|array',
             'current_subtest_index' => 'required|integer',
+            'current_question_index' => 'nullable|integer',
             'total_subtests' => 'required|integer',
+            'subtest_title' => 'nullable|string',
+            'answered_count' => 'nullable|integer',
             'time_spent' => 'nullable|integer',
         ]);
 
@@ -287,7 +290,10 @@ class TryoutController extends Controller
                     'in_progress' => true,
                     'package_id' => $validated['package_id'],
                     'current_subtest_index' => (int) $validated['current_subtest_index'],
+                    'current_question_index' => (int) ($validated['current_question_index'] ?? 0),
                     'total_subtests' => (int) $validated['total_subtests'],
+                    'subtest_title' => $validated['subtest_title'] ?? null,
+                    'answered_count' => (int) ($validated['answered_count'] ?? count($validated['answers'])),
                 ],
             ]
         );

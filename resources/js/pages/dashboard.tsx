@@ -49,6 +49,9 @@ export interface PackageTrackingItem {
     is_completed: boolean;
     is_in_progress?: boolean;
     current_subtest?: number;
+    current_question?: number;
+    subtest_title?: string | null;
+    answered_count?: number;
     progress_percentage: number;
     session_id?: number | null;
     completed_at?: string | null;
@@ -316,7 +319,7 @@ export default function Dashboard({
                                             }>
                                                 {pkg.is_completed 
                                                     ? '100% Selesai' 
-                                                    : (pkg.is_in_progress ? `${pkg.progress_percentage}% (Sub-tes ${pkg.current_subtest}/${pkg.total_subtest})` : '0% Belum Dikerjakan')}
+                                                    : (pkg.is_in_progress ? `${pkg.progress_percentage}% (${pkg.answered_count ?? 0}/${pkg.total_soal} Soal)` : '0% Belum Dikerjakan')}
                                             </span>
                                         </div>
                                         <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
@@ -352,12 +355,12 @@ export default function Dashboard({
                                     ) : pkg.is_in_progress ? (
                                         <div className="rounded-xl bg-amber-50/70 border border-amber-200 p-2.5 space-y-1 text-xs text-amber-900">
                                             <div className="flex items-center justify-between font-medium">
-                                                <span>Status Pengerjaan:</span>
-                                                <span className="font-bold text-amber-800">Sub-tes {pkg.current_subtest} Selesai</span>
+                                                <span>Progres Tersimpan:</span>
+                                                <span className="font-bold text-amber-800">Sub-tes {(pkg.current_subtest ?? 0) + 1}</span>
                                             </div>
                                             <div className="flex items-center justify-between text-[11px] text-amber-700">
-                                                <span>Siap Dilanjutkan:</span>
-                                                <span className="font-bold">Sub-tes ke-{(pkg.current_subtest ?? 0) + 1}</span>
+                                                <span>Sampai Soal:</span>
+                                                <span className="font-bold">Soal ke-{(pkg.current_question ?? 0) + 1} ({pkg.answered_count ?? 0} terjawab)</span>
                                             </div>
                                         </div>
                                     ) : (
@@ -401,7 +404,7 @@ export default function Dashboard({
                                                     href={`/tryout?resume=${pkg.id}`}
                                                     className="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center"
                                                 >
-                                                    <span>Lanjutkan Subtes {(pkg.current_subtest ?? 0) + 1}</span>
+                                                    <span>Lanjutkan: Soal ke-{(pkg.current_question ?? 0) + 1}</span>
                                                     <ArrowRight className="w-3.5 h-3.5" />
                                                 </a>
                                                 <button
