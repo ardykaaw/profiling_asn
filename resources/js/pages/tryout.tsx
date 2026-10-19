@@ -36,7 +36,8 @@ import {
     Coffee,
     PauseCircle,
     Lock,
-    Trash2
+    Trash2,
+    BookmarkCheck
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -719,6 +720,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
     // Modal dialog states
     const [showExitModal, setShowExitModal] = useState(false);
     const [showSubmitModal, setShowSubmitModal] = useState(false);
+    const [showSubtestFinishModal, setShowSubtestFinishModal] = useState(false);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     // Reset Package Modal State
@@ -801,6 +803,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             subTitle
         );
         setShowExitModal(false);
+        setShowSubtestFinishModal(false);
         setMode('list');
     };
 
@@ -1055,12 +1058,12 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         const subQuestions = subtests[targetSubIdx]?.questions || [];
         let targetQIdx = 0;
         if (subQuestions.length > 0) {
-            // Find first unanswered question or place at resumeQuestionIndex
-            const firstUnanswered = subQuestions.findIndex((q) => initialAnswers[q.id] === undefined);
-            if (firstUnanswered !== -1) {
-                targetQIdx = firstUnanswered;
+            // Prioritize resuming at the exact question index user left off at
+            if (typeof resumeQuestionIndex === 'number' && resumeQuestionIndex >= 0 && resumeQuestionIndex < subQuestions.length) {
+                targetQIdx = resumeQuestionIndex;
             } else {
-                targetQIdx = Math.min(Math.max(0, resumeQuestionIndex), subQuestions.length - 1);
+                const firstUnanswered = subQuestions.findIndex((q) => initialAnswers[q.id] === undefined);
+                targetQIdx = firstUnanswered !== -1 ? firstUnanswered : 0;
             }
         }
 
@@ -1070,6 +1073,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         setCategoryFilter('SEMUA');
         setShowExitModal(false);
         setShowSubmitModal(false);
+        setShowSubtestFinishModal(false);
         setMode('test');
     };
 
@@ -1098,8 +1102,19 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         });
     };
 
+    // Request finishing subtest (warn if unanswered questions remain)
+    const handleRequestFinishSubtest = () => {
+        const unansweredInSub = currentSubtestQuestions.filter((q) => answers[q.id] === undefined).length;
+        if (unansweredInSub > 0) {
+            setShowSubtestFinishModal(true);
+        } else {
+            handleForceFinishSubtest();
+        }
+    };
+
     // Transition to break between subtests
-    const handleFinishSubtest = () => {
+    const handleForceFinishSubtest = () => {
+        setShowSubtestFinishModal(false);
         if (hasNextSubtest && nextSubtest && currentSubtest) {
             setJustCompletedSubtest(currentSubtest);
             setBreakNextSubtest(nextSubtest);
@@ -1126,6 +1141,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
             setShowSubmitModal(true);
         }
     };
+
+    const handleFinishSubtest = handleRequestFinishSubtest;
 
     // Break screen action: proceed to next subtest
     const handleProceedNextSubtest = () => {
@@ -1162,15 +1179,33 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
     // Resume saved session
     const handleResumeSavedSession = (targetPkg?: typeof packages[0]) => {
-        const activeSaved = savedSession || (inProgressSession ? {
-            packageId: inProgressSession.category_scores?.package_id || 'profiling-full',
-            packageTitle: inProgressSession.title,
-            answers: inProgressSession.answers || {},
-            currentSubtestIndex: inProgressSession.category_scores?.current_subtest_index ?? 0,
-            currentQuestionInSubtest: inProgressSession.category_scores?.current_question_index ?? 0,
-            nextSubtestTitle: inProgressSession.category_scores?.subtest_title || '',
-            timestamp: inProgressSession.updated_at || new Date().toISOString(),
-        } : null);
+        let activeSaved = null;
+        if (targetPkg) {
+            if (savedSession && (savedSession.packageId === targetPkg.id || savedSession.packageTitle === targetPkg.title)) {
+                activeSaved = savedSession;
+            } else if (inProgressSession && (inProgressSession.title === targetPkg.title || inProgressSession.category_scores?.package_id === targetPkg.id)) {
+                activeSaved = {
+                    packageId: inProgressSession.category_scores?.package_id || targetPkg.id,
+                    packageTitle: inProgressSession.title,
+                    answers: inProgressSession.answers || {},
+                    currentSubtestIndex: inProgressSession.category_scores?.current_subtest_index ?? 0,
+                    currentQuestionInSubtest: inProgressSession.category_scores?.current_question_index ?? 0,
+                    nextSubtestTitle: inProgressSession.category_scores?.subtest_title || '',
+                    timestamp: inProgressSession.updated_at || new Date().toISOString(),
+                };
+            }
+        }
+        if (!activeSaved) {
+            activeSaved = savedSession || (inProgressSession ? {
+                packageId: inProgressSession.category_scores?.package_id || 'profiling-full',
+                packageTitle: inProgressSession.title,
+                answers: inProgressSession.answers || {},
+                currentSubtestIndex: inProgressSession.category_scores?.current_subtest_index ?? 0,
+                currentQuestionInSubtest: inProgressSession.category_scores?.current_question_index ?? 0,
+                nextSubtestTitle: inProgressSession.category_scores?.subtest_title || '',
+                timestamp: inProgressSession.updated_at || new Date().toISOString(),
+            } : null);
+        }
 
         if (!activeSaved) {
             if (targetPkg) initiateTest(targetPkg);
@@ -1866,7 +1901,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                         {/* Action Button: Selesai Sub-tes / Selesaikan Ujian */}
                                         {hasNextSubtest ? (
                                             <button
-                                                onClick={handleFinishSubtest}
+                                                onClick={handleRequestFinishSubtest}
                                                 className="px-4 py-2 rounded-xl bg-blue-700 text-white text-xs font-bold hover:bg-blue-800 transition-colors shadow-xs cursor-pointer flex items-center gap-1.5"
                                                 title="Selesaikan sub-tes saat ini dan masuk ke jeda istirahat"
                                             >
@@ -2022,22 +2057,20 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                         </button>
                                         
                                         <div className="flex items-center gap-2">
-                                            {hasNextSubtest && !isLastQuestionOfSubtest && (
-                                                <button
-                                                    type="button"
-                                                    onClick={handleFinishSubtest}
-                                                    className="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50/90 text-blue-800 hover:bg-blue-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
-                                                    title="Selesaikan sub-tes saat ini dan masuk ke jeda istirahat"
-                                                >
-                                                    <Coffee className="w-3.5 h-3.5 text-blue-600" />
-                                                    <span className="hidden sm:inline">Selesai Sub-tes</span>
-                                                </button>
-                                            )}
+                                            <button
+                                                type="button"
+                                                onClick={handleSaveAndPauseCurrentTest}
+                                                className="px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50/90 text-amber-900 hover:bg-amber-100 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+                                                title="Simpan progres pengerjaan di butir soal ini dan keluar untuk dilanjutkan nanti"
+                                            >
+                                                <BookmarkCheck className="w-3.5 h-3.5 text-amber-700" />
+                                                <span className="hidden sm:inline">Selesaikan & Simpan</span>
+                                            </button>
 
                                             {isLastQuestionOfSubtest ? (
                                                 hasNextSubtest ? (
                                                     <button
-                                                        onClick={handleFinishSubtest}
+                                                        onClick={handleRequestFinishSubtest}
                                                         className="px-5 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 flex items-center gap-2 cursor-pointer shadow-md transition-all"
                                                     >
                                                         <span>Selesai Sub-tes & Masuk Break</span>
@@ -2202,10 +2235,19 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                                     <button
                                         type="button"
-                                        onClick={handlePauseAndSave}
-                                        className="flex-1 py-3.5 px-4 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                                        onClick={() => setMode('test')}
+                                        className="py-3 px-4 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                                        title="Kembali ke soal pada sub-tes ini"
                                     >
-                                        <PauseCircle className="w-4 h-4 text-slate-500" />
+                                        <ArrowLeft className="w-4 h-4 text-slate-500" />
+                                        <span>Kembali ke Soal Sub-tes Ini</span>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handlePauseAndSave}
+                                        className="flex-1 py-3.5 px-4 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 hover:bg-amber-100 font-bold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                                    >
+                                        <PauseCircle className="w-4 h-4 text-amber-700" />
                                         <span>Istirahat & Simpan Progres</span>
                                     </button>
                                     <button
@@ -2687,10 +2729,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 </button>
                                 <button
                                     onClick={handleSaveAndPauseCurrentTest}
-                                    className="flex-1 py-3 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 font-bold text-xs hover:bg-amber-100 transition-colors cursor-pointer shadow-xs"
-                                    title="Simpan progres dan keluar ke dashboard"
+                                    className="flex-1 py-3 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 font-bold text-xs hover:bg-amber-100 transition-colors cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
+                                    title="Simpan progres pengerjaan dan keluar untuk dilanjutkan nanti"
                                 >
-                                    Simpan & Keluar
+                                    <BookmarkCheck className="w-4 h-4 text-amber-700" />
+                                    <span>Selesaikan & Simpan</span>
                                 </button>
                                 <button
                                     onClick={confirmCancelTest}
@@ -2699,6 +2742,65 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 >
                                     Hapus / Batal
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* =========================================================================
+                MODAL: KONFIRMASI PENYELESAIAN SUB-TES (JIKA ADA SOAL BELUM DIJAWAB)
+               ========================================================================= */}
+            {showSubtestFinishModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
+                    <div className="max-w-lg w-full rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+                        <MacWindowControls title="Konfirmasi Selesai Sub-tes" badge={`SUB-TES ${currentSubtestIndex + 1}`} />
+                        <div className="p-6 space-y-4">
+                            <div className="flex items-start gap-3.5">
+                                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+                                    <AlertTriangle className="w-5 h-5" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h3 className="text-sm sm:text-base font-black text-slate-900">
+                                        Anda Masih Berada di Soal ke-{currentQuestionInSubtest + 1}
+                                    </h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed">
+                                        Sub-tes <strong>{currentSubtest?.title}</strong> memiliki {currentSubtestQuestions.length} butir soal. Anda baru menjawab <strong>{currentSubtestAnsweredCount} butir</strong> ({currentSubtestQuestions.length - currentSubtestAnsweredCount} butir belum dijawab).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/80 text-[11px] text-amber-900 leading-relaxed space-y-1">
+                                <p className="font-bold">Apa yang ingin Anda lakukan?</p>
+                                <p className="text-amber-800">
+                                    Jika Anda ingin berhenti dan melanjutkan sisa soal sub-tes ini nanti, pilih <strong>Selesaikan & Simpan Progres</strong>. Anda berhak melanjutkan soal terakhir yang dikerjakan tanpa langsung melompat ke sub-tes berikutnya.
+                                </p>
+                            </div>
+
+                            <div className="space-y-2 pt-1">
+                                <button
+                                    onClick={handleSaveAndPauseCurrentTest}
+                                    className="w-full py-3 px-4 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs flex items-center justify-center gap-2"
+                                >
+                                    <BookmarkCheck className="w-4 h-4" />
+                                    <span>Selesaikan & Simpan Progres (Lanjutkan Nanti)</span>
+                                </button>
+                                
+                                <div className="flex flex-col sm:flex-row gap-2">
+                                    <button
+                                        onClick={() => setShowSubtestFinishModal(false)}
+                                        className="flex-1 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-xs hover:bg-slate-100 transition-colors cursor-pointer"
+                                    >
+                                        Kembali Mengerjakan
+                                    </button>
+                                    <button
+                                        onClick={handleForceFinishSubtest}
+                                        className="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors cursor-pointer"
+                                        title="Tutup sub-tes ini dan lanjut ke jeda istirahat"
+                                    >
+                                        Lewati & Masuk Break Sub-tes
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
