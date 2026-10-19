@@ -44,8 +44,11 @@ class FiguralQuestionsSeeder extends Seeder
             })
             ->delete();
 
+        // Exactly 30 official figural questions (BKN Standard: 30 soal, 30 menit)
+        $questions30 = array_slice($questions, 0, 30);
+
         $count = 0;
-        foreach ($questions as $q) {
+        foreach ($questions30 as $q) {
             Question::create([
                 'category_id' => $potensiCat->id,
                 'sub_category' => $q['sub_category'],
@@ -60,6 +63,9 @@ class FiguralQuestionsSeeder extends Seeder
             $count++;
         }
 
-        $this->command->info("Berhasil menambahkan {$count} butir soal Figural berkualitas tinggi lengkap dengan gambar & pembahasan!");
+        $totalPotensi = Question::where('category_id', $potensiCat->id)->count();
+        $potensiCat->update(['question_count' => $totalPotensi]);
+
+        $this->command->info("Berhasil menambahkan {$count} butir soal Figural resmi berkualitas tinggi lengkap dengan gambar & pembahasan! (Total soal POTENSI: {$totalPotensi})");
     }
 }

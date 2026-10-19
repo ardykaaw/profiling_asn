@@ -1537,10 +1537,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                             <div className="p-4 rounded-xl border border-blue-100 bg-blue-50/50">
                                 <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-blue-700">
                                     <span>Subtes 1</span>
-                                    <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-black">480 Soal</span>
+                                    <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-black">525 Soal</span>
                                 </div>
                                 <div className="text-xs font-black text-slate-900 mt-1">Tes Potensi</div>
-                                <div className="text-[11px] text-slate-500 mt-0.5">5 Subtes: Figural (45), Numerik (300), Kritis (45), Belajar (45), Kepribadian (45)</div>
+                                <div className="text-[11px] text-slate-500 mt-0.5">5 Subtes: Figural (30), Numerik (360), Kritis (45), Belajar (45), Kepribadian (45)</div>
                             </div>
                             <div className="p-4 rounded-xl border border-emerald-100 bg-emerald-50/50">
                                 <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-emerald-700">
