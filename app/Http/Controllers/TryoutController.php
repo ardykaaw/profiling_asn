@@ -292,11 +292,15 @@ class TryoutController extends Controller
             ]
         );
 
-        return response()->json([
-            'status' => 'success',
-            'session_id' => $session->id,
-            'message' => 'Progres subtes berhasil disimpan.',
-        ]);
+        if ($request->wantsJson() && !$request->header('X-Inertia')) {
+            return response()->json([
+                'status' => 'success',
+                'session_id' => $session->id,
+                'message' => 'Progres subtes berhasil disimpan.',
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     public function destroy(Request $request, TryoutSession $tryout)
