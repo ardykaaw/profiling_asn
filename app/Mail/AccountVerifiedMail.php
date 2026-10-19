@@ -20,24 +20,27 @@ class AccountVerifiedMail extends Mailable
 
     public function envelope(): Envelope
     {
-        $fromAddress = config('mail.from.address', 'no-reply@ketik.in');
+        $fromAddress = config('mail.from.address', 'no-reply@profilingasn.com');
+        $fromName = config('mail.from.name', 'proASN by Ketik.in');
         
         return new Envelope(
-            from: new Address($fromAddress, 'proASN by Ketik.in'),
+            from: new Address($fromAddress, $fromName),
             subject: '🎉 Selamat! Akun proASN Anda Telah Aktif Selama 1 Tahun',
         );
     }
 
     public function content(): Content
     {
+        $baseUrl = rtrim(config('app.url', 'https://profilingasn.com'), '/');
+
         return new Content(
             view: 'emails.account-verified',
             with: [
                 'user' => $this->user,
                 'verifiedAt' => $this->user->verified_at ? $this->user->verified_at->translatedFormat('d F Y') : now()->translatedFormat('d F Y'),
                 'expiresAt' => $this->user->expires_at ? $this->user->expires_at->translatedFormat('d F Y') : now()->addYear()->translatedFormat('d F Y'),
-                'loginUrl' => route('login'),
-                'dashboardUrl' => route('dashboard'),
+                'loginUrl' => $baseUrl . '/login',
+                'dashboardUrl' => $baseUrl . '/dashboard',
             ],
         );
     }
