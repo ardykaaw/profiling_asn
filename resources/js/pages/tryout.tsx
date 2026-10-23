@@ -226,6 +226,65 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
     },
 };
 
+
+const SUBTEST_DIAGNOSTICS: Record<string, { rec_high: string; rec_mid: string; rec_low: string }> = {
+    'potensi-figural': {
+        rec_high: 'Daya visualisasi dan rotasi 3D sangat baik, pertahankan konsistensi konsentrasi pola ruang.',
+        rec_mid: 'Pemahaman figural cukup baik, disarankan memperbanyak latihan penalaran rotasi kubus 3D & analogi gambar kompleks.',
+        rec_low: 'Perlu latihan intensif pada penalaran serial pola gambar, rotasi sudut, dan matriks visual spasial.',
+    },
+    'potensi-numerik': {
+        rec_high: 'Ketelitian dan komparasi angka berkecepatan tinggi sangat tajam dan akurat.',
+        rec_mid: 'Ketelitian numerik standar, disarankan melatih kecepatan perbandingan kuantitatif dan eliminasi cepat.',
+        rec_low: 'Perlu peningkatan fokus dan kecepatan hitung komparasi aljabar dasar, persentase, dan deret angka.',
+    },
+    'potensi-kritis': {
+        rec_high: 'Logika analisis dan kemampuan evaluasi argumen kebijakan publik sangat matang.',
+        rec_mid: 'Kemampuan problem solving memadai, tingkatkan ketajaman analisis silogisme dan penarikan kesimpulan.',
+        rec_low: 'Perlu melatih daya nalar analitis, pemilahan premis mayor-minor, dan identifikasi bias argumen.',
+    },
+    'potensi-belajar-cepat': {
+        rec_high: 'Daya adaptasi dan kecepatan sintesis data baru luar biasa unggul.',
+        rec_mid: 'Kemampuan belajar cepat sudah baik, biasakan merangkum instruksi rumit ke poin aksi terstruktur.',
+        rec_low: 'Perlu melatih teknik scanning informasi, pemetaan konsep baru, dan fleksibilitas pola pikir.',
+    },
+    'potensi-kepribadian': {
+        rec_high: 'Integritas, etos kerja, dan kematangan emosional sangat kokoh sesuai Core Values BerAKHLAK.',
+        rec_mid: 'Profil etika dan integritas baik, pertahankan komitmen dalam situasi kerja bertekanan tinggi.',
+        rec_low: 'Perlu penguatan konsistensi kedisiplinan diri, regulasi emosi, dan ketegasan integritas moral.',
+    },
+    'manajerial-sjt': {
+        rec_high: 'Orientasi pelayanan, integritas, dan pengambilan keputusan manajerial sangat strategis.',
+        rec_mid: 'Kompetensi manajerial cukup memadai, perdalam pertimbangan solusi yang berorientasi hasil jangka panjang.',
+        rec_low: 'Perlu mempelajari panduan PermenPAN-RB 38/2017 tentang 8 kompetensi manajerial ASN dan etika pimpinan.',
+    },
+    'manajerial-sosio': {
+        rec_high: 'Toleransi, kepekaan sosial, dan peran sebagai perekat bangsa sangat menginspirasi.',
+        rec_mid: 'Sikap kebhinekaan baik, tingkatkan keterbukaan dialog dalam menghadapi perbedaan latar belakang.',
+        rec_low: 'Perlu meningkatkan kepekaan terhadap dinamika budaya, empati kerja tim, dan resolusi konflik sosial.',
+    },
+    'digital-skill': {
+        rec_high: 'Cakap dalam pemanfaatan instrumen digital birokrasi, automasi kerja, dan sistem SPBE.',
+        rec_mid: 'Cakupan kecakapan digital memadai, eksplorasi tool kolaborasi dan analitik data perkantoran.',
+        rec_low: 'Perlu meningkatkan keterampilan dasar komputasi awan, aplikasi perkantoran terintegrasi, dan alur SPBE.',
+    },
+    'digital-culture': {
+        rec_high: 'Menjunjung tinggi nilai Pancasila dan budaya kebangsaan di ruang digital.',
+        rec_mid: 'Budaya bermedia digital baik, aktif mendorong konten konstruktif kebangsaan di media sosial.',
+        rec_low: 'Perlu pemahaman lebih dalam terkait pilar digital culture, wawasan nusantara, dan kurasi informasi publik.',
+    },
+    'digital-ethics': {
+        rec_high: 'Etika komunikasi digital birokrasi sangat santun, profesional, dan berintegritas.',
+        rec_mid: 'Memahami tata krama siber, perhatikan netralitas ASN di media sosial dan kejelasan komunikasi kedinasan.',
+        rec_low: 'Perlu mempelajari regulasi kode etik ASN di ruang digital dan mitigasi risiko ujaran serta hoaks.',
+    },
+    'digital-safety': {
+        rec_high: 'Sadar keamanan siber, proteksi data pribadi, dan pencegahan insiden siber sangat mumpuni.',
+        rec_mid: 'Kewaspadaan siber baik, pastikan selalu menerapkan 2FA dan verifikasi tautan mencurigakan.',
+        rec_low: 'Perlu pelatihan proteksi data rahasia instansi, pencegahan phishing, dan manajemen kredensial aman.',
+    },
+};
+
 const SUBTEST_ORDER = [
     'potensi-figural',
     'potensi-numerik',
@@ -1346,6 +1405,78 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         (normalizedScores['POTENSI'] + normalizedScores['MANAJERIAL'] + normalizedScores['DIGITAL']) / 3
     );
 
+    const isKarirOnly = selectedPackage.cat === 'KARIR';
+
+    let displayOverallScore: number | null = avgCompetency;
+    if (selectedPackage.cat === 'POTENSI') {
+        displayOverallScore = normalizedScores['POTENSI'] || 0;
+    } else if (selectedPackage.cat === 'MANAJERIAL') {
+        displayOverallScore = normalizedScores['MANAJERIAL'] || 0;
+    } else if (selectedPackage.cat === 'DIGITAL') {
+        displayOverallScore = normalizedScores['DIGITAL'] || 0;
+    } else if (isKarirOnly) {
+        displayOverallScore = null;
+    }
+
+    const subtestBreakdownList = useMemo(() => {
+        return activeSubtests
+            .filter((sub) => sub.category !== 'KARIR')
+            .map((sub) => {
+                let totalPoints = 0;
+                let maxPoints = sub.questions.length * 5;
+                let correctCount = 0;
+
+                sub.questions.forEach((q) => {
+                    const userChoice = answers[q.id];
+                    if (userChoice !== undefined) {
+                        let earned = 0;
+                        if (q.scores && Array.isArray(q.scores) && typeof q.scores[userChoice] === 'number') {
+                            earned = Number(q.scores[userChoice]);
+                        } else if (userChoice === q.jawaban) {
+                            earned = 5;
+                        }
+                        totalPoints += earned;
+                        if (earned === 5) correctCount++;
+                    }
+                });
+
+                const score = Math.round((totalPoints / Math.max(maxPoints, 1)) * 100);
+                let status: 'Kuat' | 'Standar' | 'Perlu Peningkatan' = 'Perlu Peningkatan';
+                let badgeBg = 'bg-rose-50 border-rose-200 text-rose-800';
+                let barBg = 'bg-rose-500';
+                let rec = SUBTEST_DIAGNOSTICS[sub.id]?.rec_low || 'Perlu memperdalam latihan materi dasar.';
+
+                if (score >= 80) {
+                    status = 'Kuat';
+                    badgeBg = 'bg-emerald-50 border-emerald-200 text-emerald-800';
+                    barBg = 'bg-emerald-500';
+                    rec = SUBTEST_DIAGNOSTICS[sub.id]?.rec_high || 'Kuasai dan pertahankan performa unggul.';
+                } else if (score >= 65) {
+                    status = 'Standar';
+                    badgeBg = 'bg-blue-50 border-blue-200 text-blue-800';
+                    barBg = 'bg-blue-500';
+                    rec = SUBTEST_DIAGNOSTICS[sub.id]?.rec_mid || 'Capaian sudah memenuhi standar kelulusan.';
+                }
+
+                return {
+                    id: sub.id,
+                    title: sub.title,
+                    shortTitle: sub.shortTitle,
+                    sessionName: sub.sessionName,
+                    category: sub.category,
+                    score,
+                    totalPoints,
+                    maxPoints,
+                    correctCount,
+                    questionCount: sub.questions.length,
+                    status,
+                    badgeBg,
+                    barBg,
+                    rec,
+                };
+            });
+    }, [activeSubtests, answers]);
+
     // 9 BOX SIMATA evaluation
     const axisX = Math.round((normalizedScores['POTENSI'] * 0.5) + (normalizedScores['DIGITAL'] * 0.5));
     const axisY = normalizedScores['MANAJERIAL'];
@@ -1746,7 +1877,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                             {s.career_recommendation || 'Jalur Fungsional Keahlian'}
                                                         </td>
                                                         <td className="py-3 px-3 font-bold text-slate-900 text-right">
-                                                            {s.total_score} Poin
+                                                            {s.title && s.title.includes('Karir') ? 'Orientasi Karir' : `${s.total_score} / 100`}
                                                         </td>
                                                         <td className="py-3 px-3 text-center">
                                                             <button
@@ -2291,9 +2422,15 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 {/* Top Metrics */}
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                                     <div className="p-5 rounded-2xl border border-slate-200 bg-slate-50/80">
-                                        <div className="text-xs font-semibold text-slate-500">Skor Rata-Rata Kompetensi</div>
-                                        <div className="text-3xl font-black text-slate-900 mt-1">{avgCompetency} / 100</div>
-                                        <div className="text-xs text-slate-500 mt-1">Capaian Menyeluruh</div>
+                                        <div className="text-xs font-semibold text-slate-500">
+                                            {isKarirOnly ? 'Status Pemetaan Karir' : 'Skor Capaian Kompetensi'}
+                                        </div>
+                                        <div className="text-3xl font-black text-slate-900 mt-1">
+                                            {isKarirOnly ? '100% Terpetakan' : `${displayOverallScore} / 100`}
+                                        </div>
+                                        <div className="text-xs text-slate-500 mt-1 font-medium">
+                                            {isKarirOnly ? '168 Instrumen Terjawab (Non-Nilai Angka)' : 'Skor Tertinggi 100 • Standar BKN / MyASN'}
+                                        </div>
                                     </div>
                                     <div className="p-5 rounded-2xl border border-emerald-200 bg-emerald-50/70">
                                         <div className="text-xs font-semibold text-emerald-800">Predikat 9 Box SIMATA</div>
@@ -2320,13 +2457,128 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     </div>
                                 </div>
 
+                                {/* Ringkasan Skor 3 Sesi Kompetensi Utama (Hanya Tampil Jika Paket Lengkap / Semua Sesi) */}
+                                {selectedPackage.cat === 'SEMUA' && (
+                                    <div className="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-3">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                            <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                                                <Layers className="w-4 h-4 text-blue-600" />
+                                                Ringkasan Skor 3 Sesi Kompetensi Utama (Skala Maks 100)
+                                            </span>
+                                            <span className="text-[11px] font-semibold text-slate-500">
+                                                *Sesi 4 (Preferensi Karir) merupakan pemetaan minat tanpa bobot nilai
+                                            </span>
+                                        </div>
+                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                            <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-xs">
+                                                <div className="text-[11px] font-semibold text-slate-500">Sesi 1: Tes Potensi Kognitif</div>
+                                                <div className="text-2xl font-black text-slate-900 mt-1">
+                                                    {normalizedScores['POTENSI'] || 0} <span className="text-xs text-slate-400 font-normal">/ 100</span>
+                                                </div>
+                                                <div className="text-[11px] text-slate-600 mt-1 font-medium">
+                                                    {normalizedScores['POTENSI'] >= 80 ? 'Level 4 (Tinggi)' : normalizedScores['POTENSI'] >= 65 ? 'Level 3 (Sedang)' : 'Level 2 (Dasar)'}
+                                                </div>
+                                            </div>
+                                            <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-xs">
+                                                <div className="text-[11px] font-semibold text-slate-500">Sesi 2: Manajerial & Soskultur</div>
+                                                <div className="text-2xl font-black text-slate-900 mt-1">
+                                                    {normalizedScores['MANAJERIAL'] || 0} <span className="text-xs text-slate-400 font-normal">/ 100</span>
+                                                </div>
+                                                <div className="text-[11px] text-slate-600 mt-1 font-medium">
+                                                    {normalizedScores['MANAJERIAL'] >= 80 ? 'Level 4 (Mahir)' : normalizedScores['MANAJERIAL'] >= 65 ? 'Level 3 (Mampu)' : 'Level 2 (Dasar)'}
+                                                </div>
+                                            </div>
+                                            <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-xs">
+                                                <div className="text-[11px] font-semibold text-slate-500">Sesi 3: Literasi Digital ASN</div>
+                                                <div className="text-2xl font-black text-slate-900 mt-1">
+                                                    {normalizedScores['DIGITAL'] || 0} <span className="text-xs text-slate-400 font-normal">/ 100</span>
+                                                </div>
+                                                <div className="text-[11px] text-slate-600 mt-1 font-medium">
+                                                    {normalizedScores['DIGITAL'] >= 80 ? 'Level 4 (Cakap SPBE)' : normalizedScores['DIGITAL'] >= 65 ? 'Level 3 (Mampu)' : 'Level 2 (Dasar)'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Rapor Evaluasi Capaian per Sub-Tes (Diagnostic Feedback & Rekomendasi Belajar) */}
+                                {subtestBreakdownList.length > 0 && (
+                                    <div className="p-5 sm:p-7 rounded-2xl border border-slate-200 bg-white shadow-xs space-y-5">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                                            <div>
+                                                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200">
+                                                    <Target className="w-3.5 h-3.5 text-blue-600" />
+                                                    <span>Rapor Evaluasi Capaian per Sub-Tes (Diagnostic Feedback)</span>
+                                                </div>
+                                                <h3 className="text-base sm:text-lg font-black text-slate-900 mt-1">
+                                                    Detail Skor & Rekomendasi Materi yang Perlu Dipelajari
+                                                </h3>
+                                                <p className="text-xs text-slate-500 mt-0.5">
+                                                    Evaluasi performa tiap instrumen sub-tes untuk mengetahui kelemahan spesifik dan materi yang perlu ditingkatkan.
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold">
+                                                <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+                                                    {subtestBreakdownList.filter(s => s.status === 'Kuat').length} Kuat (≥80)
+                                                </span>
+                                                <span className="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-800 border border-blue-200">
+                                                    {subtestBreakdownList.filter(s => s.status === 'Standar').length} Standar (65-79)
+                                                </span>
+                                                <span className="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200">
+                                                    {subtestBreakdownList.filter(s => s.status === 'Perlu Peningkatan').length} Perlu Peningkatan (&lt;65)
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {subtestBreakdownList.map((item) => (
+                                                <div key={item.id} className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-50 transition-colors space-y-3">
+                                                    <div className="flex items-start justify-between gap-2">
+                                                        <div>
+                                                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                                                {item.sessionName}
+                                                            </span>
+                                                            <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                                                                {item.title}
+                                                            </h4>
+                                                            <div className="text-[11px] text-slate-500 mt-0.5">
+                                                                {item.correctCount} dari {item.questionCount} Soal Tepat ({item.totalPoints} / {item.maxPoints} Poin)
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-right shrink-0">
+                                                            <div className="text-lg font-black text-slate-900">
+                                                                {item.score} <span className="text-xs font-normal text-slate-400">/ 100</span>
+                                                            </div>
+                                                            <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-black border uppercase mt-0.5 ${item.badgeBg}`}>
+                                                                {item.status}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                                                        <div className={`h-full rounded-full transition-all duration-500 ${item.barBg}`} style={{ width: `${item.score}%` }} />
+                                                    </div>
+
+                                                    <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-[11px] text-slate-600 leading-relaxed flex items-start gap-2 shadow-2xs">
+                                                        <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                                                        <div>
+                                                            <span className="font-bold text-slate-800">Catatan Belajar: </span>
+                                                            {item.rec}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Subtest 4 Feature: TRIPATHA KARIR SHOWCASE */}
                                 <div className="p-6 rounded-2xl border border-amber-200 bg-amber-50/30 space-y-5">
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-amber-200/60 pb-4">
                                         <div>
                                             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
                                                 <Compass className="w-3.5 h-3.5" />
-                                                <span>Subtes 4: Rekomendasi Tripatha Karir ASN</span>
+                                                <span>Subtes 4: Pemetaan Tripatha Karir ASN (Instrumen Non-Skor Numerik)</span>
                                             </div>
                                             <h3 className="text-lg font-black text-slate-900 mt-1">
                                                 {dominantKarir}
@@ -2472,11 +2724,38 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 </div>
                             </div>
                             <div className="grid grid-cols-4 gap-2 pt-2 text-xs font-semibold">
-                                <div className="p-2 border rounded">Skor Rata-Rata: {avgCompetency}/100</div>
-                                <div className="p-2 border rounded">Tes Potensi: {normalizedScores['POTENSI'] || 0}</div>
-                                <div className="p-2 border rounded">Manajerial: {normalizedScores['MANAJERIAL'] || 0}</div>
-                                <div className="p-2 border rounded">Literasi Digital: {normalizedScores['DIGITAL'] || 0}</div>
+                                <div className="p-2 border rounded">Skor Rata-Rata: {displayOverallScore !== null ? `${displayOverallScore}/100` : 'Pemetaan Karir'}</div>
+                                <div className="p-2 border rounded">Tes Potensi: {normalizedScores['POTENSI'] || 0}/100</div>
+                                <div className="p-2 border rounded">Manajerial: {normalizedScores['MANAJERIAL'] || 0}/100</div>
+                                <div className="p-2 border rounded">Literasi Digital: {normalizedScores['DIGITAL'] || 0}/100</div>
                             </div>
+                            {subtestBreakdownList.length > 0 && (
+                                <div className="border rounded-lg p-3 text-xs mt-3">
+                                    <div className="font-bold mb-1.5">Rapor Evaluasi Capaian per Sub-Tes (Diagnostic Feedback):</div>
+                                    <table className="w-full text-left text-[11px]">
+                                        <thead>
+                                            <tr className="border-b font-bold">
+                                                <th className="py-1">Sub-Tes</th>
+                                                <th className="py-1">Sesi</th>
+                                                <th className="py-1">Skor</th>
+                                                <th className="py-1">Status</th>
+                                                <th className="py-1">Rekomendasi Materi Belajar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y">
+                                            {subtestBreakdownList.map((item) => (
+                                                <tr key={item.id}>
+                                                    <td className="py-1 font-semibold">{item.title}</td>
+                                                    <td className="py-1 text-slate-500">{item.sessionName}</td>
+                                                    <td className="py-1 font-bold">{item.score}/100</td>
+                                                    <td className="py-1">{item.status}</td>
+                                                    <td className="py-1 text-slate-600">{item.rec}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
                         </div>
 
                         {/* 9 Box SIMATA in Review Page */}

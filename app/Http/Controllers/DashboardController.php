@@ -40,7 +40,7 @@ class DashboardController extends Controller
                 'title' => $s->title,
                 'date' => $completedDate ? $completedDate->translatedFormat('d M Y') : '-',
                 'score' => $s->total_score,
-                'max' => 550,
+                'max' => 100,
                 'status' => $s->is_passed ? 'LULUS PG' : 'TIDAK LULUS',
                 'passing' => (bool) $s->is_passed,
                 'twk_score' => $s->twk_score,

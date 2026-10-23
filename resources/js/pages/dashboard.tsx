@@ -205,7 +205,7 @@ export default function Dashboard({
                         <span className="p-1 rounded-md bg-emerald-50 text-emerald-700"><TrendingUp className="w-3.5 h-3.5" /></span>
                     </div>
                     <div className="text-lg sm:text-xl font-black text-slate-900 mt-2">{avgScore} / 100</div>
-                    <div className="text-[11px] font-semibold text-emerald-700 mt-0.5">+13 Poin di atas Passing Grade</div>
+                    <div className="text-[11px] font-semibold text-emerald-700 mt-0.5">{avgScore >= 70 ? `+${avgScore - 70} di atas Passing Grade (70)` : `${70 - avgScore} di bawah Passing Grade (70)`}</div>
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs">
@@ -352,7 +352,7 @@ export default function Dashboard({
                                         <div className="rounded-xl bg-white border border-emerald-100 p-2.5 space-y-1 text-xs">
                                             <div className="flex items-center justify-between text-slate-600">
                                                 <span>Skor Capaian:</span>
-                                                <span className="font-mono font-bold text-slate-900">{pkg.score ?? '-'} Poin</span>
+                                                <span className="font-mono font-bold text-slate-900">{pkg.category === 'KARIR' ? 'Orientasi Karir' : (pkg.score !== null ? `${pkg.score} / 100` : '-')}</span>
                                             </div>
                                             <div className="flex items-center justify-between text-slate-600">
                                                 <span>Predikat 9 Box:</span>
@@ -618,7 +618,7 @@ export default function Dashboard({
                                             <td className="py-3 px-3 font-semibold text-slate-800">
                                                 {s.career_recommendation || 'Jalur Fungsional Keahlian'}
                                             </td>
-                                            <td className="py-3 px-3 font-bold text-slate-900 font-mono text-right">{s.score} Poin</td>
+                                            <td className="py-3 px-3 font-bold text-slate-900 font-mono text-right">{s.title && s.title.includes('Karir') ? 'Orientasi Karir' : `${s.score} / 100`}</td>
                                             <td className="py-3 px-3 text-center">
                                                 <button
                                                     type="button"
