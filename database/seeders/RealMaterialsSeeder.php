@@ -18,32 +18,74 @@ class RealMaterialsSeeder extends Seeder
         $kar = Category::where('code', 'KARIR')->first() ?? Category::first();
 
         $items = [
+            // --- POTENSI: 5 MODUL RESMI SUBTES TERBARU ---
             [
                 'category_id' => $pot->id,
-                'title' => 'Panduan Lengkap Tes Potensi Akademik & Kognitif ASN',
-                'slug' => 'panduan-lengkap-tes-potensi-kognitif-asn',
+                'title' => 'Modul Tes Potensi Subtes 1: Penalaran Figural (Spasial & Pola Ruang)',
+                'slug' => 'modul-tes-potensi-subtes-1-penalaran-figural',
                 'type' => 'pdf',
                 'level' => 'Semua Jenjang',
-                'duration' => '50 Menit',
-                'file_path' => 'materials/TES POTENSI (1).pdf',
-                'summary' => 'Kompilasi materi penalaran logis, silogisme deduktif-induktif, numerik kebijakan, dan pemahaman wacana analitis.',
-                'content' => 'Metode dan trik efisiensi waktu pengerjaan tes potensi kognitif standar CAT BKN.',
+                'duration' => '45 Menit',
+                'file_path' => 'materials/Tes Potensi Sub Test 1- Figuralw.pdf',
+                'summary' => 'Panduan komprehensif penalaran figural: rotasi bangun 2D/3D, serial pola gambar, analogi bentuk, dan matriks spasial tersembunyi.',
+                'content' => 'Modul resmi penguasaan penalaran figural dan spasial standar asesmen CAT BKN.',
                 'is_free' => true,
                 'is_published' => true,
             ],
             [
                 'category_id' => $pot->id,
-                'title' => 'Mastery Pembahasan Penalaran Spasial & Soal Figural',
-                'slug' => 'mastery-pembahasan-soal-figural',
+                'title' => 'Modul Tes Potensi Subtes 2: Penalaran Numerik & Komparasi Kuantitatif',
+                'slug' => 'modul-tes-potensi-subtes-2-penalaran-numerik',
                 'type' => 'pdf',
                 'level' => 'Semua Jenjang',
-                'duration' => '45 Menit',
-                'file_path' => 'materials/PEMBAHASAN SOAL FIGURAL.pdf',
-                'summary' => 'Trik jitu mengidentifikasi rotasi bangun ruang 2D/3D, serial diagram, analogi bentuk, dan matriks pola spasial tersembunyi.',
-                'content' => 'Kunci sukses menaklukkan subtes figural spasial dengan kecepatan eliminasi jawaban.',
+                'duration' => '50 Menit',
+                'file_path' => 'materials/Tes Potensi Sub Tes 2- Numerikw.pdf',
+                'summary' => 'Teknik berhitung cepat, perbandingan angka positif-negatif, aljabar dasar, persentase, dan deret angka berkecepatan tinggi.',
+                'content' => 'Metode eliminasi cepat dan trik taktis menyelesaikan komparasi kuantitatif CAT BKN.',
                 'is_free' => false,
                 'is_published' => true,
             ],
+            [
+                'category_id' => $pot->id,
+                'title' => 'Modul Tes Potensi Subtes 3: Berpikir Kritis & Pemecahan Masalah Publik',
+                'slug' => 'modul-tes-potensi-subtes-3-berpikir-kritis-problem-solving',
+                'type' => 'pdf',
+                'level' => 'Semua Jenjang',
+                'duration' => '50 Menit',
+                'file_path' => 'materials/Tes Potensi Sub Test 3 - Kemampuan Berpikir Kritis dan Memecahkan Masalahw.pdf',
+                'summary' => 'Penguasaan logika analitis, identifikasi premis kebijakan, evaluasi argumen, silogisme, dan problem solving berbasis kasus birokrasi.',
+                'content' => 'Panduan bernalar analitis kritis dan penyelesaian persoalan strategis di lingkungan pemerintahan.',
+                'is_free' => false,
+                'is_published' => true,
+            ],
+            [
+                'category_id' => $pot->id,
+                'title' => 'Modul Tes Potensi Subtes 4: Integritas & Kepribadian ASN (BerAKHLAK)',
+                'slug' => 'modul-tes-potensi-subtes-4-integritas-kepribadian-asn',
+                'type' => 'pdf',
+                'level' => 'Semua Jenjang',
+                'duration' => '40 Menit',
+                'file_path' => 'materials/Tes Potensi -Sub Test 4 - Kepribadianw.pdf',
+                'summary' => 'Pendalaman etos kerja, ketahanan emosional, kedisiplinan moral, dan integritas kepribadian berlandaskan Core Values BerAKHLAK.',
+                'content' => 'Buku materi resmi pengembangan etika kepribadian, ketahanan mental, dan integritas ASN.',
+                'is_free' => false,
+                'is_published' => true,
+            ],
+            [
+                'category_id' => $pot->id,
+                'title' => 'Modul Tes Potensi Subtes 5: Kemampuan Belajar Cepat & Mengembangkan Diri',
+                'slug' => 'modul-tes-potensi-subtes-5-kemampuan-belajar-cepat-adaptasi',
+                'type' => 'pdf',
+                'level' => 'Semua Jenjang',
+                'duration' => '45 Menit',
+                'file_path' => 'materials/TEST POTENSI Sub Test 5 - Kemampuan Belajar Cepat dan Mengembangkan Diriw.pdf',
+                'summary' => 'Metode akselerasi pemahaman regulasi baru, sintesis data kompleks, fleksibilitas berpikir, dan adaptabilitas perubahan birokrasi.',
+                'content' => 'Modul strategi belajar cepat, adaptasi peran dinamis, dan pengembangan kapasitas berkelanjutan.',
+                'is_free' => false,
+                'is_published' => true,
+            ],
+
+            // --- MANAJERIAL ---
             [
                 'category_id' => $man->id,
                 'title' => 'Panduan Asesmen Manajerial & Sosio-Kultural ASN',
@@ -83,6 +125,8 @@ class RealMaterialsSeeder extends Seeder
                 'is_free' => false,
                 'is_published' => true,
             ],
+
+            // --- DIGITAL ---
             [
                 'category_id' => $dig->id,
                 'title' => 'Pedoman Literasi Digital, SPBE & UU PDP Nasional',
@@ -109,6 +153,8 @@ class RealMaterialsSeeder extends Seeder
                 'is_free' => false,
                 'is_published' => true,
             ],
+
+            // --- KARIR ---
             [
                 'category_id' => $kar->id,
                 'title' => 'DNA Talent: Panduan Masuk Kuadran 9 Manajemen Talenta BKN',
