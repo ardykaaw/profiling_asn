@@ -181,7 +181,7 @@ class DashboardController extends Controller
                 'total_subtest' => 4,
                 'total_soal' => 168,
                 'durasi' => 35,
-                'description' => 'Mencakup 4 instrumen minat & bakat: Minat (42 butir), Nilai Pribadi (42 butir), Aspirasi (42 butir), dan Pengalaman Kerja (42 butir).',
+                'description' => 'Mencakup 4 instrumen pemetaan karier: Minat Kerja RIASEC (108 butir), Nilai Kerja (30 butir), Lingkungan Kerja (18 butir), dan Gaya Kerja (12 butir). Total 168 Soal.',
             ],
         ];
 

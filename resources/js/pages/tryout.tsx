@@ -99,7 +99,7 @@ const packages = [
         defaultSoal: 168, 
         durasi: 35, 
         badge: '4 Subtes / 168 Soal Paten (35 Menit)',
-        desc: 'Mencakup 4 instrumen minat & bakat: Minat (42 butir, 9 mnt), Nilai Pribadi (42 butir, 9 mnt), Aspirasi (42 butir, 9 mnt), dan Pengalaman Kerja (42 butir, 8 mnt). Total 35 Menit.'
+        desc: 'Mencakup 4 instrumen minat & bakat: Minat Kerja RIASEC (108 butir, 15 mnt), Nilai Kerja (30 butir, 10 mnt), Lingkungan Kerja (18 butir, 5 mnt), dan Gaya Kerja (12 butir, 5 mnt). Total 35 Menit.'
     },
 ];
 
@@ -194,35 +194,35 @@ const SUBTEST_METADATA: Record<string, { title: string; shortTitle: string; sess
     },
     'karir-minat': {
         title: 'Preferensi Karir: Minat Kerja (RIASEC)',
-        shortTitle: 'Minat Kerja',
+        shortTitle: 'Minat RIASEC',
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
-        description: 'Eksplorasi ketertarikan jenis tugas dan lingkungan kerja ASN yang paling memotivasi.',
-        durationMinutes: 9,
+        description: 'Eksplorasi ketertarikan 6 dimensi Holland (Realistic, Investigative, Artistic, Social, Enterprising, Conventional).',
+        durationMinutes: 15,
     },
     'karir-nilai': {
-        title: 'Preferensi Karir: Nilai Pribadi (Values)',
-        shortTitle: 'Nilai Pribadi',
+        title: 'Preferensi Karir: Nilai Kerja (Work Values)',
+        shortTitle: 'Nilai Kerja',
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
-        description: 'Prinsip utama yang menjadi dorongan moral dan standar ideal dalam bekerja.',
-        durationMinutes: 9,
+        description: 'Faktor pendorong utama profesional seperti kepastian finansial, otonomi, kemanfaatan, dan keseimbangan kerja.',
+        durationMinutes: 10,
     },
     'karir-aspirasi': {
-        title: 'Preferensi Karir: Aspirasi Masa Depan',
-        shortTitle: 'Aspirasi Karir',
+        title: 'Preferensi Karir: Lingkungan & Budaya Kerja',
+        shortTitle: 'Lingkungan Kerja',
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
-        description: 'Visi jangka panjang dan target kontribusi bagi organisasi dan negara.',
-        durationMinutes: 9,
+        description: 'Preferensi iklim kerja operasional (kantor vs lapangan, kolaboratif vs mandiri, serta kepatuhan tata kelola).',
+        durationMinutes: 5,
     },
     'karir-pengalaman': {
-        title: 'Preferensi Karir: Pengalaman Kerja',
-        shortTitle: 'Pengalaman Kerja',
+        title: 'Preferensi Karir: Gaya Kerja & Peran Profesional',
+        shortTitle: 'Gaya Kerja',
         sessionName: 'Tripatha Karir',
         category: 'KARIR',
-        description: 'Refleksi pencapaian tugas dan peran kerja efektif yang pernah dijalankan.',
-        durationMinutes: 8,
+        description: 'Orientasi peran kerja aparatur (spesialisasi mendalam vs wawasan lintas fungsi, serta eksekutor vs inovator).',
+        durationMinutes: 5,
     },
 };
 

@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
             ReplaceSubtest3And4Seeder::class,
             ReplaceSubtest5Seeder::class,
             CleanManajerialQuestionsSeeder::class,
+            ReplaceKarirQuestionsAndMaterialsSeeder::class,
             RealMaterialsSeeder::class,
         ]);
     }

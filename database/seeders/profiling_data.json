@@ -8346,3364 +8346,3364 @@
   ],
   "KARIR": [
     {
-      "sub_category": "Minat",
-      "question": "Saya suka memperbaiki instalasi Listrik",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik melakukan pemeriksaan langsung terhadap sarana dan prasarana untuk mengetahui kondisi sebenarnya di lapangan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka memperbaiki barang elektronik yang rusak.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mengoperasikan perangkat atau peralatan teknis untuk mendukung penyelesaian pekerjaan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya menikmati bekerja diluar ruangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik melakukan pemeliharaan sederhana terhadap peralatan kerja agar dapat digunakan secara optimal.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka merakit barang atau membuat sesuatu dengn tangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang terlibat dalam kegiatan lapangan yang membutuhkan pengamatan langsung terhadap kondisi lokasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya lebih suka pekerjaan yang melibatkan penggunaan alat atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mempelajari cara kerja mesin, perangkat elektronik, atau teknologi operasional yang digunakan dalam pekerjaan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka mengamati dan menganalisis masalah untuk mencari solusi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menguji apakah suatu alat atau fasilitas berfungsi sesuai kebutuhan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa tertantang saat harus menyelidiki atau mencari",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membantu pelaksanaan kegiatan teknis yang memerlukan keterampilan praktik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya menikmati membaca buku atau artikel ilmiah untuk",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menyusun tata letak peralatan atau perlengkapan agar kegiatan operasional berjalan lebih efektif.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka mencoba eksperimen untuk menguji teori atau ide.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik melakukan pemeriksaan fisik terhadap barang atau fasilitas untuk memastikan kesesuaiannya dengan catatan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya senang menemukan cara-cara baru untuk menyelesaikan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan memasang, menyiapkan, atau mengatur perangkat pendukung sebelum suatu kegiatan dilaksanakan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka menulis cerita atau artikel untuk menyampaikan ide",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mempelajari keterampilan praktis baru yang dapat langsung diterapkan dalam pekerjaan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya lebih suka bekerja dengan seni, musik, atau desain daripada",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mencari penyebab gangguan teknis melalui pemeriksaan langsung terhadap perangkat atau fasilitas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa bahagia jika dapat mengekspresikan diri melalui",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengikuti kegiatan pemantauan lapangan untuk melihat apakah suatu program dilaksanakan sesuai kondisi yang direncanakan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya menikmati kegiatan yang melibatkan kreativitas dan imajinasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati pekerjaan yang menghasilkan perubahan nyata pada kondisi fasilitas, peralatan, atau lingkungan kerja.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka merancang sesuatu, seperti desain grafis atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membantu menguji penggunaan perangkat digital atau peralatan baru sebelum diterapkan secara luas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka membantu orang lain memecahkan masalah mereka.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang melakukan inventarisasi fisik perlengkapan untuk memastikan jumlah dan kondisinya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa bahagia saat mengajarkan sesuatu kepada orang",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik terlibat dalam simulasi atau praktik langsung untuk meningkatkan kesiapan pelaksanaan tugas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka memberikan nasihat kepada teman atau rekan kerja.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya lebih tertarik mempelajari cara menyelesaikan persoalan operasional melalui tindakan praktis daripada hanya membahas konsepnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya menikmati kegiatan yang berhubungan dengan pelayanan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menganalisis data untuk menemukan pola yang dapat membantu menjelaskan suatu permasalahan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa puas jika dapat memberikan dukungan emosional",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mencari penyebab utama suatu masalah sebelum menentukan langkah penyelesaiannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka memimpin kelompok atau tim.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membandingkan beberapa sumber informasi untuk mengetahui kesesuaian dan keandalannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa nyaman berbicara di depan umum atau presentasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menelaah hasil evaluasi program untuk mengetahui faktor yang memengaruhi keberhasilannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya senang merencanakan proyek dan mengarahkan orang lain.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mempelajari metode analisis baru untuk meningkatkan ketepatan pengambilan keputusan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka bernegosiasi dan mencapai kesepakatan.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan memeriksa hubungan antara suatu kebijakan, pelaksanaan kegiatan, dan hasil yang diperoleh.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa tertantang ketika harus mempengaruhi keputusan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun pertanyaan penelitian untuk memahami persoalan yang belum memiliki penjelasan memadai.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka bekerja dengan data dan angka.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengidentifikasi ketidaksesuaian data dan menelusuri kemungkinan penyebabnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa nyaman mengikuti prosedur yang sudah ada dalam",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membuat perbandingan berdasarkan indikator untuk menentukan pilihan yang paling sesuai dengan kebutuhan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya lebih suka bekerja dalam lingkungan yang terstruktur dan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menafsirkan informasi statistik agar dapat digunakan sebagai bahan pertimbangan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya menikmati pekerjaan yang melibatkan pengarsipan dan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik memeriksa asumsi yang mendasari suatu kesimpulan sebelum menerima kesimpulan tersebut.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa puas saat dapat menyelesaikan tugas administratif",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menelaah berbagai kemungkinan penyebab ketika hasil pekerjaan berbeda dari target.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa percaya diri dalam menggunakan peralatan atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mempelajari bagaimana perubahan suatu faktor dapat memengaruhi hasil suatu program atau layanan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya pandai merakit atau memperbaiki barang.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menyusun argumen berdasarkan fakta, data, dan penalaran yang dapat dijelaskan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya memiliki kemampuan untuk bekerja di luar ruangan dalam",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengevaluasi apakah suatu metode kerja benar-benar efektif dibandingkan metode alternatif.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa nyaman bekerja dengan tangan atau alat.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengolah informasi dari berbagai sumber menjadi penjelasan yang sistematis mengenai suatu persoalan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya memiliki keterampilan teknis yang baik.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengidentifikasi risiko berdasarkan kecenderungan data dan informasi yang tersedia.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya mampu menganalisis data untuk membuat keputusan yang",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati pekerjaan yang memberi kesempatan untuk menyelidiki persoalan secara mendalam sebelum menyusun rekomendasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya terampil dalam memecahkan masalah yang kompleks.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik merancang materi komunikasi yang menarik agar informasi pemerintah mudah dipahami masyarakat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya percaya diri dalam melakukan penelitian atau eksperimen.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menulis narasi, artikel, atau cerita untuk menyampaikan suatu gagasan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya dapat memahami konsep-konsep abstrak atau teknis",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan konsep visual untuk presentasi, infografik, atau publikasi digital.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya suka menganalisis informasi untuk menemukan pola atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menemukan cara penyampaian informasi yang berbeda dari format yang biasa digunakan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya merasa percaya diri dalam membuat karya seni atau desain.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan ide baru untuk membuat layanan atau kegiatan lebih menarik bagi penggunanya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Minat",
-      "question": "Saya terampil dalam menulis atau menyusun pidato.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menyusun materi edukasi dengan bahasa yang kreatif dan mudah dipahami.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Minat."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka memperbaiki instalasi Listrik",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membuat rancangan konten digital yang memadukan tulisan, gambar, dan unsur visual lainnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka memperbaiki barang elektronik yang rusak.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengubah informasi yang kompleks menjadi materi komunikasi yang sederhana dan menarik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya menikmati bekerja diluar ruangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengeksplorasi berbagai pendekatan kreatif untuk menyelesaikan persoalan komunikasi atau pelayanan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka merakit barang atau membuat sesuatu dengn tangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan merancang slogan, judul, atau pesan utama yang sesuai dengan tujuan suatu program.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya lebih suka pekerjaan yang melibatkan penggunaan alat atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan format presentasi yang membantu audiens memahami gagasan secara lebih jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka mengamati dan menganalisis masalah untuk mencari solusi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menyusun alternatif konsep sebelum menentukan bentuk akhir suatu materi publikasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa tertantang saat harus menyelidiki atau mencari",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membuat desain atau tata letak dokumen yang informatif sekaligus enak dibaca.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya menikmati membaca buku atau artikel ilmiah untuk",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menyampaikan ide melalui tulisan, ilustrasi, video, atau bentuk komunikasi kreatif lainnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka mencoba eksperimen untuk menguji teori atau ide.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik bereksperimen dengan metode penyampaian pesan untuk mengetahui pendekatan yang paling sesuai dengan audiens.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya senang menemukan cara-cara baru untuk menyelesaikan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengembangkan konsep kegiatan yang memiliki unsur kebaruan dan daya tarik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka menulis cerita atau artikel untuk menyampaikan ide",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun materi kampanye publik dengan pendekatan kreatif tanpa mengubah ketepatan informasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya lebih suka bekerja dengan seni, musik, atau desain daripada",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati pekerjaan yang memberikan ruang untuk mengembangkan gagasan orisinal dalam batas tujuan dan ketentuan yang berlaku.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa bahagia jika dapat mengekspresikan diri melalui",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membantu rekan kerja memahami prosedur atau sistem kerja yang belum mereka kuasai.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya menikmati kegiatan yang melibatkan kreativitas dan imajinasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan berbagi pengetahuan dan pengalaman agar orang lain dapat menyelesaikan tugasnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka merancang sesuatu, seperti desain grafis atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mendampingi masyarakat yang mengalami kesulitan memahami persyaratan pelayanan publik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka membantu orang lain memecahkan masalah mereka.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menjelaskan informasi dengan menyesuaikan bahasa dan cara komunikasi dengan kebutuhan orang yang saya hadapi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa bahagia saat mengajarkan sesuatu kepada orang",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menjadi fasilitator dalam diskusi yang membantu peserta bertukar pengetahuan dan pengalaman.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka memberikan nasihat kepada teman atau rekan kerja.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan membimbing rekan kerja yang sedang mempelajari keterampilan baru.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya menikmati kegiatan yang berhubungan dengan pelayanan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membantu mengidentifikasi kebutuhan pelatihan atau pengembangan kemampuan anggota tim.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa puas jika dapat memberikan dukungan emosional",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mendengarkan kesulitan orang lain untuk memahami bantuan atau informasi yang mereka perlukan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka memimpin kelompok atau tim.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun materi edukasi untuk membantu masyarakat memahami hak, kewajiban, atau prosedur pelayanan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa nyaman berbicara di depan umum atau presentasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan memberikan pendampingan agar seseorang lebih percaya diri dalam menjalankan tugasnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya senang merencanakan proyek dan mengarahkan orang lain.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik terlibat dalam kegiatan yang meningkatkan kemampuan kelompok masyarakat atau komunitas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka bernegosiasi dan mencapai kesepakatan.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang membantu menjembatani perbedaan pemahaman antara rekan kerja agar komunikasi lebih efektif.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa tertantang ketika harus mempengaruhi keputusan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun kegiatan berbagi praktik baik agar pengetahuan tidak hanya dikuasai oleh satu orang.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka bekerja dengan data dan angka.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati pekerjaan yang melibatkan interaksi langsung untuk mengetahui pengalaman dan kebutuhan penerima layanan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa nyaman mengikuti prosedur yang sudah ada dalam",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membantu anggota tim memahami umpan balik agar dapat memperbaiki cara kerjanya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya lebih suka bekerja dalam lingkungan yang terstruktur dan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang berpartisipasi dalam kegiatan yang memperkuat kerja sama dan kepedulian di lingkungan kerja.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya menikmati pekerjaan yang melibatkan pengarsipan dan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan panduan atau bahan belajar yang membantu orang lain bekerja lebih mandiri.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa puas saat dapat menyelesaikan tugas administratif",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mendampingi penyelesaian masalah dengan membantu pihak terkait memahami pilihan yang tersedia.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa percaya diri dalam menggunakan peralatan atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik memprakarsai kegiatan baru untuk menjawab kebutuhan yang belum tertangani dengan baik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya pandai merakit atau memperbaiki barang.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan menyampaikan gagasan kepada pihak lain untuk memperoleh dukungan terhadap suatu rencana.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya memiliki kemampuan untuk bekerja di luar ruangan dalam",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengoordinasikan pembagian tugas agar suatu kegiatan dapat diselesaikan sesuai target.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa nyaman bekerja dengan tangan atau alat.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang memimpin diskusi untuk membantu kelompok menentukan langkah kerja berikutnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya memiliki keterampilan teknis yang baik.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membangun kerja sama dengan pihak lain untuk mendukung pelaksanaan suatu program.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya mampu menganalisis data untuk membuat keputusan yang",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan bernegosiasi untuk menemukan kesepakatan yang mengakomodasi kebutuhan berbagai pihak.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya terampil dalam memecahkan masalah yang kompleks.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun rencana tindakan untuk mewujudkan gagasan menjadi kegiatan yang dapat dilaksanakan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya percaya diri dalam melakukan penelitian atau eksperimen.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengajak rekan kerja mencoba pendekatan baru dengan menjelaskan manfaat dan pertimbangannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya dapat memahami konsep-konsep abstrak atau teknis",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengambil peran dalam menggerakkan tim ketika suatu kegiatan memerlukan koordinasi yang intensif.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya suka menganalisis informasi untuk menemukan pola atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mempresentasikan usulan program kepada pihak yang berwenang mengambil keputusan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya merasa percaya diri dalam membuat karya seni atau desain.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengidentifikasi peluang kerja sama yang dapat meningkatkan hasil atau jangkauan suatu kegiatan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Nilai Pribadi",
-      "question": "Saya terampil dalam menulis atau menyusun pidato.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menetapkan prioritas kegiatan berdasarkan tujuan, sumber daya, dan batas waktu yang tersedia.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Nilai Pribadi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka memperbaiki instalasi Listrik",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik memfasilitasi kesepakatan tentang pembagian tanggung jawab dalam suatu tim.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka memperbaiki barang elektronik yang rusak.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mendorong pihak terkait agar menindaklanjuti keputusan atau komitmen yang telah disepakati.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya menikmati bekerja diluar ruangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan gagasan perbaikan layanan dan mengajak pihak terkait mendukung penerapannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka merakit barang atau membuat sesuatu dengn tangan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang mengambil inisiatif ketika melihat peluang untuk meningkatkan efektivitas pelaksanaan pekerjaan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya lebih suka pekerjaan yang melibatkan penggunaan alat atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengoordinasikan sumber daya yang tersedia agar suatu program mencapai tujuan yang telah ditetapkan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka mengamati dan menganalisis masalah untuk mencari solusi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati peran yang memberi kesempatan untuk memengaruhi arah kegiatan melalui argumentasi, komunikasi, dan koordinasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa tertantang saat harus menyelidiki atau mencari",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengelola dokumen agar tersusun rapi dan mudah ditemukan kembali ketika diperlukan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya menikmati membaca buku atau artikel ilmiah untuk",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan memeriksa kelengkapan berkas berdasarkan daftar persyaratan yang telah ditetapkan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka mencoba eksperimen untuk menguji teori atau ide.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun tabel atau basis data agar informasi mudah dicari dan diperbarui.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya senang menemukan cara-cara baru untuk menyelesaikan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang memastikan angka dalam laporan sesuai dengan sumber data yang digunakan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka menulis cerita atau artikel untuk menyampaikan ide",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengatur jadwal, daftar kegiatan, dan tenggat waktu secara sistematis.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya lebih suka bekerja dengan seni, musik, atau desain daripada",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan membuat daftar periksa untuk memastikan tahapan pekerjaan tidak terlewat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa bahagia jika dapat mengekspresikan diri melalui",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengelompokkan arsip berdasarkan kategori, kode, atau sistem klasifikasi tertentu.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya menikmati kegiatan yang melibatkan kreativitas dan imajinasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang menyusun format dokumen agar informasi disajikan secara konsisten dan mudah dibaca.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka merancang sesuatu, seperti desain grafis atau",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik melakukan pencatatan transaksi, inventaris, atau aktivitas kerja secara teratur.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka membantu orang lain memecahkan masalah mereka.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan memeriksa kesesuaian dokumen dengan ketentuan atau prosedur yang berlaku.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa bahagia saat mengajarkan sesuatu kepada orang",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik mengembangkan sistem penamaan berkas agar penyimpanan dokumen lebih tertib.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka memberikan nasihat kepada teman atau rekan kerja.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang memperbarui data secara berkala agar informasi yang digunakan tetap akurat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya menikmati kegiatan yang berhubungan dengan pelayanan",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menyusun rekapitulasi informasi dari beberapa sumber ke dalam format yang seragam.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa puas jika dapat memberikan dukungan emosional",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati kegiatan mengatur alur administrasi agar proses kerja lebih mudah dipantau.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka memimpin kelompok atau tim.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik menggunakan aplikasi pengolah angka atau dokumen untuk menyelesaikan pekerjaan secara sistematis.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa nyaman berbicara di depan umum atau presentasi.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya senang memastikan setiap tahapan administrasi memiliki catatan yang dapat ditelusuri.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya senang merencanakan proyek dan mengarahkan orang lain.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya tertarik membuat standar format laporan agar hasil pekerjaan dari berbagai pihak mudah dibandingkan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka bernegosiasi dan mencapai kesepakatan.",
+      "sub_category": "Minat Kerja (RIASEC)",
+      "question": "Saya menikmati pekerjaan yang menuntut ketelitian, keteraturan, dan konsistensi dalam mengelola informasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Tertarik",
+        "Tidak Tertarik",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Tertarik",
+        "Sangat Tertarik"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Minat Kerja RIASEC: Mengukur afinitas ketertarikan terhadap aktivitas teknis nyata, analitis, artistik, pelayanan sosial, inisiatif kepemimpinan, atau ketertiban sistematis."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa tertantang ketika harus mempengaruhi keputusan",
+      "sub_category": "Nilai Kerja",
+      "question": "Kepastian penghasilan merupakan pertimbangan penting bagi saya ketika memikirkan arah karier jangka panjang.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka bekerja dengan data dan angka.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mengutamakan pekerjaan yang memiliki kejelasan mengenai hak keuangan dan tunjangan sesuai ketentuan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa nyaman mengikuti prosedur yang sudah ada dalam",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai prospek karier yang memberikan kestabilan ekonomi dalam jangka panjang.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya lebih suka bekerja dalam lingkungan yang terstruktur dan",
+      "sub_category": "Nilai Kerja",
+      "question": "Kejelasan mengenai keberlanjutan pekerjaan memengaruhi pilihan karier yang saya anggap menarik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya menikmati pekerjaan yang melibatkan pengarsipan dan",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mempertimbangkan manfaat finansial jangka panjang ketika membandingkan beberapa peluang pengembangan karier.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa puas saat dapat menyelesaikan tugas administratif",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya lebih nyaman merencanakan masa depan apabila kondisi penghasilan dan hak pekerjaan dapat diperkirakan dengan cukup jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa percaya diri dalam menggunakan peralatan atau",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menganggap ketersediaan waktu untuk keluarga sebagai pertimbangan penting dalam arah karier saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya pandai merakit atau memperbaiki barang.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai pola kerja yang memungkinkan saya menjaga kesehatan dan kebugaran secara berkelanjutan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya memiliki kemampuan untuk bekerja di luar ruangan dalam",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mempertimbangkan seberapa besar tuntutan pekerjaan memengaruhi waktu istirahat dan kehidupan pribadi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa nyaman bekerja dengan tangan atau alat.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mengutamakan pola kerja yang memungkinkan saya mengelola tanggung jawab pekerjaan dan kebutuhan pribadi secara seimbang.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya memiliki keterampilan teknis yang baik.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai pengaturan kerja yang memungkinkan perencanaan waktu pribadi dilakukan dengan cukup baik.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya mampu menganalisis data untuk membuat keputusan yang",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mempertimbangkan keberlanjutan beban kerja dalam jangka panjang ketika menilai suatu peluang karier.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya terampil dalam memecahkan masalah yang kompleks.",
+      "sub_category": "Nilai Kerja",
+      "question": "Pengakuan atas hasil kerja yang berkualitas merupakan hal penting bagi kepuasan karier saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya percaya diri dalam melakukan penelitian atau eksperimen.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai kesempatan untuk memperoleh tanggung jawab profesional yang lebih besar sesuai kemampuan dan kinerja.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya dapat memahami konsep-konsep abstrak atau teknis",
+      "sub_category": "Nilai Kerja",
+      "question": "Prospek pengembangan karier dan peningkatan peran merupakan pertimbangan penting bagi saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya suka menganalisis informasi untuk menemukan pola atau",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya merasa pekerjaan menjadi lebih bermakna ketika kontribusi saya diakui secara adil dan berdasarkan hasil nyata.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya merasa percaya diri dalam membuat karya seni atau desain.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mempertimbangkan peluang memperoleh kepercayaan untuk menangani tugas yang lebih kompleks ketika merencanakan karier.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Aspirasi",
-      "question": "Saya terampil dalam menulis atau menyusun pidato.",
+      "sub_category": "Nilai Kerja",
+      "question": "Reputasi profesional yang dibangun melalui hasil kerja dan integritas penting bagi arah karier saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Aspirasi."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka memperbaiki instalasi Listrik",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mengutamakan pekerjaan yang memberikan manfaat nyata bagi masyarakat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka memperbaiki barang elektronik yang rusak.",
+      "sub_category": "Nilai Kerja",
+      "question": "Kesempatan meningkatkan kualitas pelayanan publik merupakan pertimbangan penting bagi saya dalam memilih arah karier.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya menikmati bekerja diluar ruangan",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai pekerjaan yang membantu menyelesaikan masalah yang dihadapi masyarakat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka merakit barang atau membuat sesuatu dengn tangan",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya ingin kontribusi pekerjaan saya dapat dirasakan oleh kelompok masyarakat yang membutuhkan layanan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya lebih suka pekerjaan yang melibatkan penggunaan alat atau",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya mempertimbangkan dampak suatu pekerjaan terhadap kepentingan umum ketika menilai apakah pekerjaan itu bermakna bagi saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka mengamati dan menganalisis masalah untuk mencari solusi.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai kesempatan untuk ikut memperbaiki proses atau kebijakan yang berdampak pada kualitas hidup masyarakat.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa tertantang saat harus menyelidiki atau mencari",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai kesempatan menentukan metode kerja sendiri selama tetap sesuai tujuan, aturan, dan kewenangan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya menikmati membaca buku atau artikel ilmiah untuk",
+      "sub_category": "Nilai Kerja",
+      "question": "Ruang untuk mengambil inisiatif merupakan pertimbangan penting dalam memilih peran profesional.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka mencoba eksperimen untuk menguji teori atau ide.",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menyukai lingkungan kerja yang memberi kepercayaan untuk menyelesaikan tugas tanpa pengawasan berlebihan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya senang menemukan cara-cara baru untuk menyelesaikan",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menghargai kesempatan mengusulkan cara kerja yang lebih efektif berdasarkan pertimbangan profesional.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka menulis cerita atau artikel untuk menyampaikan ide",
+      "sub_category": "Nilai Kerja",
+      "question": "Kemampuan mengatur urutan penyelesaian tugas sesuai prioritas merupakan hal penting bagi saya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya lebih suka bekerja dengan seni, musik, atau desain daripada",
+      "sub_category": "Nilai Kerja",
+      "question": "Saya menganggap ruang untuk menyampaikan pertimbangan profesional sebelum keputusan diambil sebagai unsur penting dalam pekerjaan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Nilai Kerja (Work Values): Mengukur faktor pendorong profesional utama seperti kepastian finansial, kestabilan, otonomi, kemanfaatan sosial, dan keseimbangan kerja."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa bahagia jika dapat mengekspresikan diri melalui",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya lebih menyukai pekerjaan yang sebagian besar aktivitasnya dilakukan di kantor dengan fasilitas kerja yang tersedia.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya menikmati kegiatan yang melibatkan kreativitas dan imajinasi.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya tertarik pada pekerjaan yang mengharuskan saya mengunjungi lokasi atau melakukan pemantauan lapangan secara berkala.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka merancang sesuatu, seperti desain grafis atau",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menyukai pengaturan kerja yang memungkinkan sebagian tugas diselesaikan dari lokasi berbeda apabila jenis pekerjaan dan ketentuan mengizinkannya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka membantu orang lain memecahkan masalah mereka.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya merasa sesuai dengan pekerjaan yang menggabungkan kegiatan di kantor dan kegiatan lapangan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa bahagia saat mengajarkan sesuatu kepada orang",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya bersedia melakukan perjalanan dinas secara berkala apabila perjalanan tersebut menjadi bagian penting dari tugas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka memberikan nasihat kepada teman atau rekan kerja.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menyukai pola kerja yang memungkinkan jadwal dan lokasi kegiatan direncanakan dengan jelas sesuai kebutuhan tugas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya menikmati kegiatan yang berhubungan dengan pelayanan",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya lebih menyukai pekerjaan yang memungkinkan saya menyelesaikan bagian tugas secara mandiri dengan tanggung jawab yang jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa puas jika dapat memberikan dukungan emosional",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menyukai pekerjaan yang melibatkan diskusi rutin dan pertukaran gagasan dengan anggota tim.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka memimpin kelompok atau tim.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya merasa sesuai dengan pola kerja yang menggabungkan tanggung jawab individual dan pencapaian bersama.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa nyaman berbicara di depan umum atau presentasi.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya lebih tertarik pada pekerjaan yang mengharuskan saya berkoordinasi dengan berbagai unit atau pihak terkait.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya senang merencanakan proyek dan mengarahkan orang lain.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menyukai kesempatan untuk memusatkan perhatian pada tugas individual sebelum membahas hasilnya bersama tim.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka bernegosiasi dan mencapai kesepakatan.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya merasa nyaman bekerja dalam tim yang anggotanya saling memberi masukan dan berbagi pengetahuan",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa tertantang ketika harus mempengaruhi keputusan",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya lebih menyukai lingkungan kerja yang memiliki pembagian tugas, prosedur, dan alur koordinasi yang jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka bekerja dengan data dan angka.",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya tertarik bekerja dalam lingkungan yang memungkinkan penyesuaian cara kerja ketika kebutuhan organisasi berubah.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa nyaman mengikuti prosedur yang sudah ada dalam",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya merasa sesuai dengan budaya kerja yang memiliki jadwal, tahapan, dan standar pelaksanaan yang relatif teratur.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya lebih suka bekerja dalam lingkungan yang terstruktur dan",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menyukai lingkungan yang memberi kesempatan menguji gagasan baru dan memperbaiki proses kerja secara bertahap.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya menikmati pekerjaan yang melibatkan pengarsipan dan",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya nyaman bekerja ketika prioritas dapat berubah sesuai kebutuhan, selama perubahan tersebut dikomunikasikan dengan jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa puas saat dapat menyelesaikan tugas administratif",
+      "sub_category": "Lingkungan & Budaya Kerja",
+      "question": "Saya menghargai budaya kerja yang menggabungkan kejelasan aturan dengan ruang untuk melakukan perbaikan yang dapat dipertanggungjawabkan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Lingkungan & Budaya Kerja: Mengukur preferensi iklim kerja operasional (kantor vs lapangan, kerja kolaboratif vs mandiri, serta kepatuhan prosedur formal)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa percaya diri dalam menggunakan peralatan atau",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya lebih tertarik memperdalam satu bidang tertentu hingga memiliki pengetahuan dan keterampilan yang mendalam.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya pandai merakit atau memperbaiki barang.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya menyukai kesempatan mempelajari beberapa bidang agar dapat memahami hubungan antarfungsi dalam organisasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya memiliki kemampuan untuk bekerja di luar ruangan dalam",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya lebih menikmati pekerjaan yang memungkinkan saya menjadi rujukan dalam bidang keahlian tertentu.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa nyaman bekerja dengan tangan atau alat.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya tertarik pada peran yang mengharuskan saya menghubungkan informasi dari berbagai bidang untuk mendukung koordinasi.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya memiliki keterampilan teknis yang baik.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya menyukai kesempatan mengembangkan keahlian khusus secara berkelanjutan melalui praktik dan pembelajaran mendalam.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya mampu menganalisis data untuk membuat keputusan yang",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya merasa sesuai dengan pekerjaan yang menuntut pemahaman luas terhadap proses organisasi dan keterkaitan antarkegiatan.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya terampil dalam memecahkan masalah yang kompleks.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya lebih menyukai pekerjaan dengan pola kegiatan yang relatif konsisten dan dapat direncanakan sebelumnya.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya percaya diri dalam melakukan penelitian atau eksperimen.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya tertarik pada pekerjaan yang menghadirkan persoalan baru dan membutuhkan penyesuaian pendekatan dari waktu ke waktu.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya dapat memahami konsep-konsep abstrak atau teknis",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya merasa nyaman ketika tugas harian memiliki urutan dan prosedur yang jelas.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya suka menganalisis informasi untuk menemukan pola atau",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya menikmati pekerjaan yang memungkinkan saya menangani jenis tugas yang beragam dalam satu periode kerja.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya merasa percaya diri dalam membuat karya seni atau desain.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya lebih menyukai lingkungan kerja yang memberi kesempatan menyempurnakan proses rutin agar semakin efisien.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     },
     {
-      "sub_category": "Pengalaman Kerja",
-      "question": "Saya terampil dalam menulis atau menyusun pidato.",
+      "sub_category": "Gaya Kerja & Peran Profesional",
+      "question": "Saya tertarik pada pekerjaan yang menuntut eksplorasi cara baru ketika menghadapi kebutuhan atau tantangan yang berbeda.",
       "options": [
-        "Sangat Setuju",
-        "Setuju",
+        "Sangat Tidak Sesuai",
+        "Tidak Sesuai",
         "Netral",
-        "Tidak Setuju",
-        "Sangat Tidak Setuju"
+        "Sesuai",
+        "Sangat Sesuai"
       ],
-      "correct_answer": 0,
+      "correct_answer": 4,
       "scores": [
-        5,
-        4,
-        3,
+        1,
         2,
-        1
+        3,
+        4,
+        5
       ],
-      "explanation": "Skala pemetaan psikometrik Tripatha Karir ASN: Pengalaman Kerja."
+      "explanation": "Instrumen Pemetaan Gaya Kerja & Peran Profesional: Mengukur orientasi peran aparatur (spesialisasi keahlian mendalam vs wawasan lintas fungsi/generalis, serta adaptabilitas terhadap variasi tugas)."
     }
   ]
 }
