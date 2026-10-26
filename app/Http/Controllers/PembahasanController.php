@@ -14,6 +14,7 @@ class PembahasanController extends Controller
     public function index(Request $request): Response
     {
         $user = $request->user();
+        $isAdmin = $user->isAdmin();
 
         // 1. Get all active questions with categories
         $questions = Question::with('category')
@@ -34,18 +35,6 @@ class PembahasanController extends Controller
                 ];
             });
 
-        // 2. Fetch all completed sessions for this user
-        $completedSessions = TryoutSession::where('user_id', $user->id)
-            ->whereNotNull('completed_at')
-            ->latest('completed_at')
-            ->get();
-
-        // 3. Fetch in-progress session if any
-        $inProgressSession = TryoutSession::where('user_id', $user->id)
-            ->whereNull('completed_at')
-            ->latest('updated_at')
-            ->first();
-
         // Helper to match package ID from title
         $determinePackageId = function (?string $title): string {
             $t = (string) $title;
@@ -65,10 +54,21 @@ class PembahasanController extends Controller
             return 'SEMUA';
         };
 
-        // 4. Build unified history list
-        $historyList = [];
+        // 2. Fetch my completed sessions
+        $completedSessions = TryoutSession::where('user_id', $user->id)
+            ->whereNotNull('completed_at')
+            ->latest('completed_at')
+            ->get();
 
-        // In-progress session at the top if exists and has answers
+        // 3. Fetch my in-progress session if any
+        $inProgressSession = TryoutSession::where('user_id', $user->id)
+            ->whereNull('completed_at')
+            ->latest('updated_at')
+            ->first();
+
+        // 4. Build my personal history list
+        $myHistoryList = [];
+
         if ($inProgressSession) {
             $rawAnswers = $inProgressSession->answers;
             $inProgAnswers = is_array($rawAnswers) ? $rawAnswers : [];
@@ -81,8 +81,10 @@ class PembahasanController extends Controller
                 ? $inProgressSession->updated_at->translatedFormat('d M Y, H:i') 
                 : null;
 
-            $historyList[] = [
+            $myHistoryList[] = [
                 'id' => $inProgressSession->id,
+                'user_name' => $user->name,
+                'user_email' => $user->email,
                 'package_id' => $pkgId,
                 'package_cat' => $determinePackageCategory($inProgressSession->title),
                 'title' => $inProgressSession->title,
@@ -97,7 +99,6 @@ class PembahasanController extends Controller
             ];
         }
 
-        // Add all completed sessions
         foreach ($completedSessions as $s) {
             $rawAnswers = $s->answers;
             $sAnswers = is_array($rawAnswers) ? $rawAnswers : [];
@@ -105,8 +106,10 @@ class PembahasanController extends Controller
                 ? $s->completed_at->translatedFormat('d M Y, H:i') 
                 : ($s->created_at instanceof CarbonInterface ? $s->created_at->translatedFormat('d M Y, H:i') : null);
 
-            $historyList[] = [
+            $myHistoryList[] = [
                 'id' => $s->id,
+                'user_name' => $user->name,
+                'user_email' => $user->email,
                 'package_id' => $determinePackageId($s->title),
                 'package_cat' => $determinePackageCategory($s->title),
                 'title' => $s->title,
@@ -121,12 +124,55 @@ class PembahasanController extends Controller
             ];
         }
 
+        // 5. If admin, also fetch all participants' sessions
+        $allParticipantHistory = [];
+        if ($isAdmin) {
+            $allParticipantHistory = TryoutSession::with('user')
+                ->latest('updated_at')
+                ->take(200)
+                ->get()
+                ->map(function ($s) use ($determinePackageId, $determinePackageCategory) {
+                    $rawAnswers = $s->answers;
+                    $sAnswers = is_array($rawAnswers) ? $rawAnswers : [];
+                    $isDone = $s->completed_at !== null;
+                    
+                    $rawScores = $s->category_scores;
+                    $scores = is_array($rawScores) ? $rawScores : [];
+                    $ansCount = count($sAnswers) > 0 ? count($sAnswers) : (int) ($scores['answered_count'] ?? 0);
+
+                    $date = $s->completed_at instanceof CarbonInterface 
+                        ? $s->completed_at->translatedFormat('d M Y, H:i') 
+                        : ($s->updated_at instanceof CarbonInterface ? $s->updated_at->translatedFormat('d M Y, H:i') : null);
+
+                    return [
+                        'id' => $s->id,
+                        'user_id' => $s->user_id,
+                        'user_name' => $s->user?->name ?? 'Peserta ASN',
+                        'user_email' => $s->user?->email ?? '-',
+                        'package_id' => (string) ($scores['package_id'] ?? $determinePackageId($s->title)),
+                        'package_cat' => $determinePackageCategory($s->title),
+                        'title' => $s->title,
+                        'status' => $isDone ? 'COMPLETED' : 'IN_PROGRESS',
+                        'answered_count' => $ansCount,
+                        'score' => $s->total_score,
+                        'talent_quadrant' => $s->talent_quadrant,
+                        'career_recommendation' => $s->career_recommendation,
+                        'is_passed' => $isDone ? (bool) $s->is_passed : null,
+                        'date' => $date,
+                        'answers' => $sAnswers,
+                    ];
+                })
+                ->all();
+        }
+
         $selectedSessionId = $request->query('session_id');
         $selectedPackageParam = $request->query('package');
 
         return Inertia::render('pembahasan', [
             'dbQuestions' => $questions,
-            'historyList' => $historyList,
+            'historyList' => $myHistoryList,
+            'allParticipantHistory' => $allParticipantHistory,
+            'isAdmin' => $isAdmin,
             'initialSessionId' => $selectedSessionId ? (int) $selectedSessionId : null,
             'initialPackageId' => $selectedPackageParam ? (string) $selectedPackageParam : null,
         ]);
