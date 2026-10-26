@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\PembahasanController;
 use App\Http\Controllers\TryoutController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'active'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('tryout', [TryoutController::class, 'index'])->name('tryout');
+    Route::get('pembahasan', [PembahasanController::class, 'index'])->name('pembahasan');
     Route::post('tryout', [TryoutController::class, 'store'])->name('tryout.store');
     Route::delete('tryout/{tryout}', [TryoutController::class, 'destroy'])->name('tryout.destroy');
     Route::post('tryout/reset-package', [TryoutController::class, 'resetPackage'])->name('tryout.reset-package');

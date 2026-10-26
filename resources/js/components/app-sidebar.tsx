@@ -8,7 +8,8 @@ import {
     FolderKanban, 
     Layers, 
     SlidersHorizontal,
-    Users
+    Users,
+    FileCheck
 } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavMain } from '@/components/nav-main';
@@ -36,6 +37,11 @@ const userNavItems: NavItem[] = [
         title: 'Simulasi Asesmen CAT',
         href: '/tryout',
         icon: Award,
+    },
+    {
+        title: 'Hasil & Pembahasan',
+        href: '/pembahasan',
+        icon: FileCheck,
     },
     {
         title: 'Modul & Kisi-Kisi ASN',

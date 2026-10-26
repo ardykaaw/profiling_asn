@@ -20,7 +20,9 @@ import {
     Check,
     X,
     Share2,
-    Calendar
+    Calendar,
+    BookOpen,
+    Eye
 } from 'lucide-react';
 import MacWindowControls from '@/components/mac-window-controls';
 
@@ -392,42 +394,55 @@ export default function Dashboard({
                                     {/* Actions: Locked vs Resume vs Start */}
                                     <div className="pt-1">
                                         {pkg.is_completed ? (
-                                            <div className="flex items-center gap-2">
-                                                <button
-                                                    disabled
-                                                    className="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs flex items-center justify-center gap-1.5 border border-slate-200 cursor-not-allowed select-none"
-                                                    title="Modul ini telah selesai dikerjakan dan terkunci. Anda tidak dapat mengulang tes kecuali menghapus riwayatnya."
-                                                >
-                                                    <Lock className="w-3.5 h-3.5" />
-                                                    <span>Terkunci</span>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setPackageToReset(pkg)}
-                                                    className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-                                                    title="Hapus riwayat untuk mengulang tes ini kembali"
-                                                >
-                                                    <Trash2 className="w-3.5 h-3.5" />
-                                                    <span>Hapus / Ulang</span>
-                                                </button>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2">
+                                                    <a
+                                                        href={`/pembahasan?package=${pkg.id}`}
+                                                        className="flex-1 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-colors text-center"
+                                                        title="Buka pembahasan lengkap dan kunci jawaban tes ini"
+                                                    >
+                                                        <BookOpen className="w-3.5 h-3.5" />
+                                                        <span>Lihat Pembahasan</span>
+                                                    </a>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setPackageToReset(pkg)}
+                                                        className="px-3.5 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                                                        title="Hapus riwayat untuk mengulang tes ini kembali"
+                                                    >
+                                                        <Trash2 className="w-3.5 h-3.5" />
+                                                    </button>
+                                                </div>
                                             </div>
                                         ) : pkg.is_in_progress ? (
-                                            <div className="flex items-center gap-2">
-                                                <a
-                                                    href={`/tryout?resume=${pkg.id}`}
-                                                    className="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center"
-                                                >
-                                                    <span>Lanjutkan: Soal ke-{(pkg.current_question ?? 0) + 1}</span>
-                                                    <ArrowRight className="w-3.5 h-3.5" />
-                                                </a>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setPackageToReset(pkg)}
-                                                    className="px-3 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                                                    title="Hapus progres tersimpan untuk mulai dari awal"
-                                                >
-                                                    <Trash2 className="w-3.5 h-3.5" />
-                                                </button>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2">
+                                                    <a
+                                                        href={`/tryout?resume=${pkg.id}`}
+                                                        className="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer text-center"
+                                                    >
+                                                        <span>Lanjutkan: Soal ke-{(pkg.current_question ?? 0) + 1}</span>
+                                                        <ArrowRight className="w-3.5 h-3.5" />
+                                                    </a>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setPackageToReset(pkg)}
+                                                        className="px-3 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                                                        title="Hapus progres tersimpan untuk mulai dari awal"
+                                                    >
+                                                        <Trash2 className="w-3.5 h-3.5" />
+                                                    </button>
+                                                </div>
+                                                {(pkg.answered_count ?? 0) > 0 && (
+                                                    <a
+                                                        href={`/pembahasan?package=${pkg.id}`}
+                                                        className="w-full py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-2xs text-center"
+                                                        title="Lihat kunci & pembahasan untuk butir soal yang sudah dikerjakan"
+                                                    >
+                                                        <BookOpen className="w-3.5 h-3.5" />
+                                                        <span>Lihat Pembahasan ({pkg.answered_count} Soal Terjawab)</span>
+                                                    </a>
+                                                )}
                                             </div>
                                         ) : (
                                             <a
