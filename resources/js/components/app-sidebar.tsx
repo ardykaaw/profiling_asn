@@ -1,5 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { 
+    Activity,
     Award, 
     BookOpen, 
     LayoutGrid, 
@@ -36,8 +37,7 @@ const userNavItems: NavItem[] = [
     {
         title: 'Simulasi Asesmen CAT',
         href: '/tryout',
-        icon: Activity,
-    Award,
+        icon: Award,
     },
     {
         title: 'Hasil & Pembahasan',
