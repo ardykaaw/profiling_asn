@@ -36,7 +36,8 @@ const userNavItems: NavItem[] = [
     {
         title: 'Simulasi Asesmen CAT',
         href: '/tryout',
-        icon: Award,
+        icon: Activity,
+    Award,
     },
     {
         title: 'Hasil & Pembahasan',
@@ -60,6 +61,11 @@ const adminNavItems: NavItem[] = [
         title: 'Admin Overview',
         href: '/admin',
         icon: SlidersHorizontal,
+    },
+    {
+        title: 'Monitoring Asesmen Peserta',
+        href: '/admin/monitoring',
+        icon: Activity,
     },
     {
         title: 'Verifikasi Akun ASN',

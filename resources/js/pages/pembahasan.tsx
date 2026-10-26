@@ -34,15 +34,11 @@ import {
     X,
     FileText,
     Calendar,
-    Check,
-    Users
+    Check
 } from 'lucide-react';
 
 interface HistoryItem {
     id: number;
-    user_id?: number;
-    user_name?: string;
-    user_email?: string;
     package_id: string;
     package_cat: string;
     title: string;
@@ -59,8 +55,6 @@ interface HistoryItem {
 interface PembahasanPageProps {
     dbQuestions: Question[];
     historyList: HistoryItem[];
-    allParticipantHistory?: HistoryItem[];
-    isAdmin?: boolean;
     initialSessionId?: number | null;
     initialPackageId?: string | null;
 }
@@ -68,24 +62,10 @@ interface PembahasanPageProps {
 export default function PembahasanPage({
     dbQuestions = [],
     historyList = [],
-    allParticipantHistory = [],
-    isAdmin = false,
     initialSessionId,
     initialPackageId,
 }: PembahasanPageProps) {
     const rawBank = dbQuestions && dbQuestions.length > 0 ? dbQuestions : [];
-
-    // Admin view toggle (All participants vs My tests)
-    const [adminTab, setAdminTab] = useState<'ALL' | 'MINE'>(
-        isAdmin && historyList.length === 0 ? 'ALL' : (isAdmin ? 'ALL' : 'MINE')
-    );
-
-    const activeHistoryList = useMemo(() => {
-        if (isAdmin && adminTab === 'ALL') {
-            return allParticipantHistory;
-        }
-        return historyList;
-    }, [isAdmin, adminTab, allParticipantHistory, historyList]);
 
     // Selected session for review
     const [selectedSession, setSelectedSession] = useState<HistoryItem | null>(null);
@@ -142,12 +122,11 @@ export default function PembahasanPage({
 
     // Auto open if query params match
     useEffect(() => {
-        const pool = (allParticipantHistory && allParticipantHistory.length > 0) ? allParticipantHistory : historyList;
         if (initialSessionId) {
-            const found = pool.find(s => s.id === initialSessionId);
+            const found = historyList.find(s => s.id === initialSessionId);
             if (found) handleOpenSessionReview(found);
         } else if (initialPackageId) {
-            const found = pool.find(s => s.package_id === initialPackageId || s.title.includes(initialPackageId));
+            const found = historyList.find(s => s.package_id === initialPackageId || s.title.includes(initialPackageId));
             if (found) handleOpenSessionReview(found);
         }
     }, [initialSessionId, initialPackageId]);
@@ -390,7 +369,7 @@ export default function PembahasanPage({
                                 <FileCheck className="w-5 h-5" />
                             </div>
                             <div>
-                                <div className="text-xl font-black text-slate-900">{activeHistoryList.length}</div>
+                                <div className="text-xl font-black text-slate-900">{historyList.length}</div>
                                 <div className="text-[11px] text-slate-500 font-medium">Total Sesi Terdata</div>
                             </div>
                         </div>
@@ -401,7 +380,7 @@ export default function PembahasanPage({
                             </div>
                             <div>
                                 <div className="text-xl font-black text-slate-900">
-                                    {activeHistoryList.filter(s => s.status === 'COMPLETED').length}
+                                    {historyList.filter(s => s.status === 'COMPLETED').length}
                                 </div>
                                 <div className="text-[11px] text-slate-500 font-medium">Sesi Tuntas Diselesaikan</div>
                             </div>
@@ -413,7 +392,7 @@ export default function PembahasanPage({
                             </div>
                             <div>
                                 <div className="text-xl font-black text-slate-900">
-                                    {activeHistoryList.filter(s => s.status === 'IN_PROGRESS').length}
+                                    {historyList.filter(s => s.status === 'IN_PROGRESS').length}
                                 </div>
                                 <div className="text-[11px] text-slate-500 font-medium">Sesi Berjalan (Draft)</div>
                             </div>
@@ -439,7 +418,7 @@ export default function PembahasanPage({
                             </div>
                         </div>
 
-                        {activeHistoryList.length === 0 ? (
+                        {historyList.length === 0 ? (
                             <div className="p-12 text-center space-y-3">
                                 <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
                                     <BookOpen className="w-6 h-6" />
@@ -464,9 +443,6 @@ export default function PembahasanPage({
                                     <thead>
                                         <tr className="border-b border-slate-200 bg-slate-50/70 text-slate-500 font-bold uppercase text-[10px] tracking-wider">
                                             <th className="py-3 px-4">Status</th>
-                                            {isAdmin && adminTab === 'ALL' && (
-                                                <th className="py-3 px-4">Peserta ASN</th>
-                                            )}
                                             <th className="py-3 px-4">Judul Modul / Sesi</th>
                                             <th className="py-3 px-4">Waktu Pengerjaan</th>
                                             <th className="py-3 px-4">Soal Terjawab</th>
@@ -475,7 +451,7 @@ export default function PembahasanPage({
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100">
-                                        {activeHistoryList.map((item) => {
+                                        {historyList.map((item) => {
                                             const isDone = item.status === 'COMPLETED';
 
                                             return (
@@ -494,18 +470,6 @@ export default function PembahasanPage({
                                                             </span>
                                                         )}
                                                     </td>
-
-                                                    {/* Participant Info for Admin */}
-                                                    {isAdmin && adminTab === 'ALL' && (
-                                                        <td className="py-3.5 px-4 whitespace-nowrap">
-                                                            <div className="font-extrabold text-slate-900 text-xs">
-                                                                {item.user_name || 'Peserta ASN'}
-                                                            </div>
-                                                            <div className="text-[11px] text-slate-500 font-mono">
-                                                                {item.user_email || '-'}
-                                                            </div>
-                                                        </td>
-                                                    )}
 
                                                     {/* Title */}
                                                     <td className="py-3.5 px-4">
@@ -615,12 +579,6 @@ export default function PembahasanPage({
                                     }`}>
                                         {isProgressive ? 'Evaluasi Soal Terjawab (Sesi Berjalan)' : 'Pembahasan Lengkap Resmi BKN'}
                                     </span>
-                                    {isAdmin && selectedSession.user_name && (
-                                        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 inline-flex items-center gap-1">
-                                            <Users className="w-3 h-3 text-slate-500" />
-                                            <span>Peserta: {selectedSession.user_name} ({selectedSession.user_email || '-'})</span>
-                                        </span>
-                                    )}
                                 </div>
                                 <h1 className="text-xl sm:text-2xl font-black text-slate-900">
                                     {isProgressive ? `Evaluasi Progres: ${selectedSession.title}` : `Pembahasan: ${selectedSession.title}`}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminMonitoringController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminQuestionController;
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'active'])->group(function () {
 // Administrator Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('monitoring', [AdminMonitoringController::class, 'index'])->name('monitoring.index');
     
     // Questions Management
     Route::get('soal', [AdminQuestionController::class, 'index'])->name('questions.index');
