@@ -822,7 +822,7 @@ export default function PembahasanPage({
 
                                             {/* Options List */}
                                             <div className="space-y-2 pt-1">
-                                                {q.pilihan.map((optText, oIdx) => {
+                                                {(q.pilihan || (q as any).opsi || []).map((optText: string, oIdx: number) => {
                                                     const isUserSelection = userChoice === oIdx;
                                                     const isBestAnswer = q.jawaban === oIdx;
                                                     const optScore = q.scores && Array.isArray(q.scores) ? q.scores[oIdx] : null;

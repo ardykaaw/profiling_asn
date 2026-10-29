@@ -2287,7 +2287,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                 {/* PRIMARY ACTIONS: PEMBAHASAN & UNDUH */}
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-6 border-t border-slate-200">
                                     <button
-                                        onClick={() => setMode('review')}
+                                        onClick={() => {
+                                            setMode('review');
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
                                         className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-emerald-800 text-white font-bold text-xs sm:text-sm hover:bg-emerald-900 transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-900/10 cursor-pointer"
                                     >
                                         <Eye className="w-4 h-4" />

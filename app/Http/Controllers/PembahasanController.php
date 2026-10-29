@@ -21,16 +21,19 @@ class PembahasanController extends Controller
             ->orderBy('id', 'asc')
             ->get()
             ->map(function ($q) {
+                $options = is_array($q->options) ? $q->options : [];
                 return [
                     'id' => $q->id,
                     'kategori' => $q->category?->code ?? 'POTENSI',
+                    'category_name' => $q->category?->name ?? ($q->category?->code ?? 'POTENSI'),
                     'subkategori' => $q->sub_category,
                     'soal' => $q->question,
-                    'opsi' => $q->options ?? [],
+                    'image_url' => $q->image_url ?? $q->image,
+                    'pilihan' => $options,
+                    'opsi' => $options,
                     'jawaban' => $q->correct_answer,
-                    'scores' => $q->scores ?? [],
+                    'scores' => is_array($q->scores) ? $q->scores : [],
                     'pembahasan' => $q->explanation ?? 'Kunci jawaban dan evaluasi resmi BKN.',
-                    'image' => $q->image,
                 ];
             });
 
