@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { 
     Award, 
