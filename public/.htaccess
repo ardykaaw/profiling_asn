@@ -8,6 +8,9 @@
     # Block access to hidden files and sensitive dotfiles (except .well-known for SSL)
     RewriteRule ^\.(?!well-known/) - [F,L]
 
+    # Block direct unauthenticated access to materials folder in public storage
+    RewriteRule ^storage/materials/ - [F,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

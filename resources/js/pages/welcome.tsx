@@ -42,6 +42,14 @@ export default function Welcome() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeTab, setActiveTab] = useState<'potensi' | 'manajerial' | 'digital' | 'karir'>('manajerial');
 
+    useEffect(() => {
+        if (!user) {
+            try {
+                localStorage.removeItem('tryout_saved_session');
+            } catch (e) {}
+        }
+    }, [user]);
+
     const sampleQuestions = {
         manajerial: {
             title: 'Studi Kasus: Integritas & Anti-Gratifikasi Birokrasi',

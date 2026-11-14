@@ -36,6 +36,7 @@ Route::middleware(['auth', 'active'])->group(function () {
     Route::post('tryout/reset-package', [TryoutController::class, 'resetPackage'])->name('tryout.reset-package');
     Route::post('tryout/save-progress', [TryoutController::class, 'saveProgress'])->name('tryout.save-progress');
     Route::get('materi', [MateriController::class, 'index'])->name('materi');
+    Route::get('materi/{material}/file', [MateriController::class, 'download'])->name('materi.file');
     Route::get('paket', [DashboardController::class, 'paket'])->name('paket');
 });
 

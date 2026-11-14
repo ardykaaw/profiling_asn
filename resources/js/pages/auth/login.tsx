@@ -1,4 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
+import { useEffect } from 'react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -16,6 +17,12 @@ type Props = {
 };
 
 export default function Login({ status, canResetPassword }: Props) {
+    useEffect(() => {
+        try {
+            localStorage.removeItem('tryout_saved_session');
+        } catch (e) {}
+    }, []);
+
     return (
         <>
             <Head title="Masuk ke Akun — ProASN" />

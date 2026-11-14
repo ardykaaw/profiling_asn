@@ -15,13 +15,14 @@ class EnsureUserIsActive
     {
         $user = $request->user();
 
+        // Strict authentication check: Unauthenticated guests MUST be redirected to login
         if (! $user) {
-            return $next($request);
+            return redirect()->route('login');
         }
 
         // Administrators bypass verification checks
         if ($user->isAdmin()) {
-            return $next($request);
+            return $this->applyAntiCache($next($request));
         }
 
         // Allow logging out at any time
@@ -35,16 +36,27 @@ class EnsureUserIsActive
             if ($request->routeIs('waiting-verification')) {
                 return redirect()->route('dashboard');
             }
-            return $next($request);
+            return $this->applyAntiCache($next($request));
         }
 
         // If user is NOT verified (pending or inactive/expired):
         // Allow them to view the waiting verification page
         if ($request->routeIs('waiting-verification')) {
-            return $next($request);
+            return $this->applyAntiCache($next($request));
         }
 
         // Redirect all protected attempts to the waiting verification screen
         return redirect()->route('waiting-verification');
+    }
+
+    /**
+     * Prevent browsers (BFCache) and proxies from storing sensitive member content.
+     */
+    private function applyAntiCache(Response $response): Response
+    {
+        $response->headers->set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0, private');
+        $response->headers->set('Pragma', 'no-cache');
+
+        return $response;
     }
 }

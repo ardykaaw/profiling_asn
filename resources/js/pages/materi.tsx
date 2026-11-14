@@ -147,7 +147,7 @@ export default function MateriPage({ dbMaterials = [] }: MateriProps) {
                                     <div className="flex items-center gap-1.5 shrink-0">
                                         {modul.file_path && (
                                             <a
-                                                href={modul.file_path}
+                                                href={`${modul.file_path}?download=1`}
                                                 download
                                                 className="p-2 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 transition-colors"
                                                 title="Unduh File PDF"
@@ -218,7 +218,7 @@ export default function MateriPage({ dbMaterials = [] }: MateriProps) {
                                                 <ExternalLink className="w-3.5 h-3.5" />
                                             </a>
                                             <a
-                                                href={activeModule.file_path}
+                                                href={`${activeModule.file_path}?download=1`}
                                                 download
                                                 className="px-3.5 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs"
                                             >

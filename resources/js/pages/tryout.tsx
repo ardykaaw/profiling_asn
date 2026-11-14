@@ -519,6 +519,14 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
     // Check for saved in-progress session in localStorage or server
     const checkSavedSession = () => {
+        if (!auth?.user) {
+            try {
+                localStorage.removeItem('tryout_saved_session');
+            } catch (e) {}
+            setSavedSession(null);
+            return null;
+        }
+
         try {
             const raw = localStorage.getItem('tryout_saved_session');
             if (raw) {
