@@ -178,7 +178,7 @@ class TryoutController extends Controller
         $sessions = TryoutSession::where("user_id", $user->id)
             ->whereNotNull("completed_at")
             ->latest("completed_at")
-            ->take(10)
+            ->take(25)
             ->get();
 
         // Any in-progress saved session
@@ -473,13 +473,28 @@ class TryoutController extends Controller
 
         $totalScore = $avgScore; // Maksimal skor 100
 
+        $baseTitle = $validated["title"] ?? "Simulasi Profiling 4 Subtes";
+
         // Clean up any in-progress draft for this package
-        if (!empty($validated["title"])) {
-            TryoutSession::where("user_id", $user->id)
-                ->where("title", $validated["title"])
-                ->whereNull("completed_at")
-                ->delete();
-        }
+        TryoutSession::where("user_id", $user->id)
+            ->where(function ($q) use ($baseTitle) {
+                $q->where("title", $baseTitle)
+                  ->orWhere("title", "like", $baseTitle . " (Percobaan%");
+            })
+            ->whereNull("completed_at")
+            ->delete();
+
+        // Calculate attempt count for completed sessions of this package
+        $existingCompletedCount = TryoutSession::where("user_id", $user->id)
+            ->whereNotNull("completed_at")
+            ->where(function ($q) use ($baseTitle) {
+                $q->where("title", $baseTitle)
+                  ->orWhere("title", "like", $baseTitle . " (Percobaan%");
+            })
+            ->count();
+
+        $attemptSuffix = $existingCompletedCount > 0 ? " (Percobaan ke-" . ($existingCompletedCount + 1) . ")" : "";
+        $sessionTitle = $baseTitle . $attemptSuffix;
 
         $categoryScoresData = [
             "POTENSI" => $normalizedScores["POTENSI"],
@@ -490,7 +505,7 @@ class TryoutController extends Controller
 
         $session = TryoutSession::create([
             "user_id" => $user->id,
-            "title" => $validated["title"] ?? ("Simulasi Profiling 4 Subtes #" . (TryoutSession::where("user_id", $user->id)->count() + 1)),
+            "title" => $sessionTitle,
             "twk_score" => $normalizedScores["POTENSI"],
             "tiu_score" => $normalizedScores["MANAJERIAL"],
             "tkp_score" => $normalizedScores["DIGITAL"],

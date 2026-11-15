@@ -603,16 +603,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         if (targetId) {
             const foundPkg = packages.find(p => p.id === targetId);
             if (foundPkg) {
-                const isDone = (completedTitles && completedTitles.includes(foundPkg.title)) || 
-                    sessions.some(s => s.completed_at && (s.title === foundPkg.title || (s.title && s.title.includes(foundPkg.title)) || (foundPkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes'))));
-                if (isDone) {
-                    setLockedPackageAlert(foundPkg.title);
+                if (activeSaved && (activeSaved.packageId === foundPkg.id || activeSaved.packageTitle === foundPkg.title)) {
+                    handleResumeSavedSession(foundPkg);
                 } else {
-                    if (activeSaved && (activeSaved.packageId === foundPkg.id || activeSaved.packageTitle === foundPkg.title)) {
-                        handleResumeSavedSession(foundPkg);
-                    } else {
-                        initiateTest(foundPkg);
-                    }
+                    initiateTest(foundPkg);
                 }
             }
         }
@@ -734,6 +728,18 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
     // Step 1: User initiates test -> enters Countdown Screen
     const initiateTest = (pkg: typeof packages[0]) => {
+        try {
+            const raw = localStorage.getItem('tryout_saved_session');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed?.packageId === pkg.id || parsed?.packageTitle === pkg.title) {
+                    localStorage.removeItem('tryout_saved_session');
+                    setSavedSession(null);
+                }
+            }
+        } catch (e) {
+            console.error(e);
+        }
         setPendingPackage(pkg);
         setCountdownSeconds(5);
         setMode('countdown');
@@ -1363,10 +1369,16 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 {packages.map((pkg) => {
-                                    const isDone = (completedTitles && completedTitles.includes(pkg.title)) || 
-                                        sessions.some(s => s.completed_at && (s.title === pkg.title || (s.title && s.title.includes(pkg.title)) || (pkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes'))));
+                                    const pkgSessions = sessions.filter(s => s.completed_at && (
+                                        s.title === pkg.title || 
+                                        (s.title && s.title.startsWith(pkg.title)) || 
+                                        (pkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes'))
+                                    ));
+                                    const isDone = pkgSessions.length > 0 || (completedTitles && completedTitles.some(t => t === pkg.title || t.startsWith(pkg.title)));
+                                    const lastSession = pkgSessions[0];
+                                    const attemptCount = pkgSessions.length;
 
-                                    const pkgInProgress = !isDone && (
+                                    const pkgInProgress = (
                                         (savedSession && (savedSession.packageId === pkg.id || savedSession.packageTitle === pkg.title)) ||
                                         (inProgressSession && (inProgressSession.title === pkg.title || (inProgressSession.category_scores && inProgressSession.category_scores.package_id === pkg.id)))
                                     );
@@ -1376,16 +1388,16 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     const currQ = savedSession?.currentQuestionInSubtest ?? (inProgressSession?.category_scores?.current_question_index ?? 0);
                                     const savedAnswersCount = Object.keys(savedSession?.answers || inProgressSession?.answers || {}).length;
                                     const totalQuestionsInPkg = getPackageQuestionCount(pkg.cat, pkg.defaultSoal);
-                                    const progressPct = isDone ? 100 : (pkgInProgress ? Math.min(99, Math.max(1, Math.round((savedAnswersCount / totalQuestionsInPkg) * 100))) : 0);
+                                    const progressPct = pkgInProgress ? Math.min(99, Math.max(1, Math.round((savedAnswersCount / totalQuestionsInPkg) * 100))) : (isDone ? 100 : 0);
 
                                     return (
                                         <div
                                             key={pkg.id}
-                                            className={`rounded-2xl border ${isDone ? 'border-emerald-200 bg-emerald-50/20' : (pkgInProgress ? 'border-amber-300 bg-amber-50/20' : 'border-slate-200 bg-white')} shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden`}
+                                            className={`rounded-2xl border ${pkgInProgress ? 'border-amber-300 bg-amber-50/20' : (isDone ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-200 bg-white')} shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden`}
                                         >
                                             <MacWindowControls 
                                                 title={pkg.title} 
-                                                badge={isDone ? '100% SELESAI' : (pkgInProgress ? `SUBTES ${currSub + 1} • SOAL ${currQ + 1}` : pkg.badge)} 
+                                                badge={pkgInProgress ? `SUBTES ${currSub + 1} • SOAL ${currQ + 1}` : (isDone ? `${attemptCount > 0 ? `${attemptCount}x ` : ''}SELESAI` : pkg.badge)} 
                                             />
                                             <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                                                 <div>
@@ -1403,14 +1415,14 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                 <div className="space-y-1.5 pt-2 border-t border-slate-100">
                                                     <div className="flex items-center justify-between text-xs font-bold">
                                                         <span className="text-slate-500 text-[11px] uppercase tracking-wider">Progress Pengerjaan</span>
-                                                        <span className={isDone ? 'text-emerald-700 flex items-center gap-1 font-mono text-xs' : (pkgInProgress ? 'text-amber-700 font-mono text-xs' : 'text-slate-400 font-mono text-xs')}>
-                                                            {isDone ? (
+                                                        <span className={pkgInProgress ? 'text-amber-700 font-mono text-xs' : (isDone ? 'text-emerald-700 flex items-center gap-1 font-mono text-xs' : 'text-slate-400 font-mono text-xs')}>
+                                                            {pkgInProgress ? (
+                                                                <span>{progressPct}% (Sub-tes {currSub + 1} • Soal ke-{currQ + 1})</span>
+                                                            ) : isDone ? (
                                                                 <>
                                                                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                                                                    <span>100% Selesai</span>
+                                                                    <span>100% Selesai {lastSession ? `(Skor: ${pkg.id === 'karir-drill' ? 'Terpetakan' : `${lastSession.total_score}/100`})` : ''}</span>
                                                                 </>
-                                                            ) : pkgInProgress ? (
-                                                                <span>{progressPct}% (Sub-tes {currSub + 1} • Soal ke-{currQ + 1})</span>
                                                             ) : (
                                                                 <span>0% Belum Dikerjakan</span>
                                                             )}
@@ -1418,15 +1430,19 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                     </div>
                                                     <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                                                         <div 
-                                                            className={`h-full rounded-full transition-all duration-500 ${isDone ? 'bg-emerald-600 w-full' : (pkgInProgress ? 'bg-amber-500' : 'bg-slate-200 w-0')}`} 
+                                                            className={`h-full rounded-full transition-all duration-500 ${pkgInProgress ? 'bg-amber-500' : (isDone ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0')}`} 
                                                             style={{ width: `${progressPct}%` }}
                                                         />
                                                     </div>
-                                                    {pkgInProgress && (
+                                                    {pkgInProgress ? (
                                                         <p className="text-[11px] text-amber-700 font-medium">
                                                             {savedAnswersCount} butir jawaban tersimpan di database
                                                         </p>
-                                                    )}
+                                                    ) : isDone && attemptCount > 1 ? (
+                                                        <p className="text-[11px] text-emerald-700 font-medium">
+                                                            Telah diselesaikan sebanyak {attemptCount} kali
+                                                        </p>
+                                                    ) : null}
                                                 </div>
 
                                                 <div className="pt-1 flex items-center justify-between text-xs text-slate-500 font-medium">
@@ -1440,26 +1456,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                     </span>
                                                 </div>
 
-                                                {isDone ? (
-                                                    <div className="space-y-2 pt-1">
-                                                        <button
-                                                            disabled
-                                                            className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs flex items-center justify-center gap-2 border border-slate-200 cursor-not-allowed select-none"
-                                                            title="Modul ini sudah pernah dikerjakan dan terkunci. Anda tidak dapat melakukan tes ulang kecuali menghapus riwayatnya."
-                                                        >
-                                                            <Lock className="w-3.5 h-3.5" />
-                                                            <span>Terkunci (Sudah Selesai)</span>
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => setPackageToReset(pkg)}
-                                                            className="w-full py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-                                                        >
-                                                            <Trash2 className="w-3.5 h-3.5" />
-                                                            <span>Hapus / Reset Riwayat Tes Ini</span>
-                                                        </button>
-                                                    </div>
-                                                ) : pkgInProgress ? (
+                                                {pkgInProgress ? (
                                                     <div className="space-y-2 pt-1">
                                                         <button
                                                             onClick={() => handleResumeSavedSession(pkg)}
@@ -1476,6 +1473,26 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                         >
                                                             <Trash2 className="w-3.5 h-3.5" />
                                                             <span>Hapus / Ulang Dari Awal</span>
+                                                        </button>
+                                                    </div>
+                                                ) : isDone ? (
+                                                    <div className="space-y-2 pt-1">
+                                                        <button
+                                                            onClick={() => initiateTest(pkg)}
+                                                            className="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-bold text-xs transition-colors flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                                                            title="Mulai sesi pengerjaan ulang baru tanpa menghapus riwayat sebelumnya"
+                                                        >
+                                                            <RotateCcw className="w-3.5 h-3.5" />
+                                                            <span>Tes Lagi {attemptCount > 0 ? `(Percobaan ke-${attemptCount + 1})` : ''}</span>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setPackageToReset(pkg)}
+                                                            className="w-full py-1.5 rounded-xl text-slate-400 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200 font-medium text-[11px] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                                                            title="Hapus riwayat jika ingin mengosongkan rekaman modul ini"
+                                                        >
+                                                            <Trash2 className="w-3 h-3" />
+                                                            <span>Reset / Bersihkan Riwayat</span>
                                                         </button>
                                                     </div>
                                                 ) : (
