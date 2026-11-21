@@ -458,7 +458,7 @@ export default function AdminMaterials({ materials, categories, filters }: Props
                                         <span>{data.file ? data.file.name : 'Pilih File PDF dari Komputer'}</span>
                                     </label>
                                     <p className="text-[11px] text-muted-foreground mt-2">
-                                        Maksimal ukuran file: 20 MB (Format: .pdf, .docx, .zip)
+                                        Maksimal ukuran file: 100 MB (Format: .pdf, .docx, .zip)
                                     </p>
                                 </div>
                             </div>

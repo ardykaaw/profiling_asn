@@ -1,15 +1,15 @@
 import ConfirmModal from '@/components/confirm-modal';
 import { useState, useEffect, useMemo } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
-import { 
-    Award, 
-    Clock, 
-    ArrowLeft, 
-    ArrowRight, 
-    CheckCircle2, 
+import {
+    Award,
+    Clock,
+    ArrowLeft,
+    ArrowRight,
+    CheckCircle2,
     XCircle,
-    Sparkles, 
-    Play, 
+    Sparkles,
+    Play,
     RotateCcw,
     HelpCircle,
     Brain,
@@ -56,48 +56,48 @@ interface Question {
 }
 
 const packages = [
-    { 
-        id: 'profiling-full', 
-        title: 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)', 
-        cat: 'SEMUA', 
-        defaultSoal: 773, 
-        durasi: 243, 
+    {
+        id: 'profiling-full',
+        title: 'Simulasi Lengkap Profiling ASN (Semua 4 Sesi BKN)',
+        cat: 'SEMUA',
+        defaultSoal: 773,
+        durasi: 243,
         badge: '15 Subtes / 773 Soal Paten (243 Menit)',
         desc: 'Simulasi menyeluruh 4 kategori resmi BKN: Tes Potensi (525 soal, 139 mnt), Manajerial & Sosio-Kultural (45 soal, 42 mnt), Literasi Digital (35 soal, 27 mnt), dan Preferensi Karir (168 soal, 35 mnt). Total 243 Menit.'
     },
-    { 
-        id: 'potensi-drill', 
-        title: 'Sesi 1: Tes Potensi Kognitif & Figural', 
-        cat: 'POTENSI', 
-        defaultSoal: 525, 
-        durasi: 139, 
+    {
+        id: 'potensi-drill',
+        title: 'Sesi 1: Tes Potensi Kognitif & Figural',
+        cat: 'POTENSI',
+        defaultSoal: 525,
+        durasi: 139,
         badge: '5 Subtes / 525 Soal Paten (139 Menit)',
         desc: 'Mencakup 5 subtes resmi: Figural (30 soal, 30 mnt), Numerik (360 soal, 34 mnt), Berpikir Kritis (45 soal, 25 mnt), Kepribadian (45 soal, 25 mnt), dan Belajar Cepat (45 soal, 25 mnt). Total 139 Menit.'
     },
-    { 
-        id: 'manajerial-drill', 
-        title: 'Sesi 2: Manajerial & Sosio-Kultural (SJT MenPAN-RB)', 
-        cat: 'MANAJERIAL', 
-        defaultSoal: 45, 
-        durasi: 42, 
+    {
+        id: 'manajerial-drill',
+        title: 'Sesi 2: Manajerial & Sosio-Kultural (SJT MenPAN-RB)',
+        cat: 'MANAJERIAL',
+        defaultSoal: 45,
+        durasi: 42,
         badge: '2 Subtes / 45 Soal Paten (42 Menit)',
         desc: 'Mencakup 2 subtes PermenPAN-RB: Manajerial (23 soal, 22 mnt) dan Sosio Kultural (22 soal, 20 mnt). Total 42 Menit.'
     },
-    { 
-        id: 'digital-drill', 
-        title: 'Sesi 3: Literasi & Keamanan Digital ASN', 
-        cat: 'DIGITAL', 
-        defaultSoal: 35, 
-        durasi: 27, 
+    {
+        id: 'digital-drill',
+        title: 'Sesi 3: Literasi & Keamanan Digital ASN',
+        cat: 'DIGITAL',
+        defaultSoal: 35,
+        durasi: 27,
         badge: '4 Subtes / 35 Soal Paten (27 Menit)',
         desc: 'Mencakup 4 pilar kecakapan digital: Digital Skill (9 soal, 7 mnt), Digital Culture (9 soal, 7 mnt), Digital Ethics (9 soal, 7 mnt), dan Digital Safety (8 soal, 6 mnt). Total 27 Menit.'
     },
-    { 
-        id: 'karir-drill', 
-        title: 'Sesi 4: Preferensi & Tripatha Karir ASN', 
-        cat: 'KARIR', 
-        defaultSoal: 168, 
-        durasi: 35, 
+    {
+        id: 'karir-drill',
+        title: 'Sesi 4: Preferensi & Tripatha Karir ASN',
+        cat: 'KARIR',
+        defaultSoal: 168,
+        durasi: 35,
         badge: '4 Subtes / 168 Soal Paten (35 Menit)',
         desc: 'Mencakup 4 instrumen minat & bakat: Minat Kerja RIASEC (108 butir, 15 mnt), Nilai Kerja (30 butir, 10 mnt), Lingkungan Kerja (18 butir, 5 mnt), dan Gaya Kerja (12 butir, 5 mnt). Total 35 Menit.'
     },
@@ -306,7 +306,7 @@ const SUBTEST_ORDER = [
 const getQuestionSubtestId = (q: Question): string => {
     const cat = q.kategori;
     const sub = (q.subkategori || '').toLowerCase();
-    
+
     if (cat === 'POTENSI') {
         if (sub.includes('figural') || !!q.image_url) return 'potensi-figural';
         if (sub.includes('numerik')) return 'potensi-numerik';
@@ -422,7 +422,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
     const [timeLeft, setTimeLeft] = useState(45 * 60);
     const [categoryFilter, setCategoryFilter] = useState<string>('SEMUA');
     const [pendingUrl, setPendingUrl] = useState<string | null>(null);
-    
+
     // Countdown state
     const [countdownSeconds, setCountdownSeconds] = useState(5);
 
@@ -452,11 +452,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
     // Helper to persist in-progress subtest progress to server
     const saveProgressToServer = (
-        pkgId: string, 
-        pkgTitle: string, 
-        currentAnswers: Record<number, number>, 
-        subIndex: number, 
-        qIndex: number, 
+        pkgId: string,
+        pkgTitle: string,
+        currentAnswers: Record<number, number>,
+        subIndex: number,
+        qIndex: number,
         totalSubs: number,
         subTitle?: string
     ) => {
@@ -522,7 +522,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         if (!auth?.user) {
             try {
                 localStorage.removeItem('tryout_saved_session');
-            } catch (e) {}
+            } catch (e) { }
             setSavedSession(null);
             return null;
         }
@@ -778,7 +778,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
         setActiveSubtests(subtests);
         const targetSubIdx = Math.min(Math.max(0, resumeSubtestIndex), Math.max(0, subtests.length - 1));
         setCurrentSubtestIndex(targetSubIdx);
-        
+
         const subQuestions = subtests[targetSubIdx]?.questions || [];
         let targetQIdx = 0;
         if (subQuestions.length > 0) {
@@ -1370,8 +1370,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 {packages.map((pkg) => {
                                     const pkgSessions = sessions.filter(s => s.completed_at && (
-                                        s.title === pkg.title || 
-                                        (s.title && s.title.startsWith(pkg.title)) || 
+                                        s.title === pkg.title ||
+                                        (s.title && s.title.startsWith(pkg.title)) ||
                                         (pkg.id === 'profiling-full' && s.title && s.title.includes('Simulasi Profiling 4 Subtes'))
                                     ));
                                     const isDone = pkgSessions.length > 0 || (completedTitles && completedTitles.some(t => t === pkg.title || t.startsWith(pkg.title)));
@@ -1395,9 +1395,9 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             key={pkg.id}
                                             className={`rounded-2xl border ${pkgInProgress ? 'border-amber-300 bg-amber-50/20' : (isDone ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-200 bg-white')} shadow-md hover:shadow-xl transition-all flex flex-col justify-between overflow-hidden`}
                                         >
-                                            <MacWindowControls 
-                                                title={pkg.title} 
-                                                badge={pkgInProgress ? `SUBTES ${currSub + 1} • SOAL ${currQ + 1}` : (isDone ? `${attemptCount > 0 ? `${attemptCount}x ` : ''}SELESAI` : pkg.badge)} 
+                                            <MacWindowControls
+                                                title={pkg.title}
+                                                badge={pkgInProgress ? `SUBTES ${currSub + 1} • SOAL ${currQ + 1}` : (isDone ? `${attemptCount > 0 ? `${attemptCount}x ` : ''}SELESAI` : pkg.badge)}
                                             />
                                             <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                                                 <div>
@@ -1429,8 +1429,8 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                         </span>
                                                     </div>
                                                     <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-                                                        <div 
-                                                            className={`h-full rounded-full transition-all duration-500 ${pkgInProgress ? 'bg-amber-500' : (isDone ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0')}`} 
+                                                        <div
+                                                            className={`h-full rounded-full transition-all duration-500 ${pkgInProgress ? 'bg-amber-500' : (isDone ? 'bg-emerald-600 w-full' : 'bg-slate-200 w-0')}`}
                                                             style={{ width: `${progressPct}%` }}
                                                         />
                                                     </div>
@@ -1582,7 +1582,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                         <div className="rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden">
                             <MacWindowControls title="Ruang Persiapan Simulasi CAT BKN" badge="COUNTDOWN AKTIF" />
                             <div className="p-8 sm:p-10 text-center space-y-6">
-                                
+
                                 {/* Countdown Circle */}
                                 <div className="relative w-32 h-32 mx-auto flex items-center justify-center">
                                     <div className="absolute inset-0 rounded-full border-4 border-emerald-100 animate-pulse" />
@@ -1649,7 +1649,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                             {/* Top Bar Status in Mac Window */}
                             <div className="rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden">
                                 <MacWindowControls title={selectedPackage.title} badge="SIMULASI BERLANGSUNG" />
-                                
+
                                 <div className="p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-white">
                                     <div className="flex flex-wrap items-center gap-3">
                                         <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-black text-xs shrink-0">
@@ -1740,13 +1740,12 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             return (
                                                 <div
                                                     key={sub.id}
-                                                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold shrink-0 transition-all ${
-                                                        isCurrent
+                                                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold shrink-0 transition-all ${isCurrent
                                                             ? 'bg-slate-900 text-white shadow-xs ring-2 ring-emerald-500/40'
                                                             : isCompleted
-                                                            ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
-                                                            : 'bg-slate-200/70 text-slate-400 border border-slate-200'
-                                                    }`}
+                                                                ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
+                                                                : 'bg-slate-200/70 text-slate-400 border border-slate-200'
+                                                        }`}
                                                 >
                                                     {isCompleted ? (
                                                         <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
@@ -1786,7 +1785,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
                                             {currentQ.image_url && (
                                                 <div className="my-4 p-4 bg-slate-50 border border-slate-200/90 rounded-2xl overflow-hidden flex flex-col items-center justify-center shadow-xs">
-                                                    <div 
+                                                    <div
                                                         onClick={() => setPreviewImage(currentQ.image_url!)}
                                                         className="group relative cursor-pointer overflow-hidden rounded-xl"
                                                         title="Klik untuk memperbesar gambar (Modal)"
@@ -1828,19 +1827,15 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                     <button
                                                         key={oIdx}
                                                         onClick={() => handleSelectOption(currentQ.id, oIdx)}
-                                                        className={`w-full text-left rounded-xl border transition-all flex items-start gap-3.5 font-medium cursor-pointer ${
-                                                            currentQ.pilihan.length === 2 ? 'p-5 sm:p-6 text-sm sm:text-base' : 'p-4 text-xs sm:text-sm'
-                                                        } ${
-                                                            isSelected
+                                                        className={`w-full text-left rounded-xl border transition-all flex items-start gap-3.5 font-medium cursor-pointer ${currentQ.pilihan.length === 2 ? 'p-5 sm:p-6 text-sm sm:text-base' : 'p-4 text-xs sm:text-sm'
+                                                            } ${isSelected
                                                                 ? 'border-emerald-600 bg-emerald-50/70 text-slate-900 ring-2 ring-emerald-600/30 shadow-xs'
                                                                 : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
-                                                        }`}
+                                                            }`}
                                                     >
-                                                        <span className={`rounded-md flex items-center justify-center font-bold shrink-0 transition-colors ${
-                                                            currentQ.pilihan.length === 2 ? 'w-8 h-8 text-sm' : 'w-6 h-6 text-xs'
-                                                        } ${
-                                                            isSelected ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
-                                                        }`}>
+                                                        <span className={`rounded-md flex items-center justify-center font-bold shrink-0 transition-colors ${currentQ.pilihan.length === 2 ? 'w-8 h-8 text-sm' : 'w-6 h-6 text-xs'
+                                                            } ${isSelected ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-600'
+                                                            }`}>
                                                             {String.fromCharCode(65 + oIdx)}
                                                         </span>
                                                         <span className={`flex-1 leading-relaxed ${currentQ.pilihan.length === 2 ? 'font-mono font-bold text-slate-900 text-base sm:text-lg' : ''}`}>
@@ -1862,7 +1857,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                             <ArrowLeft className="w-3.5 h-3.5" />
                                             <span>Soal Sebelumnya</span>
                                         </button>
-                                        
+
                                         <div className="flex items-center gap-2">
                                             <button
                                                 type="button"
@@ -1907,9 +1902,9 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
                                 {/* Question Navigation Palette (Cols 1) - ONLY FOR ACTIVE SUB-TEST */}
                                 <div className="lg:col-span-1 rounded-2xl border border-slate-200 bg-white shadow-md overflow-hidden h-fit">
-                                    <MacWindowControls 
-                                        title={`Sub-tes ${currentSubtestIndex + 1}: ${currentSubtest?.shortTitle || 'Daftar Soal'}`} 
-                                        badge={`${currentSubtestAnsweredCount}/${currentSubtestQuestions.length}`} 
+                                    <MacWindowControls
+                                        title={`Sub-tes ${currentSubtestIndex + 1}: ${currentSubtest?.shortTitle || 'Daftar Soal'}`}
+                                        badge={`${currentSubtestAnsweredCount}/${currentSubtestQuestions.length}`}
                                     />
                                     <div className="p-4 space-y-4">
                                         <div className="space-y-1">
@@ -1932,13 +1927,12 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                     <button
                                                         key={q.id || qIndex}
                                                         onClick={() => setCurrentQuestionInSubtest(qIndex)}
-                                                        className={`h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center cursor-pointer ${
-                                                            isCurrent
+                                                        className={`h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center cursor-pointer ${isCurrent
                                                                 ? 'ring-2 ring-slate-900 bg-emerald-800 text-white shadow-sm'
                                                                 : isAnswered
-                                                                ? 'bg-emerald-100 border border-emerald-300 text-emerald-900 font-bold'
-                                                                : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200'
-                                                        }`}
+                                                                    ? 'bg-emerald-100 border border-emerald-300 text-emerald-900 font-bold'
+                                                                    : 'bg-slate-100 border border-slate-200 text-slate-600 hover:bg-slate-200'
+                                                            }`}
                                                         title={`Soal nomor ${qIndex + 1} (${isAnswered ? 'Sudah terjawab' : 'Belum dijawab'})`}
                                                     >
                                                         {qIndex + 1}
@@ -1974,11 +1968,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 {mode === 'subtest-break' && justCompletedSubtest && breakNextSubtest && (
                     <div className="fixed inset-0 z-40 bg-[#F8F9FA] overflow-y-auto p-4 sm:p-6 lg:p-8 test-workarea flex flex-col items-center justify-center min-h-screen">
                         <div className="max-w-2xl w-full rounded-3xl border border-slate-200 bg-white shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                            <MacWindowControls 
-                                title={`Sesi Jeda Antar Sub-tes • ${selectedPackage.title}`} 
-                                badge="BREAK TIME" 
+                            <MacWindowControls
+                                title={`Sesi Jeda Antar Sub-tes • ${selectedPackage.title}`}
+                                badge="BREAK TIME"
                             />
-                            
+
                             <div className="p-6 sm:p-8 space-y-6 text-center">
                                 {/* Celebration / Status Icon */}
                                 <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
@@ -2071,7 +2065,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                     </div>
                 )}
 
-            {/* =========================================================================
+                {/* =========================================================================
                 MODE 4: HASIL SKOR & RAPOR PROFILING
                ========================================================================= */}
                 {mode === 'result' && (
@@ -2454,11 +2448,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     <button
                                         key={tab.id}
                                         onClick={() => setReviewStatusFilter(tab.id as any)}
-                                        className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                                            reviewStatusFilter === tab.id
+                                        className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${reviewStatusFilter === tab.id
                                                 ? 'bg-slate-900 text-white shadow-xs'
                                                 : 'text-slate-600 hover:bg-slate-100'
-                                        }`}
+                                            }`}
                                     >
                                         {tab.label}
                                     </button>
@@ -2478,11 +2471,10 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     <button
                                         key={tab.id}
                                         onClick={() => setReviewCategoryFilter(tab.id)}
-                                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
-                                            reviewCategoryFilter === tab.id
+                                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${reviewCategoryFilter === tab.id
                                                 ? 'bg-emerald-800 text-white'
                                                 : 'text-slate-500 hover:bg-slate-100'
-                                        }`}
+                                            }`}
                                     >
                                         {tab.label}
                                     </button>
@@ -2552,7 +2544,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
 
                                                 {q.image_url && (
                                                     <div className="my-3 p-3 bg-slate-50 border border-slate-200/80 rounded-xl overflow-hidden flex flex-col items-center justify-center">
-                                                        <div 
+                                                        <div
                                                             onClick={() => setPreviewImage(q.image_url!)}
                                                             className="group relative cursor-pointer overflow-hidden rounded-lg"
                                                             title="Klik untuk memperbesar gambar (Modal)"
@@ -2599,13 +2591,12 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                                                 key={pIdx}
                                                                 className={`p-3.5 rounded-xl border flex items-start gap-3 transition-all ${optionClass}`}
                                                             >
-                                                                <span className={`w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold shrink-0 ${
-                                                                    isKey ? 'bg-emerald-700 text-white' : isUser ? 'bg-red-600 text-white' : 'bg-slate-200 text-slate-600'
-                                                                }`}>
+                                                                <span className={`w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold shrink-0 ${isKey ? 'bg-emerald-700 text-white' : isUser ? 'bg-red-600 text-white' : 'bg-slate-200 text-slate-600'
+                                                                    }`}>
                                                                     {String.fromCharCode(65 + pIdx)}
                                                                 </span>
                                                                 <span className="flex-1 leading-relaxed text-xs">{pil}</span>
-                                                                
+
                                                                 {/* Badges on right side */}
                                                                 <div className="flex items-center gap-2 shrink-0">
                                                                     {optScore !== null && (
@@ -2754,7 +2745,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     <BookmarkCheck className="w-4 h-4" />
                                     <span>Selesaikan & Simpan Progres (Lanjutkan Nanti)</span>
                                 </button>
-                                
+
                                 <div className="flex flex-col sm:flex-row gap-2">
                                     <button
                                         onClick={() => setShowSubtestFinishModal(false)}
@@ -2792,7 +2783,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                                     Selesaikan & Kumpulkan Jawaban?
                                 </h3>
                                 <p className="text-xs text-slate-600 leading-relaxed">
-                                    Anda telah menjawab <strong>{answeredCount} dari {activeQuestions.length} butir soal</strong> ({unansweredCount} belum dijawab). 
+                                    Anda telah menjawab <strong>{answeredCount} dari {activeQuestions.length} butir soal</strong> ({unansweredCount} belum dijawab).
                                     Setelah dikumpulkan, sistem akan langsung memproses skor dan membuka seluruh pembahasan soal.
                                 </p>
                             </div>
@@ -2820,11 +2811,11 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 MODAL 3: LIGHTBOX PREVIEW GAMBAR SOAL FIGURAL (TANPA TAB BARU)
                ========================================================================= */}
             {previewImage && (
-                <div 
+                <div
                     className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4 animate-in fade-in duration-200"
                     onClick={() => setPreviewImage(null)}
                 >
-                    <div 
+                    <div
                         className="relative bg-white rounded-2xl shadow-2xl max-w-4xl max-h-[92vh] w-full flex flex-col overflow-hidden border border-slate-200"
                         onClick={(e) => e.stopPropagation()}
                     >
@@ -2863,7 +2854,7 @@ export default function TryOutPage({ dbQuestions = [], sessions = [], inProgress
                 </div>
             )}
 
-            
+
             {/* Modal Peringatan Paket Sudah Terkunci */}
             {lockedPackageAlert && (
                 <ConfirmModal

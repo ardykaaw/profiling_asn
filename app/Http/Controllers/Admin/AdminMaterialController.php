@@ -49,7 +49,7 @@ class AdminMaterialController extends Controller
             'summary' => 'required|string',
             'content' => 'nullable|string',
             'video_url' => 'nullable|url',
-            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:20480', // up to 20MB
+            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:102400', // up to 100MB
             'is_published' => 'boolean',
             'is_free' => 'boolean',
         ]);
@@ -90,7 +90,7 @@ class AdminMaterialController extends Controller
             'summary' => 'required|string',
             'content' => 'nullable|string',
             'video_url' => 'nullable|url',
-            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:20480',
+            'file' => 'nullable|file|mimes:pdf,doc,docx,zip|max:102400', // up to 100MB
             'is_published' => 'boolean',
             'is_free' => 'boolean',
         ]);

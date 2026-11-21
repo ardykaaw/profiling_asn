@@ -43,3 +43,30 @@
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# Maximum upload body size (100MB)
+LimitRequestBody 104857600
+
+# BEGIN cPanel-generated php ini directives, do not edit
+<IfModule php7_module>
+   php_value upload_max_filesize 100M
+   php_value post_max_size 100M
+   php_value memory_limit 512M
+   php_value max_execution_time 300
+   php_value max_input_time 300
+</IfModule>
+<IfModule php8_module>
+   php_value upload_max_filesize 100M
+   php_value post_max_size 100M
+   php_value memory_limit 512M
+   php_value max_execution_time 300
+   php_value max_input_time 300
+</IfModule>
+<IfModule lsapi_module>
+   php_value upload_max_filesize 100M
+   php_value post_max_size 100M
+   php_value memory_limit 512M
+   php_value max_execution_time 300
+   php_value max_input_time 300
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
